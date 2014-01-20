@@ -14,7 +14,7 @@ Hopefully you already have a GitHub account and have worked with git before. If 
 
 If you aren't familiar with git, you may want to look through [GitHub's Introduction to git](http://try.github.io/levels/1/challenges/1). 
 
-The only git commands I will expect you to know to get through the assignments for class are '''git clone''' and '''git checkout'''. For your final project, you will also have to understand '''git add''', '''git commit''', '''git pull''' and '''git push'''. Six commands in all. I know you can do it! 
+The only git commands I will expect you to know to get through the assignments for class are `git clone` and `git checkout`. For your final project, you will also have to understand `git add`, `git commit`, `git pull` and `git push`. Six commands in all. I know you can do it! 
 
 
 ### What We Will Be Doing Here ###
