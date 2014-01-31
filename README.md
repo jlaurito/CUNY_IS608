@@ -40,3 +40,8 @@ There are lots of good resources on Visualization. here are quick links to books
 
 [One of Mike Bostock's many presentations](http://bost.ocks.org/mike/cubism/intro/#0)
 
+[FlowingData](http://flowingdata.com/) is a great blog on data visualization and related topics
+
+For more advanced visualizations, check out the [D3 Homepage](http://d3js.org/)
+
+
