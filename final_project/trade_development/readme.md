@@ -10,7 +10,7 @@ The US Trade and Development Agency (USTDA) is an independent U.S. Government fo
 
 The USTDA's mission is to help companies create U.S. jobs through the export of U.S. goods and services for priority development projects in emerging economies. USTDA links U.S. businesses to export opportunities by funding project planning activities, pilot projects, and reverse trade missions while creating sustainable infrastructure and economic growth in partner countries.
 
-The USTDA is interested in showing how the projects it has funded have changed over the last decade, both by region and my topic.
+The USTDA is interested in showing how the projects it has funded have changed over the last decade, both by region and by topic.
 
 ## Assignment
 
