@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+  <title>Google Viz</title>
+
+  <!--- *********************************************************
+        *********************************************************
+
+        Here, we will lay out how to access data from different sources using google charts
+
+        documentation at https://developers.google.com/chart/
+        
+        *********************************************************
+        ********************************************************* -->
+
+
+
+  <!--- Using Google Charts for visualization, bootstrap to set up page, jquery for working with csv's -->
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//www.google.com/jsapi"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+ 
+
+  <script src="jquery.csv-0.71.js"></script> 
+
+
+  <!--- which charts to load? -->
+<!--  <script type="text/javascript">google.load('visualization', '1', {'packages':['annotatedtimeline', 'areaChart', 'scatterchart']});</script> -->
+<script type="text/javascript">google.load('visualization', '1', {'packages':['corechart']});</script>
+
+  
+
+
+
+  <!--- First Chart, simple, direct pull of data -->
+
+  <script type="text/javascript">
+    function pullDataFromSpreadsheet() {
+
+      // put the source's key here
+      var gKey = "0AsJDXPO0ATU2dGg2cDk1bXpoMFVhYXNFY2FDdEFvcXc";
+
+      var query = new google.visualization.Query('http://spreadsheets.google.com/tq?key=' + gKey + '&pub=1'
+        );
+
+      //specify what you want returned and which function to call
+      query.setQuery('select A, C where C > 1');
+      query.send(chart1);
+    };
+
+
+    function chart1(response) {
+      var wrapper = new google.visualization.ChartWrapper({
+        dataTable: response.getDataTable(),
+
+        // change the chart type and options here
+        
+        chartType: 'AreaChart',
+        containerId: 'chart1',
+        options: {
+                  'title': 'Timeline Views / MAU',
+                  'titleTextStyle': {'fontSize':32},
+                  'legend': 'none',
+                  'colors': ['red','#004411']
+              }
+      });
+
+      wrapper.draw();
+    };
+    google.setOnLoadCallback(pullDataFromSpreadsheet);
+  </script>
+
+
+  <!--- Second Chart, Pull Data from CSV -->
+  <script type="text/javascript">
+  // jQuery is called with the '$'
+  function drawChart(){
+    // get data
+    $.get('data/presidents.csv', function(csvData){
+      var arrayData = $.csv.toArrays(csvData, {
+        onParseValue: $.csv.hooks.castToScalar
+      });
+
+    //var data = new google.visualization.arrayToDataTable(arrayData);
+    
+    var data = new google.visualization.DataTable();
+                  data.addColumn('number', 'Height');
+                  data.addColumn('number', 'Weight');
+                  // A column for custom tooltip content
+                  data.addColumn({name:'name', type:'string', role:'tooltip'});
+
+    var myArray = [];
+    for (i = 1; i < arrayData.length; i++){
+      //console.log([arrayData[i][1], arrayData[i][2],arrayData[i][0]]);
+      myArray.push([arrayData[i][2], arrayData[i][1],arrayData[i][0]]);
+    };
+
+    data.addRows(myArray);
+    console.log(data);
+
+    var options = { title:'Presidents',
+                    hAxis: {title: 'Weight (lbs)', 
+                            minValue: data.getColumnRange(0).min,
+                            maxValue: data.getColumnRange(0).max
+                          },
+                    vAxis: {title: 'Height (in)', 
+                            minValue: data.getColumnRange(1).min, 
+                            maxValue: data.getColumnRange(1).max
+                          },
+                    tooltip: { textStyle: {color:'#F0000'}
+                             },  
+                    legend: 'none'
+                 }
+
+    var chart = new google.visualization.ScatterChart(document.getElementById('chart2'));
+    chart.draw(data, options);
+    })
+
+  };
+  drawChart();
+  </script>
+
+  <!--- Third Chart, Annotated -->
+
+  <script type="text/javascript">
+    function annotatedChart() {
+
+      // put the source's key here
+      var gKey = "0AsJDXPO0ATU2dGg2cDk1bXpoMFVhYXNFY2FDdEFvcXc";
+
+      var query = new google.visualization.Query('http://spreadsheets.google.com/tq?key=' + gKey + '&pub=1'
+        );
+
+      //specify what you want returned and which function to call
+      query.setQuery('select A, D, E, G where D > 0');
+      query.send(chart3);
+    };
+
+
+    function chart3(response) {
+      var wrapper = new google.visualization.ChartWrapper({
+        dataTable: response.getDataTable(),
+
+        // change the chart type and options here
+        containerId: 'chart3',
+        chartType: 'AnnotatedTimeLine',
+        options: {'displayAnnotations': true,
+                  'fontSize': 32}
+      });
+
+      wrapper.draw();
+    };
+    google.setOnLoadCallback(annotatedChart);
+  </script>
+
+</head>
+
+
+<!-- now draw the page -->
+<!-- timedRefresh counts milliseconds until the screen refreshes -->
+
+<body>
+  <h1>Types of Google Charts</h1>
+    
+    <!-- Put Top Row Charts Here -->
+    <div class="row-fluid">
+      <div class="span6">
+        <h3>Data from <a href='https://docs.google.com/spreadsheet/ccc?key=0AsJDXPO0ATU2dGg2cDk1bXpoMFVhYXNFY2FDdEFvcXc'>google spreadsheets</a>
+        <div id='chart1' style='height:600px;'></div>
+      </div>
+      <div class="span6">
+        <div id='chart2' style='height:600px;'></div>
+      </div>
+    </div>
+
+    <!-- Put Bottom Row Charts Here -->
+    <div class="row-fluid">
+      <div class="span1"></div>
+      <div class="span11">
+        <h3>Annotated Timeline</h3>
+        <div id='chart3' style='height:600px;'></div>
+      </div>
+
+    </div>
+
+</body>
+</html>

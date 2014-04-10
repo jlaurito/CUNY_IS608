@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+  <title>Intro to D3</title>
+
+  <!--- *********************************************************
+        *********************************************************
+
+        Here, we will lay out some basic d3 patterns
+
+        documentation at http://d3js.org/
+        
+        *********************************************************
+        ********************************************************* -->
+
+
+
+<!--- Using d3 for visualization -->
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+<script type='text/javascript' src='selectable.js'></script>
+<script type="text/javascript" src="d3.tip.min.js"></script>
+</head>
+
+
+
+<!-- The actual webpage domain is really simple- all the fun stuff happens after, in js -->
+
+<body>
+  <h1>A d3 chart</h1>
+  <h3>Presidents (again)</h3>
+  <div id='chart1'></div>
+    <h3>Languages</h3>
+  <div id='chart2'></div>
+</body>
+
+<!-- That's it! -->
+
+
+
+<!-- JS for a first Visualization -->
+<script type='text/javascript'>
+    
+    // set up svg
+    //
+    var height = 300;
+    var width = 800;
+    var margin = {top:10, right:0, bottom:30, left:50}
+    var svg = d3.select('#chart1').append('svg')
+                .attr('width', width + margin.left +margin.right)
+                .attr('height', height + margin.top + margin.bottom)
+                .append('g')
+
+
+
+    // Main function: callback inside of data loading function
+    // Notice: most of the logic is in the inside function
+    //
+    d3.csv('data/presidents.csv', function(data){
+        data.forEach(function(d){
+            d.name = d.Name;
+            d.height = +d.Height;
+            d.weight = +d.Weight;
+        });
+
+        // create rules for the image
+        //
+        var x = d3.scale.linear().range([margin.left, width]);
+        var y = d3.scale.linear().range([height, 0]);
+        var xAxis = d3.svg.axis().scale(x).orient('bottom');
+        var yAxis = d3.svg.axis().scale(y).orient('left');
+        
+        // map domains - this tells the svg how to map it's size to the domain
+        //
+        x.domain([80,350]);
+        y.domain([60,80]);
+
+
+        // write axes
+        //
+        svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("x", width)
+          .attr("y", -6)
+          .style("text-anchor", "end")
+          .text("Weight (lbs)");
+
+        svg.append("g")
+          .attr("class", "y axis")
+          .attr("transform", "translate("+ margin.left + ",0)")
+          .call(yAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 0)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Height (in)");
+
+        // let's put a tooltip on as well
+        var tipData = '';
+
+        var tip = d3.tip()
+          .attr('class', 'd3-tip')
+          .html(function(d){
+            return '<strong>' + tipData + '</strong>'
+          })
+          .direction('ne');
+
+        function toolMove(){ return svg.call(tip);};
+
+        function writeTip(){
+
+          return toolMove()
+        }
+
+        // Now actually push the data to the DOM (webpage)
+        svg.selectAll('.dot')
+            .data(data)
+            .enter()
+            .append('circle')
+            .attr('class', 'dot')
+            .attr('r', 5)
+            .attr('cx', function(d){return x(d.weight);})
+            .attr('cy', function(d){return y(d.height);})
+            .text(function(d){return d.name;})
+            .on("mousemove", tip.show)
+            .on("mouseout", tip.hide )
+            .on('mouseover', function(d){
+              tipData = d.name;
+              return toolMove();
+            })
+            .style('fill', 'purple');
+    });
+
+</script>
+
+
+<!-- JS for a second visualization -->
+<script type='text/javascript'>
+  // define general variables again
+  //
+  var w = 700, h = 700;
+
+  var color = d3.scale.category20();
+
+  var svg2 = d3.select("#chart2").append("svg")
+    .attr("width", w)
+    .attr("height", h);
+
+
+  // create a force diagram
+  //
+  var force = d3.layout.force()
+    .charge(-600)
+    .linkDistance(80)
+    .size([w, h]);
+
+  d3.json("data/language_similarity.json", function(json){
+    force
+      .nodes(json.nodes)
+      .links(json.links)
+      .start();
+
+    var link = svg2.selectAll("line.link")
+      .data(json.links)
+      .enter().append("line")
+      .attr("class","link")
+      .style("stroke-width", function(d) { return d.value^2; })
+      .style("stroke","lightgray");
+
+    // let's put a tooltip again
+    var tipData = '';
+
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .html(function(d){
+        return '<strong>' + tipData + '</strong>'
+      })
+      .direction('ne');
+
+    function toolMove(){ return svg.call(tip);};
+
+    function writeTip(){
+
+      return toolMove()
+    }
+
+
+    var node = svg2.selectAll("circle.node")
+      .data(json.nodes)
+      .enter().append("circle")
+      .attr("class", "node")
+      .on("mousemove", tip.show)
+      .on("mouseout", tip.hide )
+      .on('mouseover', function(d){
+          tipData = d.lang;
+          return toolMove();
+      })
+      .attr("r", function(d) { return Math.sqrt(20 + 10 * d.speakers); })
+      .style("fill", function(d) { return color(d.family); })
+      .style("stroke","white")
+      .call(force.drag);
+
+      node.append("title")
+      .text(function(d) { return d.lang; });
+         force.on("tick", function() {
+         link.attr("x1", function(d) { return d.source.x; })
+       .attr("y1", function(d) { return d.source.y; })
+       .attr("x2", function(d) { return d.target.x; })
+       .attr("y2", function(d) { return d.target.y; });
+       
+
+         node.attr("cx", function(d) { return d.x; })
+       .attr("cy", function(d) { return d.y; });
+     });
+ });
+  
+
+  
+</script>

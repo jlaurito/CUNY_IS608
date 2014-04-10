@@ -1,0 +1,288 @@
+<html>
+
+<head>
+    <title>HW 5 Solutions</title>
+    <link rel="stylesheet" type="text/css" href="nvd_scatter.css">
+</head>
+
+<body>
+
+<h1>Solutions</h1><BR>
+
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+
+<h2>1. Create a function to reverse any word that you type in. This can be typed into either an input box or an alert box, and then print the result in a box or on the webpage.</h2>
+
+<p>
+<form name='reverseText'>
+    <input type="text" size="10" name='textInput'>
+    <input type="button" value="Reverse!" onClick=docSubmit()>
+</form>
+</p>
+
+<div id="first"></div>
+
+<script type="text/javascript">
+
+function reverseString(string){
+    var output = '';
+    for (i = 0; i < string.length; i++) {
+        output = string[i] + output;
+    }
+    return output
+};
+
+
+
+function writeToDom(element, content){
+    var target = document.getElementById(element);
+    target.innerHTML = content;
+};
+
+
+
+function docSubmit(){
+    writeToDom('first', 
+               reverseString(document.reverseText.textInput.value)
+    );
+};
+
+</script>
+
+
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+
+
+
+<br><br>
+<h2>2. Create a function that takes an input number, and prints a table with the first 20 multiples of the number, in order 5x4.</h2>
+
+<p>
+<form name='multTable'>
+    <input type="number" size="3" name='numInput'>
+    <input type="button" value="Create Table!" onClick=writeTable()>
+</form>
+</p>
+
+<div id="second"></div>
+
+<script type="text/javascript">
+
+function tableMake(elementArray, numColumns){
+    var numElements = elementArray.length;
+    var outputString = '<table>';
+
+    for (i = 0; i < numElements; i++){
+
+        if (i % numColumns ==0){outputString = outputString +'<tr>'};
+        outputString = outputString + '<td>'+ elementArray[i]+ '</td>';
+        if (i % numColumns ==numColumns-1){outputString = outputString +'</tr>'};
+    
+    };
+
+    outputString = outputString + '</table>';
+    return outputString
+};
+
+
+
+function makeMultiples(seed, count, by){
+    numArray = []
+    for (i = 1; i <= count; i++) {numArray.push(seed * (by * i))};
+    return numArray
+}
+
+
+
+function writeTable(){
+    writeToDom('second',
+        tableMake(makeMultiples(document.multTable.numInput.value,20,1), 
+                  5
+        )
+    );
+};
+</script>
+
+
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+
+
+<br><br>
+<h2>3. Write a function to load the presidents.csv data and display the data as an html table.</h2>
+
+<div id ='third'></div>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+d3.csv('data/presidents.csv', function(data){
+    var columns = ["Name", "Height", "Weight"];
+
+    // load data
+    data.forEach(function(d){
+        weight: +d.Weight;
+        height: +d.Height; 
+        name: d.Name;
+    });
+
+    // create a table with a row for each row of data
+    var table = d3.select('#third').append('table');
+    var header = table.append('thead')
+                .append('tr')
+                .selectAll('th')
+                .data(columns)
+                .enter()
+                .append('th')
+                .text(function(c){return c;});
+
+    var rows = table.append('tbody')
+                .selectAll('tr')
+                .data(data)
+                .enter()
+                .append('tr');
+
+    // create cells in each row
+    var cells = rows.selectAll('td')
+                .data(function(row){
+                        return columns.map(function(c){
+                            return {column: c, value: row[c]};
+                        });
+                    })
+                .enter()
+                .append('td')
+                .text(function(d){return d.value;});
+});
+
+</script>
+
+
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+
+
+<br><br>
+<h2>4. Now that you have the presidents data loaded, write a function that will return that president's height & weight when you type it in.</h2>
+
+<p>
+<form name='presInfo'>
+    <input type="text" size="15" name='presName'>
+    <input type="button" value="Find Data" onClick=choosePres()>
+</form>
+</p>
+
+<div id='fourth'></div>
+
+<script type="text/javascript">
+
+function choosePres(){
+    d3.csv('data/presidents.csv', function(data){
+        var presOutput = '';
+
+        // load data
+        data.forEach(function(d){
+            weight: +d.Weight;
+            height: +d.Height; 
+            name: d.Name;
+        });
+
+        //answer to Q4
+        var selectedPres = ''
+        for (i=0; i < data.length; i++){
+            if (data[i].Name == document.presInfo.presName.value){
+                selectOutput = 'Height: '+ data[i].Height +' Weight: '+ data[i].Weight;
+
+                writeToDom('fourth', selectOutput);
+            }
+        };
+    });
+};
+
+</script>
+
+
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+<!--********************************************************************* -->
+
+
+<br><br>
+<h2>5. Extra Credit: Graphing in NVD3</h2>
+
+<script src="../../../../../bin/nvd3/nv.d3.js"></script>
+<script src="../../../../../bin/nvd3/src/tooltip.js"></script>
+<script src="../../../../../bin/nvd3/src/utils.js"></script>
+<script src="../../../../../bin/nvd3/src/models/legend.js"></script>
+<script src="../../../../../bin/nvd3/src/models/axis.js"></script>
+<script src="../../../../../bin/nvd3/src/models/distribution.js"></script>
+<script src="../../../../../bin/nvd3/src/models/scatter.js"></script>
+<script src="../../../../../bin/nvd3/src/models/scatterChart.js"></script>
+
+
+<script type="text/javascript">
+
+
+d3.csv('data/presidents.csv', function(data){
+
+    var scatterData = [];
+    scatterData.push({key:'Presidents', values:[]});
+
+    // load data
+    data.forEach(function(d){
+            scatterData[0].values.push({
+            x: +d.Weight,
+            y: +d.Height, 
+            name: d.Name,
+            size: 50,
+            series: 0
+        })
+    });
+
+    //add chart
+    nv.addGraph(function() {
+        var chart = nv.models.scatterChart()
+                      .showDistX(true)
+                      .showDistY(true)
+                      .size(1).sizeRange([200,200])
+                      .color(d3.scale.category10().range());
+
+        d3.select('#extra svg')
+            .datum(scatterData)
+            .call(chart);
+//
+        for (i=0; i < scatterData[0].values.length; i++){
+            var w = parseFloat(d3.select('#extra svg').style('width'))-120;
+            var h = parseFloat(d3.select('#extra svg').style('height'))-20;
+            console.log(w*(scatterData[0].values[i]['x']-100)/200);
+            d3.select('#extra svg')
+                .append('text')
+                .attr('x', function(){return w*(scatterData[0].values[i]['x']-100)/200;})
+                .attr('y', function(){return (10*Math.random())+h-(h*(scatterData[0].values[i]['y']-61)/15);})
+                .text(function(d){return scatterData[0].values[i]['name'];})
+        };
+//
+        nv.utils.windowResize(chart.update);
+
+
+        return chart;
+    });
+
+
+});
+
+</script>
+
+<div id='extra'><svg></svg></div>
+
+
+</body>
+</html>
