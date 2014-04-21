@@ -91,7 +91,7 @@ function tableMake(elementArray, numColumns){
 
 
 function makeMultiples(seed, count, by){
-    numArray = []
+    numArray = [];
     for (i = 1; i <= count; i++) {numArray.push(seed * (by * i))};
     return numArray
 }
@@ -101,7 +101,7 @@ function makeMultiples(seed, count, by){
 function writeTable(){
     writeToDom('second',
         tableMake(makeMultiples(document.multTable.numInput.value,20,1), 
-                  5
+                  4
         )
     );
 };

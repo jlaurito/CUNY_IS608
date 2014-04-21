@@ -442,7 +442,7 @@ svg .title {
 
     chart.xAxis.tickFormat(d3.format('.02f'));
     chart.yAxis.tickFormat(d3.format('.02f'));
-
+    chart.tooltipContent(function(name){return name.value})
   d3.select('#chart svg')
       .datum(data(1,40))
       .call(chart); //.transition().duration(500)
