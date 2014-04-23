@@ -17,11 +17,10 @@ app = Flask(__name__)
 @app.route('/bq_test.html', methods=['GET','POST'])
 def home():
     transactions= []
-    y = 'just checking cache'
-
+    y = 'end of initial page load'
     if request.method == 'GET':
         x = ''
-        return render_template('base.html', x=x, y=y)
+        return render_template('basic.html', x=x, y=y)
 
 
     else:
@@ -30,8 +29,7 @@ def home():
         # 40000430 40001405 40000500
         x = bq_query(service, q + account + ';', 
             'premium-weft-555', http)
-        print x, account
-        return render_template('base.html', x=x, y=y)
+        return render_template('basic.html', x=x, y=y)
 
 if __name__ == '__main__':
     app.debug=True

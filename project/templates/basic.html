@@ -1,0 +1,72 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ x }}</title>
+  <script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
+</head>
+<body>
+<h1>Sample Flask Page</h1>
+<br>
+<p>Find transactions for an account, ex: 40000430 40001405 40000500</p>
+<p>
+    <form name=account method='POST'>
+        <input type='text' name='account' >
+        <input type='submit' value='Search for Transactions' class="submitButton">
+    </form>
+</p>
+<h3>Initial Chart Goes Here</h3>
+<div id='chart'></div>
+
+<script type='text/javascript'>
+var data =[];
+var h = 300, w = 960;
+
+{% if x %}
+    {% for a in x %}
+        data.push({"Date":{{ a['f'][0]['v']|safe }}, Amount:{{ a['f'][1]['v']|safe}}})
+    {% endfor %}
+{% endif %}
+    
+    // setup x 
+    var xValue = function(d) { return d.Date;}, 
+    xScale = d3.scale.linear().range([0, w]), 
+    xMap = function(d) { return xScale(xValue(d));}, 
+    xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+    // setup y
+    var yValue = function(d) { return d["Amount"];}, 
+    yScale = d3.scale.linear().range([h, 0]),
+    yMap = function(d) { return yScale(yValue(d));}, 
+    yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+
+    var svg = d3.select('#chart').append('svg')
+        .attr('width', w)
+        .attr('height', h)
+      .append('g')
+        .attr('transform', 'translate(0,0)');
+    
+    xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
+    yScale.domain([d3.min(data, yValue)-50, d3.max(data, yValue)+50]);
+
+
+    svg.selectAll(".dot")
+        .data(data)
+      .enter().append("circle")
+        .attr("class", "dot")
+        .attr("r", 3.5)
+        .attr("cx", xMap)
+        .attr("cy", yMap)
+
+</script>
+<table>
+{% if x %}
+    <tr><th>Date</th><th>Amount</th></tr>
+    {% for a in x %}
+
+    <tr><td>{{ a['f'][0]['v'] }}</td><td>{{ a['f'][1]['v']}}</td><td></tr>
+    {% endfor %}
+{% endif %}
+<h3>{{ y }}</h3>
+</body
+</html>

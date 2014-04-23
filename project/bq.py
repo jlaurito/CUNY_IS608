@@ -8,7 +8,7 @@ PROJECT_NUMBER = 'premium-weft-555'
 # REPLACE WITH THE SERVICE ACCOUNT EMAIL FROM GOOGLE DEV CONSOLE
 SERVICE_ACCOUNT_EMAIL = '795597216083-mvv55odvfaalm3056mt2di2mtg9afi1e@developer.gserviceaccount.com'
 
-f = file('0811690b6744c9921161b317fd8c00783bfe1d28-privatekey.p12', 'rb')
+f = file('privatekey.pem', 'rb')
 key = f.read()
 f.close()
 
