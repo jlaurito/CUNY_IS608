@@ -1,0 +1,109 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+
+<style>
+
+/**********************************
+ **********************************
+    css styling
+ **********************************
+ ***********************************/
+
+
+path {
+  fill: #ddd;
+  stroke: #333;
+  stroke-width: .25px;
+}
+path:hover {
+  fill: red;
+}
+
+.selected {
+  background-color: #84a9d7;
+  color: #ff0000;
+}
+</style>
+
+
+
+<title>Quick Load of Maps</title>
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+
+</head>
+<body>
+    <div id="us"></div>
+    <br>
+    <div id="world"></div>
+
+
+
+<script type="text/javascript">
+
+////////////////////////////////
+////////////////////////////////
+// Initial Load of US County Map
+////////////////////////////////
+////////////////////////////////
+
+
+d3.json("../data/us-10m.json", usMap);
+
+function usMap(data){
+
+    var path = d3.geo.path();
+
+    var svg = d3.select("#us").append("svg")
+        .attr("width", 1000)
+        .attr("height", 500);
+
+    svg.append("g")
+        .attr("class", "counties")
+        .selectAll("path")
+        .data(topojson.feature(data, 
+                               data.objects.counties
+                              ).features
+        )
+        .enter().append("path")
+        .attr("d", path)
+};
+
+
+////////////////////////////////
+////////////////////////////////
+// Initial Load of World Map
+////////////////////////////////
+////////////////////////////////
+
+d3.json("../data/world-110m.json", worldMap);
+
+function worldMap(data){
+
+    var projection = d3.geo.mercator()
+        .center([0, 5 ])
+        .scale(90)
+        .rotate([-180,0]);
+
+    var path = d3.geo.path().projection(projection);
+
+    var svg = d3.select("#world").append("svg")
+        .attr("width", 1000)
+        .attr("height", 500);
+
+    svg.append("g")
+        .attr("class", "countries")
+        .selectAll("path")
+        .data(topojson.feature(data, 
+                               data.objects.countries
+                              ).features
+        )
+        .enter().append("path")
+        .attr("d", path)
+};
+
+</script>
+</html>
