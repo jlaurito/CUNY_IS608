@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>FSA - Final Project</title>
+
+
+<style type="text/css">
+body {
+	background-color: #6F9;
+}
+h1 {
+	font-size: 24px;
+	color: #C03;
+}
+h2 {
+	font-size: 36px;
+	color: #9C3;
+}
+body,td,th {
+	color: #000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+}
+</style>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+</head>
+
+<body text="#000000">
+<h1><img src="sentencing act pic.jpg" width="185" height="228" align="right" /></h1>
+<h1 align="justify">
+  <h1 align="justify"><em><b>The Fair Sentencing Act of 2010 (Public Law 111-220)</b> </em></h1>
+</h1>
+<p>By Albania Nicasio</p>
+<br>
+<p>This project was completed as part of CUNY IS608's curriculum. To see other projects, please <a href="http://jlaurito.github.io/CUNY_IS608/">click here for the homepage</a></p>
+<br>
+<p align="left"><em>The Fair Sentencing Act was an Act of Congress signed into law by U.S. President Barack Obama on August 3, 2010. Similar bills were introduced in several U.S. Congresses before its passage in 2010. The law reduced the disparity between the amount of crack cocaine and powder cocaine needed to trigger certain United States federal criminal penalties from a 100:1 weight ratio to an 18:1 weight ratio and eliminated the five-year mandatory minimum sentence for simple possession of crack cocaine, among other provisions. Courts had also acted to reduce the sentencing disparity prior to the bill's passage.
+  
+  <h4 align="justify"><em><b>Sentencing Disparity and Effects</b>
+  </em></h4>
+<p align="left"><em> The sentencing disparity between these two drug offenses is perceived by commentators as racially biased. In 1995, the U.S. Sentencing Commission concluded that the disparity created a "racial imbalance in federal prisons and led to more severe sentences for low-level crack dealers than for wholesale suppliers of powder cocaine... As a result, thousands of people – mostly African Americans – have received disproportionately harsh prison sentences."
+</em></p>
+<p>
+  Source: <a href="http://en.wikipedia.org/wiki/Fair_Sentencing_Act" target="en.wikipedia.org/wiki/Fair_Sentencing_Act">en.wikipedia.org/wiki/Fair_Sentencing_Act</a>
+<br><br></p>
+
+<h4 align="center"><em>Visualization of Data from the US Sentencing Commission (USSC).</em></h1>
+
+<h4 align="center"><b>Race Of Drug Offenders In Each Drug Type</b></h1>
+<p> source: <a href="http://www.ussc.gov/research-and-publications/commission-datafiles">USSC Annual Datafiles</a></p>
+
+    <script type="text/javascript">
+      google.load('visualization', '1.1', {'packages':['motionchart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+                var data = new google.visualization.DataTable();
+         var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Drug');
+        data.addColumn('date', 'Year');
+        data.addColumn('number', 'Total Sentenced');
+        data.addColumn('number', 'Number Whites');
+        data.addColumn('number', 'Percent White');
+        data.addColumn('number', 'Number Blacks');
+        data.addColumn('number', 'Percent Black');
+        data.addColumn('number', 'Number Hispanics');
+        data.addColumn('number', 'Percent Hispanic');
+        data.addColumn('number', 'Number Other Races');
+        data.addColumn('number', 'Percent Other Races');
+        data.addRows([
+['Powder Cocaine', new Date(1996, 0, 1), 4468, 925, 0.207, 1341, 0.3, 2139, 0.479, 63, 0.014],
+['Crack Cocaine', new Date(1996, 0, 1), 4603, 222, 0.048, 3951, 0.858, 399, 0.087, 31, 0.007],
+['Heroin', new Date(1996, 0, 1), 1765, 175, 0.099, 414, 0.235, 1093, 0.619, 83, 0.047],
+['Marijuana', new Date(1996, 0, 1), 4249, 1681, 0.396, 255, 0.06, 2266, 0.533, 47, 0.011],
+['Methamphetamine', new Date(1996, 0, 1), 1623, 1063, 0.655, 18, 0.011, 440, 0.271, 102, 0.063],
+['LSD', new Date(1996, 0, 1), 93, 90, 0.968, 1, 0.011, 2, 0.022, 0, 0],
+['Other', new Date(1996, 0, 1), 361, 247, 0.684, 66, 0.183, 34, 0.094, 14, 0.039],
+['Total', new Date(1996, 0, 1), 17162, 4403, 0.257, 6046, 0.352, 6373, 0.371, 340, 0.02],
+['Powder Cocaine', new Date(1997, 0, 1), 4758, 965, 0.203, 1445, 0.304, 2277, 0.479, 71, 0.015],
+['Crack Cocaine', new Date(1997, 0, 1), 4624, 298, 0.064, 3901, 0.844, 398, 0.086, 27, 0.006],
+['Heroin', new Date(1997, 0, 1), 1810, 190, 0.105, 397, 0.219, 1145, 0.633, 78, 0.043],
+['Marijuana', new Date(1997, 0, 1), 5147, 1764, 0.343, 321, 0.062, 2986, 0.58, 76, 0.015],
+['Methamphetamine', new Date(1997, 0, 1), 1933, 1286, 0.665, 26, 0.013, 518, 0.268, 103, 0.053],
+['Other', new Date(1997, 0, 1), 527, 327, 0.62, 102, 0.194, 88, 0.167, 10, 0.019],
+['Total', new Date(1997, 0, 1), 18799, 4830, 0.257, 6192, 0.329, 7412, 0.394, 365, 0.019],
+['Powder Cocaine', new Date(1998, 0, 1), 4781, 912, 0.191, 1497, 0.313, 2317, 0.485, 55, 0.012],
+['Crack Cocaine', new Date(1998, 0, 1), 4890, 280, 0.057, 4149, 0.848, 425, 0.087, 36, 0.007],
+['Heroin', new Date(1998, 0, 1), 1796, 199, 0.111, 407, 0.227, 1128, 0.628, 62, 0.035],
+['Marijuana', new Date(1998, 0, 1), 6060, 1865, 0.308, 475, 0.078, 3622, 0.598, 98, 0.016],
+['Methamphetamine', new Date(1998, 0, 1), 2305, 1368, 0.593, 37, 0.016, 749, 0.325, 151, 0.066],
+['Other', new Date(1998, 0, 1), 426, 282, 0.662, 60, 0.141, 69, 0.162, 15, 0.035],
+['Total', new Date(1998, 0, 1), 20258, 4906, 0.242, 6625, 0.327, 8310, 0.41, 417, 0.021],
+['Powder Cocaine', new Date(1999, 0, 1), 4979, 969, 0.195, 1570, 0.315, 2358, 0.474, 82, 0.016],
+['Crack Cocaine', new Date(1999, 0, 1), 5187, 278, 0.054, 4391, 0.847, 463, 0.089, 55, 0.011],
+['Heroin', new Date(1999, 0, 1), 1791, 226, 0.126, 397, 0.222, 1118, 0.624, 50, 0.028],
+['Marijuana', new Date(1999, 0, 1), 7076, 1972, 0.279, 554, 0.078, 4462, 0.631, 88, 0.012],
+['Methamphetamine', new Date(1999, 0, 1), 2837, 1740, 0.613, 42, 0.015, 933, 0.329, 122, 0.043],
+['Other', new Date(1999, 0, 1), 570, 425, 0.746, 55, 0.096, 82, 0.144, 8, 0.014],
+['Total', new Date(1999, 0, 1), 22440, 5610, 0.25, 7009, 0.312, 9416, 0.42, 405, 0.018],
+['Powder Cocaine', new Date(2000, 0, 1), 5344, 975, 0.182, 1620, 0.303, 2699, 0.505, 50, 0.009],
+['Crack Cocaine', new Date(2000, 0, 1), 5012, 286, 0.057, 4218, 0.842, 453, 0.09, 55, 0.011],
+['Heroin', new Date(2000, 0, 1), 1806, 197, 0.109, 434, 0.24, 1101, 0.61, 74, 0.041],
+['Marijuana', new Date(2000, 0, 1), 7290, 1937, 0.266, 636, 0.087, 4615, 0.633, 102, 0.014],
+['Methamphetamine', new Date(2000, 0, 1), 3357, 2025, 0.603, 38, 0.011, 1156, 0.344, 138, 0.041],
+['Other', new Date(2000, 0, 1), 557, 373, 0.67, 56, 0.101, 113, 0.203, 15, 0.027],
+['Total', new Date(2000, 0, 1), 23366, 5793, 0.248, 7002, 0.3, 10137, 0.434, 434, 0.019],
+['Powder Cocaine', new Date(2001, 0, 1), 5356, 968, 0.181, 1633, 0.305, 2690, 0.502, 65, 0.012],
+['Crack Cocaine', new Date(2001, 0, 1), 4999, 349, 0.07, 4140, 0.828, 467, 0.093, 43, 0.009],
+['Heroin', new Date(2001, 0, 1), 1753, 246, 0.14, 403, 0.23, 1075, 0.613, 29, 0.017],
+['Marijuana', new Date(2001, 0, 1), 7981, 2233, 0.28, 732, 0.092, 4893, 0.613, 123, 0.015],
+['Methamphetamine', new Date(2001, 0, 1), 3404, 2009, 0.59, 55, 0.016, 1197, 0.352, 143, 0.042],
+['Other', new Date(2001, 0, 1), 762, 508, 0.667, 100, 0.131, 133, 0.175, 21, 0.028],
+['Total', new Date(2001, 0, 1), 24255, 6313, 0.26, 7063, 0.291, 10455, 0.431, 424, 0.017],
+['Powder Cocaine', new Date(2002, 0, 1), 5867, 1037, 0.177, 1815, 0.309, 2938, 0.501, 77, 0.013],
+['Crack Cocaine', new Date(2002, 0, 1), 5166, 363, 0.07, 4203, 0.814, 542, 0.105, 58, 0.011],
+['Heroin', new Date(2002, 0, 1), 1806, 253, 0.14, 409, 0.226, 1114, 0.617, 30, 0.017],
+['Marijuana', new Date(2002, 0, 1), 7387, 1904, 0.258, 597, 0.081, 4776, 0.647, 110, 0.015],
+['Methamphetamine', new Date(2002, 0, 1), 3934, 2369, 0.602, 42, 0.011, 1327, 0.337, 196, 0.05],
+['Other', new Date(2002, 0, 1), 1449, 960, 0.663, 155, 0.107, 242, 0.167, 92, 0.063],
+['Total', new Date(2002, 0, 1), 25609, 6886, 0.269, 7221, 0.282, 10939, 0.427, 563, 0.022],
+['Powder Cocaine', new Date(2003, 0, 1), 5980, 1037, 0.173, 1470, 0.246, 3400, 0.569, 73, 0.012],
+['Crack Cocaine', new Date(2003, 0, 1), 5458, 428, 0.078, 4408, 0.808, 570, 0.104, 52, 0.01],
+['Heroin', new Date(2003, 0, 1), 1831, 237, 0.129, 380, 0.208, 1182, 0.646, 32, 0.017],
+['Marijuana', new Date(2003, 0, 1), 6781, 1748, 0.258, 545, 0.08, 4354, 0.642, 134, 0.02],
+['Methamphetamine', new Date(2003, 0, 1), 4449, 2637, 0.593, 75, 0.017, 1498, 0.337, 239, 0.054],
+['Other', new Date(2003, 0, 1), 1491, 946, 0.634, 188, 0.126, 250, 0.168, 107, 0.072],
+['Total', new Date(2003, 0, 1), 25990, 7033, 0.271, 7066, 0.272, 11254, 0.433, 637, 0.025],
+['Powder Cocaine', new Date(2004, 0, 1), 4019, 681, 0.169, 1058, 0.263, 2222, 0.553, 58, 0.014],
+['Crack Cocaine', new Date(2004, 0, 1), 3698, 253, 0.068, 3072, 0.831, 340, 0.092, 33, 0.009],
+['Heroin', new Date(2004, 0, 1), 1285, 151, 0.118, 286, 0.223, 838, 0.652, 10, 0.008],
+['Marijuana', new Date(2004, 0, 1), 4762, 1293, 0.272, 476, 0.1, 2832, 0.595, 161, 0.034],
+['Methamphetamine', new Date(2004, 0, 1), 3539, 2104, 0.595, 57, 0.016, 1148, 0.324, 230, 0.065],
+['Other', new Date(2004, 0, 1), 836, 497, 0.594, 112, 0.134, 148, 0.177, 79, 0.094],
+['Total', new Date(2004, 0, 1), 18139, 4979, 0.274, 5061, 0.279, 7528, 0.415, 571, 0.031],
+['Powder Cocaine', new Date(2005, 0, 1), 1308, 214, 0.164, 386, 0.295, 685, 0.524, 23, 0.018],
+['Crack Cocaine', new Date(2005, 0, 1), 1204, 94, 0.078, 1002, 0.832, 79, 0.066, 29, 0.024],
+['Heroin', new Date(2005, 0, 1), 390, 46, 0.118, 111, 0.285, 231, 0.592, 2, 0.005],
+['Marijuana', new Date(2005, 0, 1), 1758, 497, 0.283, 205, 0.117, 1003, 0.571, 53, 0.03],
+['Methamphetamine', new Date(2005, 0, 1), 1132, 647, 0.572, 17, 0.015, 405, 0.358, 63, 0.056],
+['Other', new Date(2005, 0, 1), 227, 141, 0.621, 32, 0.141, 36, 0.159, 18, 0.079],
+['Total', new Date(2005, 0, 1), 6019, 1639, 0.272, 1753, 0.291, 2439, 0.405, 188, 0.031],
+['Powder Cocaine', new Date(2006, 0, 1), 5830, 859, 0.147, 1576, 0.27, 3325, 0.57, 70, 0.012],
+['Crack Cocaine', new Date(2006, 0, 1), 5619, 523, 0.093, 4552, 0.81, 484, 0.086, 60, 0.011],
+['Heroin', new Date(2006, 0, 1), 1574, 175, 0.111, 432, 0.274, 953, 0.605, 14, 0.009],
+['Marijuana', new Date(2006, 0, 1), 6399, 1711, 0.267, 692, 0.108, 3794, 0.593, 202, 0.032],
+['Methamphetamine', new Date(2006, 0, 1), 5391, 2888, 0.536, 89, 0.017, 2079, 0.386, 335, 0.062],
+['Other', new Date(2006, 0, 1), 950, 491, 0.517, 189, 0.199, 120, 0.126, 150, 0.158],
+['Total', new Date(2006, 0, 1), 25763, 6647, 0.258, 7530, 0.292, 10755, 0.417, 831, 0.032],
+['Powder Cocaine', new Date(2007, 0, 1), 6273, 993, 0.158, 1710, 0.273, 3488, 0.556, 82, 0.013],
+['Crack Cocaine', new Date(2007, 0, 1), 5472, 479, 0.088, 4528, 0.827, 433, 0.079, 32, 0.006],
+['Heroin', new Date(2007, 0, 1), 1379, 154, 0.112, 350, 0.254, 864, 0.627, 11, 0.008],
+['Marijuana', new Date(2007, 0, 1), 6291, 1468, 0.233, 624, 0.099, 3947, 0.627, 252, 0.04],
+['Methamphetamine', new Date(2007, 0, 1), 5102, 2625, 0.515, 130, 0.025, 2044, 0.401, 303, 0.059],
+['Other', new Date(2007, 0, 1), 940, 470, 0.5, 163, 0.173, 98, 0.104, 209, 0.222],
+['Total', new Date(2007, 0, 1), 25457, 6189, 0.243, 7505, 0.295, 10874, 0.427, 889, 0.035],
+['Powder Cocaine', new Date(2008, 0, 1), 5871, 973, 0.166, 1771, 0.302, 3068, 0.523, 59, 0.01],
+['Crack Cocaine', new Date(2008, 0, 1), 6154, 637, 0.104, 4911, 0.798, 542, 0.088, 64, 0.01],
+['Heroin', new Date(2008, 0, 1), 1472, 236, 0.16, 363, 0.247, 851, 0.578, 22, 0.015],
+['Marijuana', new Date(2008, 0, 1), 6329, 1731, 0.274, 483, 0.076, 3889, 0.614, 226, 0.036],
+['Methamphetamine', new Date(2008, 0, 1), 4332, 2271, 0.524, 126, 0.029, 1704, 0.393, 231, 0.053],
+['Other', new Date(2008, 0, 1), 1115, 547, 0.491, 275, 0.247, 109, 0.098, 184, 0.165],
+['Total', new Date(2008, 0, 1), 25273, 6395, 0.253, 7929, 0.314, 10163, 0.402, 786, 0.031],
+['Powder Cocaine', new Date(2009, 0, 1), 6020, 1031, 0.171, 1684, 0.28, 3202, 0.532, 103, 0.017],
+['Crack Cocaine', new Date(2009, 0, 1), 5669, 558, 0.098, 4476, 0.79, 584, 0.103, 51, 0.009],
+['Heroin', new Date(2009, 0, 1), 1619, 281, 0.174, 450, 0.278, 875, 0.54, 13, 0.008],
+['Marijuana', new Date(2009, 0, 1), 6151, 1784, 0.29, 579, 0.094, 3520, 0.572, 268, 0.044],
+['Methamphetamine', new Date(2009, 0, 1), 4118, 2158, 0.524, 118, 0.029, 1577, 0.383, 265, 0.064],
+['Other', new Date(2009, 0, 1), 1275, 680, 0.533, 304, 0.238, 119, 0.093, 172, 0.135],
+['Total', new Date(2009, 0, 1), 24852, 6492, 0.261, 7611, 0.306, 9877, 0.397, 872, 0.035],
+['Powder Cocaine', new Date(2010, 0, 1), 5708, 959, 0.168, 1532, 0.268, 3124, 0.547, 93, 0.016],
+['Crack Cocaine', new Date(2010, 0, 1), 4887, 359, 0.073, 3838, 0.785, 638, 0.131, 52, 0.011],
+['Heroin', new Date(2010, 0, 1), 1625, 262, 0.161, 449, 0.276, 898, 0.553, 16, 0.01],
+['Marijuana', new Date(2010, 0, 1), 6328, 1552, 0.245, 484, 0.076, 4078, 0.644, 214, 0.034],
+['Methamphetamine', new Date(2010, 0, 1), 4303, 2243, 0.521, 102, 0.024, 1784, 0.415, 174, 0.04],
+['Other', new Date(2010, 0, 1), 1468, 819, 0.558, 316, 0.215, 126, 0.086, 207, 0.141],
+['Total', new Date(2010, 0, 1), 24319, 6194, 0.255, 6721, 0.276, 10648, 0.438, 756, 0.031],
+['Powder Cocaine', new Date(2011, 0, 1), 6022, 949, 0.158, 1474, 0.245, 3518, 0.584, 81, 0.013],
+['Crack Cocaine', new Date(2011, 0, 1), 4353, 265, 0.061, 3614, 0.83, 434, 0.1, 40, 0.009],
+['Heroin', new Date(2011, 0, 1), 1804, 268, 0.149, 608, 0.337, 911, 0.505, 17, 0.009],
+['Marijuana', new Date(2011, 0, 1), 6942, 1567, 0.226, 555, 0.08, 4614, 0.665, 206, 0.03],
+['Methamphetamine', new Date(2011, 0, 1), 4546, 2161, 0.475, 105, 0.023, 2051, 0.451, 229, 0.05],
+['Other', new Date(2011, 0, 1), 1548, 876, 0.566, 328, 0.212, 164, 0.106, 180, 0.116],
+['Total', new Date(2011, 0, 1), 25215, 6086, 0.241, 6684, 0.265, 11692, 0.464, 753, 0.03],
+['Powder Cocaine', new Date(2012, 0, 1), 6128, 952, 0.155, 1707, 0.279, 3412, 0.557, 57, 0.009],
+['Crack Cocaine', new Date(2012, 0, 1), 3505, 235, 0.067, 2895, 0.826, 340, 0.097, 35, 0.01],
+['Heroin', new Date(2012, 0, 1), 2182, 348, 0.159, 785, 0.36, 1027, 0.471, 22, 0.01],
+['Marijuana', new Date(2012, 0, 1), 6974, 1560, 0.224, 631, 0.09, 4561, 0.654, 222, 0.032],
+['Methamphetamine', new Date(2012, 0, 1), 4912, 2361, 0.481, 126, 0.026, 2208, 0.45, 217, 0.044],
+['Other', new Date(2012, 0, 1), 1597, 940, 0.589, 398, 0.249, 149, 0.093, 110, 0.069],
+['Total', new Date(2012, 0, 1), 25298, 6396, 0.253, 6542, 0.259, 11697, 0.462, 663, 0.026],
+['Powder Cocaine', new Date(2013, 0, 1), 5497, 523, 0.095, 1717, 0.312, 3192, 0.581, 65, 0.012],
+['Crack Cocaine', new Date(2013, 0, 1), 2972, 172, 0.058, 2459, 0.827, 304, 0.102, 37, 0.012],
+['Heroin', new Date(2013, 0, 1), 2213, 298, 0.135, 803, 0.363, 1096, 0.495, 16, 0.007],
+['Marijuana', new Date(2013, 0, 1), 4922, 1037, 0.211, 518, 0.105, 3119, 0.634, 248, 0.05],
+['Methamphetamine', new Date(2013, 0, 1), 5496, 2043, 0.372, 170, 0.031, 3060, 0.557, 223, 0.041],
+['Other', new Date(2013, 0, 1), 1746, 1054, 0.604, 396, 0.227, 168, 0.096, 128, 0.073],
+['Total', new Date(2013, 0, 1), 22846, 5127, 0.224, 6063, 0.265, 10939, 0.479, 717, 0.031]
+]);
+
+
+        var chart = new google.visualization.MotionChart(document.getElementById('chart_div'));
+        var options = [];
+        options['height'] = 800;
+        options['width'] = 800;
+        options['state'] = '{"playDuration":15300,"yZoomedDataMax":0.858,"time":"1996","xLambda":1,"colorOption":"_UNIQUE_COLOR","yZoomedIn":false,"yZoomedDataMin":0.011,"xZoomedDataMax":1356998400000,"sizeOption":"2","xZoomedIn":false,"nonSelectedAlpha":0.4,"iconKeySettings":[{"key":{"dim0":"Powder Cocaine"},"trailStart":"1996"},{"key":{"dim0":"Crack Cocaine"},"trailStart":"1996"}],"duration":{"timeUnit":"D","multiplier":1},"iconType":"BUBBLE","orderedByX":false,"orderedByY":false,"uniColorForNonSelected":false,"yLambda":1,"xAxisOption":"_TIME","dimensions":{"iconDimensions":["dim0"]},"showTrails":true,"xZoomedDataMin":820454400000,"yAxisOption":"6"}';
+        chart.draw(data, options);
+      }
+    </script>
+
+<div id="chart_div" style="width: 800px; height: 800px;"></div>
+
+<p>Next: <a href='retroactive.html'>Retroactive Application</a></p>

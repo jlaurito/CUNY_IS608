@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>FSA - Retroactive Application</title>
+
+<style type="text/css">
+body {
+  background-color: #6F9;
+}
+h1 {
+  font-size: 24px;
+  color: #C03;
+}
+h2 {
+  font-size: 36px;
+  color: #9C3;
+}
+body,td,th {
+  color: #000;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 14px;
+}
+</style>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</head>
+<body text="#000000">
+<p><img src="Obama.jpg" width="382" height="204" align="right" /></p>
+  <h1 align="center">	<strong>U.S. Sentencing Commission
+    Preliminary</strong><strong> Crack Retroactivity Data Report
+      Fair Sentencing Act, January 2014 Data</strong></h1>
+<br>
+<p>This project was completed as part of CUNY IS608's curriculum. To see other projects, please <a href="http://jlaurito.github.io/CUNY_IS608/">click here for the homepage</a></p>
+<br>
+  <p align="left">This report provides data concerning the retroactive application of the guideline amendment implementation of the Fair Sentencing Act (FSA), Pub. L. No. 111–220, signed into law on August 3, 2010. The FSA increased the quantities of crack cocaine that trigger the five and ten-year statutory mandatory minimum penalties — from 5-28 grams for five year mandatory minimums and from 50-280 grams for ten-year mandatory minimums — and eliminated the five-year mandatory minimum for simple possession of crack cocaine. <a href="Crack data summary.pdf">(click here to see full report)</a></p>
+  <br>
+  <h4 align="center"><b>Let's Look At The Geographical Distribution Of Application Of Retroactive Crack Cocaine Amendment By District</b></h4>
+
+  <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['district', 'Total','Percentage Denied' ],
+          ['Hawaii',2,100],
+          ['Northern Alabama',142,85.2],
+          ['Western Kentucky',223,72.2],
+          ['Northern Iowa',287,72.1],
+          ['Southern Iowa',207,71.5],
+          ['Southern Georgia',413,68.5],
+          ['Northern Florida',328,68.3],
+          ['Eastern New York',105,67.6],
+          ['Western North Carolina',675,67.4],
+          ['New Hampshire',45,66.7],
+          ['Middle Louisiana',121,66.1],
+          ['Maine',54,64.8],
+          ['Southern Indiana',129,63.6],
+          ['Middle North Carolina',346,63.3],
+          ['Western Michigan',212,62.7],
+          ['Western Louisiana',265,61.1],
+          ['Western Arkansas',45,60],
+          ['Western Oklahoma',118,59.3],
+          ['Eastern Kentucky',58,58.6],
+          ['Central Illinois',197,57.4],
+          ['Eastern North Carolina',399,56.1],
+          ['Minnesota',153,52.3],
+          ['Southern Alabama',317,50.8],
+          ['Western Virginia',480,47.7],
+          ['Puerto Rico',345,45.5],
+          ['Massachusetts',80,45],
+          ['Eastern Missouri',272,43.8],
+          ['Western Pennsylvania',94,43.6],
+          ['Southern Texas',142,43],
+          ['New Jersey',100,42],
+          ['Northern Texas',194,41.2],
+          ['Southern Florida',126,40.5],
+          ['Eastern Washington',5,40],
+          ['Eastern Arkansas',100,39],
+          ['Southern New York',51,37.3],
+          ['Southern Illinois',171,36.8],
+          ['South Carolina',419,36.3],
+          ['Northern Ohio',140,35],
+          ['Northern Oklahoma',42,33.3],
+          ['Western Texas',401,32.7],
+          ['Eastern Virginia',873,32.2],
+          ['Nebraska',166,31.3],
+          ['Eastern Tennessee',149,28.9],
+          ['Central California',44,25],
+          ['Middle Pennsylvania',192,24.5],
+          ['Southern Ohio',149,24.2],
+          ['Eastern Texas',244,19.7],
+          ['Southern West Virginia',129,19.4],
+          ['Maryland',170,18.2],
+          ['Northern Mississippi',81,17.3],
+          ['Colorado',48,16.7],
+          ['New Mexico',14,14.3],
+          ['Western New York',103,11.7],
+          ['District of Columbia',76,9.2],
+          ['Eastern Michigan',108,8.3],
+          ['Northern California',39,5.1],
+          ['Western Tennessee',83,3.6],
+          ['Northern Georgia',33,3],
+          ['Middle Florida',236,2.5],
+          ['Eastern Pennsylvania',84,2.4],
+          ['Northern New York',83,2.4],
+          ['Northern Indiana',101,2],
+          ['Northern Illinois',136,1.5],
+          ['Western Missouri',92,1.1],
+          ['Northern West Virginia',241,0.4],
+          ['Eastern Louisiana',96,0],
+          ['Western Wisconsin',85,0],
+          ['Middle Alabama',66,0],
+          ['Eastern Wisconsin',58,0],
+          ['Connecticut',46,0],
+          ['Alaska',32,0],
+          ['Middle Tennessee',27,0],
+          ['Eastern California',26,0],
+          ['Western Washington',26,0],
+          ['Rhode Island',25,0],
+          ['Eastern Oklahoma',13,0],
+          ['Delaware',9,0],
+          ['South Dakota',8,0],
+          ['Nevada',8,0],
+          ['Utah',7,0],
+          ['Wyoming',6,0],
+          ['Middle Georgia',111,0],
+          ['Oregon',6,0],
+          ['Vermont',5,0],
+          ['Kansas',106,0],
+          ['Southern California',4,0],
+          ['Southern Mississippi',104,0]
+        ]);
+
+        var options = {
+          title: 'Percentage of Sentence Reductions Denied',
+          hAxis: {title: 'Sentence Reduction Cases Heard', titleTextStyle:{bold:true}},
+          vAxis: {title: 'Percentage Denied', titleTextStyle:{bold:true}},
+          bubble: {textStyle: {fontSize: 7}},
+          chartArea:{width: 900,height: 700},
+          vAxis: {minValue:-2,maxValue:102, gridlines:{count:13}},
+          hAxis: {minValue:1,maxValue:1000, logScale:true},
+          sizeAxis: {minSize:10, maxSize:10},
+          height:1000,
+          width:1200
+
+        };
+
+        var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      };
+    </script>
+
+  <div id="chart_div" style="width: 1200px; height: 1000px;"></div>
+
+  <p><a href="fsa.html">click here to go to initial data on FSA application</a> </p>
+  <p><a href="conclusion.html">click here to go to conclusions</a> </p>
+</body>
+</html>
