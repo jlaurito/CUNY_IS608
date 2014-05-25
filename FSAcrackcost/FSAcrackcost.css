@@ -1,0 +1,116 @@
+body {
+    font: 12px Arial;
+    padding-left: 100px;        
+}
+
+.intro-text {
+    font: 14px Arial;
+    color: black;
+	width: 1200px;
+}
+
+.instruct-text {
+    font: 14px Arial;
+    color: black;
+}
+
+.footnote-text {
+    font: 10px Arial;
+    color: black;
+}
+
+.map-main {
+    align-vertical: top;
+}
+
+.states {
+    fill: none;
+    stroke: gray;
+    stroke-width: 0.5;
+    stroke-linejoin: square;
+}
+
+
+.state-label {
+    fill: black;
+    fill-opacity: 1;
+    font-size: 10px;
+    font-weight: 500;
+    text-anchor: middle;
+}  
+
+.d3-tip {
+    line-height: 1;
+    padding: 12px;
+    font-size: 13px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    border-radius: 2px;
+}
+
+
+.radio-filter {
+    font: 14px Arial;
+    font-weight: bold;
+}
+
+.radio-buttons {
+    font: 12px Arial;
+}
+
+.slider-box { 
+    padding: 5px;
+    width: 700px;
+    font:     
+}
+
+.slider-tool { 
+    margin: 10px;
+    width: 500px; 
+    margin-left: 1%; 
+    margin-right: 20%;
+    margin-bottom: none;
+    padding: none; 
+}
+
+.slider-scale {
+    width: 500px;
+    margin-left: 1%;
+    margin-top: none;
+    padding: none; 
+}
+
+.slider-text {
+    font: 14px Arial;
+    color: black;
+    font-weight: bold;
+}    
+
+.sens-amount {
+    color: green; 
+    font-weight: bold;
+    font: 14px Arial;
+    border: none; 
+}
+
+.estimate-group {
+    vertical-align: top;
+    font: 18px Arial;
+	padding-left: 50px;
+    font-weight: bold;
+}
+
+.total {
+    margin: 10px;
+    font-size: 10px;}
+    
+.totals {
+    font: 18px Arial;
+    color: green;
+    border: none;
+    width: 400px;   
+}
+
+.totals.sens {
+    font-style: italic;
+}
