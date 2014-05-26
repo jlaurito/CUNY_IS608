@@ -1,0 +1,3675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Healthcare Expenditure As A Percentage Of GDP</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Healthcare Expenditure As A Percentage Of GDP</h1>
+<p>By Steve Dunn</p>
+
+<h4>This project was completed as part of CUNY IS608's curriculum. To see other projects, please <a href="http://jlaurito.github.io/CUNY_IS608/">click here for the homepage</a>.</h4>
+
+<p>My final project is on healthcare expenditure as a percentage of GDP in countries around the world. I chose this topic because it is currently a part of public discourse and hope to find if expenditure on health care is a real indicator of life expectancy. The data source is from the World Bank <a href="http://data.worldbank.org/indicator/SH.XPD.PCAP/countries">http://data.worldbank.org/indicator/SH.XPD.PCAP/countries</a>.</p>
+<p>Loading Libraries:</p>
+
+<pre><code class="r">suppressPackageStartupMessages(library(&quot;maps&quot;))
+suppressPackageStartupMessages(library(&quot;mapproj&quot;))
+suppressPackageStartupMessages(library(&quot;rgeos&quot;))
+suppressPackageStartupMessages(library(&quot;maptools&quot;))
+suppressPackageStartupMessages(library(&quot;rworldmap&quot;))
+suppressPackageStartupMessages(library(&quot;RColorBrewer&quot;))
+suppressPackageStartupMessages(library(&quot;mapdata&quot;))
+suppressPackageStartupMessages(library(&quot;ggplot2&quot;))
+suppressPackageStartupMessages(library(&quot;reshape2&quot;))
+suppressPackageStartupMessages(library(&quot;sqldf&quot;))
+</code></pre>
+
+<h2>Loading Cleaned Data</h2>
+
+<pre><code class="r"># Loading Data and setting working Directory
+setwd(&quot;C:\\Users\\dundeva\\Desktop\\SPS\\IS608\\CUNY_IS608-master\\FinalProject&quot;)
+
+# loading Health Care expenditure data
+hcare &lt;- read.csv(&quot;../FinalProject/HealthcareExpenditurecleaned.csv&quot;, header = TRUE, 
+    sep = &quot;,&quot;, check.names = FALSE)
+summary(hcare)
+
+# loading life expectancy data
+lifexpct1 &lt;- read.csv(&quot;../FinalProject/LifeExpectancycleaned.csv&quot;, header = TRUE, 
+    sep = &quot;,&quot;, check.names = FALSE)
+summary(lifexpct1)
+
+# loading Regions
+cregion &lt;- read.csv(&quot;../FinalProject/Region.csv&quot;, header = TRUE, sep = &quot;,&quot;, 
+    check.names = FALSE)
+summary(cregion)
+
+# loading Shape File
+np_dist2 &lt;- readShapeSpatial(&quot;../FinalProject/ne_110m_admin_0_countries.shp&quot;)
+</code></pre>
+
+<p>Transforming the Data set from a wide to long format so that there is a column for
+all the Years(1995-2012) and then merge the Cost , Age and Region  data set</p>
+
+<pre><code class="r">hc &lt;- reshape(hcare, varying = c(&quot;1995&quot;, &quot;1996&quot;, &quot;1997&quot;, &quot;1998&quot;, &quot;1999&quot;, &quot;2000&quot;, 
+    &quot;2001&quot;, &quot;2002&quot;, &quot;2003&quot;, &quot;2004&quot;, &quot;2005&quot;, &quot;2006&quot;, &quot;2007&quot;, &quot;2008&quot;, &quot;2009&quot;, 
+    &quot;2010&quot;, &quot;2011&quot;, &quot;2012&quot;), v.names = &quot;cost&quot;, timevar = &quot;Year&quot;, times = c(&quot;1995&quot;, 
+    &quot;1996&quot;, &quot;1997&quot;, &quot;1998&quot;, &quot;1999&quot;, &quot;2000&quot;, &quot;2001&quot;, &quot;2002&quot;, &quot;2003&quot;, &quot;2004&quot;, 
+    &quot;2005&quot;, &quot;2006&quot;, &quot;2007&quot;, &quot;2008&quot;, &quot;2009&quot;, &quot;2010&quot;, &quot;2011&quot;, &quot;2012&quot;), direction = &quot;long&quot;)
+
+life &lt;- reshape(lifexpct1, varying = c(&quot;1995&quot;, &quot;1996&quot;, &quot;1997&quot;, &quot;1998&quot;, &quot;1999&quot;, 
+    &quot;2000&quot;, &quot;2001&quot;, &quot;2002&quot;, &quot;2003&quot;, &quot;2004&quot;, &quot;2005&quot;, &quot;2006&quot;, &quot;2007&quot;, &quot;2008&quot;, 
+    &quot;2009&quot;, &quot;2010&quot;, &quot;2011&quot;, &quot;2012&quot;), v.names = &quot;Age&quot;, timevar = &quot;Year&quot;, times = c(&quot;1995&quot;, 
+    &quot;1996&quot;, &quot;1997&quot;, &quot;1998&quot;, &quot;1999&quot;, &quot;2000&quot;, &quot;2001&quot;, &quot;2002&quot;, &quot;2003&quot;, &quot;2004&quot;, 
+    &quot;2005&quot;, &quot;2006&quot;, &quot;2007&quot;, &quot;2008&quot;, &quot;2009&quot;, &quot;2010&quot;, &quot;2011&quot;, &quot;2012&quot;), direction = &quot;long&quot;)
+
+# merging life expectancy and Expenditure data sets
+
+hl &lt;- sqldf(&quot;SELECT hc.Countryname,hc.CountryCode, hc.Year , hc.cost, life.Age \n       FROM hc LEFT JOIN life where hc.CountryName= life.CountryName \n             and hc.CountryCode=life.countryCode \n             and hc.Year=life.Year &quot;)
+
+# Adding Regions merged data set
+hl2 &lt;- sqldf(&quot;Select hl.Countryname,hl.CountryCode, hl.Year , hl.cost, hl.Age,cregion.Region\n           from hl left join cregion where hl.CountryCode=cregion.CountryCode\n           and hl.Countryname=cregion.CountryName\n           and cregion.Region !=&#39;&#39;&quot;)
+</code></pre>
+
+
+<pre><code class="r">
+# Plot Heat Map For World Health Expenditure
+sPDF &lt;- joinCountryData2Map(hl2, joinCode = &quot;NAME&quot;, nameJoinColumn = &quot;CountryName&quot;)
+</code></pre>
+
+<pre><code class="r">par(mai = c(0, 0, 0.2, 0), xaxs = &quot;i&quot;, yaxs = &quot;i&quot;)
+mapCountryData(sPDF, mapTitle = &quot;World Health Expenditure&quot;, nameColumnToPlot = &quot;cost&quot;)
+</code></pre>
+
+<pre><code class="r">
+# Plot Heat Map For World Life Expectancy
+sPDF &lt;- joinCountryData2Map(hl2, joinCode = &quot;NAME&quot;, nameJoinColumn = &quot;CountryName&quot;)
+</code></pre>
+
+
+<pre><code class="r">par(mai = c(0, 0, 0.2, 0), xaxs = &quot;i&quot;, yaxs = &quot;i&quot;)
+mapCountryData(sPDF, mapTitle = &quot;World Life Expectancy &quot;, nameColumnToPlot = &quot;Age&quot;)
+</code></pre>
+
+<h2>Life Expectancy vs Percentage GDP on Healthcare</h2>
+
+<pre><code class="r">suppressPackageStartupMessages(library(&quot;googleVis&quot;))
+# Creating Geo Charts with googlevis package
+
+GeoChart &lt;- gvisGeoChart(hl2, &quot;CountryName&quot;, &quot;cost&quot;, &quot;Age&quot;, options = list(width = 610, 
+    height = 400, colorAxis = &quot;{colors:[&#39;#99FF66&#39;,&#39;#2EB82E&#39;,&#39;#006600&#39;]}&quot;, backgroundColor = &quot;#F0F0F0&quot;))
+# Display chart
+print(GeoChart, &quot;chart&quot;)
+</code></pre>
+
+<!-- GeoChart generated in R 3.0.1 by googleVis 0.4.7 package -->
+
+<!-- Thu May 15 18:45:04 2014 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartID1468237f1519 () {
+var data = new google.visualization.DataTable();
+var datajson = [ [ "Angola",4.83,42.05],[ "Albania",2.52,72.24],[ "United Arab Emirates",2.64,73.12],[ "Argentina",8.31,72.66],[ "Armenia",6.42,68.76],[ "Antigua and Barbuda",4.88,72.32],[ "Australia",7.25,77.83],[ "Austria",9.58,76.72],[ "Azerbaijan",5.79,64.58],[ "Burundi",5.46,46.61],[ "Belgium",7.61,76.84],[ "Benin",4.69,54.82],[ "Burkina Faso",4.3,49.34],[ "Bangladesh",3.53,62.69],[ "Bulgaria",5.23,71.05],[ "Bahrain",4.1,73.56],[ "Bahamas, The",6.85,71.26],[ "Bosnia and Herzegovina",9.37,68.23],[ "Belarus",6.74,68.46],[ "Belize",4.25,70.14],[ "Bolivia",4.47,61.09],[ "Brazil",6.65,68.48],[ "Barbados",6.34,72],[ "Brunei Darussalam",2.95,74.93],[ "Bhutan",3.84,56.45],[ "Botswana",4.17,57.68],[ "Central African Republic",3.87,44.15],[ "Canada",9.03,77.98],[ "Switzerland",9.33,78.42],[ "Chile",6.48,74.99],[ "China",3.54,70.33],[ "Cameroon",3.86,53.22],[ "Congo, Rep.",3.16,52.95],[ "Colombia",6.76,69.43],[ "Comoros",4.55,56.71],[ "Cabo Verde",5.29,67.5],[ "Costa Rica",6.51,76.77],[ "Cuba",5.15,75.41],[ "Cyprus",4.74,77.27],[ "Czech Republic",6.69,73.07],[ "Germany",10.11,76.42],[ "Djibouti",3.56,57.05],[ "Denmark",8.13,75.21],[ "Dominican Republic",5.53,69.72],[ "Algeria",3.7,67.85],[ "Ecuador",3.4,71.23],[ "Egypt, Arab Rep.",3.86,66.76],[ "Eritrea",4.51,52.4],[ "Spain",7.44,77.98],[ "Estonia",6.32,67.54],[ "Ethiopia",2.81,49.26],[ "Finland",7.85,76.41],[ "Fiji",3.11,66.64],[ "France",10.36,77.75],[ "Micronesia, Fed. Sts.",9.13,66.76],[ "Gabon",3.44,61.09],[ "United Kingdom",6.75,76.84],[ "Georgia",5.12,70.23],[ "Ghana",5.3,57.5],[ "Guinea",5.54,51.7],[ "Gambia, The",4.53,53.56],[ "Guinea-Bissau",6.43,50.57],[ "Equatorial Guinea",5.89,47.62],[ "Greece",8.59,77.59],[ "Grenada",6.91,69.32],[ "Guatemala",3.67,64.96],[ "Guyana",5.07,62.85],[ "Honduras",5.34,68.86],[ "Croatia",6.85,72.08],[ "Haiti",6.6,56.09],[ "Hungary",7.33,69.79],[ "Indonesia",1.95,65.47],[ "India",4.01,60.19],[ "Ireland",6.56,75.57],[ "Iran, Islamic Rep.",3.83,67.8],[ "Iceland",8.21,77.98],[ "Italy",7.06,78.17],[ "Jamaica",4.09,70.27],[ "Jordan",8.47,70.93],[ "Japan",6.81,79.54],[ "Kazakhstan",4.62,64.92],[ "Kenya",4.25,55.96],[ "Kyrgyz Republic",5.97,65.79],[ "Cambodia",6.14,57.75],[ "Kiribati",9.43,62.58],[ "Korea, Rep.",3.74,73.39],[ "Kuwait",3.76,72.9],[ "Lao PDR",4.15,58.08],[ "Lebanon",14.33,72.07],[ "Libya",3.43,70.29],[ "St. Lucia",4.75,71.18],[ "Lesotho",7.46,56.84],[ "Lithuania",5.37,69.01],[ "Luxembourg",5.57,76.51],[ "Latvia",5.76,66.39],[ "Moldova",9.05,66.73],[ "Madagascar",4.16,54.61],[ "Maldives",5.71,64.62],[ "Mexico",5.15,72.74],[ "Macedonia, FYR",8.51,72.07],[ "Mali",5.24,47.66],[ "Malta",5.63,77.14],[ "Myanmar",2.14,60.42],[ "Montenegro",7.42,74.86],[ "Mongolia",3.15,61.22],[ "Mozambique",5.3,45.81],[ "Mauritania",4.77,59.19],[ "Mauritius",3.62,70.33],[ "Malawi",5.04,46.65],[ "Malaysia",2.94,71.86],[ "Namibia",6.21,60.09],[ "Niger",6.63,47.13],[ "Nigeria",4.73,46.11],[ "Nicaragua",6.48,67.34],[ "Netherlands",8.33,77.4],[ "Norway",8.57,77.74],[ "Nepal",4.95,58.81],[ "New Zealand",7.07,76.73],[ "Oman",3.64,69.99],[ "Pakistan",3.27,62.55],[ "Panama",7.72,74.13],[ "Peru",4.48,68.02],[ "Philippines",3.45,66.02],[ "Papua New Guinea",3.51,57.35],[ "Poland",5.48,71.89],[ "Portugal",7.52,75.31],[ "Paraguay",5.92,68.92],[ "Qatar",3.7,76.12],[ "Romania",3.22,69.46],[ "Russian Federation",5.36,65.22],[ "Rwanda",4.27,31.24],[ "Saudi Arabia",2.93,71.04],[ "Sudan",3.69,56.53],[ "Senegal",3.93,57.38],[ "Singapore",2.96,76.4],[ "Solomon Islands",3.25,59.7],[ "Sierra Leone",15.1,35.82],[ "El Salvador",6.38,68.78],[ "Suriname",5.19,67.81],[ "Slovak Republic",6.06,72.25],[ "Slovenia",7.46,73.96],[ "Sweden",7.96,78.74],[ "Swaziland",4.96,56.39],[ "Syrian Arab Republic",5.52,71.91],[ "Chad",5.78,46.43],[ "Togo",4.59,54.73],[ "Thailand",3.53,70.53],[ "Tajikistan",3.48,62.39],[ "Turkmenistan",3.07,63.03],[ "Tonga",4.13,70.12],[ "Trinidad and Tobago",4.69,68.38],[ "Tunisia",5.86,71.35],[ "Turkey",3.37,66.98],[ "Tanzania",3.9,49.17],[ "Uganda",5.76,45.97],[ "Ukraine",7.72,67.12],[ "Uruguay",15.6,73.54],[ "United States",13.6,75.62],[ "Uzbekistan",6.79,66.32],[ "St. Vincent and the Grenadines",4.46,70.58],[ "Venezuela, RB",4.23,71.87],[ "Vietnam",5.19,72.14],[ "Vanuatu",2.64,65.46],[ "Samoa",5.17,67.52],[ "Yemen, Rep.",4.14,59.24],[ "South Africa",7.42,61.37],[ "Congo, Dem. Rep.",3.68,46.44],[ "Zambia",5.6,40.95],[ "Angola",3.45,42.5],[ "Albania",4.03,72.53],[ "United Arab Emirates",2.46,73.39],[ "Argentina",8.02,72.89],[ "Armenia",5.79,69.22],[ "Antigua and Barbuda",4.61,72.54],[ "Australia",7.44,78.08],[ "Austria",9.53,76.98],[ "Azerbaijan",6.12,64.99],[ "Burundi",5.41,46.9],[ "Belgium",7.91,77.19],[ "Benin",4.59,54.83],[ "Burkina Faso",4.52,49.47],[ "Bangladesh",3.46,63.24],[ "Bulgaria",4.67,70.9],[ "Bahrain",4.04,73.77],[ "Bahamas, The",6.92,71.39],[ "Bosnia and Herzegovina",11.63,69.94],[ "Belarus",6.24,68.61],[ "Belize",3.63,70.06],[ "Bolivia",4.63,61.48],[ "Brazil",6.85,68.86],[ "Barbados",6.16,72.21],[ "Brunei Darussalam",3.71,75.16],[ "Bhutan",6.16,57.24],[ "Botswana",4.16,56.17],[ "Central African Republic",3.77,43.95],[ "Canada",8.82,78.23],[ "Switzerland",9.72,78.9],[ "Chile",6.98,75.29],[ "China",3.81,70.56],[ "Cameroon",5.17,52.99],[ "Congo, Rep.",2.86,52.68],[ "Colombia",8.16,69.75],[ "Comoros",4.42,56.94],[ "Cabo Verde",4.82,67.88],[ "Costa Rica",6.65,76.98],[ "Cuba",5.26,75.68],[ "Cyprus",5.21,77.42],[ "Czech Republic",6.41,73.71],[ "Germany",10.42,76.67],[ "Djibouti",3.55,57.04],[ "Denmark",8.21,75.59],[ "Dominican Republic",5.34,69.92],[ "Algeria",3.35,68.08],[ "Ecuador",3.71,71.68],[ "Egypt, Arab Rep.",4.26,67.23],[ "Eritrea",3.65,53.23],[ "Spain",7.46,78.12],[ "Estonia",6.57,69.61],[ "Ethiopia",2.94,49.83],[ "Finland",8.03,76.69],[ "Fiji",3.27,66.84],[ "France",10.38,77.95],[ "Micronesia, Fed. Sts.",8.6,66.87],[ "Gabon",3.36,60.88],[ "United Kingdom",6.79,77.09],[ "Georgia",7.49,70.45],[ "Ghana",5.1,57.34],[ "Guinea",5.61,51.7],[ "Gambia, The",4.31,53.87],[ "Guinea-Bissau",6.95,50.78],[ "Equatorial Guinea",4.68,47.69],[ "Greece",8.55,77.69],[ "Grenada",6.95,69.49],[ "Guatemala",3.61,65.53],[ "Guyana",4.95,62.98],[ "Honduras",4.96,69.26],[ "Croatia",7.11,72.37],[ "Haiti",6.45,56.4],[ "Hungary",7.08,70.33],[ "Indonesia",2,65.84],[ "India",3.89,60.57],[ "Ireland",6.49,75.83],[ "Iran, Islamic Rep.",3.7,68.2],[ "Iceland",8.16,78.78],[ "Italy",7.16,78.52],[ "Jamaica",4.68,70.26],[ "Jordan",8.91,71.1],[ "Japan",6.95,80.2],[ "Kazakhstan",4.34,64.11],[ "Kenya",4.15,55.13],[ "Kyrgyz Republic",5.69,66.54],[ "Cambodia",9.45,58.48],[ "Kiribati",9.24,63.01],[ "Korea, Rep.",3.92,73.83],[ "Kuwait",3.47,73],[ "Lao PDR",4.6,58.84],[ "Lebanon",15.23,72.51],[ "Libya",3.55,70.63],[ "St. Lucia",5.49,71.16],[ "Lesotho",7.5,55.11],[ "Lithuania",5.58,70.11],[ "Luxembourg",5.65,76.52],[ "Latvia",6.1,68.78],[ "Moldova",10.27,66.63],[ "Madagascar",4.5,55.43],[ "Maldives",6.37,65.48],[ "Mexico",4.68,73.09],[ "Macedonia, FYR",8.73,72.29],[ "Mali",7.84,47.83],[ "Malta",5.99,77.14],[ "Myanmar",2.12,60.75],[ "Montenegro",7.43,74.83],[ "Mongolia",3.55,61.45],[ "Mozambique",4.28,46.28],[ "Mauritania",3.81,59.3],[ "Mauritius",3.52,70.32],[ "Malawi",4.61,46.42],[ "Malaysia",2.92,72.07],[ "Namibia",6.58,59.34],[ "Niger",6.33,47.84],[ "Nigeria",4.7,46.16],[ "Nicaragua",6.41,67.82],[ "Netherlands",8.21,77.44],[ "Norway",9.1,78.15],[ "Nepal",5.05,59.5],[ "New Zealand",7.02,76.79],[ "Oman",3.56,70.49],[ "Pakistan",3.36,62.81],[ "Panama",7.18,74.33],[ "Peru",4.5,68.52],[ "Philippines",3.54,66.18],[ "Papua New Guinea",3.66,57.63],[ "Poland",5.88,72.25],[ "Portugal",7.79,75.26],[ "Paraguay",6.08,69.11],[ "Qatar",3.62,76.27],[ "Romania",3.24,69.1],[ "Russian Federation",5.55,66.19],[ "Rwanda",4.44,35.14],[ "Saudi Arabia",2.93,71.38],[ "Sudan",4.06,56.79],[ "Senegal",4.08,57.32],[ "Singapore",2.89,76.75],[ "Solomon Islands",3.02,60.3],[ "Sierra Leone",14.8,36.03],[ "El Salvador",7.86,68.98],[ "Suriname",7.41,67.83],[ "Slovak Republic",6.44,72.65],[ "Slovenia",7.64,74.46],[ "Sweden",8.2,78.96],[ "Swaziland",5.4,55],[ "Syrian Arab Republic",5.5,72.21],[ "Chad",5.49,46.48],[ "Togo",4.66,54.34],[ "Thailand",3.84,70.56],[ "Tajikistan",3.14,62.58],[ "Turkmenistan",3.25,63.21],[ "Tonga",4.21,70.24],[ "Trinidad and Tobago",4.33,68.43],[ "Tunisia",5.4,71.55],[ "Turkey",3.9,67.59],[ "Tanzania",3.62,49.13],[ "Uganda",5.47,46.05],[ "Ukraine",7.02,67.31],[ "Uruguay",13.01,73.77],[ "United States",13.57,76],[ "Uzbekistan",7.17,66.43],[ "St. Vincent and the Grenadines",4.45,70.59],[ "Venezuela, RB",3.49,71.99],[ "Vietnam",5.05,72.46],[ "Vanuatu",2.34,65.9],[ "Samoa",4.71,67.95],[ "Yemen, Rep.",4.11,59.5],[ "South Africa",7.96,60.61],[ "Congo, Dem. Rep.",3.41,46.18],[ "Zambia",5.89,40.78],[ "Angola",4.58,43.06],[ "Albania",4.81,72.9],[ "United Arab Emirates",2.49,73.65],[ "Argentina",8.36,73.1],[ "Armenia",5.77,69.72],[ "Antigua and Barbuda",4.64,72.76],[ "Australia",7.49,78.48],[ "Austria",9.81,77.39],[ "Azerbaijan",5.45,65.46],[ "Burundi",5.01,47.25],[ "Belgium",7.77,77.37],[ "Benin",4.31,54.84],[ "Burkina Faso",4.53,49.65],[ "Bangladesh",2.75,63.78],[ "Bulgaria",5.12,70.35],[ "Bahrain",4.36,73.99],[ "Bahamas, The",5.55,71.55],[ "Bosnia and Herzegovina",8.11,71.62],[ "Belarus",6.59,68.46],[ "Belize",3.92,70.06],[ "Bolivia",4.42,61.86],[ "Brazil",6.81,69.23],[ "Barbados",5.94,72.42],[ "Brunei Darussalam",3.72,75.38],[ "Bhutan",7.16,58.01],[ "Botswana",4.42,54.64],[ "Central African Republic",3.67,43.81],[ "Canada",8.79,78.48],[ "Switzerland",9.67,79.08],[ "Chile",6.97,75.62],[ "China",4.05,70.86],[ "Cameroon",4.64,52.73],[ "Congo, Rep.",3.1,52.47],[ "Colombia",8.96,70.07],[ "Comoros",4.42,57.18],[ "Cabo Verde",4.73,68.29],[ "Costa Rica",6.35,77.18],[ "Cuba",5.5,75.95],[ "Cyprus",5.53,77.56],[ "Czech Republic",6.4,73.82],[ "Germany",10.27,77.07],[ "Djibouti",4.6,57.01],[ "Denmark",8.15,75.95],[ "Dominican Republic",5.65,70.09],[ "Algeria",3.59,68.31],[ "Ecuador",3.7,72.13],[ "Egypt, Arab Rep.",4.97,67.66],[ "Eritrea",4.2,54.01],[ "Spain",7.33,78.6],[ "Estonia",6.19,69.81],[ "Ethiopia",3.09,50.41],[ "Finland",7.71,76.88],[ "Fiji",3.53,67.04],[ "France",10.25,78.3],[ "Micronesia, Fed. Sts.",7.76,66.97],[ "Gabon",2.97,60.6],[ "United Kingdom",6.56,77.21],[ "Georgia",7.99,70.72],[ "Ghana",5.32,57.16],[ "Guinea",5.56,51.61],[ "Gambia, The",4.19,54.19],[ "Guinea-Bissau",6.72,50.96],[ "Equatorial Guinea",4.17,47.72],[ "Greece",8.44,78.14],[ "Grenada",7.25,69.66],[ "Guatemala",3.77,66.1],[ "Guyana",5.15,63.11],[ "Honduras",4.88,69.63],[ "Croatia",5.87,72.5],[ "Haiti",6.2,56.68],[ "Hungary",6.83,70.7],[ "Indonesia",1.93,66.21],[ "India",4.24,60.97],[ "Ireland",6.31,75.99],[ "Iran, Islamic Rep.",4.09,68.55],[ "Iceland",8.1,78.89],[ "Italy",7.43,78.82],[ "Jamaica",5.97,70.27],[ "Jordan",8.97,71.26],[ "Japan",6.89,80.42],[ "Kazakhstan",4.67,64.46],[ "Kenya",4.12,54.35],[ "Kyrgyz Republic",5.23,66.89],[ "Cambodia",7.95,59.26],[ "Kiribati",9.39,63.43],[ "Korea, Rep.",3.94,74.25],[ "Kuwait",3.69,73.1],[ "Lao PDR",6.32,59.58],[ "Lebanon",13,72.97],[ "Libya",3.79,70.96],[ "St. Lucia",4.96,71.16],[ "Lesotho",6.72,53.13],[ "Lithuania",5.74,70.91],[ "Luxembourg",5.59,76.88],[ "Latvia",6.2,69.35],[ "Moldova",9.45,66.6],[ "Madagascar",4.74,56.23],[ "Maldives",6.39,66.4],[ "Mexico",4.8,73.42],[ "Macedonia, FYR",9.22,72.53],[ "Mali",7.03,48.04],[ "Malta",6.32,77.59],[ "Myanmar",1.82,61.08],[ "Montenegro",7.4,74.72],[ "Mongolia",3.65,61.74],[ "Mozambique",4.63,46.68],[ "Mauritania",3.98,59.4],[ "Mauritius",3.52,70.4],[ "Malawi",5.15,46.2],[ "Malaysia",2.67,72.27],[ "Namibia",6.84,58.37],[ "Niger",6.75,48.56],[ "Nigeria",4.72,46.22],[ "Nicaragua",5.27,68.27],[ "Netherlands",7.95,77.79],[ "Norway",9.43,78.14],[ "Nepal",5.12,60.17],[ "New Zealand",7.22,77.33],[ "Oman",3.35,70.98],[ "Pakistan",3.35,63.07],[ "Panama",7.12,74.53],[ "Peru",4.35,69.03],[ "Philippines",3.62,66.34],[ "Papua New Guinea",3.35,57.91],[ "Poland",5.61,72.65],[ "Portugal",7.78,75.41],[ "Paraguay",6.19,69.33],[ "Qatar",3.18,76.41],[ "Romania",4.19,69],[ "Russian Federation",7.1,66.95],[ "Rwanda",4.42,39.18],[ "Saudi Arabia",3.03,71.71],[ "Sudan",3.71,57.06],[ "Senegal",3.94,57.3],[ "Singapore",2.81,77.05],[ "Solomon Islands",3.28,60.91],[ "Sierra Leone",15.41,36.4],[ "El Salvador",8.78,69.12],[ "Suriname",7.76,67.85],[ "Slovak Republic",5.78,72.7],[ "Slovenia",7.76,74.71],[ "Sweden",8.03,79.2],[ "Swaziland",5.12,53.44],[ "Syrian Arab Republic",5.3,72.5],[ "Chad",5.54,46.52],[ "Togo",4.56,54],[ "Thailand",4,70.62],[ "Tajikistan",3.67,62.83],[ "Turkmenistan",4.85,63.4],[ "Tonga",4.48,70.36],[ "Trinidad and Tobago",4.16,68.47],[ "Tunisia",5.14,71.9],[ "Turkey",4.21,68.2],[ "Tanzania",3.59,49.18],[ "Uganda",5.34,46.32],[ "Ukraine",6.85,67.3],[ "Uruguay",9.31,74],[ "United States",13.48,76.43],[ "Uzbekistan",6.86,66.57],[ "St. Vincent and the Grenadines",4.73,70.59],[ "Venezuela, RB",3.86,72.1],[ "Vietnam",4.88,72.77],[ "Vanuatu",3.28,66.33],[ "Samoa",5.23,68.37],[ "Yemen, Rep.",4.07,59.75],[ "South Africa",8.26,59.61],[ "Congo, Dem. Rep.",4.07,46.02],[ "Zambia",6.21,40.78],[ "Angola",4.7,43.71],[ "Albania",5.34,73.33],[ "United Arab Emirates",2.62,73.91],[ "Argentina",8.54,73.32],[ "Armenia",5.76,70.24],[ "Antigua and Barbuda",4.64,72.97],[ "Australia",7.65,78.63],[ "Austria",9.97,77.57],[ "Azerbaijan",5.43,65.92],[ "Burundi",5.74,47.59],[ "Belgium",7.89,77.47],[ "Benin",4.39,54.89],[ "Burkina Faso",4.68,49.88],[ "Bangladesh",2.73,64.31],[ "Bulgaria",5.36,71.06],[ "Bahrain",4.21,74.2],[ "Bahamas, The",5.59,71.75],[ "Bosnia and Herzegovina",8,73.03],[ "Belarus",5.96,68.41],[ "Belize",3.8,70.14],[ "Bolivia",5.1,62.23],[ "Brazil",6.74,69.59],[ "Barbados",5.93,72.62],[ "Brunei Darussalam",4.43,75.6],[ "Bhutan",7.04,58.78],[ "Botswana",3.97,53.14],[ "Central African Republic",3.49,43.71],[ "Canada",9.04,78.66],[ "Switzerland",9.85,79.32],[ "Chile",7.51,75.98],[ "China",4.36,71.23],[ "Cameroon",4.42,52.45],[ "Congo, Rep.",3.74,52.33],[ "Colombia",8.73,70.39],[ "Comoros",3.98,57.41],[ "Cabo Verde",5.24,68.71],[ "Costa Rica",7.1,77.37],[ "Cuba",5.77,76.21],[ "Cyprus",5.58,77.7],[ "Czech Republic",6.42,74.51],[ "Germany",10.29,77.48],[ "Djibouti",5.45,56.99],[ "Denmark",8.16,76.14],[ "Dominican Republic",5.84,70.26],[ "Algeria",3.59,68.53],[ "Ecuador",3.57,72.56],[ "Egypt, Arab Rep.",5.07,68.04],[ "Eritrea",4.29,54.74],[ "Spain",7.32,78.67],[ "Estonia",5.56,69.36],[ "Ethiopia",3.62,51],[ "Finland",7.35,77.09],[ "Fiji",3.19,67.23],[ "France",10.15,78.6],[ "Micronesia, Fed. Sts.",6.96,67.07],[ "Gabon",4.19,60.29],[ "United Kingdom",6.63,77.19],[ "Georgia",6.55,71.01],[ "Ghana",5.22,57.02],[ "Guinea",5.66,51.48],[ "Gambia, The",4.35,54.52],[ "Guinea-Bissau",7.06,51.13],[ "Equatorial Guinea",5.24,47.73],[ "Greece",8.37,77.84],[ "Grenada",7.35,69.85],[ "Guatemala",4.14,66.66],[ "Guyana",5.27,63.23],[ "Honduras",5.63,69.95],[ "Croatia",6.67,72.32],[ "Haiti",5.99,56.93],[ "Hungary",7.18,70.56],[ "Indonesia",2.08,66.56],[ "India",4.29,61.37],[ "Ireland",6.14,76.18],[ "Iran, Islamic Rep.",4.51,68.88],[ "Iceland",8.91,79.6],[ "Italy",7.49,78.98],[ "Jamaica",5.07,70.31],[ "Jordan",9.31,71.43],[ "Japan",7.18,80.5],[ "Kazakhstan",4.83,64.56],[ "Kenya",4.49,53.67],[ "Kyrgyz Republic",5.88,67.05],[ "Cambodia",6.94,60.08],[ "Kiribati",7.02,63.85],[ "Korea, Rep.",4.03,74.68],[ "Kuwait",4.44,73.19],[ "Lao PDR",6.41,60.3],[ "Lebanon",11.42,73.43],[ "Libya",3.89,71.29],[ "St. Lucia",5.14,71.19],[ "Lesotho",6.85,51.06],[ "Lithuania",6.08,71.22],[ "Luxembourg",5.67,77.02],[ "Latvia",6.12,69.01],[ "Moldova",7.69,66.63],[ "Madagascar",4.5,57.02],[ "Maldives",6.39,67.38],[ "Mexico",4.89,73.73],[ "Macedonia, FYR",10.12,72.77],[ "Mali",6.2,48.31],[ "Malta",6.4,77.39],[ "Myanmar",1.83,61.4],[ "Montenegro",7.42,74.53],[ "Mongolia",4.04,62.08],[ "Mozambique",4.52,47.01],[ "Mauritania",4.87,59.49],[ "Mauritius",3.57,70.61],[ "Malawi",5.5,46.04],[ "Malaysia",2.89,72.47],[ "Namibia",6.84,57.28],[ "Niger",6.95,49.28],[ "Nigeria",5.55,46.32],[ "Nicaragua",5.63,68.72],[ "Netherlands",8.06,77.88],[ "Norway",10.15,78.33],[ "Nepal",6.16,60.81],[ "New Zealand",7.65,78.09],[ "Oman",3.7,71.45],[ "Pakistan",3.61,63.34],[ "Panama",7.09,74.73],[ "Peru",4.5,69.54],[ "Philippines",3.2,66.5],[ "Papua New Guinea",3.81,58.19],[ "Poland",5.91,73],[ "Portugal",7.69,75.71],[ "Paraguay",6.29,69.56],[ "Qatar",3.41,76.55],[ "Romania",3.77,69.81],[ "Russian Federation",6.62,66.78],[ "Rwanda",5.08,42.74],[ "Saudi Arabia",3.31,72.02],[ "Sudan",4,57.34],[ "Senegal",3.97,57.36],[ "Singapore",3.12,77.4],[ "Solomon Islands",3.53,61.54],[ "Sierra Leone",14.65,36.88],[ "El Salvador",8.33,69.25],[ "Suriname",8.61,67.87],[ "Slovak Republic",5.66,72.55],[ "Slovenia",7.81,74.81],[ "Sweden",8.12,79.34],[ "Swaziland",5.51,51.79],[ "Syrian Arab Republic",5.12,72.78],[ "Chad",5.41,46.57],[ "Togo",4.66,53.75],[ "Thailand",3.74,70.68],[ "Tajikistan",3.6,63.12],[ "Turkmenistan",5.03,63.58],[ "Tonga",4.73,70.49],[ "Trinidad and Tobago",3.69,68.51],[ "Tunisia",5.4,72.05],[ "Turkey",3.59,68.81],[ "Tanzania",3.36,49.33],[ "Uganda",5.52,46.76],[ "Ukraine",6.6,67.97],[ "Uruguay",10.05,74.22],[ "United States",13.5,76.58],[ "Uzbekistan",6.35,66.71],[ "St. Vincent and the Grenadines",4.17,70.58],[ "Venezuela, RB",4.51,72.21],[ "Vietnam",4.94,73.07],[ "Vanuatu",3.91,66.75],[ "Samoa",5.8,68.76],[ "Yemen, Rep.",4.98,59.99],[ "South Africa",8.58,58.44],[ "Congo, Dem. Rep.",4.74,45.99],[ "Zambia",6.53,40.93],[ "Angola",4.11,44.44],[ "Albania",5.83,73.79],[ "United Arab Emirates",2.48,74.16],[ "Argentina",9.36,73.53],[ "Armenia",5.68,70.77],[ "Antigua and Barbuda",3.96,73.19],[ "Australia",7.78,78.93],[ "Austria",10.16,77.78],[ "Azerbaijan",5.36,66.36],[ "Burundi",5.6,47.91],[ "Belgium",8.08,77.62],[ "Benin",4.59,55],[ "Burkina Faso",5.26,50.15],[ "Bangladesh",2.76,64.83],[ "Bulgaria",5.97,71.41],[ "Bahrain",4.12,74.4],[ "Bahamas, The",5.23,71.98],[ "Bosnia and Herzegovina",8.9,74.06],[ "Belarus",6.16,67.91],[ "Belize",3.67,70.31],[ "Bolivia",6.2,62.59],[ "Brazil",7.09,69.93],[ "Barbados",6.11,72.82],[ "Brunei Darussalam",4.09,75.82],[ "Bhutan",6.74,59.54],[ "Botswana",3.85,51.74],[ "Central African Republic",3.93,43.67],[ "Canada",8.9,78.88],[ "Switzerland",10,79.58],[ "Chile",7.68,76.37],[ "China",4.51,71.67],[ "Cameroon",4.43,52.17],[ "Congo, Rep.",3.07,52.27],[ "Colombia",8.67,70.7],[ "Comoros",3.8,57.65],[ "Cabo Verde",4.65,69.14],[ "Costa Rica",6.83,77.56],[ "Cuba",6,76.45],[ "Cyprus",5.6,77.84],[ "Czech Republic",6.35,74.67],[ "Germany",10.36,77.73],[ "Djibouti",6.22,56.98],[ "Denmark",8.95,76.34],[ "Dominican Republic",5.93,70.44],[ "Algeria",3.43,68.73],[ "Ecuador",4.02,72.97],[ "Egypt, Arab Rep.",5.34,68.35],[ "Eritrea",4.67,55.41],[ "Spain",7.32,78.72],[ "Estonia",5.65,70.06],[ "Ethiopia",3.89,51.6],[ "Finland",7.37,77.29],[ "Fiji",3.15,67.42],[ "France",10.15,78.76],[ "Micronesia, Fed. Sts.",7.56,67.17],[ "Gabon",3.48,59.97],[ "United Kingdom",6.88,77.39],[ "Georgia",6.29,71.32],[ "Ghana",5.06,56.95],[ "Guinea",5.62,51.34],[ "Gambia, The",4.36,54.84],[ "Guinea-Bissau",5.76,51.29],[ "Equatorial Guinea",2.48,47.74],[ "Greece",8.62,77.99],[ "Grenada",7.78,70.04],[ "Guatemala",4.92,67.22],[ "Guyana",4.68,63.35],[ "Honduras",6.21,70.24],[ "Croatia",7.34,72.64],[ "Haiti",5.65,57.18],[ "Hungary",7.32,70.68],[ "Indonesia",2.28,66.91],[ "India",4.04,61.77],[ "Ireland",6.06,76.08],[ "Iran, Islamic Rep.",4.59,69.23],[ "Iceland",9.63,79.35],[ "Italy",7.57,79.42],[ "Jamaica",4.68,70.38],[ "Jordan",9.36,71.61],[ "Japan",7.44,80.57],[ "Kazakhstan",4.38,65.52],[ "Kenya",4.2,53.15],[ "Kyrgyz Republic",5.34,67],[ "Cambodia",6.17,60.96],[ "Kiribati",8.85,64.24],[ "Korea, Rep.",4.27,75.37],[ "Kuwait",3.65,73.27],[ "Lao PDR",3.72,60.99],[ "Lebanon",10.87,73.91],[ "Libya",3.41,71.63],[ "St. Lucia",5.54,71.28],[ "Lesotho",6.76,49.02],[ "Lithuania",6.2,71.57],[ "Luxembourg",5.83,77.77],[ "Latvia",6.39,69.74],[ "Moldova",5.89,66.73],[ "Madagascar",4.49,57.77],[ "Maldives",6.57,68.41],[ "Mexico",5.1,74.01],[ "Macedonia, FYR",8.8,73.01],[ "Mali",6.05,48.65],[ "Malta",6.36,77.3],[ "Myanmar",1.8,61.71],[ "Montenegro",7.48,74.29],[ "Mongolia",4.04,62.48],[ "Mozambique",5.29,47.26],[ "Mauritania",5.96,59.58],[ "Mauritius",3.44,70.96],[ "Malawi",6.52,45.97],[ "Malaysia",2.99,72.66],[ "Namibia",6.97,56.14],[ "Niger",6.95,50],[ "Nigeria",5.6,46.44],[ "Nicaragua",5.32,69.18],[ "Netherlands",8.09,77.84],[ "Norway",10.06,78.28],[ "Nepal",5.47,61.44],[ "New Zealand",7.53,77.89],[ "Oman",3.54,71.91],[ "Pakistan",3.72,63.61],[ "Panama",6.85,74.92],[ "Peru",4.86,70.03],[ "Philippines",3.23,66.65],[ "Papua New Guinea",4.09,58.48],[ "Poland",5.73,73.04],[ "Portugal",7.94,75.96],[ "Paraguay",6.79,69.81],[ "Qatar",2.9,76.69],[ "Romania",4.22,70.51],[ "Russian Federation",5.8,66.04],[ "Rwanda",4.57,45.57],[ "Saudi Arabia",4.1,72.32],[ "Sudan",3.8,57.65],[ "Senegal",4.49,57.51],[ "Singapore",2.86,77.55],[ "Solomon Islands",3.8,62.19],[ "Sierra Leone",15.91,37.45],[ "El Salvador",8.32,69.39],[ "Suriname",6.8,67.89],[ "Slovak Republic",5.75,72.9],[ "Slovenia",7.8,75.01],[ "Sweden",8.2,79.44],[ "Swaziland",5.33,50.16],[ "Syrian Arab Republic",5.25,73.06],[ "Chad",5.87,46.62],[ "Togo",4.7,53.59],[ "Thailand",3.5,70.78],[ "Tajikistan",3.92,63.43],[ "Turkmenistan",3.9,63.75],[ "Tonga",5.14,70.63],[ "Trinidad and Tobago",4.25,68.55],[ "Tunisia",5.43,72.5],[ "Turkey",4.77,69.42],[ "Tanzania",3.5,49.59],[ "Uganda",6.71,47.36],[ "Ukraine",5.89,68.19],[ "Uruguay",11.19,74.44],[ "United States",13.5,76.58],[ "Uzbekistan",5.54,66.83],[ "St. Vincent and the Grenadines",4.15,70.57],[ "Venezuela, RB",5.65,72.32],[ "Vietnam",4.88,73.36],[ "Vanuatu",3.52,67.16],[ "Samoa",6.28,69.14],[ "Yemen, Rep.",4.28,60.23],[ "South Africa",8.89,57.16],[ "Congo, Dem. Rep.",4.25,46.11],[ "Zambia",5.8,41.26],[ "Angola",3.39,45.2],[ "Albania",6.35,74.27],[ "United Arab Emirates",2.19,74.41],[ "Argentina",9.21,73.75],[ "Armenia",6.25,71.28],[ "Antigua and Barbuda",4.04,73.4],[ "Australia",8.06,79.23],[ "Austria",10.02,78.03],[ "Azerbaijan",4.67,66.76],[ "Burundi",6.3,48.21],[ "Belgium",8.12,77.72],[ "Benin",4.34,55.19],[ "Burkina Faso",5.13,50.48],[ "Bangladesh",2.82,65.32],[ "Bulgaria",6.18,71.66],[ "Bahrain",3.51,74.59],[ "Bahamas, The",5.21,72.25],[ "Bosnia and Herzegovina",7.14,74.67],[ "Belarus",6.13,68.91],[ "Belize",3.98,70.54],[ "Bolivia",6.08,62.95],[ "Brazil",7.16,70.26],[ "Barbados",6.28,73.02],[ "Brunei Darussalam",3,76.03],[ "Bhutan",6.72,60.29],[ "Botswana",4.74,50.49],[ "Central African Republic",4.29,43.69],[ "Canada",8.84,79.24],[ "Switzerland",9.91,79.68],[ "Chile",7.67,76.76],[ "China",4.62,72.14],[ "Cameroon",4.45,51.94],[ "Congo, Rep.",2.13,52.3],[ "Colombia",5.91,70.99],[ "Comoros",3.48,57.88],[ "Cabo Verde",4.81,69.59],[ "Costa Rica",7.08,77.73],[ "Cuba",6.07,76.67],[ "Cyprus",5.77,77.97],[ "Czech Republic",6.31,74.97],[ "Germany",10.4,77.93],[ "Djibouti",5.75,57.01],[ "Denmark",8.7,76.59],[ "Dominican Republic",6.35,70.63],[ "Algeria",3.49,68.93],[ "Ecuador",3.61,73.36],[ "Egypt, Arab Rep.",5.43,68.59],[ "Eritrea",4.53,56.03],[ "Spain",7.21,78.97],[ "Estonia",5.27,70.42],[ "Ethiopia",4.3,52.24],[ "Finland",7.22,77.47],[ "Fiji",3.87,67.61],[ "France",10.08,79.06],[ "Micronesia, Fed. Sts.",7.83,67.28],[ "Gabon",2.86,59.69],[ "United Kingdom",7.02,77.74],[ "Georgia",6.94,71.63],[ "Ghana",4.81,56.99],[ "Guinea",5.65,51.25],[ "Gambia, The",4.48,55.17],[ "Guinea-Bissau",4.94,51.45],[ "Equatorial Guinea",2.36,47.76],[ "Greece",7.88,77.89],[ "Grenada",6.58,70.25],[ "Guatemala",5.59,67.74],[ "Guyana",5.85,63.48],[ "Honduras",6.63,70.48],[ "Croatia",7.76,72.81],[ "Haiti",6.06,57.42],[ "Hungary",7.18,71.25],[ "Indonesia",1.96,67.25],[ "India",4.27,62.16],[ "Ireland",6.1,76.54],[ "Iran, Islamic Rep.",4.6,69.61],[ "Iceland",9.5,79.65],[ "Italy",7.87,79.78],[ "Jamaica",5.47,70.47],[ "Jordan",9.65,71.78],[ "Japan",7.6,81.08],[ "Kazakhstan",4.16,65.52],[ "Kenya",4.68,52.84],[ "Kyrgyz Republic",4.68,68.56],[ "Cambodia",6.31,61.89],[ "Kiribati",7.91,64.61],[ "Korea, Rep.",4.33,75.84],[ "Kuwait",2.5,73.36],[ "Lao PDR",3.33,61.64],[ "Lebanon",10.86,74.39],[ "Libya",3.45,71.97],[ "St. Lucia",5.59,71.42],[ "Lesotho",6.92,47.18],[ "Lithuania",6.46,72.02],[ "Luxembourg",7.48,77.87],[ "Latvia",6,70.31],[ "Moldova",6.65,66.9],[ "Madagascar",5.01,58.47],[ "Maldives",7.07,69.46],[ "Mexico",5.07,74.27],[ "Macedonia, FYR",8.73,73.24],[ "Mali",6.29,49.06],[ "Malta",6.57,78.2],[ "Myanmar",2.12,62.02],[ "Montenegro",7.52,74.02],[ "Mongolia",4.66,62.92],[ "Mozambique",6.16,47.43],[ "Mauritania",5.97,59.67],[ "Mauritius",3.72,71.66],[ "Malawi",6.08,46.03],[ "Malaysia",3,72.85],[ "Namibia",6.11,55.12],[ "Niger",6.43,50.71],[ "Nigeria",4.6,46.62],[ "Nicaragua",5.39,69.65],[ "Netherlands",7.96,77.99],[ "Norway",9.13,78.63],[ "Nepal",5.03,62.04],[ "New Zealand",7.62,78.64],[ "Oman",3.07,72.36],[ "Pakistan",3.02,63.89],[ "Panama",7.76,75.12],[ "Peru",4.69,70.51],[ "Philippines",3.21,66.8],[ "Papua New Guinea",3.98,58.8],[ "Poland",5.52,73.75],[ "Portugal",9.3,76.31],[ "Paraguay",8.1,70.08],[ "Qatar",2.18,76.82],[ "Romania",4.34,71.16],[ "Russian Federation",5.42,65.34],[ "Rwanda",4.22,47.64],[ "Saudi Arabia",4.24,72.61],[ "Sudan",3.39,57.98],[ "Senegal",4.63,57.77],[ "Singapore",2.75,78.05],[ "Solomon Islands",4.56,62.84],[ "Sierra Leone",18.41,38.11],[ "El Salvador",8.11,69.56],[ "Suriname",8.75,67.93],[ "Slovak Republic",5.5,73.05],[ "Slovenia",8.26,75.41],[ "Sweden",8.18,79.64],[ "Swaziland",5.26,48.66],[ "Syrian Arab Republic",4.92,73.33],[ "Chad",6.28,46.69],[ "Togo",5.3,53.55],[ "Thailand",3.4,70.92],[ "Tajikistan",4.64,63.77],[ "Turkmenistan",3.93,63.9],[ "Tonga",4.75,70.76],[ "Trinidad and Tobago",4.05,68.6],[ "Tunisia",5.4,72.6],[ "Turkey",4.95,70],[ "Tanzania",3.38,49.97],[ "Uganda",6.64,48.11],[ "Ukraine",5.59,67.86],[ "Uruguay",11.25,74.66],[ "United States",13.58,76.64],[ "Uzbekistan",5.29,66.94],[ "St. Vincent and the Grenadines",3.72,70.58],[ "Venezuela, RB",5.69,72.44],[ "Vietnam",5.28,73.63],[ "Vanuatu",3.57,67.56],[ "Samoa",6.02,69.49],[ "Yemen, Rep.",4.14,60.46],[ "South Africa",8.29,55.84],[ "Congo, Dem. Rep.",4.77,46.36],[ "Zambia",5.64,41.78],[ "Angola",5.82,45.97],[ "Albania",6.04,74.73],[ "United Arab Emirates",2.48,74.65],[ "Argentina",9.38,73.95],[ "Armenia",5.94,71.76],[ "Antigua and Barbuda",4.38,73.61],[ "Australia",8.16,79.63],[ "Austria",10.09,78.53],[ "Azerbaijan",4.48,67.15],[ "Burundi",6.77,48.49],[ "Belgium",8.29,77.97],[ "Benin",4.69,55.47],[ "Burkina Faso",4.94,50.86],[ "Bangladesh",2.98,65.79],[ "Bulgaria",7.37,71.77],[ "Bahrain",3.8,74.78],[ "Bahamas, The",5.15,72.55],[ "Bosnia and Herzegovina",7.24,74.92],[ "Belarus",6.62,68.51],[ "Belize",4.5,70.82],[ "Bolivia",6.31,63.32],[ "Brazil",7.27,70.57],[ "Barbados",6.67,73.21],[ "Brunei Darussalam",3.18,76.24],[ "Bhutan",6.19,61.04],[ "Botswana",5.17,49.41],[ "Central African Republic",3.99,43.79],[ "Canada",9.32,79.49],[ "Switzerland",10.28,80.18],[ "Chile",7.66,77.13],[ "China",4.58,72.62],[ "Cameroon",4.67,51.76],[ "Congo, Rep.",2.44,52.44],[ "Colombia",5.96,71.26],[ "Comoros",2.83,58.11],[ "Cabo Verde",5.19,70.05],[ "Costa Rica",7.11,77.9],[ "Cuba",6.27,76.87],[ "Cyprus",5.78,78.1],[ "Czech Republic",6.42,75.17],[ "Germany",10.5,78.33],[ "Djibouti",5.37,57.09],[ "Denmark",9.1,76.79],[ "Dominican Republic",6.2,70.84],[ "Algeria",3.84,69.12],[ "Ecuador",4.01,73.7],[ "Egypt, Arab Rep.",5.78,68.79],[ "Eritrea",3.92,56.59],[ "Spain",7.24,79.37],[ "Estonia",4.86,70.26],[ "Ethiopia",4.73,52.95],[ "Finland",7.43,77.97],[ "Fiji",3.28,67.79],[ "France",10.21,79.16],[ "Micronesia, Fed. Sts.",8.48,67.38],[ "Gabon",3.32,59.5],[ "United Kingdom",7.31,77.99],[ "Georgia",7.82,71.93],[ "Ghana",5.57,57.15],[ "Guinea",5.88,51.28],[ "Gambia, The",4.56,55.5],[ "Guinea-Bissau",5.04,51.61],[ "Equatorial Guinea",1.54,47.84],[ "Greece",8.8,78.39],[ "Grenada",7.63,70.47],[ "Guatemala",6.45,68.22],[ "Guyana",5.82,63.64],[ "Honduras",6.88,70.7],[ "Croatia",7.24,74.51],[ "Haiti",5.63,57.7],[ "Hungary",7.24,72.25],[ "Indonesia",2.23,67.59],[ "India",4.5,62.56],[ "Ireland",6.73,77.13],[ "Iran, Islamic Rep.",5.09,70],[ "Iceland",9.34,80.69],[ "Italy",8.06,80.03],[ "Jamaica",5.1,70.6],[ "Jordan",9.9,71.96],[ "Japan",7.81,81.42],[ "Kazakhstan",3.47,65.77],[ "Kenya",4.62,52.78],[ "Kyrgyz Republic",4.79,68.71],[ "Cambodia",6.23,62.88],[ "Kiribati",8.8,64.96],[ "Korea, Rep.",4.95,76.34],[ "Kuwait",3.6,73.43],[ "Lao PDR",4.09,62.27],[ "Lebanon",10.9,74.89],[ "Libya",4.08,72.3],[ "St. Lucia",6.23,71.64],[ "Lesotho",7.53,45.67],[ "Lithuania",6.26,71.66],[ "Luxembourg",7.4,77.82],[ "Latvia",6.17,70.76],[ "Moldova",7.11,67.1],[ "Madagascar",5.05,59.11],[ "Maldives",5.31,70.51],[ "Mexico",5.45,74.51],[ "Macedonia, FYR",8.47,73.46],[ "Mali",6.39,49.52],[ "Malta",7.04,78.84],[ "Myanmar",2.08,62.33],[ "Montenegro",8.45,73.77],[ "Mongolia",4.62,63.4],[ "Mozambique",5.64,47.53],[ "Mauritania",4.78,59.77],[ "Mauritius",3.8,71.77],[ "Malawi",5.09,46.28],[ "Malaysia",3.34,73.03],[ "Namibia",6.18,54.4],[ "Niger",7.39,51.41],[ "Nigeria",4.8,46.88],[ "Nicaragua",5.26,70.12],[ "Netherlands",8.3,78.19],[ "Norway",9.76,78.79],[ "Nepal",5.33,62.62],[ "New Zealand",7.72,78.69],[ "Oman",3.09,72.79],[ "Pakistan",2.83,64.16],[ "Panama",7.72,75.3],[ "Peru",4.68,70.95],[ "Philippines",3,66.94],[ "Papua New Guinea",4.54,59.14],[ "Poland",5.86,74.2],[ "Portugal",9.26,76.81],[ "Paraguay",7.61,70.35],[ "Qatar",2.55,76.95],[ "Romania",4.37,71.16],[ "Russian Federation",5.67,65.49],[ "Rwanda",4.37,49.13],[ "Saudi Arabia",4.49,72.9],[ "Sudan",3.54,58.33],[ "Senegal",4.98,58.17],[ "Singapore",2.41,78.35],[ "Solomon Islands",6.44,63.47],[ "Sierra Leone",16.05,38.85],[ "El Salvador",7.97,69.75],[ "Suriname",8.39,68.01],[ "Slovak Republic",5.5,73.4],[ "Slovenia",8.57,75.76],[ "Sweden",8.86,79.8],[ "Swaziland",5.17,47.43],[ "Syrian Arab Republic",4.88,73.61],[ "Chad",6.02,46.79],[ "Togo",5.15,53.59],[ "Thailand",3.32,71.11],[ "Tajikistan",4.59,64.13],[ "Turkmenistan",3.84,64.03],[ "Tonga",5.65,70.9],[ "Trinidad and Tobago",4.4,68.65],[ "Tunisia",5.29,72.85],[ "Turkey",5.16,70.55],[ "Tanzania",3.53,50.5],[ "Uganda",7.24,48.97],[ "Ukraine",5.66,68.29],[ "Uruguay",11.19,74.87],[ "United States",14.24,76.74],[ "Uzbekistan",5.28,67.03],[ "St. Vincent and the Grenadines",3.64,70.63],[ "Venezuela, RB",5.96,72.58],[ "Vietnam",5.59,73.88],[ "Vanuatu",3.67,67.93],[ "Samoa",5.76,69.82],[ "Yemen, Rep.",4.34,60.68],[ "South Africa",8.58,54.57],[ "Congo, Dem. Rep.",4.33,46.68],[ "Zambia",5.98,42.51],[ "Angola",4.36,46.71],[ "Albania",6.5,75.16],[ "United Arab Emirates",2.72,74.89],[ "Argentina",8.31,74.16],[ "Armenia",5.4,72.2],[ "Antigua and Barbuda",4.31,73.81],[ "Australia",8.39,79.94],[ "Austria",10.12,78.68],[ "Azerbaijan",4.47,67.56],[ "Burundi",7.08,48.8],[ "Belgium",8.46,78.08],[ "Benin",4.27,55.81],[ "Burkina Faso",5.01,51.27],[ "Bangladesh",3.09,66.24],[ "Bulgaria",7.58,71.87],[ "Bahrain",3.89,74.96],[ "Bahamas, The",5.26,72.84],[ "Bosnia and Herzegovina",7.07,74.99],[ "Belarus",6.47,68.06],[ "Belize",4.38,71.14],[ "Bolivia",6.53,63.67],[ "Brazil",7.19,70.87],[ "Barbados",7.37,73.4],[ "Brunei Darussalam",3.12,76.44],[ "Bhutan",7.88,61.8],[ "Botswana",5.72,48.5],[ "Central African Republic",4.21,43.96],[ "Canada",9.6,79.59],[ "Switzerland",10.61,80.39],[ "Chile",7.5,77.46],[ "China",4.81,73.07],[ "Cameroon",4.83,51.66],[ "Congo, Rep.",2.45,52.69],[ "Colombia",5.67,71.52],[ "Comoros",3.4,58.35],[ "Cabo Verde",5.17,70.51],[ "Costa Rica",8.03,78.04],[ "Cuba",6.5,77.07],[ "Cyprus",6.12,78.23],[ "Czech Republic",6.8,75.22],[ "Germany",10.72,78.23],[ "Djibouti",5.45,57.22],[ "Denmark",9.33,76.9],[ "Dominican Republic",6.3,71.05],[ "Algeria",3.73,69.31],[ "Ecuador",4.81,73.99],[ "Egypt, Arab Rep.",6.13,68.95],[ "Eritrea",4,57.12],[ "Spain",7.25,79.57],[ "Estonia",4.85,70.9],[ "Ethiopia",4.71,53.73],[ "Finland",7.81,78.12],[ "Fiji",3.48,67.97],[ "France",10.56,79.26],[ "Micronesia, Fed. Sts.",7.87,67.5],[ "Gabon",3.7,59.42],[ "United Kingdom",7.63,78.14],[ "Georgia",8.72,72.21],[ "Ghana",4.75,57.42],[ "Guinea",6.05,51.44],[ "Gambia, The",3.75,55.82],[ "Guinea-Bissau",5.84,51.78],[ "Equatorial Guinea",1.83,47.98],[ "Greece",9.1,78.64],[ "Grenada",6.62,70.71],[ "Guatemala",6.24,68.65],[ "Guyana",5.8,63.82],[ "Honduras",7.28,70.89],[ "Croatia",6.27,74.72],[ "Haiti",5.47,58.01],[ "Hungary",7.59,72.35],[ "Indonesia",2.24,67.91],[ "India",4.4,62.95],[ "Ireland",7.03,77.63],[ "Iran, Islamic Rep.",5.12,70.4],[ "Iceland",10.15,80.5],[ "Italy",8.19,80.23],[ "Jamaica",4.86,70.78],[ "Jordan",9.68,72.13],[ "Japan",7.86,81.56],[ "Kazakhstan",3.61,65.97],[ "Kenya",4.54,52.95],[ "Kyrgyz Republic",5.43,68.11],[ "Cambodia",6.39,63.91],[ "Kiribati",8.76,65.29],[ "Korea, Rep.",4.8,76.84],[ "Kuwait",3.55,73.51],[ "Lao PDR",4.04,62.87],[ "Lebanon",10.05,75.42],[ "Libya",4.9,72.63],[ "St. Lucia",6.41,71.93],[ "Lesotho",6.91,44.54],[ "Lithuania",6.4,71.76],[ "Luxembourg",8.27,77.97],[ "Latvia",6.29,70.96],[ "Moldova",8.07,67.32],[ "Madagascar",5.17,59.7],[ "Maldives",5.19,71.52],[ "Mexico",5.62,74.75],[ "Macedonia, FYR",9.32,73.65],[ "Mali",6.28,50.02],[ "Malta",7.94,78.74],[ "Myanmar",2.37,62.63],[ "Montenegro",8.57,73.59],[ "Mongolia",4.81,63.9],[ "Mozambique",6.45,47.59],[ "Mauritania",5.96,59.87],[ "Mauritius",4.17,71.97],[ "Malawi",4.83,46.71],[ "Malaysia",3.35,73.2],[ "Namibia",6.17,54.11],[ "Niger",7,52.1],[ "Nigeria",3.91,47.22],[ "Nicaragua",5.71,70.59],[ "Netherlands",8.87,78.29],[ "Norway",10.41,78.99],[ "Nepal",5.57,63.18],[ "New Zealand",8.04,78.85],[ "Oman",3.19,73.21],[ "Pakistan",2.99,64.43],[ "Panama",8.03,75.49],[ "Peru",4.81,71.37],[ "Philippines",2.79,67.08],[ "Papua New Guinea",4.62,59.5],[ "Poland",6.34,74.5],[ "Portugal",9.29,77.07],[ "Paraguay",7,70.62],[ "Qatar",2.71,77.08],[ "Romania",4.59,71.01],[ "Russian Federation",5.98,65.09],[ "Rwanda",4.18,50.44],[ "Saudi Arabia",4.27,73.17],[ "Sudan",3.59,58.71],[ "Senegal",5.06,58.68],[ "Singapore",2.88,78.7],[ "Solomon Islands",6.09,64.06],[ "Sierra Leone",15.97,39.65],[ "El Salvador",7.73,69.95],[ "Suriname",7.14,68.14],[ "Slovak Republic",5.63,73.6],[ "Slovenia",8.62,76.01],[ "Sweden",9.23,79.85],[ "Swaziland",5.16,46.52],[ "Syrian Arab Republic",4.94,73.9],[ "Chad",8.01,46.93],[ "Togo",4.95,53.69],[ "Thailand",3.7,71.35],[ "Tajikistan",4.48,64.51],[ "Turkmenistan",3.35,64.14],[ "Tonga",5.03,71.04],[ "Trinidad and Tobago",5,68.72],[ "Tunisia",5.32,73],[ "Turkey",5.36,71.07],[ "Tanzania",3.42,51.16],[ "Uganda",7.53,49.91],[ "Ukraine",6.25,68.28],[ "Uruguay",10.97,75.09],[ "United States",15.09,76.84],[ "Uzbekistan",5.44,67.11],[ "St. Vincent and the Grenadines",3.93,70.73],[ "Venezuela, RB",5.65,72.73],[ "Vietnam",5.14,74.1],[ "Vanuatu",3.85,68.3],[ "Samoa",5.53,70.13],[ "Yemen, Rep.",4.22,60.9],[ "South Africa",8.5,53.44],[ "Congo, Dem. Rep.",4.22,47.02],[ "Zambia",6.73,43.43],[ "Angola",4.93,47.39],[ "Albania",6.16,75.53],[ "United Arab Emirates",2.65,75.12],[ "Argentina",8.22,74.36],[ "Armenia",5.56,72.61],[ "Antigua and Barbuda",4.4,74.02],[ "Australia",8.34,80.24],[ "Austria",10.3,78.63],[ "Azerbaijan",6.56,68],[ "Burundi",7.16,49.16],[ "Belgium",9.97,78.13],[ "Benin",4.63,56.21],[ "Burkina Faso",5.52,51.72],[ "Bangladesh",3.04,66.67],[ "Bulgaria",7.58,72.07],[ "Bahrain",3.74,75.14],[ "Bahamas, The",5.62,73.13],[ "Bosnia and Herzegovina",7.99,75.01],[ "Belarus",6.59,68.55],[ "Belize",4.54,71.45],[ "Bolivia",5.57,64.02],[ "Brazil",7.03,71.16],[ "Barbados",7.06,73.59],[ "Brunei Darussalam",3.1,76.64],[ "Bhutan",5.06,62.55],[ "Botswana",4.31,47.75],[ "Central African Republic",4.37,44.22],[ "Canada",9.78,79.84],[ "Switzerland",10.93,80.54],[ "Chile",7.08,77.74],[ "China",4.85,73.47],[ "Cameroon",4.93,51.64],[ "Congo, Rep.",2.61,53.05],[ "Colombia",5.92,71.77],[ "Comoros",3.61,58.58],[ "Cabo Verde",5,70.97],[ "Costa Rica",8.09,78.18],[ "Cuba",6.31,77.28],[ "Cyprus",6.83,78.35],[ "Czech Republic",7.13,75.17],[ "Germany",10.92,78.38],[ "Djibouti",6.22,57.41],[ "Denmark",9.51,77.14],[ "Dominican Republic",6.48,71.26],[ "Algeria",3.6,69.49],[ "Ecuador",6.72,74.24],[ "Egypt, Arab Rep.",5.62,69.11],[ "Eritrea",3.23,57.63],[ "Spain",8.16,79.62],[ "Estonia",4.92,71.32],[ "Ethiopia",4.91,54.61],[ "Finland",8.15,78.37],[ "Fiji",3.35,68.14],[ "France",10.83,79.11],[ "Micronesia, Fed. Sts.",9.52,67.64],[ "Gabon",3.78,59.48],[ "United Kingdom",7.83,78.45],[ "Georgia",8.49,72.47],[ "Ghana",4.85,57.79],[ "Guinea",4.89,51.75],[ "Gambia, The",4.22,56.14],[ "Guinea-Bissau",5.78,51.97],[ "Equatorial Guinea",1.95,48.19],[ "Greece",8.93,78.84],[ "Grenada",6.16,70.94],[ "Guatemala",6.37,69.02],[ "Guyana",5.56,64.04],[ "Honduras",8.29,71.08],[ "Croatia",6.44,74.61],[ "Haiti",5.32,58.38],[ "Hungary",8.57,72.3],[ "Indonesia",2.53,68.24],[ "India",4.29,63.34],[ "Ireland",7.28,78.14],[ "Iran, Islamic Rep.",4.74,70.78],[ "Iceland",10.57,80.96],[ "Italy",8.17,79.88],[ "Jamaica",4.56,70.98],[ "Jordan",9.16,72.3],[ "Japan",7.99,81.76],[ "Kazakhstan",3.7,65.87],[ "Kenya",4.45,53.35],[ "Kyrgyz Republic",5.43,68.26],[ "Cambodia",7.32,64.97],[ "Kiribati",9.59,65.62],[ "Korea, Rep.",5.16,77.25],[ "Kuwait",3.22,73.59],[ "Lao PDR",4.93,63.44],[ "Lebanon",9.3,75.97],[ "Libya",4.13,72.96],[ "St. Lucia",6.19,72.26],[ "Lesotho",7.13,43.82],[ "Lithuania",6.49,72.06],[ "Luxembourg",7.67,77.73],[ "Latvia",6.15,71.27],[ "Moldova",8.33,67.52],[ "Madagascar",4.84,60.24],[ "Maldives",6.04,72.47],[ "Mexico",5.78,74.99],[ "Macedonia, FYR",9.26,73.82],[ "Mali",6.22,50.53],[ "Malta",8.18,78.55],[ "Myanmar",2.27,62.92],[ "Montenegro",9.13,73.49],[ "Mongolia",7.38,64.38],[ "Mozambique",6.39,47.66],[ "Mauritania",5.39,59.99],[ "Mauritius",3.89,72.12],[ "Malawi",6.35,47.31],[ "Malaysia",3.89,73.37],[ "Namibia",6.52,54.28],[ "Niger",6.78,52.79],[ "Nigeria",7.55,47.64],[ "Nicaragua",6.12,71.04],[ "Netherlands",9.77,78.49],[ "Norway",10.57,79.39],[ "Nepal",5.44,63.72],[ "New Zealand",7.86,79.15],[ "Oman",3.19,73.62],[ "Pakistan",2.85,64.69],[ "Panama",7.6,75.66],[ "Peru",4.51,71.75],[ "Philippines",3.25,67.22],[ "Papua New Guinea",4.09,59.88],[ "Poland",6.24,74.6],[ "Portugal",9.73,77.22],[ "Paraguay",6.1,70.87],[ "Qatar",4.14,77.2],[ "Romania",5.33,71.31],[ "Russian Federation",5.61,65.01],[ "Rwanda",6.34,51.86],[ "Saudi Arabia",4,73.43],[ "Sudan",3.83,59.11],[ "Senegal",5.4,59.26],[ "Singapore",3.65,79.04],[ "Solomon Islands",6,64.61],[ "Sierra Leone",15.53,40.49],[ "El Salvador",7.31,70.15],[ "Suriname",6.62,68.33],[ "Slovak Republic",5.82,73.6],[ "Slovenia",8.65,76.86],[ "Sweden",9.31,80.1],[ "Swaziland",5.76,45.96],[ "Syrian Arab Republic",5.12,74.19],[ "Chad",5.78,47.12],[ "Togo",5.58,53.82],[ "Thailand",3.58,71.64],[ "Tajikistan",4.46,64.9],[ "Turkmenistan",3.85,64.24],[ "Tonga",5.08,71.18],[ "Trinidad and Tobago",5.13,68.81],[ "Tunisia",5.36,73.05],[ "Turkey",5.34,71.56],[ "Tanzania",3.75,51.95],[ "Uganda",7.56,50.89],[ "Ukraine",6.93,68.21],[ "Uruguay",9.68,75.3],[ "United States",15.62,76.99],[ "Uzbekistan",5.17,67.19],[ "St. Vincent and the Grenadines",3.9,70.87],[ "Venezuela, RB",5.86,72.89],[ "Vietnam",5.23,74.3],[ "Vanuatu",3.68,68.65],[ "Samoa",5.15,70.43],[ "Yemen, Rep.",5,61.12],[ "South Africa",8.63,52.52],[ "Congo, Dem. Rep.",5.08,47.33],[ "Zambia",6.73,44.52],[ "Angola",5.12,48],[ "Albania",6.51,75.84],[ "United Arab Emirates",2.46,75.36],[ "Argentina",8.19,74.56],[ "Armenia",5.5,72.97],[ "Antigua and Barbuda",4.12,74.22],[ "Australia",8.59,80.49],[ "Austria",10.43,79.18],[ "Azerbaijan",7.92,68.47],[ "Burundi",9.72,49.56],[ "Belgium",10.01,78.88],[ "Benin",4.56,56.63],[ "Burkina Faso",6.11,52.18],[ "Bangladesh",3.12,67.09],[ "Bulgaria",7.31,72.56],[ "Bahrain",3.94,75.32],[ "Bahamas, The",6.02,73.39],[ "Bosnia and Herzegovina",9.04,75.04],[ "Belarus",6.59,68.96],[ "Belize",4.4,71.76],[ "Bolivia",5.34,64.36],[ "Brazil",7.13,71.44],[ "Barbados",7.1,73.77],[ "Brunei Darussalam",3.01,76.84],[ "Bhutan",4.41,63.3],[ "Botswana",4.94,47.16],[ "Central African Republic",4.14,44.57],[ "Canada",9.81,80.14],[ "Switzerland",10.96,81.09],[ "Chile",6.71,77.96],[ "China",4.75,73.79],[ "Cameroon",4.63,51.72],[ "Congo, Rep.",2.56,53.5],[ "Colombia",5.37,72.02],[ "Comoros",3.96,58.82],[ "Cabo Verde",5.06,71.42],[ "Costa Rica",7.8,78.31],[ "Cuba",6.14,77.49],[ "Cyprus",6.42,78.48],[ "Czech Republic",6.9,75.72],[ "Germany",10.67,78.68],[ "Djibouti",6.76,57.66],[ "Denmark",9.67,77.49],[ "Dominican Republic",5.11,71.48],[ "Algeria",3.54,69.66],[ "Ecuador",6.57,74.45],[ "Egypt, Arab Rep.",5.27,69.26],[ "Eritrea",2.95,58.13],[ "Spain",8.22,79.87],[ "Estonia",5.11,71.91],[ "Ethiopia",4.33,55.56],[ "Finland",8.21,78.71],[ "Fiji",3.61,68.32],[ "France",10.97,80.16],[ "Micronesia, Fed. Sts.",10.36,67.78],[ "Gabon",3.38,59.68],[ "United Kingdom",8.03,78.75],[ "Georgia",8.53,72.71],[ "Ghana",6.14,58.22],[ "Guinea",5.26,52.19],[ "Gambia, The",4.35,56.46],[ "Guinea-Bissau",5.31,52.17],[ "Equatorial Guinea",2.13,48.49],[ "Greece",8.68,79.04],[ "Grenada",5.84,71.18],[ "Guatemala",6.41,69.33],[ "Guyana",5.34,64.27],[ "Honduras",7.89,71.27],[ "Croatia",6.65,75.52],[ "Haiti",5.61,58.81],[ "Hungary",8.22,72.65],[ "Indonesia",2.37,68.55],[ "India",4.5,63.72],[ "Ireland",7.53,78.54],[ "Iran, Islamic Rep.",4.72,71.15],[ "Iceland",10.01,81],[ "Italy",8.5,80.78],[ "Jamaica",4.8,71.22],[ "Jordan",9.07,72.47],[ "Japan",7.99,82.03],[ "Kazakhstan",3.95,65.89],[ "Kenya",4.29,53.93],[ "Kyrgyz Republic",5.57,68.15],[ "Cambodia",7.07,66.02],[ "Kiribati",10.37,65.94],[ "Korea, Rep.",5.22,77.85],[ "Kuwait",2.75,73.66],[ "Lao PDR",4.58,63.98],[ "Lebanon",8.22,76.52],[ "Libya",3.5,73.27],[ "St. Lucia",6.29,72.63],[ "Lesotho",6.96,43.53],[ "Lithuania",5.67,71.96],[ "Luxembourg",8.2,79.12],[ "Latvia",6.51,72.03],[ "Moldova",8.49,67.7],[ "Madagascar",4.86,60.73],[ "Maldives",5.91,73.32],[ "Mexico",5.98,75.24],[ "Macedonia, FYR",8.7,73.96],[ "Mali",6.28,51.03],[ "Malta",8.6,79.25],[ "Myanmar",2.27,63.21],[ "Montenegro",8.66,73.49],[ "Mongolia",7,64.85],[ "Mozambique",5.91,47.74],[ "Mauritania",5.89,60.11],[ "Mauritius",4.17,72.28],[ "Malawi",7.82,48.07],[ "Malaysia",3.68,73.53],[ "Namibia",6.47,54.92],[ "Niger",7.11,53.46],[ "Nigeria",6.96,48.13],[ "Nicaragua",6.13,71.49],[ "Netherlands",9.97,79.1],[ "Norway",10.09,79.84],[ "Nepal",5.77,64.24],[ "New Zealand",8.03,79.55],[ "Oman",2.99,74.02],[ "Pakistan",2.82,64.94],[ "Panama",8.09,75.84],[ "Peru",4.37,72.1],[ "Philippines",3.23,67.35],[ "Papua New Guinea",4.61,60.27],[ "Poland",6.2,74.85],[ "Portugal",10.05,77.67],[ "Paraguay",5.9,71.11],[ "Qatar",3.61,77.32],[ "Romania",5.44,71.59],[ "Russian Federation",5.19,65.42],[ "Rwanda",5.82,53.46],[ "Saudi Arabia",3.7,73.69],[ "Sudan",4.14,59.52],[ "Senegal",5.68,59.9],[ "Singapore",3.21,79.49],[ "Solomon Islands",5.64,65.11],[ "Sierra Leone",15.36,41.33],[ "El Salvador",7.3,70.35],[ "Suriname",6.88,68.57],[ "Slovak Republic",7.21,73.96],[ "Slovenia",8.35,77.21],[ "Sweden",9.09,80.5],[ "Swaziland",5.88,45.75],[ "Syrian Arab Republic",4.48,74.47],[ "Chad",5.1,47.37],[ "Togo",5.89,53.97],[ "Thailand",3.51,71.98],[ "Tajikistan",4.3,65.3],[ "Turkmenistan",3.66,64.34],[ "Tonga",4.77,71.31],[ "Trinidad and Tobago",5.22,68.9],[ "Tunisia",5.63,73.3],[ "Turkey",5.37,72.01],[ "Tanzania",3.44,52.84],[ "Uganda",7.88,51.87],[ "Ukraine",6.61,68.19],[ "Uruguay",8.5,75.51],[ "United States",15.72,77.34],[ "Uzbekistan",5.12,67.27],[ "St. Vincent and the Grenadines",3.72,71.04],[ "Venezuela, RB",5.57,73.07],[ "Vietnam",5.53,74.47],[ "Vanuatu",3.48,68.99],[ "Samoa",4.93,70.71],[ "Yemen, Rep.",4.9,61.33],[ "South Africa",8.91,51.87],[ "Congo, Dem. Rep.",5.36,47.6],[ "Zambia",6.69,45.77],[ "Angola",4.16,48.54],[ "Albania",6.28,76.09],[ "United Arab Emirates",2.32,75.58],[ "Argentina",8.33,74.75],[ "Armenia",5.25,73.29],[ "Antigua and Barbuda",4.5,74.42],[ "Australia",8.48,80.84],[ "Austria",10.42,79.33],[ "Azerbaijan",7.86,68.94],[ "Burundi",10.08,50.01],[ "Belgium",9.98,78.98],[ "Benin",4.73,57.07],[ "Burkina Faso",6.87,52.66],[ "Bangladesh",3.21,67.49],[ "Bulgaria",7.31,72.56],[ "Bahrain",3.74,75.49],[ "Bahamas, The",5.95,73.64],[ "Bosnia and Herzegovina",8.71,75.11],[ "Belarus",6.89,68.85],[ "Belize",4.45,72.05],[ "Bolivia",5.58,64.7],[ "Brazil",8.17,71.72],[ "Barbados",6.96,73.95],[ "Brunei Darussalam",2.59,77.03],[ "Bhutan",4.35,64.03],[ "Botswana",5.62,46.73],[ "Central African Republic",4.36,45],[ "Canada",9.83,80.29],[ "Switzerland",10.86,81.24],[ "Chile",6.57,78.14],[ "China",4.68,74.05],[ "Cameroon",4.88,51.89],[ "Congo, Rep.",2.42,54.03],[ "Colombia",5.82,72.26],[ "Comoros",4.28,59.05],[ "Cabo Verde",4.86,71.87],[ "Costa Rica",7.74,78.45],[ "Cuba",8.08,77.71],[ "Cyprus",6.37,78.6],[ "Czech Republic",6.93,75.92],[ "Germany",10.81,78.93],[ "Djibouti",7.21,57.98],[ "Denmark",9.77,77.84],[ "Dominican Republic",5.27,71.69],[ "Algeria",3.14,69.84],[ "Ecuador",6.31,74.63],[ "Egypt, Arab Rep.",5.13,69.43],[ "Eritrea",2.83,58.63],[ "Spain",8.29,80.17],[ "Estonia",5.01,72.57],[ "Ethiopia",4.11,56.57],[ "Finland",8.43,78.82],[ "Fiji",3.61,68.49],[ "France",11.02,80.16],[ "Micronesia, Fed. Sts.",12.12,67.92],[ "Gabon",2.98,60.01],[ "United Kingdom",8.27,79.05],[ "Georgia",8.6,72.91],[ "Ghana",7.02,58.7],[ "Guinea",5.32,52.75],[ "Gambia, The",4.55,56.76],[ "Guinea-Bissau",5.72,52.38],[ "Equatorial Guinea",1.61,48.87],[ "Greece",9.66,79.24],[ "Grenada",6.06,71.41],[ "Guatemala",6.45,69.61],[ "Guyana",5.35,64.53],[ "Honduras",7.69,71.47],[ "Croatia",6.99,75.24],[ "Haiti",4.41,59.28],[ "Hungary",8.45,72.65],[ "Indonesia",2.79,68.85],[ "India",4.25,64.1],[ "Ireland",7.57,78.94],[ "Iran, Islamic Rep.",5.33,71.49],[ "Iceland",9.61,81.5],[ "Italy",8.74,80.73],[ "Jamaica",4.07,71.48],[ "Jordan",8.88,72.64],[ "Japan",8.18,81.93],[ "Kazakhstan",4.07,65.91],[ "Kenya",4.36,54.7],[ "Kyrgyz Republic",5.82,67.96],[ "Cambodia",6.95,67.04],[ "Kiribati",10.13,66.26],[ "Korea, Rep.",5.63,78.43],[ "Kuwait",2.37,73.74],[ "Lao PDR",4.31,64.5],[ "Lebanon",7.8,77.07],[ "Libya",2.6,73.58],[ "St. Lucia",6.33,73.01],[ "Lesotho",6.3,43.66],[ "Lithuania",5.83,71.25],[ "Luxembourg",7.95,79.43],[ "Latvia",6.37,71.36],[ "Moldova",9.15,67.86],[ "Madagascar",4.9,61.19],[ "Maldives",7.04,74.08],[ "Mexico",5.87,75.49],[ "Macedonia, FYR",8.07,74.09],[ "Mali",6.34,51.52],[ "Malta",9.11,79.3],[ "Myanmar",2.11,63.48],[ "Montenegro",8.7,73.57],[ "Mongolia",5.99,65.29],[ "Mozambique",6.87,47.85],[ "Mauritania",5.05,60.24],[ "Mauritius",4.46,72.43],[ "Malawi",8.2,48.94],[ "Malaysia",3.23,73.69],[ "Namibia",7.32,55.98],[ "Niger",7.72,54.12],[ "Nigeria",6.6,48.66],[ "Nicaragua",6.11,71.91],[ "Netherlands",10.88,79.35],[ "Norway",9.53,80.04],[ "Nepal",5.72,64.75],[ "New Zealand",8.39,79.85],[ "Oman",2.6,74.41],[ "Pakistan",3.18,65.17],[ "Panama",7.48,76.01],[ "Peru",4.46,72.42],[ "Philippines",3.91,67.49],[ "Papua New Guinea",3.99,60.64],[ "Poland",6.21,75],[ "Portugal",10.35,78.07],[ "Paraguay",5.56,71.33],[ "Qatar",3.01,77.45],[ "Romania",5.48,71.88],[ "Russian Federation",5.21,65.47],[ "Rwanda",6.09,55.19],[ "Saudi Arabia",3.55,73.94],[ "Sudan",4.11,59.93],[ "Senegal",5.36,60.55],[ "Singapore",3.79,79.99],[ "Solomon Islands",7.83,65.55],[ "Sierra Leone",15.89,42.15],[ "El Salvador",7.19,70.55],[ "Suriname",6.78,68.84],[ "Slovak Republic",7.04,73.9],[ "Slovenia",8.36,77.61],[ "Sweden",9.06,80.55],[ "Swaziland",6.8,45.86],[ "Syrian Arab Republic",4.11,74.72],[ "Chad",4.73,47.67],[ "Togo",6.57,54.14],[ "Thailand",3.55,72.33],[ "Tajikistan",4.84,65.68],[ "Turkmenistan",2.95,64.43],[ "Tonga",6.39,71.45],[ "Trinidad and Tobago",5.26,69.01],[ "Tunisia",5.57,73.5],[ "Turkey",5.45,72.43],[ "Tanzania",4.02,53.83],[ "Uganda",9.17,52.84],[ "Ukraine",6.41,67.96],[ "Uruguay",8.24,75.72],[ "United States",15.77,77.34],[ "Uzbekistan",5.11,67.35],[ "St. Vincent and the Grenadines",3.65,71.25],[ "Venezuela, RB",5.43,73.25],[ "Vietnam",5.86,74.63],[ "Vanuatu",3.26,69.32],[ "Samoa",4.95,71],[ "Yemen, Rep.",4.58,61.53],[ "South Africa",8.8,51.56],[ "Congo, Dem. Rep.",5.3,47.82],[ "Zambia",7.08,47.13],[ "Angola",4.54,49.01],[ "Albania",5.95,76.29],[ "United Arab Emirates",2.33,75.8],[ "Argentina",8.26,74.94],[ "Armenia",4.58,73.55],[ "Antigua and Barbuda",4.47,74.62],[ "Australia",8.52,81.04],[ "Austria",10.22,79.83],[ "Azerbaijan",6.17,69.37],[ "Burundi",11.63,50.5],[ "Belgium",9.48,79.38],[ "Benin",4.75,57.49],[ "Burkina Faso",7.37,53.14],[ "Bangladesh",3.4,67.89],[ "Bulgaria",6.89,72.61],[ "Bahrain",3.59,75.66],[ "Bahamas, The",6.93,73.86],[ "Bosnia and Herzegovina",8.52,75.23],[ "Belarus",6.34,69.4],[ "Belize",4.41,72.31],[ "Bolivia",4.8,65.03],[ "Brazil",8.48,71.99],[ "Barbados",7.12,74.12],[ "Brunei Darussalam",2.22,77.22],[ "Bhutan",4.4,64.72],[ "Botswana",4.93,46.45],[ "Central African Republic",4.04,45.51],[ "Canada",9.96,80.64],[ "Switzerland",10.39,81.49],[ "Chile",6.21,78.29],[ "China",4.55,74.26],[ "Cameroon",4.77,52.15],[ "Congo, Rep.",2.37,54.63],[ "Colombia",6.11,72.5],[ "Comoros",4.59,59.29],[ "Cabo Verde",5.11,72.3],[ "Costa Rica",7.82,78.58],[ "Cuba",7.67,77.93],[ "Cyprus",6.28,78.73],[ "Czech Republic",6.69,76.52],[ "Germany",10.64,79.13],[ "Djibouti",7.05,58.36],[ "Denmark",9.92,78.1],[ "Dominican Republic",5.21,71.91],[ "Algeria",3.14,70.01],[ "Ecuador",6.48,74.8],[ "Egypt, Arab Rep.",5.23,69.61],[ "Eritrea",3.23,59.13],[ "Spain",8.39,80.82],[ "Estonia",4.99,72.69],[ "Ethiopia",4.18,57.62],[ "Finland",8.34,79.21],[ "Fiji",3.84,68.67],[ "France",10.95,80.81],[ "Micronesia, Fed. Sts.",11.92,68.08],[ "Gabon",3.2,60.43],[ "United Kingdom",8.43,79.25],[ "Georgia",8.39,73.09],[ "Ghana",5.35,59.19],[ "Guinea",5.49,53.35],[ "Gambia, The",4.71,57.06],[ "Guinea-Bissau",5.89,52.61],[ "Equatorial Guinea",2.3,49.33],[ "Greece",9.75,79.44],[ "Grenada",6.43,71.63],[ "Guatemala",7.35,69.86],[ "Guyana",4.14,64.79],[ "Honduras",7.63,71.7],[ "Croatia",7.03,75.84],[ "Haiti",5.7,59.8],[ "Hungary",8.26,73.1],[ "Indonesia",2.91,69.15],[ "India",4.03,64.46],[ "Ireland",7.51,79.24],[ "Iran, Islamic Rep.",5.07,71.83],[ "Iceland",9.37,81.16],[ "Italy",8.84,81.28],[ "Jamaica",4.22,71.76],[ "Jordan",8.08,72.8],[ "Japan",8.2,82.32],[ "Kazakhstan",3.94,66.16],[ "Kenya",4.51,55.6],[ "Kyrgyz Republic",6.73,67.7],[ "Cambodia",5.36,67.98],[ "Kiribati",10.97,66.58],[ "Korea, Rep.",6.1,78.97],[ "Kuwait",2.25,73.82],[ "Lao PDR",4.27,65],[ "Lebanon",8.14,77.6],[ "Libya",2.54,73.86],[ "St. Lucia",6.52,73.37],[ "Lesotho",7.11,44.15],[ "Lithuania",6.2,71.06],[ "Luxembourg",7.75,79.29],[ "Latvia",6.8,70.87],[ "Moldova",10.63,67.99],[ "Madagascar",4.97,61.62],[ "Maldives",6.67,74.75],[ "Mexico",5.68,75.74],[ "Macedonia, FYR",7.83,74.21],[ "Mali",6.56,51.99],[ "Malta",9.02,79.44],[ "Myanmar",2.05,63.73],[ "Montenegro",8.25,73.73],[ "Mongolia",5.37,65.68],[ "Mozambique",6.51,48.02],[ "Mauritania",3.5,60.39],[ "Mauritius",4.79,72.43],[ "Malawi",8.99,49.89],[ "Malaysia",3.59,73.84],[ "Namibia",7.2,57.32],[ "Niger",7.94,54.75],[ "Nigeria",5.7,49.23],[ "Nicaragua",6.33,72.32],[ "Netherlands",10.75,79.7],[ "Norway",9.25,80.34],[ "Nepal",5.63,65.24],[ "New Zealand",8.82,80.05],[ "Oman",2.34,74.77],[ "Pakistan",3.67,65.39],[ "Panama",7,76.18],[ "Peru",4.52,72.72],[ "Philippines",3.95,67.63],[ "Papua New Guinea",3.49,61],[ "Poland",6.19,75.14],[ "Portugal",10.03,78.42],[ "Paraguay",5.71,71.51],[ "Qatar",2.58,77.58],[ "Romania",5.09,72.16],[ "Russian Federation",5.3,66.64],[ "Rwanda",10.01,56.98],[ "Saudi Arabia",3.74,74.18],[ "Sudan",5.02,60.31],[ "Senegal",5.44,61.17],[ "Singapore",3.7,80.14],[ "Solomon Islands",6.66,65.94],[ "Sierra Leone",14.18,42.88],[ "El Salvador",6.68,70.75],[ "Suriname",6.22,69.15],[ "Slovak Republic",7.35,74.2],[ "Slovenia",8.28,78.09],[ "Sweden",8.95,80.75],[ "Swaziland",6.81,46.24],[ "Syrian Arab Republic",3.83,74.9],[ "Chad",4.03,48.03],[ "Togo",6.38,54.34],[ "Thailand",3.49,72.68],[ "Tajikistan",4.78,66.03],[ "Turkmenistan",2.19,64.53],[ "Tonga",5.5,71.59],[ "Trinidad and Tobago",4.43,69.12],[ "Tunisia",5.64,73.9],[ "Turkey",5.81,72.82],[ "Tanzania",6.53,54.88],[ "Uganda",9.56,53.79],[ "Ukraine",6.39,68.08],[ "Uruguay",8.35,75.92],[ "United States",15.86,77.59],[ "Uzbekistan",5.49,67.44],[ "St. Vincent and the Grenadines",3.88,71.47],[ "Venezuela, RB",5.74,73.45],[ "Vietnam",6.5,74.77],[ "Vanuatu",3.11,69.63],[ "Samoa",5.19,71.28],[ "Yemen, Rep.",4.82,61.74],[ "South Africa",8.53,51.61],[ "Congo, Dem. Rep.",5.55,48.02],[ "Zambia",6.41,48.58],[ "Angola",3.38,49.44],[ "Albania",6.44,76.46],[ "United Arab Emirates",2.48,76.01],[ "Argentina",8.21,75.13],[ "Armenia",4.31,73.76],[ "Antigua and Barbuda",4.57,74.8],[ "Australia",8.55,81.29],[ "Austria",10.26,79.98],[ "Azerbaijan",5.1,69.76],[ "Burundi",10.03,51.02],[ "Belgium",9.53,79.78],[ "Benin",4.55,57.87],[ "Burkina Faso",7.65,53.62],[ "Bangladesh",3.46,68.28],[ "Bulgaria",6.81,72.66],[ "Bahrain",3.62,75.82],[ "Bahamas, The",7.08,74.06],[ "Bosnia and Herzegovina",8.58,75.37],[ "Belarus",6.44,70.2],[ "Belize",4.81,72.56],[ "Bolivia",4.7,65.36],[ "Brazil",8.47,72.26],[ "Barbados",7.52,74.3],[ "Brunei Darussalam",2.3,77.42],[ "Bhutan",5.01,65.37],[ "Botswana",4.71,46.3],[ "Central African Republic",4.32,46.09],[ "Canada",10.03,80.37],[ "Switzerland",10.21,81.74],[ "Chile",6.37,78.44],[ "China",4.35,74.42],[ "Cameroon",4.71,52.48],[ "Congo, Rep.",2.54,55.28],[ "Colombia",6.25,72.72],[ "Comoros",4.92,59.52],[ "Cabo Verde",4.3,72.71],[ "Costa Rica",8.37,78.73],[ "Cuba",10.42,78.14],[ "Cyprus",6.05,78.86],[ "Czech Republic",6.52,76.72],[ "Germany",10.48,79.53],[ "Djibouti",7.72,58.8],[ "Denmark",9.99,78.2],[ "Dominican Republic",4.97,72.13],[ "Algeria",3.51,70.17],[ "Ecuador",6.75,74.98],[ "Egypt, Arab Rep.",4.95,69.81],[ "Eritrea",3.29,59.64],[ "Spain",8.49,80.87],[ "Estonia",5.1,72.81],[ "Ethiopia",4.78,58.65],[ "Finland",8.04,79.26],[ "Fiji",3.74,68.84],[ "France",10.88,81.11],[ "Micronesia, Fed. Sts.",12,68.22],[ "Gabon",3.27,60.9],[ "United Kingdom",8.5,79.45],[ "Georgia",8.17,73.25],[ "Ghana",6.01,59.64],[ "Guinea",6.27,53.94],[ "Gambia, The",4.09,57.34],[ "Guinea-Bissau",6.09,52.84],[ "Equatorial Guinea",2.36,49.85],[ "Greece",9.81,79.44],[ "Grenada",6.11,71.83],[ "Guatemala",7.2,70.12],[ "Guyana",3.92,65.05],[ "Honduras",7.89,71.96],[ "Croatia",7.54,75.71],[ "Haiti",5.42,60.34],[ "Hungary",7.67,73.15],[ "Indonesia",3.1,69.42],[ "India",3.88,64.79],[ "Ireland",7.9,79.64],[ "Iran, Islamic Rep.",5.11,72.16],[ "Iceland",9.31,81.45],[ "Italy",8.5,81.38],[ "Jamaica",4.87,72.04],[ "Jordan",8.35,72.96],[ "Japan",8.23,82.51],[ "Kazakhstan",3.42,66.5],[ "Kenya",4.42,56.59],[ "Kyrgyz Republic",6.87,67.85],[ "Cambodia",4.47,68.82],[ "Kiribati",12.07,66.91],[ "Korea, Rep.",6.39,79.35],[ "Kuwait",2.13,73.9],[ "Lao PDR",4.16,65.49],[ "Lebanon",7.96,78.08],[ "Libya",2.46,74.12],[ "St. Lucia",6.83,73.71],[ "Lesotho",8.47,44.88],[ "Lithuania",6.22,70.9],[ "Luxembourg",6.8,79.38],[ "Latvia",7.01,71.02],[ "Moldova",10.88,68.11],[ "Madagascar",5.01,62.05],[ "Maldives",6.29,75.34],[ "Mexico",5.78,75.98],[ "Macedonia, FYR",6.98,74.32],[ "Mali",6.98,52.45],[ "Malta",8.46,79.79],[ "Myanmar",1.94,63.97],[ "Montenegro",6.96,73.92],[ "Mongolia",5.69,66.04],[ "Mozambique",5.96,48.23],[ "Mauritania",4.37,60.54],[ "Mauritius",4.95,72.57],[ "Malawi",6.67,50.86],[ "Malaysia",3.54,74],[ "Namibia",6.94,58.78],[ "Niger",7.39,55.35],[ "Nigeria",7.22,49.79],[ "Nicaragua",6.92,72.71],[ "Netherlands",10.76,80.1],[ "Norway",9.49,80.4],[ "Nepal",5.51,65.72],[ "New Zealand",8.48,80.15],[ "Oman",2.46,75.12],[ "Pakistan",3.55,65.6],[ "Panama",6.73,76.36],[ "Peru",5.08,73.01],[ "Philippines",3.89,67.77],[ "Papua New Guinea",4.19,61.32],[ "Poland",6.33,75.24],[ "Portugal",9.99,78.32],[ "Paraguay",5.97,71.67],[ "Qatar",2.31,77.71],[ "Romania",5.23,72.57],[ "Russian Federation",5.38,67.5],[ "Rwanda",10.02,58.65],[ "Saudi Arabia",3.75,74.41],[ "Sudan",6.18,60.66],[ "Senegal",4.71,61.72],[ "Singapore",3.55,80.44],[ "Solomon Islands",5.64,66.27],[ "Sierra Leone",14.02,43.53],[ "El Salvador",6.32,70.96],[ "Suriname",5.92,69.47],[ "Slovak Republic",7.76,74.21],[ "Slovenia",7.86,78.56],[ "Sweden",8.92,80.9],[ "Swaziland",7.05,46.77],[ "Syrian Arab Republic",3.8,75],[ "Chad",4.2,48.43],[ "Togo",6.47,54.57],[ "Thailand",3.56,73.02],[ "Tajikistan",5.35,66.34],[ "Turkmenistan",2.11,64.64],[ "Tonga",6.86,71.74],[ "Trinidad and Tobago",4.78,69.24],[ "Tunisia",5.64,74.2],[ "Turkey",6.04,73.18],[ "Tanzania",5.69,55.99],[ "Uganda",9.36,54.72],[ "Ukraine",6.36,68.22],[ "Uruguay",7.99,76.12],[ "United States",16.08,77.84],[ "Uzbekistan",5.45,67.53],[ "St. Vincent and the Grenadines",3.92,71.69],[ "Venezuela, RB",5.96,73.64],[ "Vietnam",7.08,74.9],[ "Vanuatu",3.67,69.94],[ "Samoa",5.89,71.56],[ "Yemen, Rep.",4.92,61.94],[ "South Africa",7.79,52],[ "Congo, Dem. Rep.",5.88,48.21],[ "Zambia",5.95,50.1],[ "Angola",3.84,49.85],[ "Albania",6.11,76.63],[ "United Arab Emirates",2.67,76.21],[ "Argentina",8.28,75.31],[ "Armenia",3.8,73.94],[ "Antigua and Barbuda",4.44,74.99],[ "Australia",8.75,81.4],[ "Austria",10.49,80.23],[ "Azerbaijan",4.37,70.06],[ "Burundi",7.86,51.56],[ "Belgium",9.91,79.68],[ "Benin",4.19,58.22],[ "Burkina Faso",8.58,54.09],[ "Bangladesh",3.54,68.68],[ "Bulgaria",6.97,72.96],[ "Bahrain",4.1,75.98],[ "Bahamas, The",7.3,74.25],[ "Bosnia and Herzegovina",8.79,75.51],[ "Belarus",5.95,70.46],[ "Belize",5.1,72.81],[ "Bolivia",4.93,65.69],[ "Brazil",8.28,72.53],[ "Barbados",7.53,74.47],[ "Brunei Darussalam",2.21,77.61],[ "Bhutan",5.24,65.96],[ "Botswana",5.34,46.25],[ "Central African Republic",4.31,46.73],[ "Canada",10.25,80.54],[ "Switzerland",10.29,81.99],[ "Chile",6.83,78.62],[ "China",4.63,74.58],[ "Cameroon",4.98,52.86],[ "Congo, Rep.",2.09,55.93],[ "Colombia",6.62,72.94],[ "Comoros",5.17,59.75],[ "Cabo Verde",3.96,73.11],[ "Costa Rica",9.01,78.9],[ "Cuba",10.79,78.34],[ "Cyprus",6.89,79],[ "Czech Republic",6.82,76.98],[ "Germany",10.7,79.74],[ "Djibouti",8.05,59.28],[ "Denmark",10.18,78.45],[ "Dominican Republic",5.27,72.35],[ "Algeria",3.83,70.33],[ "Ecuador",6.31,75.18],[ "Egypt, Arab Rep.",4.81,70.01],[ "Eritrea",3.4,60.15],[ "Spain",8.94,81.18],[ "Estonia",5.96,73.77],[ "Ethiopia",4.31,59.66],[ "Finland",8.31,79.57],[ "Fiji",3.61,69.02],[ "France",11.02,81.21],[ "Micronesia, Fed. Sts.",12.93,68.37],[ "Gabon",2.67,61.39],[ "United Kingdom",8.95,79.6],[ "Georgia",8.99,73.4],[ "Ghana",5.59,60.03],[ "Guinea",6,54.48],[ "Gambia, The",4.12,57.62],[ "Guinea-Bissau",6.01,53.08],[ "Equatorial Guinea",3.37,50.4],[ "Greece",10.13,79.94],[ "Grenada",5.96,72.01],[ "Guatemala",6.94,70.39],[ "Guyana",6.64,65.29],[ "Honduras",8.4,72.23],[ "Croatia",7.8,75.91],[ "Haiti",5.47,60.87],[ "Hungary",7.46,73.7],[ "Indonesia",2.81,69.69],[ "India",3.93,65.11],[ "Ireland",9.06,80.1],[ "Iran, Islamic Rep.",5.17,72.48],[ "Iceland",9.29,81.61],[ "Italy",8.89,81.73],[ "Jamaica",5.4,72.32],[ "Jordan",8.78,73.12],[ "Japan",8.61,82.59],[ "Kazakhstan",3.87,67.02],[ "Kenya",4.19,57.61],[ "Kyrgyz Republic",6.07,68.45],[ "Cambodia",5.46,69.54],[ "Kiribati",13.24,67.23],[ "Korea, Rep.",6.59,79.83],[ "Kuwait",1.92,73.98],[ "Lao PDR",4.09,65.97],[ "Lebanon",7.46,78.52],[ "Libya",2.25,74.36],[ "St. Lucia",7.45,73.99],[ "Lesotho",8.85,45.74],[ "Lithuania",6.6,71.81],[ "Luxembourg",7.34,80.54],[ "Latvia",6.63,72.42],[ "Moldova",11.41,68.23],[ "Madagascar",4.33,62.47],[ "Maldives",7.89,75.87],[ "Mexico",5.84,76.23],[ "Macedonia, FYR",6.93,74.45],[ "Mali",6.74,52.9],[ "Malta",8.16,79.64],[ "Myanmar",2.03,64.19],[ "Montenegro",6.35,74.1],[ "Mongolia",6.36,66.36],[ "Mozambique",5.5,48.49],[ "Mauritania",4.35,60.7],[ "Mauritius",4.6,72.57],[ "Malawi",8.38,51.81],[ "Malaysia",3.41,74.16],[ "Namibia",6.85,60.18],[ "Niger",7.13,55.93],[ "Nigeria",6.46,50.33],[ "Nicaragua",7.18,73.08],[ "Netherlands",10.99,80.25],[ "Norway",9,80.59],[ "Nepal",6.09,66.19],[ "New Zealand",9.31,80.35],[ "Oman",2.06,75.45],[ "Pakistan",3.34,65.78],[ "Panama",7.3,76.55],[ "Peru",5.75,73.31],[ "Philippines",3.83,67.92],[ "Papua New Guinea",4.57,61.59],[ "Poland",6.88,75.54],[ "Portugal",10.22,78.52],[ "Paraguay",5.63,71.81],[ "Qatar",1.87,77.85],[ "Romania",5.44,72.57],[ "Russian Federation",5.14,67.85],[ "Rwanda",10.13,60.09],[ "Saudi Arabia",3.11,74.64],[ "Sudan",7.47,60.98],[ "Senegal",4.94,62.19],[ "Singapore",4.01,80.79],[ "Solomon Islands",5.61,66.56],[ "Sierra Leone",14.16,44.07],[ "El Salvador",6.21,71.18],[ "Suriname",5.92,69.78],[ "Slovak Republic",8.02,74.7],[ "Slovenia",8.35,78.77],[ "Sweden",9.23,81.1],[ "Swaziland",8.19,47.35],[ "Syrian Arab Republic",3.37,75.02],[ "Chad",3.57,48.86],[ "Togo",6.46,54.84],[ "Thailand",3.92,73.32],[ "Tajikistan",5.58,66.6],[ "Turkmenistan",1.85,64.75],[ "Tonga",6.27,71.88],[ "Trinidad and Tobago",4.36,69.36],[ "Tunisia",5.63,74.3],[ "Turkey",6.07,73.53],[ "Tanzania",5.36,57.1],[ "Uganda",8.8,55.62],[ "Ukraine",6.63,68.25],[ "Uruguay",7.96,76.3],[ "United States",16.54,77.94],[ "Uzbekistan",5.15,67.63],[ "St. Vincent and the Grenadines",4.7,71.88],[ "Venezuela, RB",5.64,73.83],[ "Vietnam",6,75.04],[ "Vanuatu",3.67,70.25],[ "Samoa",5.09,71.84],[ "Yemen, Rep.",5.12,62.14],[ "South Africa",8.04,52.64],[ "Congo, Dem. Rep.",7.33,48.44],[ "Zambia",6.63,51.62],[ "Angola",4.37,50.25],[ "Albania",6,76.8],[ "United Arab Emirates",3.43,76.41],[ "Argentina",9.41,75.49],[ "Armenia",4.55,74.09],[ "Antigua and Barbuda",4.56,75.16],[ "Australia",9.04,81.54],[ "Austria",11.23,80.08],[ "Azerbaijan",5.85,70.29],[ "Burundi",6.96,52.09],[ "Belgium",10.59,79.98],[ "Benin",4.37,58.51],[ "Burkina Faso",7.28,54.56],[ "Bangladesh",3.71,69.08],[ "Bulgaria",7.23,73.41],[ "Bahrain",4.49,76.12],[ "Bahamas, The",7.43,74.42],[ "Bosnia and Herzegovina",9.87,75.66],[ "Belarus",6.09,70.41],[ "Belize",5.77,73.04],[ "Bolivia",5.76,66.01],[ "Brazil",8.75,72.8],[ "Barbados",7.96,74.64],[ "Brunei Darussalam",2.82,77.8],[ "Bhutan",4.59,66.51],[ "Botswana",6.14,46.3],[ "Central African Republic",3.58,47.4],[ "Canada",11.4,80.72],[ "Switzerland",11,82.04],[ "Chile",7.45,78.82],[ "China",5.15,74.73],[ "Cameroon",5.1,53.26],[ "Congo, Rep.",2.27,56.58],[ "Colombia",7.01,73.16],[ "Comoros",3.81,59.98],[ "Cabo Verde",4.24,73.49],[ "Costa Rica",9.69,79.08],[ "Cuba",11.74,78.53],[ "Cyprus",7.4,79.15],[ "Czech Republic",7.95,77.08],[ "Germany",11.75,79.84],[ "Djibouti",8.29,59.78],[ "Denmark",11.47,78.6],[ "Dominican Republic",5.44,72.57],[ "Algeria",4.61,70.47],[ "Ecuador",7.13,75.4],[ "Egypt, Arab Rep.",4.99,70.23],[ "Eritrea",3.13,60.66],[ "Spain",9.62,81.48],[ "Estonia",6.77,74.82],[ "Ethiopia",4.46,60.6],[ "Finland",9.17,79.72],[ "Fiji",4.24,69.2],[ "France",11.73,81.41],[ "Micronesia, Fed. Sts.",13.39,68.5],[ "Gabon",3.66,61.85],[ "United Kingdom",9.91,80.05],[ "Georgia",10.19,73.54],[ "Ghana",5.12,60.35],[ "Guinea",6.33,54.93],[ "Gambia, The",4.47,57.88],[ "Guinea-Bissau",6.76,53.32],[ "Equatorial Guinea",5.63,50.97],[ "Greece",10.04,80.19],[ "Grenada",6.24,72.18],[ "Guatemala",7.06,70.68],[ "Guyana",6.36,65.51],[ "Honduras",9.1,72.53],[ "Croatia",7.8,76.17],[ "Haiti",6.46,61.38],[ "Hungary",7.74,73.9],[ "Indonesia",2.83,69.93],[ "India",3.93,65.41],[ "Ireland",10.02,80.19],[ "Iran, Islamic Rep.",5.01,72.81],[ "Iceland",9.74,81.75],[ "Italy",9.4,81.94],[ "Jamaica",5.15,72.59],[ "Jordan",9.54,73.28],[ "Japan",9.53,82.93],[ "Kazakhstan",4.48,68.43],[ "Kenya",4.62,58.62],[ "Kyrgyz Republic",6.79,69.1],[ "Cambodia",6.26,70.15],[ "Kiribati",11.46,67.56],[ "Korea, Rep.",7.1,80.3],[ "Kuwait",3.93,74.07],[ "Lao PDR",3.61,66.44],[ "Lebanon",7.41,78.91],[ "Libya",3.46,74.59],[ "St. Lucia",8.06,74.23],[ "Lesotho",9.77,46.63],[ "Lithuania",7.54,72.91],[ "Luxembourg",8.01,80.64],[ "Latvia",6.84,73.08],[ "Moldova",12.49,68.34],[ "Madagascar",4.52,62.91],[ "Maldives",7.64,76.35],[ "Mexico",6.43,76.46],[ "Macedonia, FYR",6.88,74.58],[ "Mali",6.85,53.34],[ "Malta",8.33,80.24],[ "Myanmar",2.11,64.39],[ "Montenegro",6.32,74.27],[ "Mongolia",6.44,66.64],[ "Mozambique",5.95,48.8],[ "Mauritania",5.37,60.86],[ "Mauritius",4.97,72.88],[ "Malawi",8.32,52.68],[ "Malaysia",3.92,74.33],[ "Namibia",7.89,61.44],[ "Niger",7.65,56.47],[ "Nigeria",6.85,50.83],[ "Nicaragua",7.69,73.44],[ "Netherlands",11.88,80.55],[ "Norway",10.06,80.8],[ "Nepal",5.98,66.65],[ "New Zealand",10.05,80.7],[ "Oman",2.96,75.75],[ "Pakistan",3.01,65.96],[ "Panama",8.09,76.75],[ "Peru",5.34,73.6],[ "Philippines",4.26,68.07],[ "Papua New Guinea",4.23,61.82],[ "Poland",7.2,75.7],[ "Portugal",10.81,78.73],[ "Paraguay",7.47,71.93],[ "Qatar",2.63,78],[ "Romania",5.64,73.31],[ "Russian Federation",6.17,68.6],[ "Rwanda",9.95,61.28],[ "Saudi Arabia",4.14,74.86],[ "Sudan",7.4,61.25],[ "Senegal",4.8,62.56],[ "Singapore",4.48,81.24],[ "Solomon Islands",7.84,66.83],[ "Sierra Leone",16.9,44.5],[ "El Salvador",6.83,71.4],[ "Suriname",6.14,70.07],[ "Slovak Republic",9.15,74.91],[ "Slovenia",9.19,78.97],[ "Sweden",9.94,81.35],[ "Swaziland",8.43,47.89],[ "Syrian Arab Republic",3.55,74.96],[ "Chad",4.49,49.31],[ "Togo",7.19,55.14],[ "Thailand",4.11,73.59],[ "Tajikistan",5.93,66.82],[ "Turkmenistan",2.13,64.88],[ "Tonga",4.6,72.03],[ "Trinidad and Tobago",6.12,69.48],[ "Tunisia",6.18,74.45],[ "Turkey",6.75,73.88],[ "Tanzania",5.62,58.18],[ "Uganda",9.35,56.49],[ "Ukraine",7.8,69.19],[ "Uruguay",8.93,76.46],[ "United States",17.71,78.09],[ "Uzbekistan",5.37,67.74],[ "St. Vincent and the Grenadines",5.13,72.05],[ "Venezuela, RB",5.77,74],[ "Vietnam",6.52,75.17],[ "Vanuatu",3.9,70.55],[ "Samoa",5.67,72.12],[ "Yemen, Rep.",5.32,62.33],[ "South Africa",8.68,53.47],[ "Congo, Dem. Rep.",9.15,48.7],[ "Zambia",6.37,53.11],[ "Angola",3.41,50.65],[ "Albania",5.53,76.98],[ "United Arab Emirates",3.24,76.6],[ "Argentina",8.19,75.66],[ "Armenia",4.56,74.22],[ "Antigua and Barbuda",5.65,75.33],[ "Australia",8.95,81.7],[ "Austria",11.64,80.38],[ "Azerbaijan",5.33,70.45],[ "Burundi",8.84,52.62],[ "Belgium",10.5,80.23],[ "Benin",4.35,58.75],[ "Burkina Faso",7.36,55.01],[ "Bangladesh",3.69,69.49],[ "Bulgaria",7.58,73.51],[ "Bahrain",4.26,76.26],[ "Bahamas, The",7.43,74.59],[ "Bosnia and Herzegovina",9.8,75.81],[ "Belarus",5.55,70.4],[ "Belize",5.84,73.27],[ "Bolivia",5.47,66.32],[ "Brazil",9.01,73.08],[ "Barbados",6.67,74.8],[ "Brunei Darussalam",2.73,77.99],[ "Bhutan",4.08,67],[ "Botswana",5.64,46.44],[ "Central African Republic",3.87,48.1],[ "Canada",11.37,80.89],[ "Switzerland",10.88,82.25],[ "Chile",7.07,79.05],[ "China",4.98,74.89],[ "Cameroon",5.26,53.69],[ "Congo, Rep.",2.29,57.2],[ "Colombia",6.76,73.37],[ "Comoros",3.45,60.2],[ "Cabo Verde",4.26,73.86],[ "Costa Rica",9.65,79.28],[ "Cuba",10.19,78.72],[ "Cyprus",7.36,79.31],[ "Czech Republic",7.41,77.42],[ "Germany",11.55,79.99],[ "Djibouti",8.78,60.29],[ "Denmark",11.08,79.1],[ "Dominican Republic",5.46,72.79],[ "Algeria",4.17,70.62],[ "Ecuador",7.23,75.65],[ "Egypt, Arab Rep.",4.75,70.45],[ "Eritrea",3.15,61.19],[ "Spain",9.61,81.63],[ "Estonia",6.28,75.43],[ "Ethiopia",4.67,61.47],[ "Finland",8.99,79.87],[ "Fiji",4.18,69.38],[ "France",11.68,81.66],[ "Micronesia, Fed. Sts.",13.85,68.62],[ "Gabon",3.45,62.29],[ "United Kingdom",9.55,80.4],[ "Georgia",10.05,73.67],[ "Ghana",5.29,60.6],[ "Guinea",6.2,55.3],[ "Gambia, The",4.71,58.13],[ "Guinea-Bissau",7.07,53.56],[ "Equatorial Guinea",4.3,51.53],[ "Greece",9.38,80.39],[ "Grenada",5.96,72.34],[ "Guatemala",6.85,71],[ "Guyana",6.55,65.7],[ "Honduras",8.69,72.85],[ "Croatia",7.81,76.48],[ "Haiti",6.7,61.87],[ "Hungary",8.03,74.21],[ "Indonesia",2.92,70.17],[ "India",3.69,65.69],[ "Ireland",9.31,80.74],[ "Iran, Islamic Rep.",4.55,73.13],[ "Iceland",9.43,81.9],[ "Italy",9.41,82.34],[ "Jamaica",5.28,72.85],[ "Jordan",8.46,73.44],[ "Japan",9.59,82.84],[ "Kazakhstan",4.28,68.3],[ "Kenya",4.38,59.55],[ "Kyrgyz Republic",6.66,69.3],[ "Cambodia",5.82,70.64],[ "Kiribati",11.21,67.88],[ "Korea, Rep.",7.29,80.55],[ "Kuwait",2.79,74.16],[ "Lao PDR",2.62,66.9],[ "Lebanon",7.24,79.25],[ "Libya",3.3,74.79],[ "St. Lucia",7.77,74.41],[ "Lesotho",10.77,47.48],[ "Lithuania",7.05,73.27],[ "Luxembourg",7.21,80.63],[ "Latvia",6.49,73.48],[ "Moldova",11.68,68.46],[ "Madagascar",4.49,63.35],[ "Maldives",5.79,76.79],[ "Mexico",6.33,76.69],[ "Macedonia, FYR",6.95,74.72],[ "Mali",6.86,53.77],[ "Malta",8.49,81.4],[ "Myanmar",1.92,64.58],[ "Montenegro",7.17,74.42],[ "Mongolia",6.27,66.89],[ "Mozambique",5.72,49.14],[ "Mauritania",6,61.02],[ "Mauritius",5.41,72.97],[ "Malawi",8.46,53.47],[ "Malaysia",3.95,74.5],[ "Namibia",8.21,62.48],[ "Niger",6.91,56.99],[ "Nigeria",5.58,51.29],[ "Nicaragua",7.62,73.8],[ "Netherlands",12.07,80.7],[ "Norway",10.03,81],[ "Nepal",5.87,67.1],[ "New Zealand",10.2,80.7],[ "Oman",2.8,76.05],[ "Pakistan",2.99,66.13],[ "Panama",8.53,76.95],[ "Peru",4.88,73.91],[ "Philippines",4.23,68.23],[ "Papua New Guinea",4.11,62.01],[ "Poland",6.99,76.25],[ "Portugal",10.8,79.03],[ "Paraguay",8.74,72.03],[ "Qatar",2.09,78.15],[ "Romania",5.95,73.46],[ "Russian Federation",6.3,68.86],[ "Rwanda",10.8,62.21],[ "Saudi Arabia",4.04,75.08],[ "Sudan",6.53,61.48],[ "Senegal",4.81,62.84],[ "Singapore",4.15,81.54],[ "Solomon Islands",7.36,67.07],[ "Sierra Leone",15.43,44.84],[ "El Salvador",6.91,71.63],[ "Suriname",5.81,70.34],[ "Slovak Republic",8.99,75.11],[ "Slovenia",8.87,79.42],[ "Sweden",9.47,81.45],[ "Swaziland",8.44,48.35],[ "Syrian Arab Republic",3.41,74.87],[ "Chad",4.02,49.77],[ "Togo",7.46,55.47],[ "Thailand",3.81,73.81],[ "Tajikistan",5.98,67],[ "Turkmenistan",2.13,65.02],[ "Tonga",4.8,72.18],[ "Trinidad and Tobago",5.19,69.6],[ "Tunisia",6.66,74.6],[ "Turkey",6.75,74.21],[ "Tanzania",7.19,59.18],[ "Uganda",9.17,57.3],[ "Ukraine",7.81,70.28],[ "Uruguay",8.77,76.62],[ "United States",17.66,78.54],[ "Uzbekistan",5.35,67.86],[ "St. Vincent and the Grenadines",4.71,72.18],[ "Venezuela, RB",4.71,74.17],[ "Vietnam",6.93,75.31],[ "Vanuatu",4.68,70.84],[ "Samoa",6.41,72.41],[ "Yemen, Rep.",5.13,62.53],[ "South Africa",8.71,54.39],[ "Congo, Dem. Rep.",7.02,48.99],[ "Zambia",6.13,54.53],[ "Angola",3.44,51.06],[ "Albania",6.03,77.16],[ "United Arab Emirates",3.11,76.78],[ "Argentina",7.87,75.84],[ "Armenia",3.71,74.33],[ "Antigua and Barbuda",5.51,75.5],[ "Australia",8.97,81.9],[ "Austria",11.34,80.98],[ "Azerbaijan",5.01,70.55],[ "Burundi",8.96,53.14],[ "Belgium",10.51,80.59],[ "Benin",4.48,58.94],[ "Burkina Faso",6.37,55.44],[ "Bangladesh",3.81,69.89],[ "Bulgaria",7.27,74.16],[ "Bahrain",3.83,76.4],[ "Bahamas, The",7.55,74.75],[ "Bosnia and Herzegovina",9.92,75.96],[ "Belarus",4.92,70.65],[ "Belize",5.76,73.49],[ "Bolivia",4.98,66.63],[ "Brazil",8.9,73.35],[ "Barbados",7.15,74.97],[ "Brunei Darussalam",2.23,78.18],[ "Bhutan",3.73,67.46],[ "Botswana",5.25,46.67],[ "Central African Republic",3.88,48.79],[ "Canada",10.92,81.07],[ "Switzerland",11.01,82.7],[ "Chile",7.1,79.31],[ "China",5.15,75.04],[ "Cameroon",5.36,54.14],[ "Congo, Rep.",2.5,57.78],[ "Colombia",6.52,73.57],[ "Comoros",3.57,60.43],[ "Cabo Verde",4.03,74.21],[ "Costa Rica",10.19,79.49],[ "Cuba",10,78.89],[ "Cyprus",7.41,79.47],[ "Czech Republic",7.47,77.87],[ "Germany",11.33,80.74],[ "Djibouti",8.68,60.8],[ "Denmark",10.87,79.8],[ "Dominican Republic",5.36,73.01],[ "Algeria",4.41,70.75],[ "Ecuador",6.92,75.92],[ "Egypt, Arab Rep.",4.9,70.68],[ "Eritrea",2.69,61.71],[ "Spain",9.3,82.48],[ "Estonia",5.84,76.23],[ "Ethiopia",4.06,62.25],[ "Finland",9,80.47],[ "Fiji",3.8,69.56],[ "France",11.63,82.11],[ "Micronesia, Fed. Sts.",13.73,68.74],[ "Gabon",3.4,62.69],[ "United Kingdom",9.42,80.95],[ "Georgia",9.38,73.81],[ "Ghana",5.27,60.79],[ "Guinea",6,55.59],[ "Gambia, The",4.68,58.37],[ "Guinea-Bissau",6.28,53.8],[ "Equatorial Guinea",4.48,52.08],[ "Greece",8.99,80.73],[ "Grenada",6.48,72.48],[ "Guatemala",6.73,71.33],[ "Guyana",6.8,65.88],[ "Honduras",8.35,73.17],[ "Croatia",6.81,76.78],[ "Haiti",8.53,62.31],[ "Hungary",7.89,74.86],[ "Indonesia",2.86,70.39],[ "India",3.92,65.96],[ "Ireland",8.79,80.75],[ "Iran, Islamic Rep.",4.61,73.45],[ "Iceland",9.17,82.36],[ "Italy",9.23,82.64],[ "Jamaica",5.2,73.08],[ "Jordan",8.82,73.59],[ "Japan",9.95,82.59],[ "Kazakhstan",3.92,68.89],[ "Kenya",4.38,60.37],[ "Kyrgyz Republic",6.18,69.6],[ "Cambodia",5.56,71.05],[ "Kiribati",10.8,68.21],[ "Korea, Rep.",7.38,80.97],[ "Kuwait",2.62,74.26],[ "Lao PDR",2.8,67.35],[ "Lebanon",7.41,79.56],[ "Libya",3.91,74.99],[ "St. Lucia",7.59,74.55],[ "Lesotho",11.73,48.22],[ "Lithuania",6.69,73.56],[ "Luxembourg",6.7,80.99],[ "Latvia",6.01,73.58],[ "Moldova",11.36,68.58],[ "Madagascar",4.11,63.8],[ "Maldives",8.1,77.19],[ "Mexico",6.03,76.91],[ "Macedonia, FYR",6.94,74.87],[ "Mali",6.78,54.19],[ "Malta",8.75,80.75],[ "Myanmar",1.83,64.76],[ "Montenegro",7.2,74.54],[ "Mongolia",5.97,67.12],[ "Mozambique",6.36,49.49],[ "Mauritania",5.89,61.19],[ "Mauritius",4.95,73.27],[ "Malawi",8.29,54.14],[ "Malaysia",3.84,74.67],[ "Namibia",8.63,63.28],[ "Niger",6.85,57.48],[ "Nigeria",5.72,51.71],[ "Nicaragua",7.61,74.13],[ "Netherlands",11.94,81.2],[ "Norway",9.94,81.3],[ "Nepal",6.06,67.55],[ "New Zealand",10.28,80.9],[ "Oman",2.39,76.32],[ "Pakistan",3.01,66.28],[ "Panama",7.93,77.16],[ "Peru",4.74,74.21],[ "Philippines",4.43,68.39],[ "Papua New Guinea",4.2,62.16],[ "Poland",6.84,76.75],[ "Portugal",10.23,80.47],[ "Paraguay",8.9,72.11],[ "Qatar",1.94,78.3],[ "Romania",5.61,74.56],[ "Russian Federation",6.06,69.66],[ "Rwanda",10.96,62.92],[ "Saudi Arabia",3.51,75.29],[ "Sudan",6.74,61.68],[ "Senegal",4.99,63.04],[ "Singapore",4.19,81.74],[ "Solomon Islands",7.67,67.29],[ "Sierra Leone",16.31,45.1],[ "El Salvador",6.82,71.87],[ "Suriname",6.03,70.58],[ "Slovak Republic",7.94,75.96],[ "Slovenia",8.85,79.97],[ "Sweden",9.47,81.8],[ "Swaziland",8.26,48.66],[ "Syrian Arab Republic",3.38,74.77],[ "Chad",2.84,50.24],[ "Togo",8.01,55.81],[ "Thailand",4.12,74.01],[ "Tajikistan",5.78,67.14],[ "Turkmenistan",2.07,65.16],[ "Tonga",5.05,72.34],[ "Trinidad and Tobago",5.31,69.71],[ "Tunisia",7,74.85],[ "Turkey",6.13,74.54],[ "Tanzania",7.37,60.07],[ "Uganda",9.28,58.02],[ "Ukraine",7.34,70.81],[ "Uruguay",8.55,76.76],[ "United States",17.68,78.64],[ "Uzbekistan",5.63,67.98],[ "St. Vincent and the Grenadines",4.91,72.3],[ "Venezuela, RB",4.54,74.33],[ "Vietnam",6.8,75.46],[ "Vanuatu",3.83,71.13],[ "Samoa",7.03,72.7],[ "Yemen, Rep.",4.99,62.72],[ "South Africa",8.66,55.3],[ "Congo, Dem. Rep.",6.07,49.3],[ "Zambia",6.17,55.83],[ "Angola",3.47,51.46],[ "Albania",5.97,77.35],[ "United Arab Emirates",2.84,76.96],[ "Argentina",8.49,76.01],[ "Armenia",4.49,74.44],[ "Antigua and Barbuda",5.16,75.67],[ "Australia",8.94,82.1],[ "Austria",11.47,80.94],[ "Azerbaijan",5.39,70.62],[ "Burundi",8.13,53.63],[ "Belgium",10.79,80.39],[ "Benin",4.49,59.12],[ "Burkina Faso",6.17,55.86],[ "Bangladesh",3.6,70.29],[ "Bulgaria",7.42,74.31],[ "Bahrain",3.88,76.54],[ "Bahamas, The",7.52,74.91],[ "Bosnia and Herzegovina",9.89,76.12],[ "Belarus",5.04,72.06],[ "Belize",5.81,73.7],[ "Bolivia",5.77,66.93],[ "Brazil",9.31,73.62],[ "Barbados",6.29,75.13],[ "Brunei Darussalam",2.28,78.37],[ "Bhutan",3.77,67.89],[ "Botswana",5.31,46.99],[ "Central African Republic",3.76,49.48],[ "Canada",10.93,81.24],[ "Switzerland",11.3,82.7],[ "Chile",7.18,79.57],[ "China",5.41,75.2],[ "Cameroon",5.13,54.59],[ "Congo, Rep.",3.16,58.3],[ "Colombia",6.83,73.78],[ "Comoros",4.54,60.64],[ "Cabo Verde",3.9,74.54],[ "Costa Rica",10.13,79.71],[ "Cuba",10.86,79.07],[ "Cyprus",7.32,79.64],[ "Czech Republic",7.66,78.08],[ "Germany",11.28,80.89],[ "Djibouti",8.81,61.3],[ "Denmark",11.19,80.05],[ "Dominican Republic",5.42,73.23],[ "Algeria",5.25,70.88],[ "Ecuador",6.4,76.19],[ "Egypt, Arab Rep.",5,70.91],[ "Eritrea",2.6,62.23],[ "Spain",9.62,82.38],[ "Estonia",5.94,76.43],[ "Ethiopia",3.83,62.97],[ "Finland",9.15,80.63],[ "Fiji",3.99,69.74],[ "France",11.75,82.57],[ "Micronesia, Fed. Sts.",12.79,68.85],[ "Gabon",3.47,63.07],[ "United Kingdom",9.44,81.5],[ "Georgia",9.18,73.94],[ "Ghana",5.17,60.95],[ "Guinea",6.3,55.84],[ "Gambia, The",5.01,58.61],[ "Guinea-Bissau",5.86,54.03],[ "Equatorial Guinea",4.74,52.61],[ "Greece",9.27,80.63],[ "Grenada",6.38,72.61],[ "Guatemala",7.18,71.66],[ "Guyana",6.56,66.05],[ "Honduras",8.6,73.49],[ "Croatia",6.82,76.92],[ "Haiti",6.44,62.7],[ "Hungary",7.82,75.06],[ "Indonesia",3.03,70.61],[ "India",4.05,66.21],[ "Ireland",8.09,80.9],[ "Iran, Islamic Rep.",4.18,73.76],[ "Iceland",9.06,82.92],[ "Italy",9.17,82.94],[ "Jamaica",5.93,73.28],[ "Jordan",9.83,73.75],[ "Japan",10.07,83.1],[ "Kazakhstan",4.18,69.49],[ "Kenya",4.74,61.08],[ "Kyrgyz Republic",7.13,70],[ "Cambodia",5.42,71.41],[ "Kiribati",10.71,68.53],[ "Korea, Rep.",7.54,81.37],[ "Kuwait",2.53,74.36],[ "Lao PDR",2.88,67.81],[ "Lebanon",7.58,79.85],[ "Libya",3.91,75.18],[ "St. Lucia",8.48,74.67],[ "Lesotho",11.55,48.84],[ "Lithuania",6.65,73.86],[ "Luxembourg",6.85,81.39],[ "Latvia",5.99,73.78],[ "Moldova",11.72,68.69],[ "Madagascar",4.11,64.25],[ "Maldives",8.5,77.57],[ "Mexico",6.15,77.14],[ "Macedonia, FYR",7.13,75.03],[ "Mali",5.82,54.6],[ "Malta",9.09,80.75],[ "Myanmar",1.79,64.93],[ "Montenegro",7.57,74.65],[ "Mongolia",6.31,67.34],[ "Mozambique",6.42,49.84],[ "Mauritania",6.39,61.35],[ "Mauritius",4.81,73.57],[ "Malawi",9.16,54.72],[ "Malaysia",3.95,74.84],[ "Namibia",8.35,63.88],[ "Niger",7.16,57.97],[ "Nigeria",6.07,52.11],[ "Nicaragua",8.23,74.47],[ "Netherlands",12.44,81.1],[ "Norway",9.01,81.45],[ "Nepal",5.46,67.98],[ "New Zealand",10.28,81.16],[ "Oman",2.62,76.59],[ "Pakistan",3.15,66.44],[ "Panama",7.59,77.37],[ "Peru",5.07,74.52],[ "Philippines",4.59,68.55],[ "Papua New Guinea",5.2,62.3],[ "Poland",6.72,76.8],[ "Portugal",9.45,80.37],[ "Paraguay",10.32,72.19],[ "Qatar",2.16,78.45],[ "Romania",5.11,74.56],[ "Russian Federation",6.26,70.46],[ "Rwanda",10.66,63.49],[ "Saudi Arabia",3.21,75.5],[ "Sudan",7.25,61.86],[ "Senegal",4.96,63.2],[ "Singapore",4.65,82.14],[ "Solomon Islands",8.05,67.51],[ "Sierra Leone",15.08,45.33],[ "El Salvador",6.71,72.1],[ "Suriname",5.88,70.81],[ "Slovak Republic",7.8,76.11],[ "Slovenia",8.76,80.12],[ "Sweden",9.61,81.7],[ "Swaziland",8.53,48.85],[ "Syrian Arab Republic",3.4,74.71],[ "Chad",2.81,50.7],[ "Togo",8.64,56.15],[ "Thailand",3.93,74.19],[ "Tajikistan",5.76,67.26],[ "Turkmenistan",1.98,65.31],[ "Tonga",5.37,72.49],[ "Trinidad and Tobago",5.44,69.82],[ "Tunisia",7.04,75.1],[ "Turkey",6.3,74.86],[ "Tanzania",6.99,60.85],[ "Uganda",7.97,58.65],[ "Ukraine",7.56,70.94],[ "Uruguay",8.97,76.91],[ "United States",17.91,78.74],[ "Uzbekistan",5.89,68.1],[ "St. Vincent and the Grenadines",5.22,72.4],[ "Venezuela, RB",4.65,74.49],[ "Vietnam",6.57,75.61],[ "Vanuatu",3.63,71.41],[ "Samoa",6.82,72.98],[ "Yemen, Rep.",5.53,62.91],[ "South Africa",8.79,56.1],[ "Congo, Dem. Rep.",5.59,49.62],[ "Zambia",6.54,57.02] ]
+
+
+;
+data.addColumn('string','CountryName');
+data.addColumn('number','cost');
+data.addColumn('number','Age');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartID1468237f1519() {
+var data = gvisDataGeoChartID1468237f1519();
+var options = {};
+options["width"] =    610;
+options["height"] =    400;
+options["colorAxis"] = {colors:['#99FF66','#2EB82E','#006600']};
+options["backgroundColor"] = "#F0F0F0";
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartID1468237f1519')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartID1468237f1519);
+})();
+function displayChartGeoChartID1468237f1519() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID1468237f1519"></script>
+ 
+
+<!-- divChart -->
+
+<div id="GeoChartID1468237f1519"
+  style="width: 610px; height: 400px;">
+</div>
+
+<p>Plotting a subset of the data to compare spending against Age for the BRIC countries 
+along with Canada,Great Britain and Australia</p>
+
+<pre><code class="r"># Setting year as numeric instead of char
+D &lt;- transform(hl2, Year = as.numeric(Year))
+
+# plotting a subset of the data to compare spending against Age
+(hsb7 &lt;- D[D$CountryCode %in% c(&quot;BRA&quot;, &quot;CHN&quot;, &quot;IND&quot;, &quot;RUS&quot;, &quot;USA&quot;, &quot;GBR&quot;, &quot;CAN&quot;, 
+    &quot;AUS&quot;), ])
+</code></pre>
+
+
+<pre><code class="r">G &lt;- gvisGeoChart(hsb7, &quot;CountryName&quot;, &quot;cost&quot;, &quot;Age&quot;, options = list(width = 610, 
+    height = 400, colorAxis = &quot;{colors:[&#39;#99FF66&#39;,&#39;#2EB82E&#39;,&#39;#006600&#39;]}&quot;, backgroundColor = &quot;#F0F0F0&quot;))
+T &lt;- gvisTable(hsb7, options = list(width = 610, height = 270))
+GT &lt;- gvisMerge(G, T, horizontal = FALSE, chartid = &quot;gt&quot;)
+M &lt;- gvisMotionChart(hsb7, &quot;CountryCode&quot;, &quot;Year&quot;, options = list(width = 610, 
+    height = 670))
+
+GTM &lt;- gvisMerge(GT, M, horizontal = TRUE, tableOptions = &quot;bgcolor=\&quot;#CCCCCC\&quot; cellspacing=10&quot;)
+
+# Display chart
+print(GTM, &quot;chart&quot;)
+</code></pre>
+
+<!-- GeoChart generated in R 3.0.1 by googleVis 0.4.7 package -->
+
+<!-- Thu May 15 18:45:05 2014 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartID1468301d1c3e () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "Australia",
+7.25,
+77.83 
+],
+[
+ "Brazil",
+6.65,
+68.48 
+],
+[
+ "Canada",
+9.03,
+77.98 
+],
+[
+ "China",
+3.54,
+70.33 
+],
+[
+ "United Kingdom",
+6.75,
+76.84 
+],
+[
+ "India",
+4.01,
+60.19 
+],
+[
+ "Russian Federation",
+5.36,
+65.22 
+],
+[
+ "United States",
+13.6,
+75.62 
+],
+[
+ "Australia",
+7.44,
+78.08 
+],
+[
+ "Brazil",
+6.85,
+68.86 
+],
+[
+ "Canada",
+8.82,
+78.23 
+],
+[
+ "China",
+3.81,
+70.56 
+],
+[
+ "United Kingdom",
+6.79,
+77.09 
+],
+[
+ "India",
+3.89,
+60.57 
+],
+[
+ "Russian Federation",
+5.55,
+66.19 
+],
+[
+ "United States",
+13.57,
+76 
+],
+[
+ "Australia",
+7.49,
+78.48 
+],
+[
+ "Brazil",
+6.81,
+69.23 
+],
+[
+ "Canada",
+8.79,
+78.48 
+],
+[
+ "China",
+4.05,
+70.86 
+],
+[
+ "United Kingdom",
+6.56,
+77.21 
+],
+[
+ "India",
+4.24,
+60.97 
+],
+[
+ "Russian Federation",
+7.1,
+66.95 
+],
+[
+ "United States",
+13.48,
+76.43 
+],
+[
+ "Australia",
+7.65,
+78.63 
+],
+[
+ "Brazil",
+6.74,
+69.59 
+],
+[
+ "Canada",
+9.04,
+78.66 
+],
+[
+ "China",
+4.36,
+71.23 
+],
+[
+ "United Kingdom",
+6.63,
+77.19 
+],
+[
+ "India",
+4.29,
+61.37 
+],
+[
+ "Russian Federation",
+6.62,
+66.78 
+],
+[
+ "United States",
+13.5,
+76.58 
+],
+[
+ "Australia",
+7.78,
+78.93 
+],
+[
+ "Brazil",
+7.09,
+69.93 
+],
+[
+ "Canada",
+8.9,
+78.88 
+],
+[
+ "China",
+4.51,
+71.67 
+],
+[
+ "United Kingdom",
+6.88,
+77.39 
+],
+[
+ "India",
+4.04,
+61.77 
+],
+[
+ "Russian Federation",
+5.8,
+66.04 
+],
+[
+ "United States",
+13.5,
+76.58 
+],
+[
+ "Australia",
+8.06,
+79.23 
+],
+[
+ "Brazil",
+7.16,
+70.26 
+],
+[
+ "Canada",
+8.84,
+79.24 
+],
+[
+ "China",
+4.62,
+72.14 
+],
+[
+ "United Kingdom",
+7.02,
+77.74 
+],
+[
+ "India",
+4.27,
+62.16 
+],
+[
+ "Russian Federation",
+5.42,
+65.34 
+],
+[
+ "United States",
+13.58,
+76.64 
+],
+[
+ "Australia",
+8.16,
+79.63 
+],
+[
+ "Brazil",
+7.27,
+70.57 
+],
+[
+ "Canada",
+9.32,
+79.49 
+],
+[
+ "China",
+4.58,
+72.62 
+],
+[
+ "United Kingdom",
+7.31,
+77.99 
+],
+[
+ "India",
+4.5,
+62.56 
+],
+[
+ "Russian Federation",
+5.67,
+65.49 
+],
+[
+ "United States",
+14.24,
+76.74 
+],
+[
+ "Australia",
+8.39,
+79.94 
+],
+[
+ "Brazil",
+7.19,
+70.87 
+],
+[
+ "Canada",
+9.6,
+79.59 
+],
+[
+ "China",
+4.81,
+73.07 
+],
+[
+ "United Kingdom",
+7.63,
+78.14 
+],
+[
+ "India",
+4.4,
+62.95 
+],
+[
+ "Russian Federation",
+5.98,
+65.09 
+],
+[
+ "United States",
+15.09,
+76.84 
+],
+[
+ "Australia",
+8.34,
+80.24 
+],
+[
+ "Brazil",
+7.03,
+71.16 
+],
+[
+ "Canada",
+9.78,
+79.84 
+],
+[
+ "China",
+4.85,
+73.47 
+],
+[
+ "United Kingdom",
+7.83,
+78.45 
+],
+[
+ "India",
+4.29,
+63.34 
+],
+[
+ "Russian Federation",
+5.61,
+65.01 
+],
+[
+ "United States",
+15.62,
+76.99 
+],
+[
+ "Australia",
+8.59,
+80.49 
+],
+[
+ "Brazil",
+7.13,
+71.44 
+],
+[
+ "Canada",
+9.81,
+80.14 
+],
+[
+ "China",
+4.75,
+73.79 
+],
+[
+ "United Kingdom",
+8.03,
+78.75 
+],
+[
+ "India",
+4.5,
+63.72 
+],
+[
+ "Russian Federation",
+5.19,
+65.42 
+],
+[
+ "United States",
+15.72,
+77.34 
+],
+[
+ "Australia",
+8.48,
+80.84 
+],
+[
+ "Brazil",
+8.17,
+71.72 
+],
+[
+ "Canada",
+9.83,
+80.29 
+],
+[
+ "China",
+4.68,
+74.05 
+],
+[
+ "United Kingdom",
+8.27,
+79.05 
+],
+[
+ "India",
+4.25,
+64.1 
+],
+[
+ "Russian Federation",
+5.21,
+65.47 
+],
+[
+ "United States",
+15.77,
+77.34 
+],
+[
+ "Australia",
+8.52,
+81.04 
+],
+[
+ "Brazil",
+8.48,
+71.99 
+],
+[
+ "Canada",
+9.96,
+80.64 
+],
+[
+ "China",
+4.55,
+74.26 
+],
+[
+ "United Kingdom",
+8.43,
+79.25 
+],
+[
+ "India",
+4.03,
+64.46 
+],
+[
+ "Russian Federation",
+5.3,
+66.64 
+],
+[
+ "United States",
+15.86,
+77.59 
+],
+[
+ "Australia",
+8.55,
+81.29 
+],
+[
+ "Brazil",
+8.47,
+72.26 
+],
+[
+ "Canada",
+10.03,
+80.37 
+],
+[
+ "China",
+4.35,
+74.42 
+],
+[
+ "United Kingdom",
+8.5,
+79.45 
+],
+[
+ "India",
+3.88,
+64.79 
+],
+[
+ "Russian Federation",
+5.38,
+67.5 
+],
+[
+ "United States",
+16.08,
+77.84 
+],
+[
+ "Australia",
+8.75,
+81.4 
+],
+[
+ "Brazil",
+8.28,
+72.53 
+],
+[
+ "Canada",
+10.25,
+80.54 
+],
+[
+ "China",
+4.63,
+74.58 
+],
+[
+ "United Kingdom",
+8.95,
+79.6 
+],
+[
+ "India",
+3.93,
+65.11 
+],
+[
+ "Russian Federation",
+5.14,
+67.85 
+],
+[
+ "United States",
+16.54,
+77.94 
+],
+[
+ "Australia",
+9.04,
+81.54 
+],
+[
+ "Brazil",
+8.75,
+72.8 
+],
+[
+ "Canada",
+11.4,
+80.72 
+],
+[
+ "China",
+5.15,
+74.73 
+],
+[
+ "United Kingdom",
+9.91,
+80.05 
+],
+[
+ "India",
+3.93,
+65.41 
+],
+[
+ "Russian Federation",
+6.17,
+68.6 
+],
+[
+ "United States",
+17.71,
+78.09 
+],
+[
+ "Australia",
+8.95,
+81.7 
+],
+[
+ "Brazil",
+9.01,
+73.08 
+],
+[
+ "Canada",
+11.37,
+80.89 
+],
+[
+ "China",
+4.98,
+74.89 
+],
+[
+ "United Kingdom",
+9.55,
+80.4 
+],
+[
+ "India",
+3.69,
+65.69 
+],
+[
+ "Russian Federation",
+6.3,
+68.86 
+],
+[
+ "United States",
+17.66,
+78.54 
+],
+[
+ "Australia",
+8.97,
+81.9 
+],
+[
+ "Brazil",
+8.9,
+73.35 
+],
+[
+ "Canada",
+10.92,
+81.07 
+],
+[
+ "China",
+5.15,
+75.04 
+],
+[
+ "United Kingdom",
+9.42,
+80.95 
+],
+[
+ "India",
+3.92,
+65.96 
+],
+[
+ "Russian Federation",
+6.06,
+69.66 
+],
+[
+ "United States",
+17.68,
+78.64 
+],
+[
+ "Australia",
+8.94,
+82.1 
+],
+[
+ "Brazil",
+9.31,
+73.62 
+],
+[
+ "Canada",
+10.93,
+81.24 
+],
+[
+ "China",
+5.41,
+75.2 
+],
+[
+ "United Kingdom",
+9.44,
+81.5 
+],
+[
+ "India",
+4.05,
+66.21 
+],
+[
+ "Russian Federation",
+6.26,
+70.46 
+],
+[
+ "United States",
+17.91,
+78.74 
+] 
+];
+data.addColumn('string','CountryName');
+data.addColumn('number','cost');
+data.addColumn('number','Age');
+data.addRows(datajson);
+return(data);
+}
+
+
+// jsData 
+function gvisDataTableID1468396e7c5d () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "Australia",
+"AUS",
+1995,
+7.25,
+77.83,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+1995,
+6.65,
+68.48,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+1995,
+9.03,
+77.98,
+"North America" 
+],
+[
+ "China",
+"CHN",
+1995,
+3.54,
+70.33,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+1995,
+6.75,
+76.84,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+1995,
+4.01,
+60.19,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+1995,
+5.36,
+65.22,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+1995,
+13.6,
+75.62,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+1996,
+7.44,
+78.08,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+1996,
+6.85,
+68.86,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+1996,
+8.82,
+78.23,
+"North America" 
+],
+[
+ "China",
+"CHN",
+1996,
+3.81,
+70.56,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+1996,
+6.79,
+77.09,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+1996,
+3.89,
+60.57,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+1996,
+5.55,
+66.19,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+1996,
+13.57,
+76,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+1997,
+7.49,
+78.48,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+1997,
+6.81,
+69.23,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+1997,
+8.79,
+78.48,
+"North America" 
+],
+[
+ "China",
+"CHN",
+1997,
+4.05,
+70.86,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+1997,
+6.56,
+77.21,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+1997,
+4.24,
+60.97,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+1997,
+7.1,
+66.95,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+1997,
+13.48,
+76.43,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+1998,
+7.65,
+78.63,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+1998,
+6.74,
+69.59,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+1998,
+9.04,
+78.66,
+"North America" 
+],
+[
+ "China",
+"CHN",
+1998,
+4.36,
+71.23,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+1998,
+6.63,
+77.19,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+1998,
+4.29,
+61.37,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+1998,
+6.62,
+66.78,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+1998,
+13.5,
+76.58,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+1999,
+7.78,
+78.93,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+1999,
+7.09,
+69.93,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+1999,
+8.9,
+78.88,
+"North America" 
+],
+[
+ "China",
+"CHN",
+1999,
+4.51,
+71.67,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+1999,
+6.88,
+77.39,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+1999,
+4.04,
+61.77,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+1999,
+5.8,
+66.04,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+1999,
+13.5,
+76.58,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2000,
+8.06,
+79.23,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2000,
+7.16,
+70.26,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2000,
+8.84,
+79.24,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2000,
+4.62,
+72.14,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2000,
+7.02,
+77.74,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2000,
+4.27,
+62.16,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2000,
+5.42,
+65.34,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2000,
+13.58,
+76.64,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2001,
+8.16,
+79.63,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2001,
+7.27,
+70.57,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2001,
+9.32,
+79.49,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2001,
+4.58,
+72.62,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2001,
+7.31,
+77.99,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2001,
+4.5,
+62.56,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2001,
+5.67,
+65.49,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2001,
+14.24,
+76.74,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2002,
+8.39,
+79.94,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2002,
+7.19,
+70.87,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2002,
+9.6,
+79.59,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2002,
+4.81,
+73.07,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2002,
+7.63,
+78.14,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2002,
+4.4,
+62.95,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2002,
+5.98,
+65.09,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2002,
+15.09,
+76.84,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2003,
+8.34,
+80.24,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2003,
+7.03,
+71.16,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2003,
+9.78,
+79.84,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2003,
+4.85,
+73.47,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2003,
+7.83,
+78.45,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2003,
+4.29,
+63.34,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2003,
+5.61,
+65.01,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2003,
+15.62,
+76.99,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2004,
+8.59,
+80.49,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2004,
+7.13,
+71.44,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2004,
+9.81,
+80.14,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2004,
+4.75,
+73.79,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2004,
+8.03,
+78.75,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2004,
+4.5,
+63.72,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2004,
+5.19,
+65.42,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2004,
+15.72,
+77.34,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2005,
+8.48,
+80.84,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2005,
+8.17,
+71.72,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2005,
+9.83,
+80.29,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2005,
+4.68,
+74.05,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2005,
+8.27,
+79.05,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2005,
+4.25,
+64.1,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2005,
+5.21,
+65.47,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2005,
+15.77,
+77.34,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2006,
+8.52,
+81.04,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2006,
+8.48,
+71.99,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2006,
+9.96,
+80.64,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2006,
+4.55,
+74.26,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2006,
+8.43,
+79.25,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2006,
+4.03,
+64.46,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2006,
+5.3,
+66.64,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2006,
+15.86,
+77.59,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2007,
+8.55,
+81.29,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2007,
+8.47,
+72.26,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2007,
+10.03,
+80.37,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2007,
+4.35,
+74.42,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2007,
+8.5,
+79.45,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2007,
+3.88,
+64.79,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2007,
+5.38,
+67.5,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2007,
+16.08,
+77.84,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2008,
+8.75,
+81.4,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2008,
+8.28,
+72.53,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2008,
+10.25,
+80.54,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2008,
+4.63,
+74.58,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2008,
+8.95,
+79.6,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2008,
+3.93,
+65.11,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2008,
+5.14,
+67.85,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2008,
+16.54,
+77.94,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2009,
+9.04,
+81.54,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2009,
+8.75,
+72.8,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2009,
+11.4,
+80.72,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2009,
+5.15,
+74.73,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2009,
+9.91,
+80.05,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2009,
+3.93,
+65.41,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2009,
+6.17,
+68.6,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2009,
+17.71,
+78.09,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2010,
+8.95,
+81.7,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2010,
+9.01,
+73.08,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2010,
+11.37,
+80.89,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2010,
+4.98,
+74.89,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2010,
+9.55,
+80.4,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2010,
+3.69,
+65.69,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2010,
+6.3,
+68.86,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2010,
+17.66,
+78.54,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2011,
+8.97,
+81.9,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2011,
+8.9,
+73.35,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2011,
+10.92,
+81.07,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2011,
+5.15,
+75.04,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2011,
+9.42,
+80.95,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2011,
+3.92,
+65.96,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2011,
+6.06,
+69.66,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2011,
+17.68,
+78.64,
+"North America" 
+],
+[
+ "Australia",
+"AUS",
+2012,
+8.94,
+82.1,
+"East Asia & Pacific" 
+],
+[
+ "Brazil",
+"BRA",
+2012,
+9.31,
+73.62,
+"Latin America & Caribbean" 
+],
+[
+ "Canada",
+"CAN",
+2012,
+10.93,
+81.24,
+"North America" 
+],
+[
+ "China",
+"CHN",
+2012,
+5.41,
+75.2,
+"East Asia & Pacific" 
+],
+[
+ "United Kingdom",
+"GBR",
+2012,
+9.44,
+81.5,
+"Europe & Central Asia" 
+],
+[
+ "India",
+"IND",
+2012,
+4.05,
+66.21,
+"South Asia" 
+],
+[
+ "Russian Federation",
+"RUS",
+2012,
+6.26,
+70.46,
+"Europe & Central Asia" 
+],
+[
+ "United States",
+"USA",
+2012,
+17.91,
+78.74,
+"North America" 
+] 
+];
+data.addColumn('string','CountryName');
+data.addColumn('string','CountryCode');
+data.addColumn('number','Year');
+data.addColumn('number','cost');
+data.addColumn('number','Age');
+data.addColumn('string','Region');
+data.addRows(datajson);
+return(data);
+}
+
+
+// jsData 
+function gvisDataMotionChartID146845963078 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "AUS",
+1995,
+"Australia",
+7.25,
+77.83,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+1995,
+"Brazil",
+6.65,
+68.48,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+1995,
+"Canada",
+9.03,
+77.98,
+"North America" 
+],
+[
+ "CHN",
+1995,
+"China",
+3.54,
+70.33,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+1995,
+"United Kingdom",
+6.75,
+76.84,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+1995,
+"India",
+4.01,
+60.19,
+"South Asia" 
+],
+[
+ "RUS",
+1995,
+"Russian Federation",
+5.36,
+65.22,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+1995,
+"United States",
+13.6,
+75.62,
+"North America" 
+],
+[
+ "AUS",
+1996,
+"Australia",
+7.44,
+78.08,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+1996,
+"Brazil",
+6.85,
+68.86,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+1996,
+"Canada",
+8.82,
+78.23,
+"North America" 
+],
+[
+ "CHN",
+1996,
+"China",
+3.81,
+70.56,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+1996,
+"United Kingdom",
+6.79,
+77.09,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+1996,
+"India",
+3.89,
+60.57,
+"South Asia" 
+],
+[
+ "RUS",
+1996,
+"Russian Federation",
+5.55,
+66.19,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+1996,
+"United States",
+13.57,
+76,
+"North America" 
+],
+[
+ "AUS",
+1997,
+"Australia",
+7.49,
+78.48,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+1997,
+"Brazil",
+6.81,
+69.23,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+1997,
+"Canada",
+8.79,
+78.48,
+"North America" 
+],
+[
+ "CHN",
+1997,
+"China",
+4.05,
+70.86,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+1997,
+"United Kingdom",
+6.56,
+77.21,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+1997,
+"India",
+4.24,
+60.97,
+"South Asia" 
+],
+[
+ "RUS",
+1997,
+"Russian Federation",
+7.1,
+66.95,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+1997,
+"United States",
+13.48,
+76.43,
+"North America" 
+],
+[
+ "AUS",
+1998,
+"Australia",
+7.65,
+78.63,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+1998,
+"Brazil",
+6.74,
+69.59,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+1998,
+"Canada",
+9.04,
+78.66,
+"North America" 
+],
+[
+ "CHN",
+1998,
+"China",
+4.36,
+71.23,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+1998,
+"United Kingdom",
+6.63,
+77.19,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+1998,
+"India",
+4.29,
+61.37,
+"South Asia" 
+],
+[
+ "RUS",
+1998,
+"Russian Federation",
+6.62,
+66.78,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+1998,
+"United States",
+13.5,
+76.58,
+"North America" 
+],
+[
+ "AUS",
+1999,
+"Australia",
+7.78,
+78.93,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+1999,
+"Brazil",
+7.09,
+69.93,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+1999,
+"Canada",
+8.9,
+78.88,
+"North America" 
+],
+[
+ "CHN",
+1999,
+"China",
+4.51,
+71.67,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+1999,
+"United Kingdom",
+6.88,
+77.39,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+1999,
+"India",
+4.04,
+61.77,
+"South Asia" 
+],
+[
+ "RUS",
+1999,
+"Russian Federation",
+5.8,
+66.04,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+1999,
+"United States",
+13.5,
+76.58,
+"North America" 
+],
+[
+ "AUS",
+2000,
+"Australia",
+8.06,
+79.23,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2000,
+"Brazil",
+7.16,
+70.26,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2000,
+"Canada",
+8.84,
+79.24,
+"North America" 
+],
+[
+ "CHN",
+2000,
+"China",
+4.62,
+72.14,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2000,
+"United Kingdom",
+7.02,
+77.74,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2000,
+"India",
+4.27,
+62.16,
+"South Asia" 
+],
+[
+ "RUS",
+2000,
+"Russian Federation",
+5.42,
+65.34,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2000,
+"United States",
+13.58,
+76.64,
+"North America" 
+],
+[
+ "AUS",
+2001,
+"Australia",
+8.16,
+79.63,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2001,
+"Brazil",
+7.27,
+70.57,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2001,
+"Canada",
+9.32,
+79.49,
+"North America" 
+],
+[
+ "CHN",
+2001,
+"China",
+4.58,
+72.62,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2001,
+"United Kingdom",
+7.31,
+77.99,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2001,
+"India",
+4.5,
+62.56,
+"South Asia" 
+],
+[
+ "RUS",
+2001,
+"Russian Federation",
+5.67,
+65.49,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2001,
+"United States",
+14.24,
+76.74,
+"North America" 
+],
+[
+ "AUS",
+2002,
+"Australia",
+8.39,
+79.94,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2002,
+"Brazil",
+7.19,
+70.87,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2002,
+"Canada",
+9.6,
+79.59,
+"North America" 
+],
+[
+ "CHN",
+2002,
+"China",
+4.81,
+73.07,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2002,
+"United Kingdom",
+7.63,
+78.14,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2002,
+"India",
+4.4,
+62.95,
+"South Asia" 
+],
+[
+ "RUS",
+2002,
+"Russian Federation",
+5.98,
+65.09,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2002,
+"United States",
+15.09,
+76.84,
+"North America" 
+],
+[
+ "AUS",
+2003,
+"Australia",
+8.34,
+80.24,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2003,
+"Brazil",
+7.03,
+71.16,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2003,
+"Canada",
+9.78,
+79.84,
+"North America" 
+],
+[
+ "CHN",
+2003,
+"China",
+4.85,
+73.47,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2003,
+"United Kingdom",
+7.83,
+78.45,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2003,
+"India",
+4.29,
+63.34,
+"South Asia" 
+],
+[
+ "RUS",
+2003,
+"Russian Federation",
+5.61,
+65.01,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2003,
+"United States",
+15.62,
+76.99,
+"North America" 
+],
+[
+ "AUS",
+2004,
+"Australia",
+8.59,
+80.49,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2004,
+"Brazil",
+7.13,
+71.44,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2004,
+"Canada",
+9.81,
+80.14,
+"North America" 
+],
+[
+ "CHN",
+2004,
+"China",
+4.75,
+73.79,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2004,
+"United Kingdom",
+8.03,
+78.75,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2004,
+"India",
+4.5,
+63.72,
+"South Asia" 
+],
+[
+ "RUS",
+2004,
+"Russian Federation",
+5.19,
+65.42,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2004,
+"United States",
+15.72,
+77.34,
+"North America" 
+],
+[
+ "AUS",
+2005,
+"Australia",
+8.48,
+80.84,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2005,
+"Brazil",
+8.17,
+71.72,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2005,
+"Canada",
+9.83,
+80.29,
+"North America" 
+],
+[
+ "CHN",
+2005,
+"China",
+4.68,
+74.05,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2005,
+"United Kingdom",
+8.27,
+79.05,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2005,
+"India",
+4.25,
+64.1,
+"South Asia" 
+],
+[
+ "RUS",
+2005,
+"Russian Federation",
+5.21,
+65.47,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2005,
+"United States",
+15.77,
+77.34,
+"North America" 
+],
+[
+ "AUS",
+2006,
+"Australia",
+8.52,
+81.04,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2006,
+"Brazil",
+8.48,
+71.99,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2006,
+"Canada",
+9.96,
+80.64,
+"North America" 
+],
+[
+ "CHN",
+2006,
+"China",
+4.55,
+74.26,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2006,
+"United Kingdom",
+8.43,
+79.25,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2006,
+"India",
+4.03,
+64.46,
+"South Asia" 
+],
+[
+ "RUS",
+2006,
+"Russian Federation",
+5.3,
+66.64,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2006,
+"United States",
+15.86,
+77.59,
+"North America" 
+],
+[
+ "AUS",
+2007,
+"Australia",
+8.55,
+81.29,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2007,
+"Brazil",
+8.47,
+72.26,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2007,
+"Canada",
+10.03,
+80.37,
+"North America" 
+],
+[
+ "CHN",
+2007,
+"China",
+4.35,
+74.42,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2007,
+"United Kingdom",
+8.5,
+79.45,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2007,
+"India",
+3.88,
+64.79,
+"South Asia" 
+],
+[
+ "RUS",
+2007,
+"Russian Federation",
+5.38,
+67.5,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2007,
+"United States",
+16.08,
+77.84,
+"North America" 
+],
+[
+ "AUS",
+2008,
+"Australia",
+8.75,
+81.4,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2008,
+"Brazil",
+8.28,
+72.53,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2008,
+"Canada",
+10.25,
+80.54,
+"North America" 
+],
+[
+ "CHN",
+2008,
+"China",
+4.63,
+74.58,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2008,
+"United Kingdom",
+8.95,
+79.6,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2008,
+"India",
+3.93,
+65.11,
+"South Asia" 
+],
+[
+ "RUS",
+2008,
+"Russian Federation",
+5.14,
+67.85,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2008,
+"United States",
+16.54,
+77.94,
+"North America" 
+],
+[
+ "AUS",
+2009,
+"Australia",
+9.04,
+81.54,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2009,
+"Brazil",
+8.75,
+72.8,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2009,
+"Canada",
+11.4,
+80.72,
+"North America" 
+],
+[
+ "CHN",
+2009,
+"China",
+5.15,
+74.73,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2009,
+"United Kingdom",
+9.91,
+80.05,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2009,
+"India",
+3.93,
+65.41,
+"South Asia" 
+],
+[
+ "RUS",
+2009,
+"Russian Federation",
+6.17,
+68.6,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2009,
+"United States",
+17.71,
+78.09,
+"North America" 
+],
+[
+ "AUS",
+2010,
+"Australia",
+8.95,
+81.7,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2010,
+"Brazil",
+9.01,
+73.08,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2010,
+"Canada",
+11.37,
+80.89,
+"North America" 
+],
+[
+ "CHN",
+2010,
+"China",
+4.98,
+74.89,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2010,
+"United Kingdom",
+9.55,
+80.4,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2010,
+"India",
+3.69,
+65.69,
+"South Asia" 
+],
+[
+ "RUS",
+2010,
+"Russian Federation",
+6.3,
+68.86,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2010,
+"United States",
+17.66,
+78.54,
+"North America" 
+],
+[
+ "AUS",
+2011,
+"Australia",
+8.97,
+81.9,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2011,
+"Brazil",
+8.9,
+73.35,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2011,
+"Canada",
+10.92,
+81.07,
+"North America" 
+],
+[
+ "CHN",
+2011,
+"China",
+5.15,
+75.04,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2011,
+"United Kingdom",
+9.42,
+80.95,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2011,
+"India",
+3.92,
+65.96,
+"South Asia" 
+],
+[
+ "RUS",
+2011,
+"Russian Federation",
+6.06,
+69.66,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2011,
+"United States",
+17.68,
+78.64,
+"North America" 
+],
+[
+ "AUS",
+2012,
+"Australia",
+8.94,
+82.1,
+"East Asia & Pacific" 
+],
+[
+ "BRA",
+2012,
+"Brazil",
+9.31,
+73.62,
+"Latin America & Caribbean" 
+],
+[
+ "CAN",
+2012,
+"Canada",
+10.93,
+81.24,
+"North America" 
+],
+[
+ "CHN",
+2012,
+"China",
+5.41,
+75.2,
+"East Asia & Pacific" 
+],
+[
+ "GBR",
+2012,
+"United Kingdom",
+9.44,
+81.5,
+"Europe & Central Asia" 
+],
+[
+ "IND",
+2012,
+"India",
+4.05,
+66.21,
+"South Asia" 
+],
+[
+ "RUS",
+2012,
+"Russian Federation",
+6.26,
+70.46,
+"Europe & Central Asia" 
+],
+[
+ "USA",
+2012,
+"United States",
+17.91,
+78.74,
+"North America" 
+] 
+];
+data.addColumn('string','CountryCode');
+data.addColumn('number','Year');
+data.addColumn('string','CountryName');
+data.addColumn('number','cost');
+data.addColumn('number','Age');
+data.addColumn('string','Region');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartID1468301d1c3e() {
+var data = gvisDataGeoChartID1468301d1c3e();
+var options = {};
+options["width"] =    610;
+options["height"] =    400;
+options["colorAxis"] = {colors:['#99FF66','#2EB82E','#006600']};
+options["backgroundColor"] = "#F0F0F0";
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartID1468301d1c3e')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+
+
+// jsDrawChart
+function drawChartTableID1468396e7c5d() {
+var data = gvisDataTableID1468396e7c5d();
+var options = {};
+options["allowHtml"] = true;
+options["width"] =    610;
+options["height"] =    270;
+
+    var chart = new google.visualization.Table(
+    document.getElementById('TableID1468396e7c5d')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+
+
+// jsDrawChart
+function drawChartMotionChartID146845963078() {
+var data = gvisDataMotionChartID146845963078();
+var options = {};
+options["width"] =    610;
+options["height"] =    670;
+
+    var chart = new google.visualization.MotionChart(
+    document.getElementById('MotionChartID146845963078')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartID1468301d1c3e);
+})();
+function displayChartGeoChartID1468301d1c3e() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+
+
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "table";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartTableID1468396e7c5d);
+})();
+function displayChartTableID1468396e7c5d() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+
+
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "motionchart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartMotionChartID146845963078);
+})();
+function displayChartMotionChartID146845963078() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID1468301d1c3e"></script>
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1468396e7c5d"></script>
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID146845963078"></script>
+ 
+
+<table bgcolor="#CCCCCC" cellspacing=10>
+<tr>
+<td>
+
+<table border="0">
+<tr>
+<td>
+
+<!-- divChart -->
+  
+<div id="GeoChartID1468301d1c3e"
+  style="width: 610px; height: 400px;">
+</div>
+
+</td>
+</tr>
+<tr>
+<td>
+
+<!-- divChart -->
+  
+<div id="TableID1468396e7c5d"
+  style="width: 610px; height: 270px;">
+</div>
+
+</td>
+</tr>
+</table>
+
+<p></td>
+<td></p>
+
+<!-- divChart -->
+
+<div id="MotionChartID146845963078"
+  style="width: 610px; height: 670px;">
+</div>
+
+<p></td>
+</tr>
+</table></p>
+
+
+
+</body>
+
+</html>
