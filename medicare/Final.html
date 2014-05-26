@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<link rel="stylesheet" type="text/css" href="Final.css">    
+</head>
+<h1>Visualizing Medicare Spending (2012)</h1>
+<p>by Sharad Gurung</p>
+<body>
+    <br>
+<p>This project was completed as part of CUNY IS608's curriculum. To see other projects, please <a href="http://jlaurito.github.io/CUNY_IS608/">click here for the homepage</a>.</p>
+<br>
+<h2>Background</h2>
+
+<p>
+In the United State, health care services are reimbursed by a combination of public and private sponsors. 
+Medicare is a federal program that sponsors people who are 65 and older, and people with disabilities. 
+Medicare and Medicaid programs make roughly a quarter of the Federal budget. Medicare is an important 
+topic for policy discussions, but much of the public debate lacks basic understanding of Medicare 
+expenditure. Furthermore, the lack of public access to Medicare expenditure data made it difficult to 
+understand the growing spending.
+</p>
+<p>
+Fortunately, a recent public dataset the <strong>Provider Utilization and Payment Data Physician and 
+Other Supplier Public Use File</strong> published by the Centers for Medicare & Medicaid Services (CMS) 
+has helped shed a light on one of the segments of Medicare: Part B non-institutional utilizations for 
+fee-for-service beneficiaries. This document attempts to explain Medicare spending provided in the dataset
+using simple visualizations.
+</p>
+
+<div id="background">
+	<div style="width:460px;float:left;">
+		<h3>Federal Budget</h3>
+		<div id="federal" class="piechart"></div>
+		<p>http://kff.org/medicare/slide/medicare-as-a-share-of-the-federal-budget-2012/</p>
+	</div>
+	<div style="float:left;">
+		<h3>Medicare Spending</h3>
+		<div id="medicare" class="piechart"></div>
+		<p>http://kff.org/medicare/fact-sheet/medicare-spending-and-financing-fact-sheet/</p>
+	</div>
+</div>
+
+<div style="clear:both;">
+	<h2>At a Very High Level</h2>
+	<p>From a geographical perspective, Medicare spending can be broken down by US counties. We expect areas with denser population to have higher spending. 
+    In the diagram below, counties with greater spending are colored with darker shade. The darker areas correspond to areas such as New York, 
+    Los Angeles, Chicago, Palm Beach, and other densely populated regions. </p>
+	<div id="byCountyUS" class="choropleth"></div>
+	<p>From a utilization perspective, Medicare spending can be grouped by Specialty. We expect more spending in specialties that relate to elderly and disabled members. 
+    In the diagram below, specialties are shown as bubbles whose size correspond to the share of total spending. The specialties that make up most of Medicare
+     spending appear to be Internal Medicine, Clinical Laboratory, Cardiology, Ambulance Service Supplier, Opthalmology, Family Practice, and so on.</p>
+	<div id="bySpecialtyUS" class="bubble"></div>
+</div>
+
+<div style="clear:both;">
+	<h2>A Closer Look</h2>
+	<div>
+        <p>
+            Since Medicare beneficiaries are mostly concentrated in a few regions, let us focus on the top ten counties that received most Medicare payments. The first chart shows 
+            Total Billed Charges, Total Allowed Amount, and Total Paid Amount for top ten counties. Billed Charges is what was billed to Medicare. Allowed Amount is what the provider is allowed for the services
+            rendered. Paid Amount is what is actually paid by Medicare. Paid Amount may be less than Allowed Amount if some portion of the payment is beneficiaries' responsibility.
+        </p>
+        <p>
+            The second chart shows Total Services, Total Beneficiary Services, and Total Unique Beneficiaries for top ten counties. Services are itemized procedures billed to Medicare, 
+            Beneficiary Services are unique procedures provided per beneficiary, and Unique Beneficiaries are individual Medicare beneficiaries. Total services are useful but it does 
+            not show utilization. Therefore, Total Beneficiary Services, and Unique Beneficiaries are helpful to understand Medicare utilization. 
+            Please refere to this companion guide from CMS for an explanation of these fields. 
+            https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Downloads/Medicare-Physician-and-Other-Supplier-PUF-Methodology.pdf
+        </p>
+		<div id="byTopCountyPayment" class="barChart"></div>
+		<div id="byTopCountyUtilization" class="barChart"></div>
+	</div>
+	<div>
+        <p>
+            Since only a handful specialties make up majority of Medicare spending, let us focus on the top ten specialties that received most Medicare payments. As we can see in the first 
+            diagram, what get's billed is not what gets paid. Some specialties such as Diagnostic Radiology get far less of billed charges compared to specialties such as Dermatology. Cost sharing, the difference 
+            between allowed and paid amount, appear relatively consistent.
+        </p>
+        <p>
+            The second diagram shows that Clinical Laboratory is the most utilized specialty, but it does not get the largest share of Medicare. It has to do with average cost of the procedures.
+            Hematology/Oncology on the other hand is very expensive because it take decent share of Medicare in terms of dollars and service units utilized for fewer beneficiaries. This is as
+            expected because cancer treatments are expensive and each patient need more units of service, which is confirmed by the chart. Specialties such as opthalmology and cardiology appear 
+            to be consistent in terms of utilization. We can infer that patients do not need several units of treatment for these specialties.
+        </p>
+		<div id="byTopSpecialtyPayment" class="barChart"></div>
+		<div id="byTopSpecialtyUtilization" class="barChart"></div>
+	</div>
+    <div>
+        <p>
+            Let us compare some of these specialties across counties. The first chart shows total Medicare Payments, and the second chart shows Total Services. There a couple of things that stand out.
+
+        </p>
+        <fieldset id="byTopCountySpecialtyPayment" class="multipleBarChart fieldset">
+            <legend class="multipleBarChart legend">Comparing Specialties Across Counties</legend>
+        </fieldset>
+        <div id="byTopCountySpecialtyCount" class="barChart"></div>
+    </div>
+</div>
+
+<div style="clear:both;">
+    <fieldset id="workArea" class="multipleBarChart fieldset">
+        <legend class="multipleBarChart legend">Work Area</legend>
+    </fieldset>
+    <div id="experimental" class="barChart"></div>
+</div>
+
+</body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+<script src="Scripts/PieCharts.js" type="text/javascript"></script>
+<script src="Scripts/Choropleth.js" type="text/javascript"></script>
+<script src="Scripts/BubbleGraph.js" type="text/javascript"></script>
+<script src="Scripts/BarCharts.js" type="text/javascript"></script>
+<script src="Scripts/box.js" type="text/javascript"></script>
+<script src="Scripts/BoxPlot.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    
+
+    function wrap(text, width) {
+        text.each(function () {
+            var text = d3.select(this),
+                words = text.text().split(/\s+/).reverse(),
+                word,
+                line = [],
+                lineNumber = 0,
+                lineHeight = 1.1, // ems
+                y = text.attr("y"),
+                dy = parseFloat(text.attr("dy")),
+                tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+            while (word = words.pop()) {
+                line.push(word);
+                tspan.text(line.join(" "));
+                if (tspan.node().getComputedTextLength() > width) {
+                    line.pop();
+                    tspan.text(line.join(" "));
+                    line = [word];
+                    tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                }
+            }
+        });
+    }
+
+	// Bar Chart: Top Ten Counties Total
+	//
+	(function () {
+
+		var margin = { top: 20, right: 20, bottom: 5, left: 40 },
+			width = 600 - margin.left - margin.right,
+			height = 320 - margin.top - margin.bottom;
+
+		var x0 = d3.scale.ordinal()
+				   .rangeRoundBands([0, width], .1);
+
+		var x1 = d3.scale.ordinal();
+
+		var y = d3.scale.linear()
+				   .range([height, 0]);
+
+		var color = d3.scale.ordinal()
+					  .range(["crimson", "steelblue", "gold", "green", "darkmagenta"]);
+
+		var xAxis = d3.svg.axis()
+					  .scale(x0)
+					  .orient("bottom");
+
+		var yAxis = d3.svg.axis()
+					  .scale(y)
+					  .orient("left")
+					  .tickFormat(d3.format(".2s"));
+
+		var svg = d3.select("#byTopCountySpecialtyPayment").append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+				  .append("g")
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+		d3.tsv("Data/BarChart/CountyVsSpecialty_Payment.tsv", function (error, data) {
+
+		    var groups = ["Internal Medicine", "Ambulance Service Supplier", "Diagnostic Radiology", "Dermatology", "Family Practice"];
+
+			data.forEach(function (d) {
+				d.amounts = groups.map(function (name) { return { name: name, value: +d[name] }; });
+			});
+
+			x0.domain(data.map(function (d) { return d.County; }));
+			x1.domain(groups).rangeRoundBands([0, x0.rangeBand()]);
+			y.domain([0, d3.max(data, function (d) { return d3.max(d.amounts, function (d) { return d.value; }); })]);
+
+			//svg.append("g")
+			//	.attr("class", "x axis")
+			//	.attr("transform", "translate(0," + height + ")")
+			//	.call(xAxis);
+
+
+			//svg.append("g")
+			//	.attr("class", "x axis")
+			//	.attr("transform", "translate(0," + height + ")")
+			//	.call(xAxis)
+			//  .selectAll(".tick text")
+			//	.call(wrap, x0.rangeBand());
+
+			svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis)
+			  .append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 3)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text("Payment Amount");
+
+			var state = svg.selectAll(".state")
+				.data(data)
+			  .enter().append("g")
+				.attr("class", "g")
+				.attr("transform", function (d) { return "translate(" + x0(d.County) + ",0)"; });
+
+			state.selectAll("rect")
+				.data(function (d) { return d.amounts; })
+			  .enter().append("rect")
+				.attr("width", x1.rangeBand())
+				.attr("x", function (d) { return x1(d.name); })
+				.attr("y", function (d) { return y(d.value); })
+				.attr("height", function (d) { return height - y(d.value); })
+				.style("fill", function (d) { return color(d.name); });
+
+
+			var legend = svg.selectAll(".legend")
+				.data(groups)
+			  .enter().append("g")
+				.attr("class", "legend")
+				.attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
+
+			legend.append("rect")
+				.attr("x", width - 18)
+				.attr("width", 18)
+				.attr("height", 18)
+				.style("fill", color);
+
+			legend.append("text")
+				.attr("x", width - 24)
+				.attr("y", 9)
+				.attr("dy", ".35em")
+				.style("text-anchor", "end")
+				.text(function (d) { return d; });
+		});
+
+
+	})();
+
+	(function () {
+
+	    var margin = { top: 5, right: 20, bottom: 30, left: 40 },
+			width = 600 - margin.left - margin.right,
+			height = 320 - margin.top - margin.bottom;
+
+	    var x0 = d3.scale.ordinal()
+				   .rangeRoundBands([0, width], .1);
+
+	    var x1 = d3.scale.ordinal();
+
+	    var y = d3.scale.linear()
+				   .range([height, 0]);
+
+	    var color = d3.scale.ordinal()
+					  .range(["crimson", "steelblue", "gold", "green", "darkmagenta"]);
+
+	    var xAxis = d3.svg.axis()
+					  .scale(x0)
+					  .orient("bottom");
+
+	    var yAxis = d3.svg.axis()
+					  .scale(y)
+					  .orient("left")
+					  .tickFormat(d3.format(".2s"));
+
+	    var svg = d3.select("#byTopCountySpecialtyPayment").append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+				  .append("g")
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	    d3.tsv("Data/BarChart/CountyVsSpecialty_Count.tsv", function (error, data) {
+
+	        var groups = ["Internal Medicine", "Ambulance Service Supplier", "Diagnostic Radiology", "Dermatology", "Family Practice"];
+
+	        data.forEach(function (d) {
+	            d.amounts = groups.map(function (name) { return { name: name, value: +d[name] }; });
+	        });
+
+	        x0.domain(data.map(function (d) { return d.County; }));
+	        x1.domain(groups).rangeRoundBands([0, x0.rangeBand()]);
+	        y.domain([0, d3.max(data, function (d) { return d3.max(d.amounts, function (d) { return d.value; }); })]);
+
+	        //svg.append("g")
+	        //	.attr("class", "x axis")
+	        //	.attr("transform", "translate(0," + height + ")")
+	        //	.call(xAxis);
+
+
+	        svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis)
+			  .selectAll(".tick text")
+				.call(wrap, x0.rangeBand());
+
+	        svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis)
+			  .append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 3)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text("Service Count");
+
+	        var state = svg.selectAll(".state")
+				.data(data)
+			  .enter().append("g")
+				.attr("class", "g")
+				.attr("transform", function (d) { return "translate(" + x0(d.County) + ",0)"; });
+
+	        state.selectAll("rect")
+				.data(function (d) { return d.amounts; })
+			  .enter().append("rect")
+				.attr("width", x1.rangeBand())
+				.attr("x", function (d) { return x1(d.name); })
+				.attr("y", function (d) { return y(d.value); })
+				.attr("height", function (d) { return height - y(d.value); })
+				.style("fill", function (d) { return color(d.name); });
+
+
+	        //var legend = svg.selectAll(".legend")
+			//	.data(groups)
+			//  .enter().append("g")
+			//	.attr("class", "legend")
+			//	.attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
+
+	        //legend.append("rect")
+			//	.attr("x", width - 18)
+			//	.attr("width", 18)
+			//	.attr("height", 18)
+			//	.style("fill", color);
+
+	        //legend.append("text")
+			//	.attr("x", width - 24)
+			//	.attr("y", 9)
+			//	.attr("dy", ".35em")
+			//	.style("text-anchor", "end")
+			//	.text(function (d) { return d; });
+	    });
+
+
+	})();
+
+	(function () {
+
+	    // A formatter for counts.
+	    var formatCount = d3.format(",.0f");
+
+	    var margin = { top: 10, right: 30, bottom: 30, left: 30 },
+            width = 600 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+
+	    var svg = d3.select("#workArea").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        
+	    d3.tsv("Data/Histogram/NPI_Payment.tsv", function (error, tsv) {
+
+	        var values = tsv.map(function(d) { return +d.TotalPayment });
+            
+	        var x = d3.scale.linear()
+                .domain([0, d3.max(tsv, function (d) { return +d.TotalPayment; })])
+                .range([0, width]);
+
+	        var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom");
+            
+	        var data = d3.layout.histogram()
+                .bins(x.ticks(20))
+                (values);
+
+	        var y = d3.scale.linear()
+                .domain([0, d3.max(data, function (d) { return d.y; })])
+                .range([height, 0]);
+
+	        var bar = svg.selectAll(".bar")
+                .data(data)
+              .enter().append("g")
+                .attr("class", "bar")
+                .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+	        bar.append("rect")
+                .attr("x", 1)
+                .attr("width", x(data[0].dx) - 1)
+                .attr("height", function (d) { return height - y(d.y); });
+
+	        bar.append("text")
+                .attr("dy", ".75em")
+                .attr("y", 6)
+                .attr("x", x(data[0].dx) / 2)
+                .attr("text-anchor", "middle")
+                .text(function (d) { return formatCount(d.y); });
+
+	        svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+	    });
+	    
+	})();
+
+	
+
+
+	(function () {
+
+	    // A formatter for counts.
+	    var formatCount = d3.format(",.0f");
+
+	    var margin = { top: 10, right: 30, bottom: 30, left: 30 },
+            width = 600 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+
+	    var svg = d3.select("#workArea").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+	    d3.tsv("Data/Histogram/HCPCS_Payment.tsv", function (error, tsv) {
+
+	        var values = tsv.map(function (d) { return +d.TotalPayment });
+
+	        var x = d3.scale.linear()
+                .domain([0, d3.max(tsv, function (d) { return +d.TotalPayment; })])
+                .range([0, width]);
+
+	        var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom");
+
+	        var data = d3.layout.histogram()
+                .bins(x.ticks(20))
+                (values);
+
+	        var y = d3.scale.linear()
+                .domain([0, d3.max(data, function (d) { return d.y; })])
+                .range([height, 0]);
+
+	        var bar = svg.selectAll(".bar")
+                .data(data)
+              .enter().append("g")
+                .attr("class", "bar")
+                .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+	        bar.append("rect")
+                .attr("x", 1)
+                .attr("width", x(data[0].dx) - 1)
+                .attr("height", function (d) { return height - y(d.y); });
+
+	        bar.append("text")
+                .attr("dy", ".75em")
+                .attr("y", 6)
+                .attr("x", x(data[0].dx) / 2)
+                .attr("text-anchor", "middle")
+                .text(function (d) { return formatCount(d.y); });
+
+	        svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+	    });
+
+	})();
+
+	(function () {
+
+	})();
+
+</script>

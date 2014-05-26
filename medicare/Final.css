@@ -1,0 +1,131 @@
+﻿/*Pie Chart Styles*/
+.arc path {
+	stroke: #fff;
+}
+
+/*Choropleth Styles*/
+.map-svg-component {
+	background-color: DarkGray;
+}
+
+.counties {
+	fill: none;
+}
+
+.states {
+	fill: none;
+	stroke: #fff;
+	stroke-linejoin: round;
+}
+
+.q0-9 {
+	fill: rgb(247,251,255);
+}
+
+.q1-9 {
+	fill: rgb(222,235,247);
+}
+
+.q2-9 {
+	fill: rgb(198,219,239);
+}
+
+.q3-9 {
+	fill: rgb(158,202,225);
+}
+
+.q4-9 {
+	fill: rgb(107,174,214);
+}
+
+.q5-9 {
+	fill: rgb(66,146,198);
+}
+
+.q6-9 {
+	fill: rgb(33,113,181);
+}
+
+.q7-9 {
+	fill: rgb(8,81,156);
+}
+
+.q8-9 {
+	fill: rgb(8,48,107);
+}
+
+/*Bar Chart Styles*/
+.bar {
+	fill: steelblue;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.multipleBarChart.fieldset {
+    border: 1px solid;
+    width: 600px;
+}
+.multipleBarChart.legend {
+    font-size: small;
+    font-weight: bold;
+}
+
+
+/*Box Plot Styles*/
+.box {
+  font: 10px sans-serif;
+}
+
+.box line,
+.box rect,
+.box circle {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.box .center {
+  stroke-dasharray: 3,3;
+}
+
+.box .outlier {
+  fill: none;
+  stroke: #ccc;
+}
+
+
+/*Histogram Styles*/
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: red;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+/*Common Styles*/
+body {
+  font: 10px sans-serif;
+}
+
+p {
+    font: 12px arial;
+}
+
