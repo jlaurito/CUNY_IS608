@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-	<link rel="stylesheet" type="text/css" href="Final.css"> 
-    <title>Visualizing Medicare Spending</title>
+    <link rel="stylesheet" type="text/css" href="Final.css"> 
+    <title>Visualizing Medicare Spending</title>  
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -12,109 +12,246 @@
   ga('create', 'UA-51345217-1', 'jlaurito.github.io');
   ga('send', 'pageview');
 
-</script>
+</script> 
 </head>
-<h1>Visualizing Medicare Spending (2012)</h1>
-<p>by Sharad Gurung</p>
+
 <body>
-    <br>
-<p>This project was completed as part of CUNY IS608's curriculum. To see other projects, please <a href="http://jlaurito.github.io/CUNY_IS608/">click here for the homepage</a>.</p>
-<br>
-<h2>Background</h2>
+    <main class="page" role="main">
+        <div class="page_content">
+            <article id="medicareVisualization">
+                <header class="articleHeader">
+                    <h1>Visualizing Medicare Spending (2012)</h1>
+                    <h3>by Sharad Gurung</h3>
+                    <em>
+                        <time pubdate="" datetime="2014-05-15">May 15, 2014</time>
+                    </em>       
+                    <br>
+                    <br>
+                    <h3>This project was completed as part of CUNY IS608's curriculum. To see other projects, please <a href="http://jlaurito.github.io/CUNY_IS608/">click here for the homepage</a>.</h3>
+                    <br>             
+                </header>
+                <section>
+                    <h2>Background</h2>
+                    <p>
+                        In the United States, healthcare services are reimbursed by a combination of public and private sponsors.
+                        Medicare is a federal program that sponsors people who are 65 and older, and people with disabilities.
+                        Medicare program makes about a sixth of the Federal budget and keeps growing annually. Due to the escalating growth in Medicare
+                        spending, understanding cost and utilization is very important for future policy decisions, but that task is difficult
+                        to accomplish without access to relevant data.
+                    </p>
+                    <p>
+                        Fortunately, a recent public dataset the 
+                        <strong>
+                            Provider Utilization and Payment Data Physician and
+                            Other Supplier Public Use File
+                        </strong> published by the Centers for Medicare & Medicaid Services (CMS)
+                        has helped shed a light on one segment of Medicare: Part B non-institutional utilizations for
+                        fee-for-service beneficiaries. Medicare program makes about 16 percent of the Federal budget, and Part B
+                        Physician Payments (referred to as Medicare B from now on), which this dataset comprises, makes 13 percent
+                        of the Medicare program. In other words, this dataset represents a small portion of the US healthcare system.
+                    </p>
+                    <p>
+                        Nonetheless, this dataset is the first of its kind and a good place to start. This is an attempt
+                        to understand Medicare Part B payments using data visualization technique.
+                    </p>
 
-<p>
-In the United State, health care services are reimbursed by a combination of public and private sponsors. 
-Medicare is a federal program that sponsors people who are 65 and older, and people with disabilities. 
-Medicare and Medicaid programs make roughly a quarter of the Federal budget. Medicare is an important 
-topic for policy discussions, but much of the public debate lacks basic understanding of Medicare 
-expenditure. Furthermore, the lack of public access to Medicare expenditure data made it difficult to 
-understand the growing spending.
-</p>
-<p>
-Fortunately, a recent public dataset the <strong>Provider Utilization and Payment Data Physician and 
-Other Supplier Public Use File</strong> published by the Centers for Medicare & Medicaid Services (CMS) 
-has helped shed a light on one of the segments of Medicare: Part B non-institutional utilizations for 
-fee-for-service beneficiaries. This document attempts to explain Medicare spending provided in the dataset
-using simple visualizations.
-</p>
+                    <div id="piechartBudget">
+                        <div class="piechart">
+                            <h3 class="chartTitle">US Federal Budget</h3>
+                            <div id="pieFederalBudget"></div>
+                            <small class="datasource">Datasource: Medicare as a Share of the Federal Budget, 2012. Kaiser Family Foundation.</small>
+                        </div>
+                        <div class="piechart">
+                            <h3 class="chartTitle">Medicare Spending</h3>
+                            <div id="pieMedicareBudget"></div>
+                            <small class="datasource">Datasource: Medicare Spending and Financing Fact Sheet. Kaiser Family Foundation.</small>
+                        </div>
+                    </div>
 
-<div id="background">
-	<div style="width:460px;float:left;">
-		<h3>Federal Budget</h3>
-		<div id="federal" class="piechart"></div>
-		<p>http://kff.org/medicare/slide/medicare-as-a-share-of-the-federal-budget-2012/</p>
-	</div>
-	<div style="float:left;">
-		<h3>Medicare Spending</h3>
-		<div id="medicare" class="piechart"></div>
-		<p>http://kff.org/medicare/fact-sheet/medicare-spending-and-financing-fact-sheet/</p>
-	</div>
-</div>
+                    <div>
+                        <h2>At a Very High Level</h2>
+                        <p>
+                            Geographically, we can break Medicare B spending by counties. Counties are large
+                            enough to plot on the US map and meaningful enough to summarize by payment received. We expect regions with denser population to have higher spending compared to
+                            regions that are sparsely populated. In the diagram below, counties with greater spending are colored with darker shade. Areas around New York,
+                            Los Angeles, Chicago, Palm Beach, and other densely populated regions appear to get a larger share of Medicare B spending.
+                        </p>
+                        <fieldset id="choroUSCounties">
+                            <legend>Spending Concentration in US by Counties</legend>
+                            <small>NOTE: Color shade represents spending concentration.</small>
+                        </fieldset>
+                        <p>
+                            In terms of service utilization, we can group Medicare B spending by Specialty. In this dataset's context, specialty corresponds to
+                            service procedure rather than provider's expertise. We expect to see more spending in specialties that serve elderly and disabled members.
+                            In the diagram below, specialties are shown as bubbles whose size represent total payment for that specialty. Internal Medicine,
+                            Clinical Laboratory, Cardiology, Ambulance Service Supplier, Opthalmology, Family Practice, etc appear to make up most of Medicare B spending.
+                        </p>
+                        <fieldset id="bubbleSpecialtyUS">
+                            <legend>Spending Concentration in US by Specialties</legend>
+                            <small>NOTE: Bubble size represents total payment amount.</small>
+                        </fieldset>
+                    </div>
 
-<div style="clear:both;">
-	<h2>At a Very High Level</h2>
-	<p>From a geographical perspective, Medicare spending can be broken down by US counties. We expect areas with denser population to have higher spending. 
-    In the diagram below, counties with greater spending are colored with darker shade. The darker areas correspond to areas such as New York, 
-    Los Angeles, Chicago, Palm Beach, and other densely populated regions. </p>
-	<div id="byCountyUS" class="choropleth"></div>
-	<p>From a utilization perspective, Medicare spending can be grouped by Specialty. We expect more spending in specialties that relate to elderly and disabled members. 
-    In the diagram below, specialties are shown as bubbles whose size correspond to the share of total spending. The specialties that make up most of Medicare
-     spending appear to be Internal Medicine, Clinical Laboratory, Cardiology, Ambulance Service Supplier, Opthalmology, Family Practice, and so on.</p>
-	<div id="bySpecialtyUS" class="bubble"></div>
-</div>
+                    <div>
+                        <h2>A Closer Look</h2>
+                        <p>
+                            Since Medicare beneficiaries are mostly concentrated in a few regions, let us focus on the top ten counties that received most Medicare B payments. In top portion of the chart below,
+                            we have Billed Charges (what was billed to Medicare), Allowed Amount (what Medicare allows for the services rendered), and Medicare Payment (what was actually paid by Medicare)
+                            for top ten counties. Paid Amount may be less than Allowed Amount if some portion of the payment is beneficiaries' responsibility. The difference is generally paid by the patient out of pocket.
+                            Billed Charges is an interesting figure; it shows what the provider expects to be paid. This may also hint at the ongoing market rate. 
+                        </p>
+                        <p>
+                            In lower portion of the cart below, we have Total Services, Daily Services, and Beneficiaries for top ten counties. Total Services are itemized procedures billed to Medicare,
+                            Daily Services are procedures provided over several days, and Beneficiaries are individual Medicare beneficiaries. Total services are useful from total cost perspective but it
+                            hides beneficiary utilization. Therefore, Daily Services, and Beneficiaries are helpful to understand if services are uniformly distributed over beneficiaries. If we compare Medicare 
+                            Payment on top portion with Total Services in lower portionWe, we can see that the two charts are different. Payment was calculated by multiplying services with average amount; therefore,
+                            it is likely that services utilized vary across these counties.
+                            Please refer to <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Downloads/Medicare-Physician-and-Other-Supplier-PUF-Methodology.pdf">this</a> 
+                            companion guide from CMS for a complete explanation of these fields.                            
+                        </p>
+                        <fieldset id="topTenCountySummary">
+                            <legend>Total Spending and Utilization in Top Ten Counties</legend>
+                        </fieldset>
+                        <p>
+                            Since only a handful specialties make up majority of Medicare spending, let us focus on the top ten specialties that received most Medicare payments. In top portion of the following 
+                            chart, we have Medicare Payment, Allowed Amount, and Billed Charges sorted by Medicare Payment. Surprisingly billed charges are not consistent with actual paid amount. Some specialties such as Diagnostic
+                            Radiology get far less of billed charges compared to specialties such as Dermatology. On the other hand, cost sharing, the difference between allowed and paid amount, appears relatively consistent.
+                        </p>
+                        <p>
+                            In lower portion of the chart, we have Total Services, Daily Services, and Beneficiaries for top ten specialties. Notice that Clinical Laboratory is the most utilized specialty, but it does
+                            not get the largest share of payments. That is due to the varying procedure costs. Procedures in some specialties such as Oncology are very expensive. Even a low service count for these procedures
+                            take a decent chunk of Medicare B dollars. For example: cancer treatment procedures are very expensive and patients may need several units of service during treatment. This results in a very expensive treatment 
+                            for a single patient. On the other hand, Clinical Laboratory procedure such as blood work are comparatively cheap and higher service count does not necessarily result in higher overall cost. In terms of utilization,
+                            procedures in specialties such
+                            as Opthalmology and Cardiology appear to be consistent. We do not want to see high service count per patient for these specialties; it would raise a red flag.
+                        </p>
+                        <fieldset id="topTenSpecialtySummary">
+                            <legend>Spending and Utilization in Top Ten Specialties</legend>
+                        </fieldset>
+                        <p>
+                            Now, let's combine the two charts above and compare some of these highly utilized specialties across some counties with most beneficiaries. Top portion of the following chart shows Total Payment, 
+                            and lower portion shows Total Services.
+                            Almost immediately, Internal Medicine payment amount and service count for Cook county Illinois stand out. From previous observation, we know the beneficiary population is not much higher for Cook county
+                            compared other counties shown below., but the total payment is much larger. In Harris county Texas, Dermatology appears to cost more, whereas Ambulance Service Provider appears to cost less compared to
+                            other counties. Other specialties are more or less evenly distributed across the counties.
+                        </p>
+                        <fieldset id="barCountyVsSpecialty">
+                            <legend>Comparing Specialties Across Counties</legend>
+                        </fieldset>
+                    </div>
 
-<div style="clear:both;">
-	<h2>A Closer Look</h2>
-	<div>
-        <p>
-            Since Medicare beneficiaries are mostly concentrated in a few regions, let us focus on the top ten counties that received most Medicare payments. The first chart shows 
-            Total Billed Charges, Total Allowed Amount, and Total Paid Amount for top ten counties. Billed Charges is what was billed to Medicare. Allowed Amount is what the provider is allowed for the services
-            rendered. Paid Amount is what is actually paid by Medicare. Paid Amount may be less than Allowed Amount if some portion of the payment is beneficiaries' responsibility.
-        </p>
-        <p>
-            The second chart shows Total Services, Total Beneficiary Services, and Total Unique Beneficiaries for top ten counties. Services are itemized procedures billed to Medicare, 
-            Beneficiary Services are unique procedures provided per beneficiary, and Unique Beneficiaries are individual Medicare beneficiaries. Total services are useful but it does 
-            not show utilization. Therefore, Total Beneficiary Services, and Unique Beneficiaries are helpful to understand Medicare utilization. 
-            Please refere to this companion guide from CMS for an explanation of these fields. 
-            https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Downloads/Medicare-Physician-and-Other-Supplier-PUF-Methodology.pdf
-        </p>
-		<div id="byTopCountyPayment" class="barChart"></div>
-		<div id="byTopCountyUtilization" class="barChart"></div>
-	</div>
-	<div>
-        <p>
-            Since only a handful specialties make up majority of Medicare spending, let us focus on the top ten specialties that received most Medicare payments. As we can see in the first 
-            diagram, what get's billed is not what gets paid. Some specialties such as Diagnostic Radiology get far less of billed charges compared to specialties such as Dermatology. Cost sharing, the difference 
-            between allowed and paid amount, appear relatively consistent.
-        </p>
-        <p>
-            The second diagram shows that Clinical Laboratory is the most utilized specialty, but it does not get the largest share of Medicare. It has to do with average cost of the procedures.
-            Hematology/Oncology on the other hand is very expensive because it take decent share of Medicare in terms of dollars and service units utilized for fewer beneficiaries. This is as
-            expected because cancer treatments are expensive and each patient need more units of service, which is confirmed by the chart. Specialties such as opthalmology and cardiology appear 
-            to be consistent in terms of utilization. We can infer that patients do not need several units of treatment for these specialties.
-        </p>
-		<div id="byTopSpecialtyPayment" class="barChart"></div>
-		<div id="byTopSpecialtyUtilization" class="barChart"></div>
-	</div>
-    <div>
-        <p>
-            Let us compare some of these specialties across counties. The first chart shows total Medicare Payments, and the second chart shows Total Services. There a couple of things that stand out.
+                    <div>
+                        <h2>A Deeper Look</h2>
+                        <div>
+                            <p>
+                                Previous diagrams highlighted a few interesting points. We need to dig a little deeper to understand the anomaly. Let's focus on Internal Medicine specialty in Cook county Illinois for now.
+                                We would like to know why Cook county consumes a larger share of Medicare B dollars for its population compared to compared to other counties with similar population of Medicare beneficiaries. 
+                                In order to do so, we can start by looking at payment distribution across providers and procedures within Internal Medicine specialty in Cook county. The bubble chart below shows procedures 
+                                classified under Internal Medicine specialty. The size of the bubble represents total payment amount for that procedure.
+                            </p>
+                            <p>Some of the largest bubbles such as Office/Outpatient Visit Est and Subsequent Hospital Care appear twice! Why? A quick online research revealed that Office/Outpatient Visit Est is divided into 99213 and 99214
+                                codes. Likewise, Subsequent Hospital Care is divided into 99232 and 99233 code. For an established office or outpatient visit, 99232 is the shorter and/or simpler procedure and costs roughly half 
+                                of its counter part 99233, which is longer and/or requires a detailed examination. Office and outpatient visits are common across the entire US population; therefore, we will focus on the next largest 
+                                procedure Subsequent Hospital Care instead in the next section.
+                            </p>
+                            <fieldset id="bubbleHCPCSIntMed">
+                                <legend>Procedure Specific Spending on Internal Medicine in Cook County</legend>
+                                <small>NOTE: Bubble size represents total payment amount.</small>
+                            </fieldset>
+                            <p>
+                                Next, let's look at provider payment distribution for Internal Medicine in Cook county. The scatter plot below shows Total Payments vs Total Services for all providers paid for Internal Medicine procedures. 
+                                The size of the bubbles corresponds to the number of
+                                beneficiaries for these providers. The legend lists top ten providers. The relationship between payments and services is generally linear for Medicare because payment is based on a fee schedule. 
+                                Normally, providers with fewer Medicare patients should appear as small bubbles in the lower left portion and provider with more patients should appear as large bubbles in a linear path. Most providers fall
+                                within the relationship, but there are a few providers that require closer examination at the procedure level. 
+                            </p>
 
-        </p>
-        <fieldset id="byTopCountySpecialtyPayment" class="multipleBarChart fieldset">
-            <legend class="multipleBarChart legend">Comparing Specialties Across Counties</legend>
-        </fieldset>
-        <div id="byTopCountySpecialtyCount" class="barChart"></div>
-    </div>
-</div>
+                            <fieldset id="scatterCookIntMedNPI">
+                                <legend>Provider Payments for Internal Medicine in Cook County</legend>
+                                <small>NOTE: Bubble size represents number of beneficiaries. Total Payments and Total Services in Thousands.</small>
+                            </fieldset>
+                        </div>
+                    </div>
 
-<div style="clear:both;">
-    <fieldset id="workArea" class="multipleBarChart fieldset">
-        <legend class="multipleBarChart legend">Work Area</legend>
-    </fieldset>
-    <div id="experimental" class="barChart"></div>
-</div>
+                    <div>
+                        <h2>Further Investigation</h2>
+                        <div>
+                            <p>
+                                Let's take the observations from the previous charts a step further and compare five of the top paid providers to county, state, and national averages for procedures:
+                                Office/Outpatient Visit Est (99213), Office/Outpatient Visit Est Detailed (99214), Initial Hospital Care (99223), Subsequent Hospital Care (99232), Subsequent Hospital Care Detailed (99233), and Nursing Facility Care Subsequent (99308).
+                                The chart below raises more questions than it answers. The county, state, and national averages are more or less consistent, but the provider metrics deviate from these averages.
+                            </p>
+                            <fieldset id="barTopProvicerHCPCS">
+                                <legend>Some of the Highest Paid Providers in Cook County</legend>
+                            </fieldset>
+                            <p>
+                                Let's focus on Subsequent Hospital Care (99232) for provider 1942394499 in particular. This provider is based in Evergreen Park, IL 60805; therefore, this provider's peers in the same ZipCode should
+                                help us understand the payment distribution. The scatter plot below shows Total Payment against Total Services for all providers in 60805 ZipCode who received payment for Subsequent Hospital Care (99232) service.
+                                The size of the bubble represents to the number of beneficiaries. According to the chart, the higher paid providers simply provided more services and have more Medicare patients. Provider 1942394499 
+                                provided 3845 "Subsequent Hospital Care" services to 698 beneficiaries averaging 5.5 visits per beneficiary in 2012. If operating 365 days a year, the provider would average
+                                10.5 99232 services per day. This provider received roughly a million dollars from Medicare B, and Subsequent Hospital Care (99232) procedure made roughly a quarter of the total payments. Is this normal?
+                            </p>
+                            <fieldset id="scatter60805_99232">
+                                <legend>Providers Paid for "Subsequent Hospital Care (99232)" service in 60805 ZipCode</legend>
+                                <small>NOTE: Bubble size represents number of beneficiaries.</small>
+                            </fieldset>
+                        </div>
+                    </div>
 
+                    <div>
+                        <div>
+                            <h2>Conclusion</h2>
+                            <p>
+                                We started with a very high level national view and refined it to a low level view of one procedure for a provider. We came across several scenarios that were good candidates for closer examination. 
+                                The investigative path we followed led us to one particular case in Evergreen Park, IL that deviated a lot from county, state, and national averages. However, the information in the dataset was insufficient 
+                                to come to a definite conclusion. Any further investigation would require additional data from Medicare or the provider. Nevertheless, we were able to get good insight into Medicare B 
+                                spending and identify several areas for analysis. This dataset analyzed with the right tools is a good step toward understanding the complex healthcare reimbursement system in US.
+                            </p>
+                        </div>
+                    </div>
+
+                </section>
+                <div class="articleAuthor">
+                    <aside>
+                        Endnote: This presentation was created as a class project for Data Visualization course in Data Analytics program at CUNY School of Professional Studies. The original dataset was processed and summarized in relational database.
+                        Data analysis was done in R. Visualizations were created using D3.js library. The data used for this article is a static summary of one scenario. Future project involves interactive charts backed with dynamic data to allow users 
+                        to perform their own investigation. Moreover, Inpatient and Outpatient and data will be added after interactive tools are ready. Question and comments are welcome. Please send them to <a href="mailto:someone@example.com">sharad.gurung@spsmail.cuny.edu</a>.
+                    </aside>
+                </div>
+                <div class="articleReferences">
+                    <h2>Data Source</h2>
+                    <ul>
+                        <li><a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/">Medicare Provider Utilization and Payment Data.</a> Centers for Medicare & Medicaid Services.</li>
+                        <li><a href="http://kff.org/medicare/slide/medicare-as-a-share-of-the-federal-budget-2012/">Medicare as a Share of the Federal Budget, 2012.</a> Kaiser Family Foundation.</li>
+                        <li><a href="http://kff.org/medicare/fact-sheet/medicare-spending-and-financing-fact-sheet/">Medicare Spending and Financing Fact Sheet. Nov 14, 2012.</a> Kaiser Family Foundation.</li>
+                        <li><a href="http://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/technical/nra/dma/?cid=nrcs143_013697">County FIPS Codes.</a> United States Department of Agriculture.</li>
+                    </ul>
+                    <h2>Technology</h2>
+                    <ul>
+                        <li><a href="http://d3js.org/">D3.js</a></li>
+                        <li><a href="https://github.com/mbostock/topojson/wiki">Topojson</a></li>
+                        <li><a href="http://colorbrewer2.org/">Colorbrewer 2.0/</a></li>
+                    </ul>
+                    <h2>References</h2>
+                    <ul>
+                        <li><a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Downloads/Medicare-Physician-and-Other-Supplier-PUF-Methodology.pdf">Medicare Fee-For 
+                            Service Provider Utilization & Payment Data Physician and Other Supplier Public Use File.</a> Centers for Medicare and Medicaid Services.</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer>
+        <strong>
+            Prepared by Sharad Gurung. 
+            <em>
+                Master's Degree in Data Analytics (M.S.),
+            </em>
+        </strong>
+        <strong>
+            CUNY School of Professional Studies.
+        </strong>
+    </footer>
 </body>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -125,383 +262,4 @@ using simple visualizations.
 <script src="Scripts/Choropleth.js" type="text/javascript"></script>
 <script src="Scripts/BubbleGraph.js" type="text/javascript"></script>
 <script src="Scripts/BarCharts.js" type="text/javascript"></script>
-<script src="Scripts/box.js" type="text/javascript"></script>
-<script src="Scripts/BoxPlot.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-    
-
-    function wrap(text, width) {
-        text.each(function () {
-            var text = d3.select(this),
-                words = text.text().split(/\s+/).reverse(),
-                word,
-                line = [],
-                lineNumber = 0,
-                lineHeight = 1.1, // ems
-                y = text.attr("y"),
-                dy = parseFloat(text.attr("dy")),
-                tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
-            while (word = words.pop()) {
-                line.push(word);
-                tspan.text(line.join(" "));
-                if (tspan.node().getComputedTextLength() > width) {
-                    line.pop();
-                    tspan.text(line.join(" "));
-                    line = [word];
-                    tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
-                }
-            }
-        });
-    }
-
-	// Bar Chart: Top Ten Counties Total
-	//
-	(function () {
-
-		var margin = { top: 20, right: 20, bottom: 5, left: 40 },
-			width = 600 - margin.left - margin.right,
-			height = 320 - margin.top - margin.bottom;
-
-		var x0 = d3.scale.ordinal()
-				   .rangeRoundBands([0, width], .1);
-
-		var x1 = d3.scale.ordinal();
-
-		var y = d3.scale.linear()
-				   .range([height, 0]);
-
-		var color = d3.scale.ordinal()
-					  .range(["crimson", "steelblue", "gold", "green", "darkmagenta"]);
-
-		var xAxis = d3.svg.axis()
-					  .scale(x0)
-					  .orient("bottom");
-
-		var yAxis = d3.svg.axis()
-					  .scale(y)
-					  .orient("left")
-					  .tickFormat(d3.format(".2s"));
-
-		var svg = d3.select("#byTopCountySpecialtyPayment").append("svg")
-					.attr("width", width + margin.left + margin.right)
-					.attr("height", height + margin.top + margin.bottom)
-				  .append("g")
-					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-		
-		d3.tsv("Data/BarChart/CountyVsSpecialty_Payment.tsv", function (error, data) {
-
-		    var groups = ["Internal Medicine", "Ambulance Service Supplier", "Diagnostic Radiology", "Dermatology", "Family Practice"];
-
-			data.forEach(function (d) {
-				d.amounts = groups.map(function (name) { return { name: name, value: +d[name] }; });
-			});
-
-			x0.domain(data.map(function (d) { return d.County; }));
-			x1.domain(groups).rangeRoundBands([0, x0.rangeBand()]);
-			y.domain([0, d3.max(data, function (d) { return d3.max(d.amounts, function (d) { return d.value; }); })]);
-
-			//svg.append("g")
-			//	.attr("class", "x axis")
-			//	.attr("transform", "translate(0," + height + ")")
-			//	.call(xAxis);
-
-
-			//svg.append("g")
-			//	.attr("class", "x axis")
-			//	.attr("transform", "translate(0," + height + ")")
-			//	.call(xAxis)
-			//  .selectAll(".tick text")
-			//	.call(wrap, x0.rangeBand());
-
-			svg.append("g")
-				.attr("class", "y axis")
-				.call(yAxis)
-			  .append("text")
-				.attr("transform", "rotate(-90)")
-				.attr("y", 3)
-				.attr("dy", ".71em")
-				.style("text-anchor", "end")
-				.text("Payment Amount");
-
-			var state = svg.selectAll(".state")
-				.data(data)
-			  .enter().append("g")
-				.attr("class", "g")
-				.attr("transform", function (d) { return "translate(" + x0(d.County) + ",0)"; });
-
-			state.selectAll("rect")
-				.data(function (d) { return d.amounts; })
-			  .enter().append("rect")
-				.attr("width", x1.rangeBand())
-				.attr("x", function (d) { return x1(d.name); })
-				.attr("y", function (d) { return y(d.value); })
-				.attr("height", function (d) { return height - y(d.value); })
-				.style("fill", function (d) { return color(d.name); });
-
-
-			var legend = svg.selectAll(".legend")
-				.data(groups)
-			  .enter().append("g")
-				.attr("class", "legend")
-				.attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
-
-			legend.append("rect")
-				.attr("x", width - 18)
-				.attr("width", 18)
-				.attr("height", 18)
-				.style("fill", color);
-
-			legend.append("text")
-				.attr("x", width - 24)
-				.attr("y", 9)
-				.attr("dy", ".35em")
-				.style("text-anchor", "end")
-				.text(function (d) { return d; });
-		});
-
-
-	})();
-
-	(function () {
-
-	    var margin = { top: 5, right: 20, bottom: 30, left: 40 },
-			width = 600 - margin.left - margin.right,
-			height = 320 - margin.top - margin.bottom;
-
-	    var x0 = d3.scale.ordinal()
-				   .rangeRoundBands([0, width], .1);
-
-	    var x1 = d3.scale.ordinal();
-
-	    var y = d3.scale.linear()
-				   .range([height, 0]);
-
-	    var color = d3.scale.ordinal()
-					  .range(["crimson", "steelblue", "gold", "green", "darkmagenta"]);
-
-	    var xAxis = d3.svg.axis()
-					  .scale(x0)
-					  .orient("bottom");
-
-	    var yAxis = d3.svg.axis()
-					  .scale(y)
-					  .orient("left")
-					  .tickFormat(d3.format(".2s"));
-
-	    var svg = d3.select("#byTopCountySpecialtyPayment").append("svg")
-					.attr("width", width + margin.left + margin.right)
-					.attr("height", height + margin.top + margin.bottom)
-				  .append("g")
-					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-	    d3.tsv("Data/BarChart/CountyVsSpecialty_Count.tsv", function (error, data) {
-
-	        var groups = ["Internal Medicine", "Ambulance Service Supplier", "Diagnostic Radiology", "Dermatology", "Family Practice"];
-
-	        data.forEach(function (d) {
-	            d.amounts = groups.map(function (name) { return { name: name, value: +d[name] }; });
-	        });
-
-	        x0.domain(data.map(function (d) { return d.County; }));
-	        x1.domain(groups).rangeRoundBands([0, x0.rangeBand()]);
-	        y.domain([0, d3.max(data, function (d) { return d3.max(d.amounts, function (d) { return d.value; }); })]);
-
-	        //svg.append("g")
-	        //	.attr("class", "x axis")
-	        //	.attr("transform", "translate(0," + height + ")")
-	        //	.call(xAxis);
-
-
-	        svg.append("g")
-				.attr("class", "x axis")
-				.attr("transform", "translate(0," + height + ")")
-				.call(xAxis)
-			  .selectAll(".tick text")
-				.call(wrap, x0.rangeBand());
-
-	        svg.append("g")
-				.attr("class", "y axis")
-				.call(yAxis)
-			  .append("text")
-				.attr("transform", "rotate(-90)")
-				.attr("y", 3)
-				.attr("dy", ".71em")
-				.style("text-anchor", "end")
-				.text("Service Count");
-
-	        var state = svg.selectAll(".state")
-				.data(data)
-			  .enter().append("g")
-				.attr("class", "g")
-				.attr("transform", function (d) { return "translate(" + x0(d.County) + ",0)"; });
-
-	        state.selectAll("rect")
-				.data(function (d) { return d.amounts; })
-			  .enter().append("rect")
-				.attr("width", x1.rangeBand())
-				.attr("x", function (d) { return x1(d.name); })
-				.attr("y", function (d) { return y(d.value); })
-				.attr("height", function (d) { return height - y(d.value); })
-				.style("fill", function (d) { return color(d.name); });
-
-
-	        //var legend = svg.selectAll(".legend")
-			//	.data(groups)
-			//  .enter().append("g")
-			//	.attr("class", "legend")
-			//	.attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
-
-	        //legend.append("rect")
-			//	.attr("x", width - 18)
-			//	.attr("width", 18)
-			//	.attr("height", 18)
-			//	.style("fill", color);
-
-	        //legend.append("text")
-			//	.attr("x", width - 24)
-			//	.attr("y", 9)
-			//	.attr("dy", ".35em")
-			//	.style("text-anchor", "end")
-			//	.text(function (d) { return d; });
-	    });
-
-
-	})();
-
-	(function () {
-
-	    // A formatter for counts.
-	    var formatCount = d3.format(",.0f");
-
-	    var margin = { top: 10, right: 30, bottom: 30, left: 30 },
-            width = 600 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
-
-
-	    var svg = d3.select("#workArea").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        
-	    d3.tsv("Data/Histogram/NPI_Payment.tsv", function (error, tsv) {
-
-	        var values = tsv.map(function(d) { return +d.TotalPayment });
-            
-	        var x = d3.scale.linear()
-                .domain([0, d3.max(tsv, function (d) { return +d.TotalPayment; })])
-                .range([0, width]);
-
-	        var xAxis = d3.svg.axis()
-                .scale(x)
-                .orient("bottom");
-            
-	        var data = d3.layout.histogram()
-                .bins(x.ticks(20))
-                (values);
-
-	        var y = d3.scale.linear()
-                .domain([0, d3.max(data, function (d) { return d.y; })])
-                .range([height, 0]);
-
-	        var bar = svg.selectAll(".bar")
-                .data(data)
-              .enter().append("g")
-                .attr("class", "bar")
-                .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
-
-	        bar.append("rect")
-                .attr("x", 1)
-                .attr("width", x(data[0].dx) - 1)
-                .attr("height", function (d) { return height - y(d.y); });
-
-	        bar.append("text")
-                .attr("dy", ".75em")
-                .attr("y", 6)
-                .attr("x", x(data[0].dx) / 2)
-                .attr("text-anchor", "middle")
-                .text(function (d) { return formatCount(d.y); });
-
-	        svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
-
-	    });
-	    
-	})();
-
-	
-
-
-	(function () {
-
-	    // A formatter for counts.
-	    var formatCount = d3.format(",.0f");
-
-	    var margin = { top: 10, right: 30, bottom: 30, left: 30 },
-            width = 600 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
-
-
-	    var svg = d3.select("#workArea").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-	    d3.tsv("Data/Histogram/HCPCS_Payment.tsv", function (error, tsv) {
-
-	        var values = tsv.map(function (d) { return +d.TotalPayment });
-
-	        var x = d3.scale.linear()
-                .domain([0, d3.max(tsv, function (d) { return +d.TotalPayment; })])
-                .range([0, width]);
-
-	        var xAxis = d3.svg.axis()
-                .scale(x)
-                .orient("bottom");
-
-	        var data = d3.layout.histogram()
-                .bins(x.ticks(20))
-                (values);
-
-	        var y = d3.scale.linear()
-                .domain([0, d3.max(data, function (d) { return d.y; })])
-                .range([height, 0]);
-
-	        var bar = svg.selectAll(".bar")
-                .data(data)
-              .enter().append("g")
-                .attr("class", "bar")
-                .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
-
-	        bar.append("rect")
-                .attr("x", 1)
-                .attr("width", x(data[0].dx) - 1)
-                .attr("height", function (d) { return height - y(d.y); });
-
-	        bar.append("text")
-                .attr("dy", ".75em")
-                .attr("y", 6)
-                .attr("x", x(data[0].dx) / 2)
-                .attr("text-anchor", "middle")
-                .text(function (d) { return formatCount(d.y); });
-
-	        svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
-
-	    });
-
-	})();
-
-	(function () {
-
-	})();
-
-</script>
+<script src="Scripts/ScatterPlot.js" type="text/javascript"></script>

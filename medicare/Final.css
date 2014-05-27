@@ -1,11 +1,13 @@
-﻿/*Pie Chart Styles*/
+﻿
+/*Pie Chart Styles*/
 .arc path {
 	stroke: #fff;
 }
 
+
 /*Choropleth Styles*/
 .map-svg-component {
-	background-color: DarkGray;
+	background-color: silver;
 }
 
 .counties {
@@ -54,6 +56,7 @@
 	fill: rgb(8,48,107);
 }
 
+
 /*Bar Chart Styles*/
 .bar {
 	fill: steelblue;
@@ -70,62 +73,125 @@
 	display: none;
 }
 
-.multipleBarChart.fieldset {
-    border: 1px solid;
-    width: 600px;
-}
-.multipleBarChart.legend {
-    font-size: small;
-    font-weight: bold;
+.fieldset {
+	border: 1px solid;
+	width: 600px;
 }
 
-
-/*Box Plot Styles*/
-.box {
-  font: 10px sans-serif;
-}
-
-.box line,
-.box rect,
-.box circle {
-  fill: #fff;
-  stroke: #000;
-  stroke-width: 1.5px;
-}
-
-.box .center {
-  stroke-dasharray: 3,3;
-}
-
-.box .outlier {
-  fill: none;
-  stroke: #ccc;
-}
-
-
-/*Histogram Styles*/
-
-.bar rect {
-  fill: steelblue;
-  shape-rendering: crispEdges;
-}
-
-.bar text {
-  fill: red;
-}
-
-.axis path, .axis line {
+/*Scatter Plot Styles*/
+.axis path,
+.axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
+.dot {
+  stroke: #000;
+}
+
 
 /*Common Styles*/
 body {
-  font: 10px sans-serif;
+  font: 10px helvetica;
 }
 
 p {
-    font: 12px arial;
+    font-family:"Times New Roman";
+    font-size:  14px;
+    text-indent: 50px;
 }
 
+h1 {
+    font-size: 2.875em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 2em;
+    clear: both;
+}
+
+legend {
+	font-size: small;
+	font-weight: bold;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+
+fieldset {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+.styleBreak {
+	clear: both;
+}
+
+/*Article Specific*/
+
+.page {
+    padding-bottom: 1.875em;
+    padding-top: 1.875em;
+}
+
+.page {
+    width: 100%;
+    margin: 0px auto;
+    max-width: 90em;
+}
+
+.articleAuthor {
+    border-top: 1px solid #D2D2D2;
+    border-bottom: 1px solid #D2D2D2;
+    margin-top: 3em;
+}
+
+.piechart {
+    float: left;
+    width: 400px;
+    height: 400px;
+    margin: 5px;
+}
+
+.chartTitle {
+    text-align: center;
+}
+
+.datasource {
+    text-align: center;
+}
+
+/*ID Specific*/
+/*#scatterCookIntMedNPI {
+	width: 500px;
+	float: left;
+}
+
+#bubbleHCPCSIntMed {
+	float: left;
+}*/
+
+#piechartBudget {
+	width: 900px;
+    height: 460px;
+}
+
+#choroUSCounties {
+	width: 900px;
+}
+
+#bubbleSpecialtyUS {
+	width: 900px;
+}
+
+#bubbleHCPCSIntMed {    
+	width: 900px;
+}

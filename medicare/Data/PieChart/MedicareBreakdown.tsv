@@ -1,5 +1,4 @@
-age,population
-Hospital Inpatient Services,26,Part A
+Category,Percent
 Skilled Nursing Facility,5,Part A
 Physician Payments,13,Part B
 Hospital Outpatient Services,6,Part B
@@ -7,3 +6,4 @@ Home Health,4,Part A and B
 Other Services,13,Part A and B
 Medicare Advantage,23,Part C
 Outpatient Prescription Drugs,10, Part D
+Hospital Inpatient Services,26,Part A

@@ -2,23 +2,23 @@
 // Choropleth: Medicare Spending by County
 
 (function () {
-    var width = 960,
+    var width = 900,
         height = 600;
 
     var rateById = d3.map();
 
     var quantize = d3.scale.quantize()
-        .domain([0, 3])
+        .domain([0,	0.7])
         .range(d3.range(9).map(function (i) { return "q" + i + "-9"; }));
 
     var projection = d3.geo.albersUsa()
-        .scale(1280)
+        .scale(1200)
         .translate([width / 2, height / 2]);
 
     var path = d3.geo.path()
         .projection(projection);
 
-    var svg = d3.select("#byCountyUS").append("svg")
+    var svg = d3.select("#choroUSCounties").append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("class", "map-svg-component");
