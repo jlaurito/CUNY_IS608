@@ -3,5 +3,4 @@
 # otherwise it will continue to run (like a server)
 #
 library('shiny')
-setwd('~/Dropbox/CUNY/CUNY_IS608/lecture3/shiny_graph_sample')
 runApp()

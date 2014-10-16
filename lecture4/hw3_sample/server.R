@@ -4,7 +4,6 @@
 library('shiny')
 library('plyr')
 library('ggplot2')
-setwd('~/Dropbox/CUNY/CUNY_IS608/lecture4/hw3_sample')
 
 # load data
 mort <- read.csv('../data/cleaned-cdc-mortality-1999-2010.csv')

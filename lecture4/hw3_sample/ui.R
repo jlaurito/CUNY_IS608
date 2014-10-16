@@ -4,7 +4,6 @@
 library('shiny')
 library('ggplot2')
 library('googleVis')
-setwd('~/Dropbox/CUNY/CUNY_IS608/lecture4/hw3_sample')
 
 # let's create a list of potential states and years
 mort_ui <- read.csv('../data/cleaned-cdc-mortality-1999-2010.csv')
