@@ -37,7 +37,7 @@
 
 // writing to a document directly
 
-document.write('<p>While you are working in Javascript (or any language), it is really important to be able to debug. Some browsers offer very simple ways to see what is happening on a page.</p>');
+document.write('<p><b>While you are working in Javascript (or any language), it is really important to be able to debug. Some browsers offer very simple ways to see what is happening on a page.</b></p>');
 document.write('<p>Chrome and Firefox in particular offer good Developer Tools and Javascript console access</p><br>');
 </script>
 
@@ -53,13 +53,13 @@ document.write('<p>These are really helpful for finding bugs!</p><br>');
 
 // Variables and Math:
 
-var num1 = 5;
-var num2 = 5;
+var num1 = '5';
+var num2 = '5';
 var answer;
 
 answer = +num1 + +num2
 
-document.write('<p>' + num1 + ' plus ' + num2 + '= ' + answer + '</p>');
+document.write(num1 + ' plus ' + num2 + '= ' + answer );
 
 document.write('<p>An example of a random number would be ' + Math.random() + '</p>');
 
