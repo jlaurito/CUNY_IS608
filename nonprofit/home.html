@@ -78,7 +78,7 @@ input[type=button] {
 <script type='text/javascript'>
 var nameList = [];
 
-d3.csv('nonprofit/byname/name.txt', function(data){
+d3.csv('byname/name.txt', function(data){
     data.forEach(function(d){
         nameList.push(d.NAME);
     });
