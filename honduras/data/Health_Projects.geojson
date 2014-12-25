@@ -1,0 +1,621 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "13.79611",
+        "LONGITUDE": "-87.46889",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.46889,13.79611]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.8",
+        "LONGITUDE": "-88.2",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.2,14.8]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "13.95",
+        "LONGITUDE": "-88.28333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.28333,13.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "15.16667",
+        "LONGITUDE": "-88.13333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.13333,15.16667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.23333",
+        "LONGITUDE": "-88.35",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.35,14.23333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-87.83333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.83333,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.31667",
+        "LONGITUDE": "-88.16667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.16667,14.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.48333",
+        "LONGITUDE": "-87.98333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.98333,14.48333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "13.71389",
+        "LONGITUDE": "-87.505",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.505,13.71389]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.88333",
+        "LONGITUDE": "-87.15",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.15,14.88333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "15.31667",
+        "LONGITUDE": "-87.6",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.6,15.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.95",
+        "LONGITUDE": "-88.68333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.68333,14.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "15.48131",
+        "LONGITUDE": "-86.57415",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.57415,15.48131]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.08333",
+        "LONGITUDE": "-87.9",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.9,14.08333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.7",
+        "LONGITUDE": "-86.95",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.95,14.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "13.82583",
+        "LONGITUDE": "-87.46528",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.46528,13.82583]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.75",
+        "LONGITUDE": "-88.18333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.18333,14.75]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.58441",
+        "LONGITUDE": "-88.30253",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.30253,14.58441]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.26667",
+        "LONGITUDE": "-87.03333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.03333,14.26667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "13.74139",
+        "LONGITUDE": "-87.49444",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.49444,13.74139]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.75",
+        "LONGITUDE": "-88.11667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.11667,14.75]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.06667",
+        "LONGITUDE": "-87.95",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.95,14.06667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.31667",
+        "LONGITUDE": "-88.51667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.51667,14.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.08333",
+        "LONGITUDE": "-88.11667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.11667,14.08333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.93761",
+        "LONGITUDE": "-87.39354",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.39354,14.93761]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "14.28333",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.28333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "15.06667",
+        "LONGITUDE": "-87.28333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.28333,15.06667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Consultora de la segunda fase del programa Reposicin de Viviendas para el Combate al Mal de CHAGAS y otros riesgos de Salud",
+        "LATITUDE": "15.1375",
+        "LONGITUDE": "-87.12778",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.12778,15.1375]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa Multisectorial de Emergencia Fortalecimiento Fiscal y Equidad Social",
+        "LATITUDE": "15",
+        "LONGITUDE": "-86.5",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.5,15]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-88.33333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.33333,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.3",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.3,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.51667",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,14.51667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-88.33333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.33333,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.3",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.3,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.51667",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,14.51667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a Infraestructura Social Basica en el Municipio de Jutiapa Fase I",
+        "LATITUDE": "15.7",
+        "LONGITUDE": "-86.5",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.5,15.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Construccin del Centro de Salud de San Antonio Santa Ana",
+        "LATITUDE": "13.90778",
+        "LONGITUDE": "-87.98972",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.98972,13.90778]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Construccin del Centro de Salud de Iriona Viejo Iriona",
+        "LATITUDE": "15.95",
+        "LONGITUDE": "-85.18333",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.18333,15.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Construccin del Centro de Salud en el Barrio Lucinda Limn",
+        "LATITUDE": "15.78333",
+        "LONGITUDE": "-85.48333",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.48333,15.78333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Ampliacin y Reparacin del Centro de Salud Juan Rafael Zuniga Villa de San Francisco",
+        "LATITUDE": "14.16667",
+        "LONGITUDE": "-86.96667",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.96667,14.16667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Construccin del Centro de Salud de Atima Santa Barbara",
+        "LATITUDE": "14.93333",
+        "LONGITUDE": "-88.48333",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.48333,14.93333]
+      }
+    }
+  ]
+}

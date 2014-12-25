@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+	<link rel="stylesheet" type="text/css" href="css/dvf.css" />
+	<script src="js/leaflet.js"></script>
+	<script src="js/leaflet.ajax.min.js"></script>
+	<script src="js/leaflet-dvf.min.js"></script>
+  <script src="http://d3js.org/d3.v3.js"></script>
+
+	<title>Honduras Foreign Aid Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="yeti.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<style>
+
+        html, body, #map, #svg
+		{
+        width: 960px;
+  			height: 500px;
+       }
+		
+        body 
+		{
+            padding: 10;
+            margin: 10;
+        }
+
+
+    </style>
+    <header>
+</header>
+
+    <title>Honduras Project Locations</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Foreign Aid Projects in Honduras</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://sps.cuny.edu/programs/ms_dataanalytics">CUNY MSDA</a></li>
+            <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Projects</a></li>
+            <li><a href="https://github.com/bcarancibia">Github</a></li>
+            <li><a href="https://bcarancibia.github.io/">Ben Arancibia</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="index.html">Overview </a></li>
+            <li><a href="analytics.html">Analytics</a></li>
+            <li class="active"><a href="map.html">Map<span class="sr-only">(current)</span></a></li>
+            <li><a href="http://pgc.sre.gob.hn/">Direct Data Download</a></li>
+          </ul>
+        </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Population Denisty + Project Locations for Top Sectors</h1>
+          <p> This is a map of the top sectors of the top four donor's foreign aid project locations in Honduras. 
+          <div id="map"></div>
+			<div id="leaflet-div-icon"></div>
+			<div id="legend_a"></div>
+
+
+
+<script>
+
+
+function popUp(feature,layer)
+	{
+	layer.bindPopup("<b>Donor:</b> " + feature.properties.DONOR + "<br /><b>Title:</b> " + feature.properties.TITLE);
+	}
+	
+	
+function readJSON(file) {
+    var request = new XMLHttpRequest();
+    request.open('GET', file, false);
+    request.send(null);
+    if (request.status == 200)
+        return request.responseText;
+};
+
+var Atr_GIS = JSON.parse(readJSON("data/Attribute_GIS.geojson"));
+
+var yellowToRed = new L.HSLHueFunction(new L.Point(0, 200), new L.Point(500, 230));
+
+
+
+
+
+
+//Initialize the map object
+var map = L.map
+	(
+	'map', 
+		{
+        center: [ 14.5, -87.2167],
+        zoom: 7,
+		layers: all_layers
+		}
+	);	
+
+chorolayers = new L.ChoroplethDataLayer(Atr_GIS,{recordsField: 'features',locationMode: L.LocationModes.GEOJSON,layerOptions:{color: "#FF0000",fillOpacity: 0.25,weight: 2},displayOptions:{'properties.PopDens':{displayName: 'Pop Density \n (per sq.km)',color: yellowToRed}}}).addTo(map);
+var all_layers = L.layerGroup(chorolayers)
+//Define layers
+function DonorColors(d)
+{
+return d;
+};
+
+function style(feature)
+	{
+	return{
+		radius: 0.5,
+		fillColor: DonorColors(feature.properties.COLOR_D), 
+		color: "#000000",
+		weight: 1,
+		opacity: 1,
+		fillOpacity: 0.9
+		};	
+	};
+
+
+
+
+var MapSel = 
+{
+};
+
+//Aid Layers
+var WaterLayer = new L.GeoJSON.AJAX("data/Water-Related_Projects.geojson", {onEachFeature:popUp, style: style, pointToLayer: function (feature,latlng) {return L.circleMarker(latlng,{radius:5});}}).addTo(map); 
+var InfraLayer = new L.GeoJSON.AJAX("data/Infrastructure_Projects.geojson", {onEachFeature:popUp, style: style, pointToLayer: function (feature,latlng) {return L.circleMarker(latlng,{radius:5});}}).addTo(map); 
+var EnviroLayer = new L.GeoJSON.AJAX("data/Environmental_Projects.geojson", {onEachFeature:popUp, style: style, pointToLayer: function (feature,latlng) {return L.circleMarker(latlng,{radius:5});}}).addTo(map); 
+var HealthLayer = new L.GeoJSON.AJAX("data/Health_Projects.geojson", {onEachFeature:popUp, style: style, pointToLayer: function (feature,latlng) {return L.circleMarker(latlng,{radius:5});}}).addTo(map); 
+
+
+
+var aid_sel = {
+"Water-Aid Related Projects" : WaterLayer,
+"Infrastructure-Related Projects" : InfraLayer,
+"Environment-Related Projects" : EnviroLayer,
+"Health-Related Projects" : HealthLayer,
+"PopDens":chorolayers
+};
+
+
+L.control.layers(MapSel,aid_sel,{collapsed:false,autoZIndex:false}).addTo(map);
+
+	
+//Load the base map.
+var TlayerAtr = 
+{
+ "attribution": "Map data<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
+}
+var TlayerURLT = "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+L.tileLayer
+	(
+		TlayerURLT, 
+		TlayerAtr
+	).addTo(map)
+
+var myIcon = L.divIcon({});
+
+
+
+var legend = L.control({position: 'bottomleft'});
+
+
+
+//Manual Legend... need to make this much better.
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [];
+
+div.innerHTML = '<div class="legend"><div class="legend-title">Organizations</div><div class="data-layer-legend"><div class="min-value">Spain</div><i style="border-style: solid; opacity: 0.85; border-width: 7px; color: #FFFFB3; border-color: #000000) height: 10px;"></i><br/><div class="min-value">Central American Bank</div><i style="border-style: solid; opacity: 0.85; border-width: 7px; color: #8DD3C7; border-color: #000000) height: 10px;"></i><br/><div class="min-value">World Bank</div><i style="border-style: solid; opacity: 0.85; border-width: 7px; color: #FB8072; border-color: #000000) height: 10px;"></i><br/><div class="min-value">Japan</div><i style="border-style: solid; opacity: 0.85; border-width: 7px; color: #BEBADA; border-color: #000000) height: 10px;"></i></div></div>'
+
+	return div;
+};
+legend.addTo(map);
+
+	
+</script>
+</body>

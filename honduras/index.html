@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+	<link rel="stylesheet" type="text/css" href="css/dvf.css" />
+	<script src="http://d3js.org/d3.v3.js"></script>
+
+
+	<title>Honduras Foreign Aid Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="yeti.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<style>
+
+        html, body, #map, #svg
+		{
+             width: 960px;
+  			height: 500px;
+       }
+		
+        body 
+		{
+            padding: 10;
+            margin: 10;
+        }
+
+    </style>
+    <header>
+</header>
+
+    <title>Honduras Project Locations</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Foreign Aid Projects in Honduras</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://sps.cuny.edu/programs/ms_dataanalytics">CUNY MSDA</a></li>
+            <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Projects</a></li>
+            <li><a href="https://github.com/bcarancibia">Github</a></li>
+            <li><a href="https://bcarancibia.github.io/">Ben Arancibia</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="index.html">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="analytics.html">Analytics</a></li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="http://pgc.sre.gob.hn/">Direct Data Download</a></li>
+          </ul>
+        </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Foreign Aid Projects in Honduras</h1>
+          <p>This project is for the MSDA 608 - Knowledge Visualization and Analytics. Three different datasets were be used to look at financial foreign aid in Honduras. The three datasets are Honduras foreign aid commitments, Honduras financial foreign aid project's locations, and an indicator level dataset with various types of data. All known foreign aid projects and locations are accessible via an open data portal found at this <a href="http://pgc.sre.gob.hn/">website.</a> This website can also be accessed by clicking Direct Data Download on the navigation bar.
+
+          <p> This project was broken into five sections as follows: 1) Proposal, 2) Obtain the Data, 3) Data Transformation, 4) Statistical Analysis and Visualization, 5) Conclusion. Most of the data was collected via the Aid Management Platform (AMP) which my company builds for developing countries to record their foreign aid. This project is using different datasets created by different organizations. The Honduras Foreign Aid Commitments was gathered and entered into the AMP by the Government of Honduras (GoH), the AMP data is stored in a PostgreSQL Database. The locations data for each project was obtained from the Donors that fund projects in Honduras. This location data, until now, is not shared with the GoH and is one of the many pitfalls of the international development sector. The indicator level dataset is maintined by El Sistema Nacional de Información Territorial but has recently been dissolved due to recent of elections. 
+
+          <p> What makes this exploratory data anslysis unique is that the locations of foreign aid projects in Honduras had never existed in a complied manner. Donors within the country had the locations of their projects, but never exchanged this information with other donors. Now that there is a compiled list of locations that can be compiled to Projects located in the Government of Honduras database. The average project funded in Honduras is  19,400,000 USD with the standard deviation being 20,776,332 USD. Statistically, a standard deviation that is larger than a mean indicates that there will be little to no statistically significant differences between mean and zero. This means that the data is non-normal. This is acceptable for the dataset because foreign aid projects are not tested if they are significant based t-tests. What determine a foreign aid projects significance is based on outcome of the projects i.e. municipality's poverty rate went down. 
+
+
+<script>
+
+

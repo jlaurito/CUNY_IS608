@@ -1,0 +1,1377 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "13.95",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,13.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "13.71667",
+        "LONGITUDE": "-87.68333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.68333,13.71667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "13.82722",
+        "LONGITUDE": "-87.69306",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.69306,13.82722]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "13.59",
+        "LONGITUDE": "-87.7",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.7,13.59]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "13.61314",
+        "LONGITUDE": "-87.75188",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.75188,13.61314]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "14.18333",
+        "LONGITUDE": "-87.61667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61667,14.18333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "13.85",
+        "LONGITUDE": "-87.65",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.65,13.85]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "14.23333",
+        "LONGITUDE": "-87.63333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.63333,14.23333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "14.31667",
+        "LONGITUDE": "-87.61667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61667,14.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin Proyecto Carretera Villa San Antonio Goascorn Seccines IAIB ZONAF",
+        "LATITUDE": "14.33333",
+        "LONGITUDE": "-87.51667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.51667,14.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I y II Seccin 2A",
+        "LATITUDE": "14.33333",
+        "LONGITUDE": "-87.68333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.68333,14.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I y II Seccin 2A",
+        "LATITUDE": "14.33333",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,14.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I y II Seccin 2A",
+        "LATITUDE": "14.31667",
+        "LONGITUDE": "-87.61667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61667,14.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I y II Seccin 2A",
+        "LATITUDE": "14.33333",
+        "LONGITUDE": "-87.51667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.51667,14.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin del Proyecto de Rehabilitacin y Mejoramiento de la Carretera Puerto Corts  Frontera con Guatemala CA13",
+        "LATITUDE": "15.58333",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,15.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin del Proyecto de Rehabilitacin y Mejoramiento de la Carretera Puerto Corts  Frontera con Guatemala CA13",
+        "LATITUDE": "15.66667",
+        "LONGITUDE": "-88.2",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.2,15.66667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin del Proyecto de Rehabilitacin y Mejoramiento de la Carretera Puerto Corts  Frontera con Guatemala CA13",
+        "LATITUDE": "15.65",
+        "LONGITUDE": "-88.2",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.2,15.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin del Proyecto de Rehabilitacin y Mejoramiento de la Carretera Puerto Corts  Frontera con Guatemala CA13",
+        "LATITUDE": "15.21",
+        "LONGITUDE": "-87.95",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.95,15.21]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin del Proyecto de Rehabilitacin y Mejoramiento de la Carretera Puerto Corts  Frontera con Guatemala CA13",
+        "LATITUDE": "15.79",
+        "LONGITUDE": "-87.849",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.849,15.79]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Rehabilitacin y Construccin de la Carretera Puerto Corts",
+        "LATITUDE": "15.64",
+        "LONGITUDE": "-87.92",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.92,15.64]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Rehabilitacin y Construccin de la Carretera Puerto Corts",
+        "LATITUDE": "15.65",
+        "LONGITUDE": "-88.2",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.2,15.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Rehabilitacin y Construccin de la Carretera Puerto Corts",
+        "LATITUDE": "15.79",
+        "LONGITUDE": "-87.849",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.849,15.79]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Rehabilitacin y Construccin de la Carretera Puerto Corts",
+        "LATITUDE": "15.35",
+        "LONGITUDE": "-88.4",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.4,15.35]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-88.33333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.33333,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.3",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.3,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.51667",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,14.51667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-88.33333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.33333,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.3",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.3,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.51667",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,14.51667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "13.33333",
+        "LONGITUDE": "-87.08333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.08333,13.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "15.75",
+        "LONGITUDE": "-85.66667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.66667,15.75]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "14.91667",
+        "LONGITUDE": "-88.91667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.91667,14.91667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "15.41667",
+        "LONGITUDE": "-88",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88,15.41667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "14.08333",
+        "LONGITUDE": "-86.5",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.5,14.08333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-87.16667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.16667,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "15.25",
+        "LONGITUDE": "-84.33333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.33333,15.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "14.83333",
+        "LONGITUDE": "-86",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86,14.83333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Capacidad de Planificacion Municipal Territorial P106680",
+        "LATITUDE": "15.25",
+        "LONGITUDE": "-87.16667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.16667,15.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Infraestructura Rural PIR",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-87.85",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.85,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.55",
+        "LONGITUDE": "-87.71667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.71667,15.55]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.8",
+        "LONGITUDE": "-86.71667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.71667,15.8]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.76667",
+        "LONGITUDE": "-87.43333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.43333,15.76667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.75",
+        "LONGITUDE": "-87.43333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.43333,15.75]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.58333",
+        "LONGITUDE": "-87.65",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.65,15.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.81667",
+        "LONGITUDE": "-86.68333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.68333,15.81667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.65",
+        "LONGITUDE": "-87.05",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.05,15.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.65",
+        "LONGITUDE": "-87.06667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.06667,15.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa de Reconstruccion tras el Paso de los Huracanes Beta y Gamma en Honduras",
+        "LATITUDE": "15.55",
+        "LONGITUDE": "-87.65",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.65,15.55]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "14.08333",
+        "LONGITUDE": "-87.91667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.91667,14.08333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "13.58333",
+        "LONGITUDE": "-87.58333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.58333,13.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-87.75",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.75,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "13.58333",
+        "LONGITUDE": "-87.61667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61667,13.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "14.2",
+        "LONGITUDE": "-87.61667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61667,14.2]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "13.88444",
+        "LONGITUDE": "-87.70306",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.70306,13.88444]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Carretera Villa San AntonioGoascorn Seccin IA y IB",
+        "LATITUDE": "14.31667",
+        "LONGITUDE": "-87.61667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61667,14.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa Transporte Pblico para el Distrito Central TRANS450",
+        "LATITUDE": "14.0818",
+        "LONGITUDE": "-87.20681",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.20681,14.0818]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Mejoramiento Infraestructura Social Basica en el Territorio COLOSUCA 2011",
+        "LATITUDE": "14.5",
+        "LONGITUDE": "-88.48333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.48333,14.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Mejoramiento Infraestructura Social Basica en el Territorio COLOSUCA 2011",
+        "LATITUDE": "14.45",
+        "LONGITUDE": "-88.66667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.66667,14.45]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Rehabilitacin y Construccin de la Carretera a Puerto CortsFrontera con Guatemala CA13 Seccin II",
+        "LATITUDE": "15.64",
+        "LONGITUDE": "-87.92",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.92,15.64]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Rehabilitacin y Construccin de la Carretera a Puerto CortsFrontera con Guatemala CA13 Seccin II",
+        "LATITUDE": "15.65",
+        "LONGITUDE": "-88.2",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.2,15.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Rehabilitacin y Construccin de la Carretera a Puerto CortsFrontera con Guatemala CA13 Seccin II",
+        "LATITUDE": "15.79",
+        "LONGITUDE": "-87.849",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.849,15.79]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Rehabilitacin y Construccin de la Carretera a Puerto CortsFrontera con Guatemala CA13 Seccin II",
+        "LATITUDE": "15.35",
+        "LONGITUDE": "-88.4",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.4,15.35]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14",
+        "LONGITUDE": "-88.38333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.38333,14]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,14]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.03333",
+        "LONGITUDE": "-88.33333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.33333,14.03333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.31667",
+        "LONGITUDE": "-88.18333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.18333,14.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.31111",
+        "LONGITUDE": "-88.18056",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.18056,14.31111]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.2",
+        "LONGITUDE": "-88.21667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.21667,14.2]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "13.9",
+        "LONGITUDE": "-88.4",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.4,13.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.28333",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.28333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Reconstruccin y Mejoramiento de Carreteras II PRMC II La EsperanzaCamasca",
+        "LATITUDE": "14.28333",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.28333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.45",
+        "LONGITUDE": "-87.63333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.63333,14.45]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.13333",
+        "LONGITUDE": "-87.21667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.21667,14.13333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.5",
+        "LONGITUDE": "-87.7",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.7,14.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.61667",
+        "LONGITUDE": "-87.83333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.83333,14.61667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.67145",
+        "LONGITUDE": "-87.98693",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.98693,14.67145]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.7",
+        "LONGITUDE": "-87.96667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.96667,14.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.0818",
+        "LONGITUDE": "-87.20681",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.20681,14.0818]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.33333",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,14.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Ampliacin y Mejoramiento Carretera CA5 Segmento I Seccin 1 y 2 Tegucigalpa inicio del Valle de Comayagua y la Administracin del Programa Cuenta del Milenio",
+        "LATITUDE": "14.33333",
+        "LONGITUDE": "-87.51667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.51667,14.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.45",
+        "LONGITUDE": "-87.63333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.63333,14.45]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.45139",
+        "LONGITUDE": "-87.6375",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.6375,14.45139]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.13333",
+        "LONGITUDE": "-87.21667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.21667,14.13333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.5",
+        "LONGITUDE": "-87.7",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.7,14.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.31869",
+        "LONGITUDE": "-87.61427",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61427,14.31869]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.38098",
+        "LONGITUDE": "-87.61494",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.61494,14.38098]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.61667",
+        "LONGITUDE": "-87.83333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.83333,14.61667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.6",
+        "LONGITUDE": "-87.83333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.83333,14.6]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.67145",
+        "LONGITUDE": "-87.98693",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.98693,14.67145]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.7",
+        "LONGITUDE": "-87.96667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.96667,14.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.0818",
+        "LONGITUDE": "-87.20681",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.20681,14.0818]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacin y Mejoramiento de la Carretera CA5 Segmento I",
+        "LATITUDE": "14.33333",
+        "LONGITUDE": "-87.51667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.51667,14.33333]
+      }
+    }
+  ]
+}

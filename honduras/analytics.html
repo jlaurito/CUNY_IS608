@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+  <link rel="stylesheet" type="text/css" href="css/dvf.css" />
+  <script src="js/leaflet.js"></script>
+  <script src="js/leaflet.ajax.min.js"></script>
+  <script src="js/leaflet-dvf.min.js"></script>
+  <script src="http://d3js.org/d3.v3.js"></script>
+
+  <title>Honduras Foreign Aid Projects</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="yeti.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <header>
+</header>
+
+    <title>Honduras Project Locations</title>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Foreign Aid Projects in Honduras</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://sps.cuny.edu/programs/ms_dataanalytics">CUNY MSDA</a></li>
+            <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Projects</a></li>
+            <li><a href="https://github.com/bcarancibia">Github</a></li>
+            <li><a href="https://bcarancibia.github.io/">Ben Arancibia</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="index.html">Overview </a></li>
+            <li class="active"><a href="analytics.html">Analytics<span class="sr-only">(current)</span></a></li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="http://pgc.sre.gob.hn/">Direct Data Download</a></li>
+          </ul>
+        </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Total Amount of Aid Flowing into Honduras by Year</h1>
+          <p>This is an area chart showing the total amount of foreign aid, in USD, flowing into Honduras per year.
+          <div id="svg"></div>
+<style>
+
+body {
+            padding: 10;
+            margin: 10;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: steelblue;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script>
+
+var margin = {top: 20, right: 20, bottom: 30, left: 350},
+    width = 960 ,
+    height = 500;
+
+var parseDate = d3.time.format("%d-%b-%y").parse;
+
+var x = d3.time.scale()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var area = d3.svg.area()
+    .x(function(d) { return x(d.date); })
+    .y0(height)
+    .y1(function(d) { return y(d.close); });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.tsv("data.tsv", function(error, data) {
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    d.close = +d.close;
+  });
+
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+  y.domain([0, d3.max(data, function(d) { return d.close; })]);
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Foreign Aid in USD ($)");
+});
+
+</script>

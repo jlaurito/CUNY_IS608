@@ -1,0 +1,1377 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Programa Multisectorial de Emergencia Fortalecimiento Fiscal y Equidad Social",
+        "LATITUDE": "15",
+        "LONGITUDE": "-86.5",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.5,15]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-88.33333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.33333,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.3",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.3,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa Red Solidaria de Honduras Fase I",
+        "LATITUDE": "14.51667",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,14.51667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-88.33333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.33333,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.3",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.3,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.11667",
+        "LONGITUDE": "-88.25",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.25,14.11667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo al Programa de Red Solidaria Fase II",
+        "LATITUDE": "14.51667",
+        "LONGITUDE": "-88.36667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.36667,14.51667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Dotacion de Camiones Cisterna para el Programa Agua para Vivir",
+        "LATITUDE": "14.13333",
+        "LONGITUDE": "-87.21667",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.21667,14.13333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Manejo Integrado de Agua Urbana en el Area de Tegucigalpa IUWM P125903",
+        "LATITUDE": "14.0818",
+        "LONGITUDE": "-87.20681",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.20681,14.0818]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.64",
+        "LONGITUDE": "-87.92",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.92,15.64]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "13.31667",
+        "LONGITUDE": "-87.21667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.21667,13.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.45",
+        "LONGITUDE": "-87.63333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.63333,14.45]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.09",
+        "LONGITUDE": "-86.37",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.37,14.09]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.13333",
+        "LONGITUDE": "-87.21667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.21667,14.13333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.4",
+        "LONGITUDE": "-87.8",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.8,15.4]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.67",
+        "LONGITUDE": "-86.76",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.76,15.67]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.46",
+        "LONGITUDE": "-87.88",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.88,15.46]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.79878",
+        "LONGITUDE": "-87.34835",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.34835,14.79878]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.265",
+        "LONGITUDE": "-87.96667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.96667,15.265]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.79",
+        "LONGITUDE": "-87.849",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.849,15.79]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.33333",
+        "LONGITUDE": "-87.91667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.91667,15.33333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.25",
+        "LONGITUDE": "-87.75",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.75,14.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.61667",
+        "LONGITUDE": "-87.83333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.83333,14.61667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.67145",
+        "LONGITUDE": "-87.98693",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.98693,14.67145]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "14.29",
+        "LONGITUDE": "-86.7",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.7,14.29]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Modernizacion del Sector Agua y Saneamiento PROMOSAS  P103881 ",
+        "LATITUDE": "15.31667",
+        "LONGITUDE": "-88.03333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.03333,15.31667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Ampliacion Linea Periferica 22 para Abastecer la Colonia Villanueva",
+        "LATITUDE": "14.06072",
+        "LONGITUDE": "-87.16119",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.16119,14.06072]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.4",
+        "LONGITUDE": "-87.73333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.73333,14.4]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.38333",
+        "LONGITUDE": "-87.7",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.7,14.38333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.45",
+        "LONGITUDE": "-87.63333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.63333,14.45]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.36667",
+        "LONGITUDE": "-87.5",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.5,14.36667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.45",
+        "LONGITUDE": "-87.71667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.71667,14.45]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.41667",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,14.41667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.36667",
+        "LONGITUDE": "-87.7",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.7,14.36667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.36",
+        "LONGITUDE": "-87.69",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.69,14.36]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion Comayagua",
+        "LATITUDE": "14.41667",
+        "LONGITUDE": "-87.68333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.68333,14.41667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Mejoramiento de la Cobertura de agua en la Montana Puca PUCA 2011",
+        "LATITUDE": "14.81667",
+        "LONGITUDE": "-88.4",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.4,14.81667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Mejoramiento de la Cobertura de agua en la Montana Puca PUCA 2011",
+        "LATITUDE": "14.78333",
+        "LONGITUDE": "-88.58333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.58333,14.78333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Mejoramiento de la Cobertura de agua en la Montana Puca PUCA 2011",
+        "LATITUDE": "13.73333",
+        "LONGITUDE": "-88.41667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.41667,13.73333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Mejora de la gestion Publica y Acceso al Agua potable y Saneamiento en la Ciudad de Gracias Departamento de Lempira",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.58333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.58333,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.95",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,13.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.5",
+        "LONGITUDE": "-87.68333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.68333,13.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.71667",
+        "LONGITUDE": "-87.68333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.68333,13.71667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.78333",
+        "LONGITUDE": "-87.65",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.65,13.78333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "14.1",
+        "LONGITUDE": "-87.83333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.83333,14.1]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.61667",
+        "LONGITUDE": "-87.63333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.63333,13.61667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.85",
+        "LONGITUDE": "-87.65",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.65,13.85]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.9",
+        "LONGITUDE": "-87.78333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.78333,13.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Incremento de la Cobertura de Agua y Saneamiento y Gestion integrada de la cuenca baja y media del Rio Goascoran",
+        "LATITUDE": "13.65",
+        "LONGITUDE": "-87.53333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.53333,13.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Desarrollo Integral en Zonas Urbano Marginales del Municipio de Trujillo 2011",
+        "LATITUDE": "15.916",
+        "LONGITUDE": "-85.95935",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.95935,15.916]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de las Juntas Administradoras de Agua y Energia de la mancomunidad de NASMAR",
+        "LATITUDE": "13.28333",
+        "LONGITUDE": "-87.63333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.63333,13.28333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de las Juntas Administradoras de Agua y Energia de la mancomunidad de NASMAR",
+        "LATITUDE": "13.59",
+        "LONGITUDE": "-87.7",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.7,13.59]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de las Juntas Administradoras de Agua y Energia de la mancomunidad de NASMAR",
+        "LATITUDE": "13.25",
+        "LONGITUDE": "-87.35",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.35,13.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de las Juntas Administradoras de Agua y Energia de la mancomunidad de NASMAR",
+        "LATITUDE": "13.51667",
+        "LONGITUDE": "-87.5",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.5,13.51667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de las Juntas Administradoras de Agua y Energia de la mancomunidad de NASMAR",
+        "LATITUDE": "13.16667",
+        "LONGITUDE": "-87.13333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.13333,13.16667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de las Juntas Administradoras de Agua y Energia de la mancomunidad de NASMAR",
+        "LATITUDE": "13.41667",
+        "LONGITUDE": "-87.45",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.45,13.41667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.48333",
+        "LONGITUDE": "-88.78333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.78333,14.48333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.55",
+        "LONGITUDE": "-88.84",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.84,14.55]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.65",
+        "LONGITUDE": "-88.83333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.83333,14.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.88333",
+        "LONGITUDE": "-88.81667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.81667,14.88333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.85",
+        "LONGITUDE": "-88.81667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.81667,14.85]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.66667",
+        "LONGITUDE": "-88.91667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.91667,14.66667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.81667",
+        "LONGITUDE": "-88.93333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.93333,14.81667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.9",
+        "LONGITUDE": "-88.71667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.71667,14.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.61667",
+        "LONGITUDE": "-88.8",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.8,14.61667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.76667",
+        "LONGITUDE": "-88.78333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.78333,14.76667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.66667",
+        "LONGITUDE": "-88.7",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.7,14.66667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.95",
+        "LONGITUDE": "-88.75",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.75,14.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a pequenas obras de infraestructura en Higuito",
+        "LATITUDE": "14.9",
+        "LONGITUDE": "-88.78333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.78333,14.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a la Infraestructura Social Basica en el Municipio de Jutiapa Fase II",
+        "LATITUDE": "15.6",
+        "LONGITUDE": "-86.56667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.56667,15.6]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a la Infraestructura Social Basica en el Municipio de Jutiapa Fase II",
+        "LATITUDE": "15.68333",
+        "LONGITUDE": "-86.48333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.48333,15.68333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a la Infraestructura Social Basica en el Municipio de Jutiapa Fase II",
+        "LATITUDE": "15.66667",
+        "LONGITUDE": "-86.53333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.53333,15.66667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a la Infraestructura Social Basica en el Municipio de Jutiapa Fase II",
+        "LATITUDE": "15.76667",
+        "LONGITUDE": "-86.51667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.51667,15.76667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Apoyo a la Infraestructura Social Basica en el Municipio de Jutiapa Fase II",
+        "LATITUDE": "15.7",
+        "LONGITUDE": "-86.5",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.5,15.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Mejoramiento de Sistema de Agua Potable Colonia Thelmo Ruiz",
+        "LATITUDE": "13.30028",
+        "LONGITUDE": "-87.19083",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.19083,13.30028]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "JPN/HN/2KR2010002 Elaboracion de Estudio de Factibilidad EconomicaFinanciera y Diseno Final del Proyecto Desarrollo Agricola Bajo Riego en el Valle de Jesus de Otoro Sector Cuenca Alta del Rio Yucanguare Comunidades de San Francisco y La Angostura",
+        "LATITUDE": "14.5",
+        "LONGITUDE": "-88",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88,14.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto de Construccin del Sistema de Agua Potable en el Casco Urbano La Trinidad",
+        "LATITUDE": "14.71667",
+        "LONGITUDE": "-87.66667",
+        "DONOR": "Japan",
+        "COLOR_D": " #BEBADA "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.66667,14.71667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Gestion Municipal del Servicio de Agua de Tela",
+        "LATITUDE": "15.7",
+        "LONGITUDE": "-87.58",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.58,15.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Gestin Municipal del Serviciode Agua de Santa Rosa de Copn",
+        "LATITUDE": "14.76667",
+        "LONGITUDE": "-88.78333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.78333,14.76667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Fortalecimiento de la Gestin Municipal del Servicio de Agua de La Ceiba 2008",
+        "LATITUDE": "15.67",
+        "LONGITUDE": "-86.76",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.76,15.67]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Suministro de Aguas Subterrneas para Tegucigalpa",
+        "LATITUDE": "13.7675",
+        "LONGITUDE": "-87.44944",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.44944,13.7675]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Suministro de Aguas Subterrneas para Tegucigalpa",
+        "LATITUDE": "14.07375",
+        "LONGITUDE": "-87.19278",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.19278,14.07375]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Suministro de Aguas Subterrneas para Tegucigalpa",
+        "LATITUDE": "14.13333",
+        "LONGITUDE": "-87.21667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.21667,14.13333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Suministro de Aguas Subterrneas para Tegucigalpa",
+        "LATITUDE": "13.81667",
+        "LONGITUDE": "-87.51667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.51667,13.81667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Suministro de Aguas Subterrneas para Tegucigalpa",
+        "LATITUDE": "14.16667",
+        "LONGITUDE": "-87.13333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.13333,14.16667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Suministro de Aguas Subterrneas para Tegucigalpa",
+        "LATITUDE": "13.9925",
+        "LONGITUDE": "-87.15917",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.15917,13.9925]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Suministro de Aguas Subterrneas para Tegucigalpa",
+        "LATITUDE": "14.01667",
+        "LONGITUDE": "-87.1",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.1,14.01667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "13.5",
+        "LONGITUDE": "-87.68333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.68333,13.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "14.07375",
+        "LONGITUDE": "-87.19278",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.19278,14.07375]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "14.45139",
+        "LONGITUDE": "-87.6375",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.6375,14.45139]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "14.03333",
+        "LONGITUDE": "-86.58333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.58333,14.03333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "14.13333",
+        "LONGITUDE": "-87.21667",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.21667,14.13333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "14.66667",
+        "LONGITUDE": "-86.21944",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.21944,14.66667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "15.75971",
+        "LONGITUDE": "-86.78221",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.78221,15.75971]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "14.11075",
+        "LONGITUDE": "-87.20574",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.20574,14.11075]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Proyecto Sectorial de Agua y Saneamiento PROSAGUA",
+        "LATITUDE": "14.6",
+        "LONGITUDE": "-87.83333",
+        "DONOR": "Central American Bank for Economic Integration",
+        "COLOR_D": " #8DD3C7 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.83333,14.6]
+      }
+    }
+  ]
+}

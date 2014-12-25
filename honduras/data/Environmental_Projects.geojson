@@ -1,0 +1,257 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.46923",
+        "LONGITUDE": "-84.34479",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.34479,15.46923]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.48333",
+        "LONGITUDE": "-84.33333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.33333,15.48333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.5",
+        "LONGITUDE": "-84.8",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.8,15.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.75",
+        "LONGITUDE": "-84.48333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.48333,15.75]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "14.83333",
+        "LONGITUDE": "-85.9",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.9,14.83333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "14.85114",
+        "LONGITUDE": "-85.89412",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.89412,14.85114]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.05",
+        "LONGITUDE": "-85.27",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.27,15.05]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.1",
+        "LONGITUDE": "-85.53333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.53333,15.1]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.91676",
+        "LONGITUDE": "-84.9099",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.9099,15.91676]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "14.06667",
+        "LONGITUDE": "-85.98333",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.98333,14.06667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "14.36",
+        "LONGITUDE": "-85.97",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.97,14.36]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "14.05966",
+        "LONGITUDE": "-86.00166",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.00166,14.05966]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Reserva de la Biosfera Transfronteriza Corazon del Corredor Biologico Mesoamericano",
+        "LATITUDE": "15.18333",
+        "LONGITUDE": "-84.61667",
+        "DONOR": "Work Bank Group",
+        "COLOR_D": " #FB8072 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.61667,15.18333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Restauracin Templos COLOSUCA",
+        "LATITUDE": "14.5",
+        "LONGITUDE": "-88.5",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.5,14.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Restauracin Templos COLOSUCA",
+        "LATITUDE": "14.58333",
+        "LONGITUDE": "-88.58333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.58333,14.58333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Restauracin Templos COLOSUCA",
+        "LATITUDE": "14.45",
+        "LONGITUDE": "-88.66667",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.66667,14.45]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Restauracin Templos COLOSUCA",
+        "LATITUDE": "14.41614",
+        "LONGITUDE": "-88.60126",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.60126,14.41614]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TITLE": "Restauracin Templos COLOSUCA",
+        "LATITUDE": "14.4",
+        "LONGITUDE": "-88.73333",
+        "DONOR": "Spain",
+        "COLOR_D": " #FFFFB3 "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.73333,14.4]
+      }
+    }
+  ]
+}
