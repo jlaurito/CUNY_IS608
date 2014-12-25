@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<head>
+<title>990 Search for Non Profits</title>
+<meta charset="utf-8">
+<style>
+
+#inputbar1 {
+width: 300px;
+height: 1em;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 12px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+div + p {
+     color: red;
+} 
+input[type=radio] {
+    display:none;
+    margin:10px;
+}
+input[type=radio] + label {
+    border-radius: 5px;
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    background-color: #D6D6D6;
+    border-color: #ddd;
+}
+input[type=radio]:checked + label {
+    border-radius: 5px;
+	background-image: none;
+    background-color:steelblue;
+}
+
+input[type=button] {
+    border-radius: 5px;
+    border: 0;
+    width: 80px;
+    height:25px;
+	background-color: #D6D6D6;
+}
+</style>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script type='text/javascript'>
+var nameList = [];
+
+d3.csv('byname/name.txt', function(data){
+    data.forEach(function(d){
+        nameList.push(d.NAME);
+    });
+});
+$(function(){
+    $("#inputbar1").autocomplete({
+        source: nameList,
+        minLength : 4
+        });
+});
+
+$('#inputbar1').submit(function () {
+    choosed3('expense', compname.value[0].toUpperCase(), compname.value.toUpperCase(), cols['expense'], colnames['expense']);
+   return false;
+});
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body>
+<h1>Non-Profit I-990 Data</h1>
+<br>
+<p>by Brett Burk</p>
+<br>
+<p>This project was completed as part of CUNY IS608's curriculum. To see other projects, please <a href="http://jlaurito.github.io/CUNY_IS608">click here for the homepage.</a><p><br>
+
+<form>
+<h4>Type in the name of a nonprofit in order to see a visualization of that companies latest  I-990 form.</h4>
+
+
+<div class='ui-widget'>
+<input type="text" name="compname" value="Susan G Komen Breast Cancer Foundation Inc" id = "inputbar1" type="submit">
+</div>
+<p>Examples: <em>Susan G Komen Breast Cancer Foundation, Columbia University Press, Greenpeace Inc </em></p>
+<br><br>
+
+
+<input type="radio" id="radio1" name="charttype" value="expense" checked> <label for="radio1" onclick="choosed3('expense', compname.value[0].toUpperCase(), compname.value.toUpperCase(), cols['expense'], colnames['expense']);">Expenses </label> <span class="tab">&nbsp
+<input type="radio" id="radio2" name="charttype" value="income"> <label for="radio2" onclick="choosed3('income', compname.value[0].toUpperCase(), compname.value.toUpperCase(), cols['income'], colnames['income']);">Income </label> <span class="tab">&nbsp
+<input type="radio" id="radio3" name="charttype" value="emplymnt"> <label for="radio3" onclick="choosed3('emplymnt', compname.value[0].toUpperCase(), compname.value.toUpperCase(), cols['emplymnt'], colnames['emplymnt']);">Employees </label> <span class="tab">&nbsp
+<input type="radio" id="radio4" name="charttype" value="addtl"> <label for="radio4" onclick="choosed3('addtl', compname.value[0].toUpperCase(), compname.value.toUpperCase(), cols['addtl'], colnames['addtl']);">Propublica </label> <span class="tab">&nbsp
+<input type="radio" id="radio5" name="charttype" value="wiki"> <label for="radio5" onclick="choosed3('wiki', compname.value[0].toUpperCase(), compname.value.toUpperCase(), cols['wiki'], colnames['wiki']);"> Wikipedia </label> <span class="tab">
+</form>
+
+<br>
+<p id="footer">Having a hard time finding the name of a charity? Try <a href="http://projects.propublica.org/nonprofits/"> Propublica</a></p>
+
+<script>
+function choosed3(charttype, firstpos, uppername, columns, colnames) {
+	uppername = uppername.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+	if (charttype != "addtl" && charttype != "wiki"){
+		drawchart('byname', firstpos, uppername, columns, colnames);
+	}
+	else if (charttype == "addtl") {
+		propub('byname', firstpos, uppername);
+	}
+	else {
+		wiki(uppername);
+	}
+};
+		
+function wiki(uppername) {
+	temp = uppername.split(" ");
+	temp = temp.join("+");
+	window.location.replace("https://en.wikipedia.org/w/index.php?search=" + temp);
+};
+
+function propub(chosetype, chosespec, spec) {
+	d3.csv("/" + chosetype + "/" + chosespec + "/" + chosespec + "infoDF.csv", function(error, data) {		
+		data = data.filter(function(row) {
+			return row['NAME'] == spec;
+		})[0];
+		ein = data['EIN'];
+		window.location.replace('http://projects.propublica.org/nonprofits/organizations/' + ein);
+	});
+};
+	
+var cols = {expense: ["totfuncexpns","cstbasisecur","cstbasisothr","lessdirfndrsng","lessdirgaming","lesscstofgoods","grntstogovt","grnsttoindiv","grntstofrgngovt","benifitsmembrs","compnsatncurrofcr","compnsatnandothr","othrsalwages","pensionplancontrb","othremplyeebenef","payrolltx","feesforsrvcmgmt","legalfees","accntingfees","feesforsrvclobby","profndraising","feesforsrvcinvstmgmt","feesforsrvcothr","advrtpromo","officexpns","infotech","royaltsexpns","occupancy","travel","travelofpublicoffcl","converconventmtng","interestamt","pymtoaffiliates","deprcatndepletn","insurance","othrexpnsa","othrexpnsb","othrexpnsc","othrexpnsd","othrexpnse","othrexpnsf","totsupport","rntlexpnsreal","rntlexpnsprsnl"], income: ["totrevenue","totcntrbgfts","initiationfees","grsrcptspublicuse","grsincmembers","grsincother","totreprtabled","totcomprelatede","totestcompf","totprgmrevnue","invstmntinc","txexmptbndsproceeds","royaltsinc","grsrntsreal","grsrntsprsnl","grsalesecur","grsalesothr","netgnls","grsincfndrsng","grsincgaming","grsalesinvent","miscrevtota","miscrevtot11b","miscrevtot11c","miscrevtot11d","miscrevtot11e"], emplymnt: ["noemplyeesw3cnt","noindiv100kcnt","nocontractor100kcnt"]};
+
+var colnames = {expense: ["Total functional expenses","Sales expense (Securities)","Sales expense (Other assets)","Fundraising expenses","Gaming expenses","Cost of goods sold (inventory)","Grants to US Orgs","Grants to US Individs","Grants to NonUS Orgs","Benefits paid to members","Compensation of current officers","Compensation of disqualified persons","Other salaries and wages","Pension plan contributions","Other employee benefits","Payroll taxes","Management fees","Legal fees","Accounting fees","Lobbying fees","Professional fundraising fees","Investment management fees","Other fees","Advertising","Office expenses","Information technology","Royalties","Occupancy","Travel","Entertainment of public officials","Conferences","Interest expense","Payments to affiliates","Depreciation","Insurance","Other expenses a","Other expenses b","Other expenses c","Other expenses d","Other expenses e","Other expenses f","Sum of amounts of support","Rental expense (Real estate)","Rental expense -- Personal property"], income: ["Total revenue","Total contributions","Initiation fees","Receipts","Members","Other sources","Organization compensation","Related org.s compensation","Other compensation","Program service","Investments","Bonds","Royalties","Real estate rent","Property rent","Gross sales -- Securities","Gross sales -- Other assets","Sales of assets","Fundraising","Gaming","Inventory Sales","Other revenue a","Other revenue b","Other revenue c","Other revenue d","Other revenue"], emplymnt: ["Number of employees", "Employees > $100K", "Contractors > $100K"]};
+
+var margin = {top: 50, right: 20, bottom: 220, left: 160},
+    width = 1100 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+	
+var xAxis = d3.svg.axis()
+    .scale(x)
+	.orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+	.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+	if (d.name == 'Number of employees' || d.name == 'Employees > $100K' || d.name == 'Contractors > $100K'){
+		return d.name + ":<br>" + (parseInt(d.value)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+		return d.name + ":<br>$" + (parseInt(d.value)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  })
+	
+svg.call(tip);
+
+function drawchart(chosetype, chosespec, spec, cols, colnames) {
+	svg.selectAll("g").remove();
+	svg.selectAll(".bar").remove();
+	d3.csv("/" + chosetype + "/" + chosespec + "/" + chosespec + "infoDF.csv", function(error, data) {	
+		data = data.filter(function(row) {
+			return row['NAME'] == spec;
+		})[0];
+		
+		var currdata = [];
+		for (var i in cols) {
+			currdata.push({name: colnames[i], value: data[cols[i]]});
+		};
+		
+		bakdata = data;
+		data = currdata;
+		x.domain(data.map(function(d) { return d.name; }));
+		y.domain([0, data[0]["value"]]);
+
+		svg.append("g")
+			.attr("class", "y axis")
+			.call(yAxis)
+			.append("text")
+			.attr("y", 6)
+			.attr("dy", ".71em")
+			.style("text-anchor", "end");
+
+		svg.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + height + ")")
+			.call(xAxis)
+			.selectAll("text")  
+			.style("text-anchor", "end")
+			.attr("dx", "-.8em")
+			.attr("dy", ".15em")
+			.attr("transform", function(d) {
+				return "rotate(-65)" 
+			});
+		  
+		svg.selectAll(".bar")
+			.data(data)
+			.enter().append("rect")
+			.attr("class", "bar")
+			.attr("x", function(d) { return x(d.name); })
+			.attr("width", x.rangeBand())
+			.attr("y", function(d) { return y(d.value); })
+			.attr("height", function(d) { return height - y(d.value); })
+			.on('mouseover', tip.show)
+			.on('mouseout', tip.hide);
+
+	});
+};
+
+drawchart('byname', 'S', 'SUSAN G KOMEN BREAST CANCER FOUNDATION INC', cols['expense'], colnames['expense'])
+</script>
+
+</body>
