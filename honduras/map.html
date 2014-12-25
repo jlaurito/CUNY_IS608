@@ -125,7 +125,7 @@ var map = L.map
 		}
 	);	
 
-chorolayers = new L.ChoroplethDataLayer(Atr_GIS,{recordsField: 'features',locationMode: L.LocationModes.GEOJSON,layerOptions:{color: "#FF0000",fillOpacity: 0.25,weight: 2},displayOptions:{'properties.PopDens':{displayName: 'Pop Density\n(/ sq.km)',color: yellowToRed}}}).addTo(map);
+chorolayers = new L.ChoroplethDataLayer(Atr_GIS,{recordsField: 'features',locationMode: L.LocationModes.GEOJSON,layerOptions:{color: "#FF0000",fillOpacity: 0.25,weight: 2},displayOptions:{'properties.PopDens':{displayName: 'Pop Density\n(sq.km)',color: yellowToRed}}}).addTo(map);
 var all_layers = L.layerGroup(chorolayers)
 //Define layers
 function DonorColors(d)
