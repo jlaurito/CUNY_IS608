@@ -153,7 +153,7 @@ function wiki(uppername) {
 };
 
 function propub(chosetype, chosespec, spec) {
-	d3.csv("/" + chosetype + "/" + chosespec + "/" + chosespec + "infoDF.csv", function(error, data) {		
+	d3.csv("nonprofit/" + chosetype + "/" + chosespec + "/" + chosespec + "infoDF.csv", function(error, data) {		
 		data = data.filter(function(row) {
 			return row['NAME'] == spec;
 		})[0];
