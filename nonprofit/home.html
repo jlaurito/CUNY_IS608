@@ -205,7 +205,7 @@ svg.call(tip);
 function drawchart(chosetype, chosespec, spec, cols, colnames) {
 	svg.selectAll("g").remove();
 	svg.selectAll(".bar").remove();
-	d3.csv("nonprofit/" + chosetype + "/" + chosespec + "/" + chosespec + "infoDF.csv", function(error, data) {	
+	d3.csv("/nonprofit/" + chosetype + "/" + chosespec + "/" + chosespec + "infoDF.csv", function(error, data) {	
 		data = data.filter(function(row) {
 			return row['NAME'] == spec;
 		})[0];
