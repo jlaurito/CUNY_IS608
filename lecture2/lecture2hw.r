@@ -78,7 +78,7 @@ floors['.count'] <- log(floors['.count'])  # convert count to log scale
 ggplot(floors, aes(x=YearBuilt, y=NumFloors, fill=.count)) + 
   geom_raster() +
   labs(title='Buildings by floors built over time',
-       x='Year', y='Number of buildings') +
+       x='Year', y='Number of buildings', fill='Log # of buildings') +
   theme_classic() + scale_fill_gradient(low='darkslategray', high='white') +
   scale_x_continuous(breaks=(seq(1850, 2020, 10)))
 
@@ -90,7 +90,7 @@ ggplot(val.by.flr, aes(x=YearBuilt, y=Val, fill=.count)) + geom_raster() +
   scale_fill_continuous(trans='log') + 
   labs(title='Mean and distribution of log assessed value per floor (1930-1955)',
        x='Year built', y='Log of assessed value per floor',
-       fill='Assessed value per floor') +
+       fill='Number of buildings') +
   geom_line(data=mean.val, aes(x=YearBuilt, y=.mean), color='red') +
   geom_point(data=mean.val, aes(x=YearBuilt, y=.mean), color='red')
 
@@ -102,7 +102,7 @@ ggplot(val.by.flot, aes(x=YearBuilt, y=Val, fill=.count)) + geom_raster() +
   scale_fill_continuous(trans='log') + 
   labs(title='Mean and distribution of log assessed value per floor (1930-1955)',
        x='Year built', y='Log of assessed value per floor',
-       fill='Assessed value per floor') +
+       fill='Number of buildings') +
   geom_line(data=mean.flot, aes(x=YearBuilt, y=.mean), color='red') +
   geom_point(data=mean.flot, aes(x=YearBuilt, y=.mean), color='red')
   
