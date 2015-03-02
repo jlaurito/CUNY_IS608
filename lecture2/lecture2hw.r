@@ -5,12 +5,15 @@ require(ggplot2)
 require(scales)
 require(bigvis)
 
+
+#### Preliminaries ####
+
 # Read in data, assign subsets, and remove large data from memory
 data <- read.csv(choose.files(), header = TRUE)
 post1850 <- data[data$YearBuilt >= 1850,]
 rm(data)
 
-# value outliers in 1933
+# value outliers in 1933 (Figure0)
 max.val.by.yr <- post1850 %>% group_by(YearBuilt) %>% 
   summarize(maxVal=max(AssessTot))
 ggplot(max.val.by.yr, aes(x=YearBuilt, y=maxVal)) + geom_line()
@@ -44,10 +47,12 @@ mean.flot <- with(ww2, condense(bin(YearBuilt, 1),
 rm(post1850)
 rm(ww2)
 
-#### Graph of when buildings were constructed ####
+
+#### 1. Graph of when buildings were constructed ####
 
 built_c <- condense(bin(built, 5))
 built_s <- smooth(built_c, 20)
+# Figure 1.1
 autoplot(built_s) + scale_x_continuous(breaks=seq(1850, 2020, 10)) +
   labs(title='NYC Buildings by Year Built', x='Year', y='Number of buildings')
 
@@ -56,6 +61,7 @@ autoplot(built_s) + scale_x_continuous(breaks=seq(1850, 2020, 10)) +
 
 # This is also visible from a cumulative distribution plot
 # Note how the slope changes from trend over the above period
+# Figure 1.2
 ggplot(built_c, aes(x=built, y=cumsum(.count / sum(.count)))) + 
   geom_area(alpha=.5) +
   labs(title='Cumulative plot of building built date', x='Year',
@@ -66,7 +72,8 @@ ggplot(built_c, aes(x=built, y=cumsum(.count / sum(.count)))) +
 # Also, it seems unlikely that there was no construction whatsoever 1850-90
 
 
-#### Graph of buildings of a certain # of floors built by year ####
+#### 2. Graph of buildings of a certain # of floors built by year ####
+# Figure 2
 floors['.count'] <- log(floors['.count'])  # convert count to log scale
 ggplot(floors, aes(x=YearBuilt, y=NumFloors, fill=.count)) + 
   geom_raster() +
@@ -75,8 +82,10 @@ ggplot(floors, aes(x=YearBuilt, y=NumFloors, fill=.count)) +
   theme_classic() + scale_fill_gradient(low='darkslategray', high='white') +
   scale_x_continuous(breaks=(seq(1850, 2020, 10)))
 
-#### Graph assessed value by floor for around WW2 ####
+
+#### 3. Graph assessed value by floor for around WW2 ####
 names(val.by.flr)[2] <- 'Val'
+# Figure 3.1
 ggplot(val.by.flr, aes(x=YearBuilt, y=Val, fill=.count)) + geom_raster() + 
   scale_fill_continuous(trans='log') + 
   labs(title='Mean and distribution of log assessed value per floor (1930-1955)',
@@ -87,6 +96,7 @@ ggplot(val.by.flr, aes(x=YearBuilt, y=Val, fill=.count)) + geom_raster() +
 
 # Appears that hypothesis is plausible--there is a slight dip in mean value
 # per floor. What about when we divide by lot size as well?
+# Figure 3.2
 names(val.by.flot)[2] <- 'Val'
 ggplot(val.by.flot, aes(x=YearBuilt, y=Val, fill=.count)) + geom_raster() + 
   scale_fill_continuous(trans='log') + 
