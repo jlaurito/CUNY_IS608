@@ -8,14 +8,14 @@ setwd('/Users/JL/Box Sync/CUNY/CUNY_IS608/lecture3/shiny_graph_sample')
 # let's create a list of potential states and years
 mort_ui <- read.csv('../data/cleaned-cdc-mortality-1999-2010.csv')
 
-states <- unique(mort_ui$State)
-cause  <- unique(mort_ui$ICD.Chapter)
+states <- lapply(unique(mort_ui$State), as.character)
+cause  <- lapply(unique(mort_ui$ICD.Chapter), as.character)
 
 # shiny UI
 shinyUI(pageWithSidebar(
   headerPanel('Cause of Death by Year, by Type'),
-  sidebarPanel(selectInput("state", "State: ", states, multiple=TRUE, selected='Alabama'),
-               selectInput("cause", "Cause: ", cause, selected='Certain infectious and parasitic diseases')
+  sidebarPanel(selectInput("state", "State: ", choices=states, multiple=TRUE, selected='Alabama'),
+               selectInput("cause", "Cause: ", choices=cause, selected='Certain infectious and parasitic diseases')
               ),
   mainPanel(plotOutput('values')))
 )

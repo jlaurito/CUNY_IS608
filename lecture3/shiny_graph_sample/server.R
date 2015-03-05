@@ -16,6 +16,7 @@ shinyServer(function(input, output){
   outputPlot <- function(){
     # subset
     in_state <- input$state
+
     in_cause <- input$cause
     slcted <- mort[mort$State %in% in_state & mort$ICD.Chapter==in_cause, 
                    c('ICD.Chapter','State','Year','Crude.Rate')
