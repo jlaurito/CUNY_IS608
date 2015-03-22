@@ -2,5 +2,6 @@
 # to stop this from local-hosting, you will need to press Cntrl+C or Cmd+C
 # otherwise it will continue to run (like a server)
 #
+setwd('/Users/JL/Box Sync/CUNY/CUNY_IS608/lecture4/hw3_sample')
 library('shiny')
 runApp()

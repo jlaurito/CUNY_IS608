@@ -20,23 +20,23 @@ shinyServer(function(input, output){
                   ]
     slcted <- slcted[with(slcted, order(-Crude.Rate)),]
     slcted$State.Rank <- rank(-slcted$Crude.Rate, ties.method="random")
-
-    gvisBubbleChart(slcted, 
+    slcted$State <- sapply(slcted$State, as.character)
+    
+gvisBubbleChart(slcted, 
                     idvar='State', 
                     xvar='Crude.Rate', 
                     yvar='State.Rank',
                     sizevar='Population',
                     options= list(chartArea='{left:0,top:0,width:600,height:900}', 
                                   colorAxis.legend.position='none',
-                                  fontSize=9,
                                   vAxis='{direction:-1, maxValue:52, 
                                           minValue:0, gridlines:{count:0}}',
                                   hAxis=paste('{minValue:0,maxValue:',
                                               slcted$Crude.Rate[1]*1.1,
                                               ',gridlines:{count:0}}',
                                               sep=''),
-                                  sizeAxis='{maxValue:40000000, minValue:500000,
-                                             maxSize:4, minSize:2}'
+                                  sizeAxis='{maxSize:3, minSize:3}'
+                                  , bubble='{textStyle: {fontSize: 8,color:"black"}}'
                                  )
                     )
   }
@@ -54,7 +54,7 @@ shinyServer(function(input, output){
                             function(x) weighted.mean(x$Crude.Rate, x$Population))
     motion$Best <- daply(motion, .(Year),function(x) min(x$Crude.Rate))
     motion$Deviation.From.Average <- motion$Crude.Rate - motion$Average
-    motion$Deviation.From.Best <- motion$Best - motion$Crude.Rate
+    motion$Deviation.From.Best <- motion$Crude.Rate - motion$Best
     
     gvisMotionChart(motion, 
                     idvar='State', 
@@ -64,7 +64,7 @@ shinyServer(function(input, output){
                     sizevar='Population',
                     options= list(chartArea='{left:0,top:0,width:600,height:900}', 
                                   colorAxis.legend.position='none',
-                                  state='{"showTrails":true};')
+                                  state='{"time":"2004","orderedByX":false,"playDuration":15000,"uniColorForNonSelected":false,"yAxisOption":"4","colorOption":"4","xLambda":1,"xAxisOption":"2","iconType":"BUBBLE","yZoomedDataMax":44.8,"dimensions":{"iconDimensions":["dim0"]},"xZoomedDataMax":9615,"iconKeySettings":[{"key":{"dim0":"New York"},"trailStart":"1999"}],"nonSelectedAlpha":0.4,"sizeOption":"5","duration":{"multiplier":1,"timeUnit":"Y"},"yLambda":1,"yZoomedIn":false,"showTrails":true,"xZoomedIn":false,"xZoomedDataMin":102,"orderedByY":false,"yZoomedDataMin":16.3};')
     )
     
   }

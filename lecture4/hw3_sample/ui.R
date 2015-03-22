@@ -8,7 +8,8 @@ library('googleVis')
 # let's create a list of potential states and years
 mort_ui <- read.csv('../data/cleaned-cdc-mortality-1999-2010.csv')
 
-cause  <- data.frame(table(mort_ui$ICD.Chapter))[table(mort_ui$ICD.Chapter) >100, 1]
+cause  <- lapply(data.frame(table(mort_ui$ICD.Chapter))[table(mort_ui$ICD.Chapter) >100, 1],as.character)
+
 
 # shiny UI
 shinyUI(pageWithSidebar(
