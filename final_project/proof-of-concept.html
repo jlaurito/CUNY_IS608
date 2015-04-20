@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+/* CSS goes here. */
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script type="text/javascript">
+    var data_fpath = 'data/crime_sample.topojson';
+
+    // set height & width + add svg tags to house graphic
+    var width = 1160,
+            height = 960;
+
+    var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+    // Denver map center ~= 39.737, -104.981
+    var projection = d3.geo.conicConformal()
+//            .center([39.737, -104.981])
+            .parallels([38, 40])
+            .translate([width / 2, height / 2]);
+
+    var path = d3.geo.path().projection(projection);
+
+    // read in data
+    d3.json(data_fpath, function(error, data) {
+        if (error) return console.error(error);
+        console.log(data.objects.crime_sample);
+
+        // is the problem that the coordinates vary by too little?
+        // need to add a map as well
+        svg.append("path")
+                .datum(topojson.feature(data, data.objects.crime_sample))
+                .attr("d", path);
+
+//        d3.select("svg").selectAll("path")
+//                .data(topojson.feature(data, data.objects.crime_sample))
+//                .enter().append("path")
+//                .attr("d", path);
+    });
+
+</script>
