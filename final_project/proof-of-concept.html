@@ -9,6 +9,7 @@
     }
 
 </style>
+<title>Denver Crime Map Proof-of-concept</title>
 <head>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 </head>
@@ -17,71 +18,77 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<script type="text/javascript">
-    // set up map
-    var map = L.map('map').setView([39.737, -104.981], 13)
-            .addLayer(new L.TileLayer(
-                    "http://{s}.tiles.mapbox.com/v4/circld.b689c053/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2lyY2xkIiwiYSI6IjE5MjJCN2MifQ.Ztr1z4FvXHYHFQCxEubPpw")
-            );
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="heatmap.js"></script>
+<script src="leaflet-heatmap.js"></script>
 
+<script type="text/javascript">
+
+    // define local data location
     var data_fpath = 'data/crime_sample.topojson';
 
-    // leaflet-zoom-hide hides svg during zoom
-    var svg = d3.select(map.getPanes().overlayPane).append("svg"),
-        g = svg.append("g").attr("class", "leaflet-zoom-hide");
-
-    // Use Leaflet to implement D3 geometri transformation
-    function projectPoint(x, y) {
-        var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-        this.stream.point(point.x, point.y);
-
-}    // Denver map center ~= 39.737, -104.981
-//    var projection = d3.geo.conicConformal()
-//            .center([39.737, -104.981])
-//            .parallels([38, 40])
-//            .translate([width / 2, height / 2]);
-
-    function projection(x, y) {
-        var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-        this.stream.point(point.x, point.y);
-    }
-
-    var transform = d3.geo.transform({ point: projection }),
-        path = d3.geo.path().projection(transform);
+    // heatmap.js
+    var config = {
+        "radius": 15,
+        "maxOpacity": 0.65,
+        "scaleRadius": false,
+        "useLocalExtrema": true,
+        latField: 'lat',
+        lngField: 'lng',
+        valueField: 'val'
+    };
 
     // read in data
     d3.json(data_fpath, function(error, data) {
+
         if (error) return console.error(error);
-        console.log(data.objects.crime_sample);
 
-        // is the problem that the coordinates vary by too little?
-        // need to add a map as well
-        var feature = g.selectAll("path")
-                .data(topojson.feature(data, data.objects.crime_sample).features)
-                .enter().append("path");
+        var heatmap_data = {
+            max: 1,
+            data: []
+        };
 
-        // Reposition SVG when zoom changes
-        map.on("viewreset", reset);
-        reset();
-
-        function reset() {
-            var bounds = path.bounds(topojson.feature(data, data.objects.crime_sample)),
-                    topLeft = bounds[0],
-                    bottomRight = bounds[1];
-
-            svg.attr("width", bottomRight[0] - topLeft[0])
-                    .attr("height", bottomRight[1] - topLeft[1])
-                    .style("left", topLeft[0] + "px")
-                    .style("top", topLeft[1] + "px");
-            g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
-
-            feature.attr("d", path);
+        function get_coords(element, index, array) {
+//            element.properties.FIRST_OCCURRENCE_DATE
+             heatmap_data.data.push({
+                lat: element.geometry.coordinates[1],
+                lng: element.geometry.coordinates[0],
+                val: 1
+            });
         }
 
-//        d3.select("svg").selectAll("path")
-//                .data(topojson.feature(data, data.objects.crime_sample))
-//                .enter().append("path")
-//                .attr("d", path);
+        var features = topojson.feature(data, data.objects.crime_sample).features;
+
+        // set up leaflet map tile
+        var base = new L.TileLayer(
+                        "http://{s}.tiles.mapbox.com/v4/circld.b689c053/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2lyY2xkIiwiYSI6IjE5MjJCN2MifQ.Ztr1z4FvXHYHFQCxEubPpw"
+        );
+
+        // initialize heatmap overlay
+        var heatmap = new HeatmapOverlay(config);
+
+        var map = L.map('map', {
+            center: new L.LatLng(39.737, -104.981),
+            zoom: 12,
+            maxZoom: 13,
+            minZoom: 11,
+            layers: [base, heatmap]
+        });
+
+        // populate heatmap_data arrays
+        features.forEach(get_coords);
+
+        // call function to take data.objects.crime_sample --> { lat: #, lon: #, value: intensity }
+        var test = {max: 2, data: [{lat: 39.737, lng: -104.981, val: 2}]};
+//        heatmap.setData(test);
+        heatmap.setData(heatmap_data);
+
+//        var map = L.map('map').setView([39.737, -104.981], 13)
+//                .addLayer(new L.TileLayer(
+//                        "http://{s}.tiles.mapbox.com/v4/circld.b689c053/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2lyY2xkIiwiYSI6IjE5MjJCN2MifQ.Ztr1z4FvXHYHFQCxEubPpw")
+//                )
+//                .addLayer(heatmapLayer);
+
     });
 
 </script>
