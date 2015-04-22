@@ -1,0 +1,48 @@
+<h2><center><font color = "#0066CC" size="6"> Understanding Terrorism  </font></center> </h2>
+
+<!-- get all the necessary css files -->
+<link href="mycss.css" rel="stylesheet">
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<!--using css file, define the navigation bar -->
+<ul id="ProjectSubmenu">
+  <li><a href="Home.html">Home</a></li>
+  <li><a href="D3YearWeapons.html">Weapons</a></li>
+  <li><a href="Terroristgroups.html">Terrorist Groups</a></li>
+  <li><a href="problems.html">Problems Encountered</a></li>
+  <li><a href="relatedFiles.html">Related Files</a></li>
+  <li><a href="http://www.start.umd.edu/gtd/">GTD Download</a></li>
+  <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Class Projects</a></li>
+</ul>
+</head>
+
+<body>
+
+<P>
+<hr>
+<h5>References </h5>
+<ol>
+<li><a href="http://sps.cuny.edu/programs/ms_dataanalytics">CUNY MS in Data Analytics</a></li>
+<li> http://stackoverflow.com/questions/18598987/center-googlevis-plot-in-knitr/18599659#18599659 </li>
+<li> http://www.w3schools.com/css/css_examples.asp </li>
+<li> https://code.google.com/p/google-motion-charts-with-r/ </li>
+<li> http://www.d3noob.org/2013/01/adding-title-to-your-d3js-graph.html </li>
+<li> http://www.bbc.com/news/world-30086435 </li>
+<li> http://daringfireball.net/css/fireball_screen.css?v1.6 </li>
+<li> href="http://stackoverflow.com/questions/25631083/how-to-add-country-labels-and-other-information-to-hover-boxes-in-gvisgeochart-i </li>
+</ol>
+</P>
+<P>
+<h5>Program Files </h5>
+<ol>
+<li><a href="mycss.css">css file</a></li>
+<li><a href="GenerateDataForD3Proj.Rmd">Data Munging for Weapons data</a> </li>
+<li><a href="DataForWeaponsFatalities.R">Data Munging for Weapons Fatalities data</a> </li>
+
+</ol>
+</P>
+<footer align = right>IS 608 Final Project 2015 - by Tulasi Ramarao</footer>
+
+</body>
+</html>

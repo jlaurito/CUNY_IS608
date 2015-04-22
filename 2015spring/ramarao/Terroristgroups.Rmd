@@ -1,0 +1,143 @@
+<h2><center><font color = "#0066CC" size="6"> Understanding Terrorism   </font></center> </h2>
+
+<!-- get all the necessary css files -->
+<link href="mycss.css" rel="stylesheet">
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+<!--using css file, define the navigation bar -->
+<ul id="ProjectSubmenu">
+  <li><a href="Home.html">Home</a></li>
+  <li><a href="D3YearWeapons.html">Weapons</a></li>
+  <li><a href="Terroristgroups.html">Terrorist Groups</a></li>
+  <li><a href="problems.html">Problems Encountered</a></li>
+  <li><a href="relatedFiles.html">Related Files</a></li>
+  <li><a href="http://www.start.umd.edu/gtd/">GTD Download</a></li>
+  <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Class Projects</a></li>
+</ul>
+
+
+<body>
+<h4>Terrorist groups and their activities</h4>
+
+<P>
+Terrorists responsible for the deadly attacks are many. A list of these extremist groups was extracted from the Global Terrorism Database website. The targets of their attacks include military personnel and the  government buildings. The fanatics targeted private citizens including innocent school children. The fatalities of these innocent lives are shown in the plot below. 
+</P>
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+# load libraries
+suppressPackageStartupMessages(library(sqldf))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(grid))
+suppressPackageStartupMessages(library(tcltk))
+
+
+# Setting working Directory
+setwd("/Users/tulasiramarao/SpringSem2015/FinalProject/MyProject")
+
+# loading data
+mydata <- read.csv("/Users/tulasiramarao/SpringSem2015/FinalProject/MyProject/gtd_06to13_0814distcsvmac.csv", header = TRUE, sep = ",", check.names = FALSE)
+
+# gname is the terrorist group name
+mydata1 <- subset(mydata,select=c("iyear","country","country_txt","attacktype1","attacktype1_txt","nkill","nkillus","region","weaptype1","targtype1","targtype1_txt","gname"),quote=FALSE)
+
+# name the columns
+colnames(mydata1) <- c("year","countrycode","countryname","attackType","attackDesc","totalkilled","totaluskilled","region","weapontype","targettype","targetname","terroristgroup")
+
+# select desired data
+mydata1selE <- sqldf("SELECT distinct year,  totalkilled,targetname FROM mydata1 
+                     where targetname like 'Education%' 
+                     OR targetname like 'Private%'  
+                     " )
+
+
+#to sum up totalkilled 
+mydata1selE <- aggregate(cbind(totalkilled) ~ year + targetname, data=mydata1selE, FUN = sum)
+
+```  
+
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+# gname is the terrorist group name
+mydata1 <- subset(mydata,select=c("iyear","country","country_txt","gname","nkill"),quote=FALSE)
+colnames(mydata1) <- c("year","countrycode","countryname","terroristgroup","totalkilled")
+
+# use sqldf filter data
+mydata1selT <- sqldf("SELECT distinct year, countrycode,countryname,terroristgroup, totalkilled FROM mydata1 
+                     order by totalkilled desc" )
+
+# remove unwanted chars
+mydata1selT  <- as.data.frame(sapply(mydata1selT , function(x) gsub("\"", "", x)))
+mydata1selT [, 1:5] <- apply(mydata1selT [, 1:5], 2, function(x) { 
+  gsub("\\'", "", x)
+})
+
+# NAs introduced by coercsion
+mydata1selT <- mydata1selT[apply(mydata1selT,1,function(x)any(!is.na(x))),]
+
+# so remove nas
+mydata1selT <- na.omit(mydata1selT)
+mydata1selT <- mydata1selT[complete.cases(mydata1selT),]
+
+# convert datatype
+mydata1selT <- transform(mydata1selT,year = as.numeric(year),
+                         countrycode = as.numeric(countrycode),
+                         totalkilled = as.numeric(as.character(totalkilled) )
+)
+
+# use sqldf to filter data
+mydata1selT <- sqldf("SELECT distinct year, terroristgroup, totalkilled FROM mydata1selT where year > 2010 AND terroristgroup not like 'Unknown'  order by totalkilled desc" )
+
+#to sum up
+mydata1selT <- aggregate(cbind(totalkilled) ~ terroristgroup + year, data=mydata1selT, FUN = sum)
+
+# choose unique rows
+mydata1 <- unique(mydata1[1:3])
+mydata1$value=rnorm(nrow(mydata1[1:3]))
+
+# sort data
+mydata1selT <- mydata1selT[order(mydata1selT$totalkilled,decreasing=TRUE),]
+
+# choose only n rows
+mydata1selT <- head(mydata1selT,30)
+
+# sort data again by year
+mydata1selT <- mydata1selT[order(mydata1selT$year),]
+
+
+```
+```{r results='asis', tidy=TRUE,echo=FALSE}
+ggplot(mydata1selE, aes(x=year,y=totalkilled,col=targetname)) + geom_line() + 
+  ggtitle(expression(atop("Terrorist targets", atop(italic("Innocent Targets"), "")))) + theme(
+  axis.text = element_text(color = "blue", size = 8, face = "italic") ,
+  axis.title.y = element_text(vjust = 0, angle = 90, face = "bold", size = rel(0.5)) +
+    theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm"))
+)
+
+``` 
+
+<P>The groups that caused the most deaths in recent years are represented in a vertical bar chart below. The plot shows that the terrorist group called Boko Haram caused the most deaths in 2013.
+</P>
+
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+
+ggplot(data=mydata1selT, aes(x=terroristgroup,y=totalkilled,fill=factor(year))) +
+  geom_bar(position="dodge",stat="identity") + 
+  coord_flip() + scale_fill_hue(c=45, l=80) + 
+  ggtitle("Terrorist groups responsible for the most fatalities")
+
+
+```  
+
+
+ 
+
+<P>
+<b>Technical details:</b> These plots were created using the ggplot2 library. Two kinds of charts were implemented: The line chart and a vertical bar chart. The sqldf library was used to filter data before plotting. The data was cleaned by removing single quotes, by converting data types, by sorting, by aggregating and by creating unique rows. 
+</P>
+
+<footer align = right>IS 608 Final Project 2015 - by Tulasi Ramarao</footer>
+</body>
+</html>

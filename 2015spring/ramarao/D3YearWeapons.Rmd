@@ -1,0 +1,226 @@
+<h2><center><font color = "#0066CC" size="6"> Understanding Terrorism  </font></center> </h2>
+
+<!-- get all the necessary css files -->
+<link href="mycss.css" rel="stylesheet">
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<!--using css file, define the navigation bar -->
+<ul id="ProjectSubmenu">
+  <li><a href="Home.html">Home</a></li>
+  <li><a href="D3YearWeapons.html">Weapons</a></li>
+  <li><a href="Terroristgroups.html">Terrorist Groups</a></li>
+  <li><a href="problems.html">Problems Encountered</a></li>
+  <li><a href="relatedFiles.html">Related Files</a></li>
+  <li><a href="http://www.start.umd.edu/gtd/">GTD Download</a></li>
+  <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Class Projects</a></li>
+</ul>
+
+<body>
+<h3>Weapons used in terrorism</h3>
+<br>
+<style>
+p  {
+    color:black;
+    font-family:courier;
+    font-size:140%;
+}
+</style>
+
+<P>
+The weapons used for terrorism are extermely diverse ranging from chemicals to vehicles.
+It is important to understand what weapon is causing the most damage in order to reduce the 
+fatalities in a big scale. The pie chart below displays the fatalities in percentage values for the year 2013. This plot was done implementing the gvisPieChart from googleVis library. The chart clearly shows that Explosives and Firearms cause the most damage.  
+</P>
+
+
+
+
+<!-- D3 javascript begins -->
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: #FFA500;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+<body>
+<br>
+<P>
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+# load libraries
+suppressPackageStartupMessages(library(sqldf))
+suppressPackageStartupMessages(library(plyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(googleVis))
+# to change the behaviour of plot.gvis
+op <- options(gvis.plot.tag="chart")
+
+
+```
+
+
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+# Setting working Directory
+setwd("/Users/tulasiramarao/SpringSem2015/FinalProject/MyProject")
+
+# loading data
+mydataEx <- read.csv("/Users/tulasiramarao/SpringSem2015/FinalProject/MyProject/fatalitiesbyweapons.csv", header = TRUE, sep = ",", check.names = FALSE)
+
+mydataEx <- subset(mydataEx,select=c("weapondesc","totalkilled"),quote=FALSE)
+
+colnames(mydataEx) <- c("weapondesc","totalkilled")
+
+## pie chart -
+pie1 <- gvisPieChart(mydataEx, options=list(
+                    title='Weapons used by terrorists in 2013',
+                     width=600, height=400, tooltip = "{text:'percentage'}"))
+
+
+
+print(pie1, "chart")
+
+
+```
+
+<P> 
+To analyze if these two weapons caused significant damage also for the past eight years, GTD data from 2006 was downloaded and cleaned by the process of data munging in R. The R code created for this purpose is in the link called Related Files in the navigation bar.
+</P>
+
+<P>
+To view the number of fatalities caused by these two weapons since 2006, a bar chart was considered a good visualization tool and therefore, a javascript library for manipulating documents based on data, called the D3.js was implemented. The barchart below represents the fatalities caused by Explosives as well as Firearms from 2006 and it can be seen that last two years have their fair share of fatalities from these two weapons. 
+
+</P>
+
+
+<script>
+
+var margin = {top: 50, right: 100, bottom: 30, left: 200},
+    width = 560 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .rangeRound([height, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#778899", "#F08080", "#778899", "#F08080", "#778899", "#F08080", "#778899"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("myd3data2.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.weapontype = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.weapontype[d.weapontype.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  x.domain(data.map(function(d) { return d.year; }));
+  y.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .call(xAxis)
+      .attr("transform", "translate(0," + (height) + ")")
+      .append("text")
+      .attr("y", 26)
+      .style("text-anchor", "start")
+      .style("font-size","12px")
+      .text("YEAR OF WEAPON DISCHARGE");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".31em")
+      .style("text-anchor", "end")
+      .style("font-size","12px")
+      .text("TOTAL CASUALTIES");
+
+  svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "12px") 
+        .style("font-weight", "bold")  
+        .text("Fatalities caused by two weapons: Firearms & Explosives");
+        
+  var year = svg.selectAll(".year")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x(d.year) + ",0)"; });
+
+  year.selectAll("rect")
+      .data(function(d) { return d.weapontype; })
+    .enter().append("rect")
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.y1); })
+      .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.name); });
+
+  var legend = svg.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+});
+
+</script>
+<!-- D3 javascript ends -->
+
+<footer align = right>IS 608 Final Project 2015 - by Tulasi Ramarao</footer>
+</body>
+</html>

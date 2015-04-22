@@ -1,0 +1,166 @@
+<h2><center><font color = "#0066CC" size="6"> Understanding Terrorism  </font></center> </h2>
+
+<!-- get all the necessary css files -->
+<link href="mycss.css" rel="stylesheet">
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<!--using css file, define the navigation bar -->
+<ul id="ProjectSubmenu">
+  <li><a href="Home.html">Home</a></li>
+  <li><a href="D3YearWeapons.html">Weapons</a></li>
+  <li><a href="Terroristgroups.html">Terrorist Groups</a></li>
+  <li><a href="problems.html">Problems Encountered</a></li>
+  <li><a href="relatedFiles.html">Related Files</a></li>
+  <li><a href="http://www.start.umd.edu/gtd/">GTD Download</a></li>
+  <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Class Projects</a></li>
+</ul>
+
+
+<P>
+Hardly a week goes by without hearing about an act of terrorism somewhere in the world. Innocent people are getting killed just because they are at the wrong place at the wrong time. Violence and threats used to intimidate people and countries is growing. Explosives in 2013 have caused 3551 deaths. 30124 people were killed in Iraq due to terrorist attacks. 52% fatalities in 2013 was due to Bombs/Explosives. Firearms and Explosives alone Each of these incidents can cause anxiety, fear and, worst of all, a feeling of helplessness. Arming oneself with the knowledge of terrorism may help in overcoming this feeling of helplessness. Knowledge of some of these issues may even provide ideas on how to solve this problem.  </P>
+<P>
+Hungarian mathematician named George Polya once said that the problem solving starts with an understanding of the problem first. Understanding terrorism is a monumental task and an attempt is made in this project to display terrorism from different angles in the hope that these plots will show various areas affected by the terrorist problem. The dataset of terrorist events is maintained by the University of Maryland at the Global terrorism Database (GTD) website. This project is created based on this dataset for all the years from 2006 to  2013.  </P>
+<P>
+<b> Effects of Terrorism </b>
+There are several views that can be generated from the GTD dataset. However, the goal in this project was to use as many tools as possible learned in the IS 608 class to show different aspects of this data. The resulting plots are displayed in this page as well as the other pages linked through the tabs above. The main page has the googleVis plots, the weapons page uses D3 Javascript and the Terrorist groups page uses ggplot2.
+<P>
+Highlighting many issues: 
+Visual tools are used to highlight many issues caused by Terrorism. The number of people dying from terrorist attacks has increased in recent years and that is a terrifying development shown by a plot in this page. There are several militant groups who are responsible for these deaths and the groups that caused the most deaths are shown in a plot in the Terrorist Groups tab. The militants have not spared innocent young lives in schools and that fact is displayed in a plot in that tab as well. The plot that uses the world map below shows the countries that were most affected by terrorist attacks.  Study on the attack weapons used is in the Weapons tab and displays the weapons that caused the most fatalities. </P>
+<P><b>Technical details: </b>
+This project was created utilizing some of the several techniques learned in this class. The googleis, ggplot and D3 Javascript libraries were chosen for this project and Rstudio environment was used to develop all the R code with the knitr to knit the R files to html files. The data munging of the GTD dataset was done using the sqldf library in R. The dataset has issues like single quotes and Null values (NAs) had to be handled. 
+</P>
+<P> GTD Dataset: <b>Strengths:</b> Open source dataset from GTD is a great asset to help people who want to understand terrorism related issues. Its also of great help to students of Data Analytics who are looking for datasets to practice their newly acquired skills in Data Analytics. <b> Weaknesses: </b> The list of terrorist groups is limited to 53 terrorist groups and there are way more than 53 groups, involved in brutal attacks around the world. For example, the 9/11 attackers were not in any group when that attack was added to this dataset, so the group responsible for these fatalities may not even show up as responsible for this particular attack in the dataset. Also, several fields are unknown under weapons, terrorist groups and fatalities. Therefore, one needs to be careful when quoting numbers and making definite statement about terrorist attacks based on this dataset.
+</P>
+<hr>
+<P>
+The following plot was created by using the gvisMotionChart() from googleVis library to provide a bird eye view of the total fatalities since 2006. The number of deaths was aggregated per year and the plot gives an option to filter data based on the attack type. There is also a choice to view data as a scatterplot or a bar chart or a line chart. The other options include choosing the size of the bubble in the scatterplot to indicate the number of fatalities and the slider at the bottom, for the year the attacks occurred. The table was created using gvisTable() and merged with the motion chart using gvisMerge().
+</P>
+</P>
+
+
+```{r echo=FALSE}
+# load libraries
+suppressPackageStartupMessages(library(sqldf))
+suppressPackageStartupMessages(library(plyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(tcltk))
+suppressPackageStartupMessages(library(googleVis))
+op <- options(gvis.plot.tag="chart")
+#changed the behaviour of plot.gvis
+
+```
+
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+# Setting working Directory
+setwd("/Users/tulasiramarao/SpringSem2015/FinalProject/MyProject")
+
+# loading data
+mydata <- read.csv("/Users/tulasiramarao/SpringSem2015/FinalProject/MyProject/gtd_06to13_0814distcsvmac.csv", header = TRUE, sep = ",", check.names = FALSE)
+
+# gname is the terrorist group name
+mydata1 <- subset(mydata,select=c("iyear","country","country_txt","attacktype1","attacktype1_txt","nkill","nkillus","region","weaptype1","targtype1","targtype1_txt","gname"),quote=FALSE)
+
+colnames(mydata1) <- c("year","countrycode","countryname","attackType","attackDesc","totalkilled","totaluskilled","region","weapontype","targettype","targetname","terroristgroup")
+
+mydatageo <-subset(mydata1,select=c("countryname","totalkilled","region"))
+
+# sort data
+mydata1 <- mydata1[order(mydata1$year),]
+
+# remove unwanted chars
+mydata1 <- as.data.frame(sapply(mydata1, function(x) gsub("\"", "", x)))
+mydata1[, 1:12] <- apply(mydata1[, 1:12], 2, function(x) { 
+  gsub("\\'", "", x)
+})
+
+# NAs introduced by coercsion
+mydata1 <- mydata1[apply(mydata1,1,function(x)any(!is.na(x))),]
+
+# so remove nas
+mydata1 <- na.omit(mydata1)
+mydata1 <- mydata1[complete.cases(mydata1),]
+
+# convert datatypes to numeric
+mydata1 <- transform(mydata1,year = as.numeric(year),
+                     attackType = as.numeric(attackType),
+                     region = as.numeric(region),
+                     weapontype = as.numeric(weapontype),
+                     countrycode = as.numeric(countrycode),
+                     totalkilled = as.numeric(as.character(totalkilled) ),
+                     totaluskilled = as.numeric(as.character(totaluskilled)) )
+
+# get unique rows 
+mydata1 <- unique(mydata1[1:12])
+mydata1$value=rnorm(nrow(mydata1[1:12]))
+
+mydata1 <- unique(mydata1)
+mydata1$value=rnorm(nrow(mydata1))
+
+# select desired data
+mydata1sel <- sqldf("SELECT distinct countrycode, year, attackType, attackDesc, totalkilled FROM mydata1  ")
+
+#to sum up
+mydata1sel <- aggregate(cbind(totalkilled) ~ attackType + attackDesc + year, data=mydata1sel, FUN = sum)
+
+```
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+GM <- gvisMotionChart(mydata1sel, "attackDesc", "year",options = list(width = 610, height = 570))
+```
+
+```{r results='asis', tidy=TRUE, echo=FALSE}
+T <- gvisTable(mydata1sel, options = list(width = 610, height = 270))
+```
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+GTM <- gvisMerge(GM, T, horizontal = FALSE, tableOptions = "bgcolor=\"#CCCCCC\" cellspacing=10")
+
+```
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+# Display chart
+plot(GTM)
+```  
+<br>
+<P>
+Most deaths occurred in Iraq, followed by Afghanistan, Pakistan, India and Nigeria. Hovering the mouse on the countries will display the fatalities suffered by that country. The scrollable list below the map shows the countries and their numbers for fatalities.</P> <br>
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+#data(Exports)
+
+mydatageo <-subset(mydatageo,select=c("countryname","totalkilled"))
+mydatageo <- aggregate(cbind(totalkilled) ~ countryname, data=mydatageo, FUN = sum)
+
+#head(mydatageo)
+# choose unique rows
+mydatageo <- unique(mydatageo[1:2])
+mydatageo$value=rnorm(nrow(mydatageo[1:2]))
+
+# sort data
+mydatageo <- mydatageo[order(mydatageo$totalkilled,decreasing = TRUE), ]
+
+G1 <- gvisGeoChart(data = mydatageo, locationvar =  "countryname", colorvar="totalkilled",
+                   options=list(title="Terrorist attacks around the world"))
+T2 <- gvisTable(mydatageo, options = list(width = 610, height = 270))
+```
+
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+GTM <- gvisMerge(G1, T2, horizontal = FALSE, tableOptions = "bgcolor=\"#CCCCCC\" cellspacing=10")
+
+```
+
+
+```{r results='asis', tidy=TRUE,echo=FALSE}
+# Display chart
+plot(GTM)
+```  
+
+
+
+</body>
+
+<footer align = right>IS 608 Final Project 2015 - by Tulasi Ramarao</footer>
+</html>

@@ -1,0 +1,95 @@
+<html>
+<head>
+<h2><center><font color = "#0066CC" size="6"> Understanding Terrorism  </font></center> </h2>
+
+<!-- get all the necessary css files -->
+<link href="mycss.css" rel="stylesheet">
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<!--using css file, define the navigation bar -->
+<ul id="ProjectSubmenu">
+  <li><a href="Home.html">Home</a></li>
+  <li><a href="D3YearWeapons.html">Weapons</a></li>
+  <li><a href="Terroristgroups.html">Terrorist Groups</a></li>
+  <li><a href="problems.html">Problems Encountered</a></li>
+  <li><a href="relatedFiles.html">Related Files</a></li>
+  <li><a href="http://www.start.umd.edu/gtd/">GTD Download</a></li>
+  <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 Final Class Projects</a></li>
+</ul>
+
+<h4>Problems encountered while working on this project:</h4>
+<br>
+<style>
+p  {
+    color:black;
+    font-family:courier;
+    font-size:120%;
+}
+</style>
+</head>
+
+<body>
+<ul> 
+<li>Shiny not loading to html R_X11.so, 6: Library not loaded:<br>
+yosemite x11 was not installed so reinstalled xll from 
+http://xquartz.macosforge.org/landing/
+</li>
+
+<li>Plots not displaying only its html showing: <br>
+Added {r results='asis', tidy=TRUE}
+</li>
+
+<li>Launching plots from R markdown didn’t display the plots: <br> 
+had to:
+1) print graph in its own chunk 
+2) and launch from a local server 
+</li>
+
+<li>Error in gvisCheckMotionChartData: The data must have rows with unique combinations of idvar and timevar -- there were duplicates: <br>
+Added this line - d[ !duplicated(d), ] 
+</li>
+
+<li>
+pandoc: Could not fetch https://www.google.com/jsapi?callback=displayChartComboChartIDa784475888d FailedConnectionException2 "www.google.com" 443 True getAddrInfo: does not exist (nodename nor servname provided, or not known)
+Error: pandoc document conversion failed with error 67
+Execution halted <br>
+Had to reboot my computer
+</li>
+
+<li>
+Error in testTimevar(x[[options$data$timevar]], options$data$date.format) : <br>
+  The timevar has to be of numeric or Date format. Currently it is  character
+solution: NA ? 
+</li>
+
+<li>
+Animation part of googlevis plot disappeared when D3 was put in.
+sum - not meaningful for factors <br> 
+converted weapontype to int
+</li>
+
+<li>Pie chart did not render - had to center and then print the plot: <br>
+Added print(pie1, "chart") instead of plot(pie1)
+</li>
+
+<li> Can't suppress this warning: Warning: package 'ggplot2' was built under R version 3.1.3
+suppressWarnings(suppressMessages(library(ggplot2))) did not work. <br>
+Could not find solution, except to reinstall the latest version of these libraries.
+</li>
+ 
+<li> Once Shiny was installed, the R programs didn't run normally. They opened up Shiny screens: <br>
+Clicking on x next to the shiny package finally stopped this issue.
+</li>
+
+<li>
+ggplot- error-could-not-find-function-unit: <br>
+Added require(grid)
+</li>
+</ul>
+
+
+<footer align = right>IS 608 Final Project 2015 - by Tulasi Ramarao</footer>
+</body>
+
+</html>
