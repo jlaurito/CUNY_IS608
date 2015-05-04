@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="jquery.csv-0.71.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["calendar"]});
+      google.setOnLoadCallback(drawChart);
+
+      // chart var must be global for listeners
+      var chart;
+
+      function drawChart() {
+
+        $.get('data/crime_dates.csv', function(csvData){
+          var arrayData = $.csv.toArrays(csvData, {
+            onParseValue: $.csv.hooks.castToScalar
+          });
+
+          // create daily counts
+          var counts = {};
+          var row_array = [];
+
+          arrayData.forEach(function(d) {
+            var date_time = new Date(d[0]);
+            var date_item = date_time.toDateString();
+            if (date_item in counts) {
+              counts[date_item] += 1;
+            } else {
+              counts[date_item] = 1;
+            }
+          });
+
+          // convert into array of [Date, count] arrays
+          for (var r in counts) {
+            row_array.push([new Date(r), counts[r]]);
+          }
+
+          // create DataTable and map data
+          var dataTable = new google.visualization.DataTable();
+          dataTable.addColumn({ type: 'date', id: 'Date' });
+          dataTable.addColumn({ type: 'number', id: 'Count' });
+          dataTable.addRows(row_array);
+
+          chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+
+          var options = {
+            title: "Denver Crime/Traffic Incidents by Day",
+            height: 1200,
+            calendar: {
+              cellSize: 10,
+              cellColor: {
+                stroke: "#669999",
+                strokeWidth: 0.5,
+                opacity: 0.01
+              },
+              focusedCellColor: {
+                stroke: "#00FF99"
+              }
+            },
+            noDataPattern: {
+              backgroundColor: "#FFFFFF",
+              color: "#FFFFFF"
+            },
+            colorAxis: {minValue: 1,  colors: ['#EBFAFA', '#009999']}
+          };
+
+          chart.draw(dataTable, options);
+
+          // add event listeners
+          google.visualization.events.addListener(chart, 'onmouseover', m_in);
+        });
+      }
+
+      function m_in(e) {
+        console.log(new Date(e.date));
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="calendar_basic" style="width: 1000px; height: 350px;"></div>
+  </body>
+</html>
