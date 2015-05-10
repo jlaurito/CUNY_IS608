@@ -11,30 +11,51 @@
 <title>Denver Crime Map Proof-of-concept</title>
 <head>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="heatmap.js"></script>
+  <script src="leaflet-heatmap.js"></script>
 </head>
 <body>
+<p class="date_display"></p>
 <div id="map"></div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://d3js.org/topojson.v1.min.js"></script>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="heatmap.js"></script>
-<script src="leaflet-heatmap.js"></script>
-
 <script type="text/javascript">
 
   // define local data location
-  var data_fpath = 'data/crime_sample.topojson';
+  var fname = 'crime_cats_201503';
+  var data_fpath = 'data/' + fname + '.topojson';
+
+  var n = 14;  // max datum val/num intervals visible (?)
+  var speed = 100;
+
+  // declare global vars (for debug)
+  var full_data = [];
+  var tmp;
 
   // heatmap.js
   var config = {
     "radius": 15,
-    "maxOpacity": 0.65,
+    "maxOpacity": 0.8,
+    "minOpacity": 0,
     "scaleRadius": false,
-    "useLocalExtrema": true,
+    "useLocalExtrema": false,
+    "blur": 0.75,
+//    gradient: {
+//      '0.05': '#661400',
+//      '0.5': '#B22400',
+//      '0.95': '#FF4719'
+//    },
     latField: 'lat',
     lngField: 'lng',
     valueField: 'val'
+  };
+
+  var heatmap_data = {
+    max: 4 * n,  // what's an appropriate scaling factor for max?
+    min: 0,
+    data: []
   };
 
   // read in data
@@ -42,14 +63,11 @@
 
     if (error) return console.error(error);
 
-    var heatmap_data = {
-        max: 14,
-        data: []
-    };
-
     function get_coords(element, index, array) {
-      heatmap_data.data.push({
+      full_data.push({
         datetime: new Date(element.properties.FIRST_OCCURRENCE_DATE),
+        crime: element.properties.OFFENSE_CATEGORY_ID,
+        shown: false,
 
         // required heatmap.js vars
         lat: element.geometry.coordinates[1],
@@ -58,7 +76,10 @@
       });
     }
 
-    var features = topojson.feature(data, data.objects.crime_sample).features;
+    var features = topojson.feature(data, data.objects[fname]).features;
+
+    // store data in global vars
+    tmp = features;
 
     // set up leaflet map tile
     var base = new L.TileLayer(
@@ -80,14 +101,19 @@
     features.forEach(get_coords);
 
     // add data by 12 hour intervals
-    var datetime_extent = d3.extent(heatmap_data.data, function(d) {
+    var datetime_extent = d3.extent(full_data, function(d) {
       return d.datetime;
     });
-    var curr_time = datetime_extent[0];
-    var last_time = datetime_extent[1];
+
+    // must create new date or will overwrite datetime for datum
+    var curr_time = new Date(datetime_extent[0]);
+    var last_time = new Date(datetime_extent[1]);
+
+    // normalize
     curr_time.setMinutes(0);
     last_time.setMinutes(0);
     last_time.setHours(last_time.getHours() + 12);
+    last_time.setDate(last_time.getDate() + 7);
 
     function add_next_data() {
       // change curr_time
@@ -98,24 +124,52 @@
         curr_time.setHours(0);
       }
 
-      heatmap_data.data.forEach(function (d) {
-        if (d.val > 0) {
-          d.val -= 1;
+      // update current data slice in heatmap_data.data
+      heatmap_data.data.forEach(function (element, array, index) {
+        if (element.shown && element.val === 0) {
+          heatmap_data.data.splice(index, 1);
         }
-        if (d.datetime < curr_time && d.val === 0) {
-          d.val = 14;
+        if (element.val > 0) {
+          element.val -= 1;
         }
-
-      console.log(curr_time);
       });
 
+      // push qualifying points from full_data into heatmap_data.data
+      // note: will need to reset shown & val if reusing full_data
+      full_data.forEach( function(element, array, index) {
+        if (!element.shown && element.datetime < curr_time) {
+          element.shown = true;
+          element.val = n;
+          heatmap_data.data.push(element);
+        }
+      });
+
+      // cancel once 7 days have past since the last datetime
+      if (curr_time > last_time) {
+
+        // which are still visible at end of animation?
+        console.log(heatmap_data.data);
+        heatmap_data.data.forEach(function(d) {
+          if (d.val !== 0) {
+            console.log(d);
+          }
+        });
+
+        clearInterval(intervals);
+      }
+//      console.log(curr_time);
+//      console.log(last_time);
+
+      // display curr_time in DOM object
+      d3.select(".date_display")
+          .text(curr_time);
+
+      // update map data points
       heatmap.setData(heatmap_data);
+
     }
 
-    var intervals = setInterval(add_next_data, 1500);
-    if (curr_time > last_time) {
-      clearInterval(intervals);
-    }
+    var intervals = setInterval(add_next_data, speed);
 
   });
 
