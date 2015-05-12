@@ -31,7 +31,7 @@
 
 <body class="container-fluid">
 <h3 class="well well-md">Denver Crime Map
-  <br><small>Identifying trends in crimes committed in Denver in the month of March 2015</small></h3>
+  <br><small>Geographic and temporal trends in crime committed in Denver in March 2015</small></h3>
 <div id="controls" class="row-fluid">
   <div class="col-md-12">
     <div class="dropdown">
@@ -59,7 +59,7 @@
   var fname = 'crime_cats_201503';
   var data_fpath = 'data/' + fname + '.topojson';
 
-  var n = 14;  // max datum val/num intervals visible (?)
+  var n = 14;  // max datum val/intervals visible (?)
   var speed = 100;
 
   // declare global vars (for debug)
@@ -296,9 +296,13 @@
         .append("a")
         .attr("href", "#")
         .text(function(d) { return d.capitalize(); })
-        // add event listeners for items
+        // add event listeners for items (update button text accordingly)
         .on("click", function(d, i) {
           crime_selected = crimes[i];
+          d3.select(".dropdown button")
+              .html(
+                  crime_selected.capitalize() + ' <span class="caret"></span>'
+          );
         });
 
   });
