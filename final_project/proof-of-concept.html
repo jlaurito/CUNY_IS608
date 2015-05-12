@@ -11,10 +11,18 @@
     width: 100%;
   }
 
+  /* allow newlines in tooltips, !important to override BS3 defaults */
+  .tooltip-inner {
+    text-align: left !important;
+    max-width: 500px !important;
+    white-space: pre-wrap;
+  }
+
 </style>
 <title>Denver Crime Map Proof-of-concept</title>
 <head>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>  <meta charset="utf-8">
+  <!-- load jquery BEFORE bootstrap for tooltips, etc to work properly -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="http://bootswatch.com/darkly/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -22,7 +30,6 @@
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://d3js.org/topojson.v1.min.js"></script>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="heatmap.js"></script>
   <script src="leaflet-heatmap.js"></script>
   <title>Denver Crime Map</title>
@@ -30,11 +37,11 @@
 
 
 <body class="container-fluid">
-<h3 class="well well-md">Denver Crime Map
+<h3 class="well well-md text-center">Denver Crime Map
   <br><small>Geographic and temporal trends in crime committed in Denver in March 2015</small></h3>
 <div id="controls" class="row-fluid">
   <div class="col-md-12">
-    <div class="dropdown">
+    <div id="help" class="dropdown" data-toggle="tooltip" title="help text not injected">
       <button type="button" class="btn btn-default btn-block" data-toggle="dropdown">
         Select crime category <span class="caret"></span></button>
       <ul class="dropdown-menu" id="crime">
@@ -54,6 +61,13 @@
 
 
 <script type="text/javascript">
+
+  // inject help text into tooltip
+  var help_text = "1. Select crime category of interest\n" +
+      "2. Press 'Run Visualization' to begin heatmap animation\n" +
+      "3. Press 'Stop Visualization' to stop animation and to reset";
+  d3.select("#help")
+      .attr("title", help_text);
 
   // define local data location
   var fname = 'crime_cats_201503';
@@ -307,4 +321,11 @@
 
   });
 
+  // initialize tooltip(s)
+  $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+//  $(document).ready(function() {
+//      $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+//  });
 </script>
