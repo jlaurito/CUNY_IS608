@@ -195,13 +195,6 @@
     "scaleRadius": false,
     "useLocalExtrema": false,
     "blur": 0.75,
-//    gradient: {
-//      '0.05': '#ffffcc',
-//      '0.25': '#a1dab4',
-//      '0.5': '#41b6c4',
-//      '0.75': '#2c7fb8',
-//      '0.95': '#253494'
-//    },
     latField: 'lat',
     lngField: 'lng',
     valueField: 'val'
@@ -275,9 +268,6 @@
     }
   }
 
-//  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0"
-//  aria-valuemin="0" aria-valuemax="100" style="width:0%">
-//      </div>
   function update_progress(cur, last, clear) {
     clear = typeof clear !== 'undefined' ? 1 : 0;
     var pct = Math.ceil(100 * cur / last);
@@ -375,15 +365,13 @@
     var curr_time = datetime_extent[0];
     var last_time = datetime_extent[1];
 
-    console.log(curr_time);
-    console.log(last_time);
     last_time += 4 * params.n;  // to allow points to fade
 
     function add_next_data() {
 
       // change curr_time
-      curr_time += 1;
       update_progress(curr_time, datetime_extent[1]);
+      curr_time += 1;
 
       // update current data slice in heatmap_data.data
       heatmap_data.data.forEach(function (element, array, index) {
