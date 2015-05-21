@@ -65,22 +65,23 @@
   <title>Denver Crime Map</title>
 </head>
 
-
 <body>
-<div class="row-fluid">
-  <div class="col-xs-12">
-    <nav class="navbar navbar-default" id="navbar">
-      <div class="navbar-header">
-        <p class="navbar-brand">
-          Denver Crime Map
-          <br><small>Geographic and temporal crime trends (March 2015)</small>
-        </p>
-        <button type="button" class="navbar-toggle" data-toggle="modal"
-                data-target="#description">
-          <span class="glyphicon glyphicon-question-sign"></span>
-        </button>
-      </div>
-    </nav>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default" id="navbar">
+        <div class="navbar-header">
+          <p class="navbar-brand">
+            Denver Crime Map
+            <br><small>Geographic and temporal crime trends (March 2015)</small>
+          </p>
+          <button type="button" class="navbar-toggle" data-toggle="modal"
+                  data-target="#description">
+            <span class="glyphicon glyphicon-question-sign"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
   </div>
 </div>
 <div class="container-fluid">
@@ -117,7 +118,7 @@
               <li>
                 <a href="#" onclick="set_unit('hour');">
                   <div class="help-time" data-toggle="tooltip" title="help text not injected">
-                    Hour
+                    Hour of the day
                   </div>
                 </a>
               </li>
@@ -189,11 +190,11 @@
           return 'Day ' + d;
         } },
       'hour': {
-        n: 3, speed: 800, label: "Aggregate by hour", format: function(d) {
+        n: 3, speed: 800, label: "Aggregate by hour of the day", format: function(d) {
           return d + ':00 - ' + d + ':59';
         }},
       'day': {
-        n:2, speed: 1200, label: "Aggregate by day", format: function(d) {
+        n:2, speed: 1200, label: "Aggregate by day of the week", format: function(d) {
           return weekdays[d];
         }}
     };
@@ -513,10 +514,14 @@
   // insert modal text
   $(document).ready(function () {
     $(".modal-header").html( function() {
-      var title = $("<h3>").text("Denver Crime Map");
-      var author = $("<small>").text("Paul Garaud");
-      return title.append( $("<br>") ).append( author );
+      var close_icon = $("<button type='button' class='close' data-dismiss='modal'>&times;</button>");
+      return close_icon;
     });
+    $(".modal-header").append( function() {
+          var title = $("<h3>").text("Denver Crime Map");
+          var author = $("<small>").text("Paul Garaud");
+          return title.append( $("<br>") ).append( author );
+        });
     $(".modal-body").load(text_fname);
     $(".modal-footer").html("<span>Data source:&nbsp;&nbsp;</span>")
         .append( function() {
