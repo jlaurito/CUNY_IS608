@@ -1,0 +1,112 @@
+<html>
+<meta charset = "utf-8">
+  <head>
+    <link href="freedom_map.css"/>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+    <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+    <script type="text/javascript" src="http://techslides.com/demos/d3/js/queue.v1.min.js"></script>
+    <script type="text/javascript" src="http://techslides.com/demos/d3/js/topojson.js"></script>
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"-->
+    <script type="text/javascript">
+      var csvRows;
+
+    	d3.csv("hdi_info.csv", function(data) {
+	
+			return{
+				country: data.name,
+				freedom: data.freedom,
+				hdi: data.hdi,
+        life: data.life_expectancy,
+        school: data.schooling_years,
+        income: data.income
+
+			};
+			}, function(error, rows){
+          csvRows = rows;
+        });
+			
+        
+            // Load the Visualization API and the piechart package.
+            google.load("visualization", "1", {packages:["corechart"]});
+              google.setOnLoadCallback(drawChart);
+          function drawChart() {
+            drawSingleChart("chart_div", "freedom", "life", "country", 50, 90);
+            drawSingleChart("chart_div2", "freedom", "school", "country", 4, 13);
+            drawSingleChart("chart_div3", "freedom", "income", "country", 5000, 120000);
+        
+          }
+
+          function drawSingleChart(chartDivName, hVar, vVar, name, vmin, vmax){
+
+            var dataArray = [];// = [['Freedom', 'HDI', 'Name']]lt
+            csvRows.forEach(function(row){
+              dataArray.push([parseInt(row[hVar]),  parseFloat(row[vVar]), row[name] + ":  " + hVar + " = " + row[hVar] + ", " + vVar + " = "+ row[vVar]]);
+            });
+
+            //var data = google.visualization.arrayToDataTable(dataArray);
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', hVar);
+            data.addColumn('number', 'HDI');
+            data.addColumn({type:'string', role:'tooltip'});
+            data.addRows(dataArray);
+
+            var options = {
+              title: hVar + " vs. " + vVar, 
+              hAxis: {title: hVar, minValue: 0, maxValue: 7},
+              vAxis: {title: vVar, minValue: vmin, maxValue: vmax},
+              legend: 'none',
+              trendlines: { 0: {} }
+            };
+
+            var chart = new google.visualization.ScatterChart(document.getElementById(chartDivName));
+
+            chart.draw(data, options);
+          }
+    </script>
+    <style>
+p{
+
+  font-family:  "Arial", sans-serif;
+}
+h1{
+
+  font-family:  "Arial", sans-serif;
+}
+h3{
+
+  font-family:  "Arial", sans-serif;
+}
+</style>
+ 
+  </head>
+
+  <body>
+    <h1>Freedom Ratings</h1>
+    <h3>Freedom levels range from 1 (very free) to 7 (not free at all)</h3>
+    <a href="csv3.html">To see birthrate data, click here</a>
+ <div id="map"></div> 
+ <p>The above map represents the levels of freedom by country worldwide. Freedom ratings range from 1 to 7, representing a decrease in freedom levels as the rating increases. This rating is from Freedom House, an independent watchdog organization dedicated to the expansion of freedom around the world. The rating you see is the average of two sub-ratings, a political rights rating and a civil liberties rating. As one might expect, the lowest freedom ratings (most free) are predominately in Europe, North America, and Australia and the highest freedom ratings (least free) are in Africa, the Middle East and Central Asia.</p>
+<p>
+I wanted to demonstrate that a country's level of freedom, or lack thereof, has a major effect on that country's level of development. We can see with the scatterplots above that in all three categories that make up a country's HDI development rating, there is a negative correlation when freedom decreases. This suggests that the less free a country is, the less developed it is. The reason I think this is important to note is that a country's freedom is more or less a matter of policy and, in theory, can be changed if the ruling party decides to change. On the other hand, income, life expectancy and years in school are more entrenched issues that can't be changed as a matter of policy. But if a country becomes more free, perhaps these development factors could improve.
+</p>
+
+<!--Div that will hold the charts-->
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-4" style="float:left">
+      <div id="chart_div" style="width:400; height:300"></div>
+    </div>
+    <div class = "col-lg-4" style="float:left">
+      <div id="chart_div2" style="width:400; height:300"></div>
+    </div>
+    <div class = "col-lg-4"  style="float:left">
+     <div id="chart_div3" style="width:400; height:300"></div>
+    </div>
+  </div>
+</div>
+<script type = "text/javascript" src="freedom_map.js"></script>
+
+  </body>
+</html>

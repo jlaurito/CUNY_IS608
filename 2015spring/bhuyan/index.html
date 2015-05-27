@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Tablet Ratings, Prices at Walmart</title>
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="jquery.csv-0.71.js"></script>
+    <script>
+        //load the google viz library, set a listener
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+
+        //create the callback function for drawChart reference
+        function drawChart(){
+            //load csv data
+            $.get("wmttablet_data.csv", function(csvString) {
+
+                //convert the csv string into a two-dimensional array
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+                //convert the two-dimensional array into a data table product
+                var data = new google.visualization.arrayToDataTable(arrayData);
+
+                //create a view and set columns (Grouped Product Name, Mean AvgRating (per product group), Mean Sale Price (per product group), TotalReviews (per product group)
+                var view = new google.visualization.DataView(data);
+                view.setColumns([0, 1, 2, 3]);
+
+                //set options for bubble chart as well as horizontal and vertical axes
+                var options = {
+                    title: "Which Tablets Sold at Walmart Offer the Best Value for the Money?",
+                    'height':750,
+                    'width':1200,
+                    bubble: {textStyle: {fontSize: 8}},
+                    hAxis: {
+                        title: data.getColumnLabel(1),
+                        minValue: data.getColumnRange(1).min-2,
+                        maxValue: data.getColumnRange(1).max+2
+                    },
+                    vAxis: {
+                        title: data.getColumnLabel(2),
+                        minValue: data.getColumnRange(2).min,
+                        maxValue: data.getColumnRange(2).max+100
+
+                    },
+
+
+
+                    legend: 'none'
+                };
+
+                //bind bubble chart to <div>. Draw the current View with the selected options
+
+                var chart = new google.visualization.BubbleChart(document.getElementById('chart'));
+
+                chart.draw(view, options);
+
+
+            });
+        }
+
+    </script>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <h1>Tablet Ratings, Prices at Walmart</h1>
+    <h3><a href="http://jlaurito.github.io/CUNY_IS608/">CUNY IS608</a> | <a href="writeup.pdf">Write-up</a></h3><br>
+<div id = "chart"></div>
+
+</body>
+</html>

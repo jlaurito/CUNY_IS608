@@ -1,0 +1,804 @@
+Country,Confirmation Number,Death number,Year,Region
+Afghanistan,116444,0,2005,Eastern Mediterranean
+Afghanistan,92202,25,2007,Eastern Mediterranean
+Afghanistan,81574,46,2008,Eastern Mediterranean
+Afghanistan,64880,32,2009,Eastern Mediterranean
+Afghanistan,69397,22,2010,Eastern Mediterranean
+Afghanistan,77549,40,2011,Eastern Mediterranean
+Afghanistan,54840,36,2012,Eastern Mediterranean
+Angola,889572,13768,2005,Africa
+Angola,1082398,10220,2006,Africa
+Angola,1533485,9812,2007,Africa
+Angola,1377992,9465,2008,Africa
+Angola,1573422,10530,2009,Africa
+Angola,1682870,8114,2010,Africa
+Angola,1632282,6909,2011,Africa
+Angola,1496834,5736,2012,Africa
+Argentina,440,0,2000,Americas
+Argentina,215,0,2001,Americas
+Argentina,125,0,2002,Americas
+Argentina,122,1,2003,Americas
+Argentina,115,0,2004,Americas
+Argentina,252,0,2005,Americas
+Argentina,212,0,2006,Americas
+Argentina,387,0,2007,Americas
+Argentina,130,0,2008,Americas
+Argentina,86,0,2009,Americas
+Argentina,26,0,2010,Americas
+Argentina,0,0,2011,Americas
+Argentina,0,0,2012,Americas
+Azerbaijan,1526,0,2000,Europe
+Azerbaijan,1055,0,2001,Europe
+Azerbaijan,505,0,2002,Europe
+Azerbaijan,480,0,2003,Europe
+Azerbaijan,386,0,2004,Europe
+Azerbaijan,242,0,2005,Europe
+Azerbaijan,141,0,2006,Europe
+Azerbaijan,108,0,2007,Europe
+Azerbaijan,72,0,2008,Europe
+Azerbaijan,78,0,2009,Europe
+Azerbaijan,50,0,2010,Europe
+Azerbaijan,4,0,2011,Europe
+Azerbaijan,3,0,2012,Europe
+Burundi,308095,691,2000,Africa
+Burundi,312015,417,2001,Africa
+Burundi,327138,483,2002,Africa
+Burundi,353459,425,2003,Africa
+Burundi,363395,689,2004,Africa
+Burundi,327464,776,2005,Africa
+Burundi,791731,434,2006,Africa
+Burundi,1101644,167,2007,Africa
+Burundi,876741,595,2008,Africa
+Burundi,1185622,1183,2009,Africa
+Burundi,1763447,2677,2010,Africa
+Burundi,1571874,2233,2011,Africa
+Burundi,2151076,2263,2012,Africa
+Benin,889597,1375,2009,Africa
+Benin,422968,1753,2011,Africa
+Benin,705839,2261,2012,Africa
+Burkina Faso,0,4233,2001,Africa
+Burkina Faso,0,4032,2002,Africa
+Burkina Faso,0,4860,2003,Africa
+Burkina Faso,18256,4205,2004,Africa
+Burkina Faso,21335,5224,2005,Africa
+Burkina Faso,44265,8083,2006,Africa
+Burkina Faso,44246,6472,2007,Africa
+Burkina Faso,36514,7834,2008,Africa
+Burkina Faso,182527,7982,2009,Africa
+Burkina Faso,804539,9024,2010,Africa
+Burkina Faso,428113,7001,2011,Africa
+Burkina Faso,3858046,7963,2012,Africa
+Bangladesh,55599,484,2000,South-East Asia
+Bangladesh,54216,470,2001,South-East Asia
+Bangladesh,62269,598,2002,South-East Asia
+Bangladesh,54654,574,2003,South-East Asia
+Bangladesh,58894,505,2004,South-East Asia
+Bangladesh,48121,501,2005,South-East Asia
+Bangladesh,32857,508,2006,South-East Asia
+Bangladesh,59866,228,2007,South-East Asia
+Bangladesh,84690,154,2008,South-East Asia
+Bangladesh,63873,47,2009,South-East Asia
+Bangladesh,55873,37,2010,South-East Asia
+Bangladesh,51773,36,2011,South-East Asia
+Bangladesh,9901,11,2012,South-East Asia
+Belize,1486,0,2000,Americas
+Belize,1162,0,2001,Americas
+Belize,1134,0,2002,Americas
+Belize,1066,1,2004,Americas
+Belize,1549,0,2005,Americas
+Belize,844,1,2006,Americas
+Belize,845,0,2007,Americas
+Belize,540,0,2008,Americas
+Belize,256,0,2009,Americas
+Belize,150,0,2010,Americas
+Belize,79,0,2011,Americas
+Belize,37,0,2012,Americas
+Bolivia (Plurinational State of),31469,11,2000,Americas
+Bolivia (Plurinational State of),15765,0,2001,Americas
+Bolivia (Plurinational State of),14276,4,2002,Americas
+Bolivia (Plurinational State of),20343,1,2003,Americas
+Bolivia (Plurinational State of),14910,3,2004,Americas
+Bolivia (Plurinational State of),21442,0,2005,Americas
+Bolivia (Plurinational State of),19725,0,2006,Americas
+Bolivia (Plurinational State of),14610,0,2007,Americas
+Bolivia (Plurinational State of),9742,0,2008,Americas
+Bolivia (Plurinational State of),9743,0,2009,Americas
+Bolivia (Plurinational State of),13748,0,2010,Americas
+Bolivia (Plurinational State of),7126,0,2011,Americas
+Bolivia (Plurinational State of),7415,0,2012,Americas
+Brazil,613241,243,2000,Americas
+Brazil,388303,142,2001,Americas
+Brazil,348259,93,2002,Americas
+Brazil,408886,103,2003,Americas
+Brazil,465004,100,2004,Americas
+Brazil,606067,122,2005,Americas
+Brazil,549469,105,2006,Americas
+Brazil,458652,93,2007,Americas
+Brazil,315746,67,2008,Americas
+Brazil,309316,85,2009,Americas
+Brazil,334667,76,2010,Americas
+Brazil,267146,69,2011,Americas
+Brazil,242758,64,2012,Americas
+Bhutan,5935,15,2000,South-East Asia
+Bhutan,5982,14,2001,South-East Asia
+Bhutan,6511,11,2002,South-East Asia
+Bhutan,3806,14,2003,South-East Asia
+Bhutan,2670,7,2004,South-East Asia
+Bhutan,1825,5,2005,South-East Asia
+Bhutan,1868,7,2006,South-East Asia
+Bhutan,793,2,2007,South-East Asia
+Bhutan,329,2,2008,South-East Asia
+Bhutan,972,4,2009,South-East Asia
+Bhutan,436,2,2010,South-East Asia
+Bhutan,194,1,2011,South-East Asia
+Bhutan,82,1,2012,South-East Asia
+Botswana,4716,29,2001,Africa
+Botswana,1588,23,2002,Africa
+Botswana,1830,18,2003,Africa
+Botswana,3453,19,2004,Africa
+Botswana,530,11,2005,Africa
+Botswana,2548,40,2006,Africa
+Botswana,390,6,2007,Africa
+Botswana,927,12,2008,Africa
+Botswana,1024,6,2009,Africa
+Botswana,1046,8,2010,Africa
+Botswana,432,8,2011,Africa
+Botswana,193,3,2012,Africa
+Central African Republic,46759,1442,2012,Africa
+C?te d'Ivoire,3527,1249,2008,Africa
+C?te d'Ivoire,7388,18156,2009,Africa
+C?te d'Ivoire,62726,1023,2010,Africa
+C?te d'Ivoire,29976,1389,2011,Africa
+C?te d'Ivoire,1140627,1534,2012,Africa
+Cameroon,313083,1811,2007,Africa
+Cameroon,0,4943,2009,Africa
+Democratic Republic of the Congo,897,3856,2000,Africa
+Democratic Republic of the Congo,1531,416,2001,Africa
+Democratic Republic of the Congo,1735,2152,2002,Africa
+Democratic Republic of the Congo,2438,989,2003,Africa
+Democratic Republic of the Congo,2684,13613,2004,Africa
+Democratic Republic of the Congo,2971,15322,2005,Africa
+Democratic Republic of the Congo,2050,12970,2006,Africa
+Democratic Republic of the Congo,740858,14372,2007,Africa
+Democratic Republic of the Congo,1618218,17940,2008,Africa
+Democratic Republic of the Congo,1878705,21168,2009,Africa
+Democratic Republic of the Congo,2417780,23476,2010,Africa
+Democratic Republic of the Congo,4561981,23748,2011,Africa
+Democratic Republic of the Congo,4791598,21601,2012,Africa
+Congo,103213,113,2007,Africa
+Congo,117291,143,2008,Africa
+Congo,92855,116,2009,Africa
+Congo,71048,892,2011,Africa
+Congo,3717,623,2012,Africa
+Colombia,144432,41,2000,Americas
+Colombia,231233,58,2001,Americas
+Colombia,204916,40,2002,Americas
+Colombia,180956,24,2003,Americas
+Colombia,142241,25,2004,Americas
+Colombia,121629,28,2005,Americas
+Colombia,120096,53,2006,Americas
+Colombia,128462,19,2007,Americas
+Colombia,80501,22,2008,Americas
+Colombia,79347,12,2009,Americas
+Colombia,117650,23,2010,Americas
+Colombia,64309,18,2011,Americas
+Colombia,60179,20,2012,Americas
+Comoros,12874,28,2004,Africa
+Comoros,6086,92,2005,Africa
+Comoros,20559,56,2006,Africa
+Comoros,36538,53,2010,Africa
+Comoros,24856,19,2011,Africa
+Comoros,49840,17,2012,Africa
+Cabo Verde,100,0,2001,Africa
+Cabo Verde,58,2,2002,Africa
+Cabo Verde,48,4,2003,Africa
+Cabo Verde,32,4,2004,Africa
+Cabo Verde,54,2,2005,Africa
+Cabo Verde,63,8,2006,Africa
+Cabo Verde,2,2,2007,Africa
+Cabo Verde,16,2,2008,Africa
+Cabo Verde,65,2,2009,Africa
+Cabo Verde,18,1,2010,Africa
+Cabo Verde,36,4,2011,Africa
+Cabo Verde,1,0,2012,Africa
+Costa Rica,1879,0,2000,Americas
+Costa Rica,1363,0,2001,Americas
+Costa Rica,1021,0,2002,Americas
+Costa Rica,718,0,2003,Americas
+Costa Rica,1289,0,2004,Americas
+Costa Rica,3541,0,2005,Americas
+Costa Rica,2903,0,2006,Americas
+Costa Rica,1223,0,2007,Americas
+Costa Rica,966,0,2008,Americas
+Costa Rica,262,1,2009,Americas
+Costa Rica,110,0,2010,Americas
+Costa Rica,11,0,2011,Americas
+Costa Rica,7,0,2012,Americas
+Djibouti,1796,29,2006,Eastern Mediterranean
+Djibouti,210,1,2007,Eastern Mediterranean
+Djibouti,2686,0,2009,Eastern Mediterranean
+Djibouti,1010,0,2010,Eastern Mediterranean
+Djibouti,25,0,2012,Eastern Mediterranean
+Dominican Republic,911,6,2000,Americas
+Dominican Republic,828,17,2001,Americas
+Dominican Republic,789,11,2002,Americas
+Dominican Republic,997,12,2003,Americas
+Dominican Republic,1831,16,2004,Americas
+Dominican Republic,2461,16,2005,Americas
+Dominican Republic,2494,10,2006,Americas
+Dominican Republic,2193,17,2007,Americas
+Dominican Republic,1668,11,2008,Americas
+Dominican Republic,1494,14,2009,Americas
+Dominican Republic,2953,15,2010,Americas
+Dominican Republic,1039,10,2011,Americas
+Dominican Republic,603,8,2012,Americas
+Algeria,35,2,2000,Africa
+Algeria,8,1,2001,Africa
+Algeria,4,0,2008,Africa
+Algeria,4,0,2009,Africa
+Algeria,12,1,2010,Africa
+Algeria,4,0,2011,Africa
+Algeria,59,0,2012,Africa
+Ecuador,104528,0,2000,Americas
+Ecuador,108903,0,2001,Americas
+Ecuador,86757,0,2002,Americas
+Ecuador,52065,0,2003,Americas
+Ecuador,28730,0,2004,Americas
+Ecuador,17050,0,2005,Americas
+Ecuador,9863,0,2006,Americas
+Ecuador,8464,0,2007,Americas
+Ecuador,4891,1,2008,Americas
+Ecuador,4120,0,2009,Americas
+Ecuador,1871,0,2010,Americas
+Ecuador,1219,0,2011,Americas
+Ecuador,544,0,2012,Americas
+Eritrea,9716,133,2001,Africa
+Eritrea,6078,86,2002,Africa
+Eritrea,10346,79,2003,Africa
+Eritrea,4119,24,2004,Africa
+Eritrea,9073,49,2005,Africa
+Eritrea,6541,47,2006,Africa
+Eritrea,15565,42,2007,Africa
+Eritrea,8764,19,2008,Africa
+Eritrea,11759,23,2009,Africa
+Eritrea,35982,27,2010,Africa
+Eritrea,34848,12,2011,Africa
+Eritrea,21815,30,2012,Africa
+Ethiopia,392377,1681,2001,Africa
+Ethiopia,427795,1607,2002,Africa
+Ethiopia,463797,2138,2003,Africa
+Ethiopia,578904,3327,2004,Africa
+Ethiopia,538942,1086,2005,Africa
+Ethiopia,447780,1357,2006,Africa
+Ethiopia,451816,991,2007,Africa
+Ethiopia,458561,1169,2008,Africa
+Ethiopia,1036316,1121,2009,Africa
+Ethiopia,1158197,1581,2010,Africa
+Ethiopia,1480306,936,2011,Africa
+Ethiopia,1692578,1621,2012,Africa
+Gabon,50810,2016,2000,Africa
+Gabon,53167,1693,2001,Africa
+Gabon,62976,1141,2002,Africa
+Gabon,58212,692,2003,Africa
+Gabon,70075,466,2004,Africa
+Gabon,70644,353,2005,Africa
+Gabon,33458,238,2006,Africa
+Gabon,45186,216,2007,Africa
+Gabon,40701,156,2008,Africa
+Gabon,660,197,2009,Africa
+Gabon,13936,182,2010,Africa
+Gabon,19753,134,2012,Africa
+Georgia,437,0,2001,Europe
+Georgia,473,0,2002,Europe
+Georgia,308,0,2003,Europe
+Georgia,254,0,2004,Europe
+Georgia,154,0,2005,Europe
+Georgia,58,0,2006,Europe
+Georgia,24,0,2007,Europe
+Georgia,6,0,2008,Europe
+Georgia,1,0,2009,Europe
+Georgia,0,0,2010,Europe
+Georgia,1,0,2011,Europe
+Georgia,1,0,2012,Europe
+Ghana,475441,1575,2004,Africa
+Ghana,655093,2037,2005,Africa
+Ghana,472255,3125,2006,Africa
+Ghana,476484,4622,2007,Africa
+Ghana,1094483,3889,2008,Africa
+Ghana,1104370,3378,2009,Africa
+Ghana,1071637,3859,2010,Africa
+Ghana,1041260,3259,2011,Africa
+Ghana,3755166,2855,2012,Africa
+Guinea,4800,626,2000,Africa
+Guinea,6238,517,2001,Africa
+Guinea,16561,440,2002,Africa
+Guinea,107925,586,2003,Africa
+Guinea,103069,528,2004,Africa
+Guinea,50452,490,2005,Africa
+Guinea,44518,472,2007,Africa
+Guinea,33405,441,2008,Africa
+Guinea,35841,586,2009,Africa
+Guinea,20936,735,2010,Africa
+Guinea,95574,743,2011,Africa
+Guinea,317200,979,2012,Africa
+Gambia,39164,403,2008,Africa
+Gambia,50378,240,2009,Africa
+Gambia,116353,151,2010,Africa
+Gambia,261967,440,2011,Africa
+Gambia,300363,289,2012,Africa
+Guinea-Bissau,14659,565,2005,Africa
+Guinea-Bissau,15120,507,2006,Africa
+Guinea-Bissau,14284,370,2007,Africa
+Guinea-Bissau,11299,487,2008,Africa
+Guinea-Bissau,11757,369,2009,Africa
+Guinea-Bissau,50391,296,2010,Africa
+Guinea-Bissau,71982,472,2011,Africa
+Guinea-Bissau,50381,370,2012,Africa
+Equatorial Guinea,9503,4,2008,Africa
+Equatorial Guinea,14184,23,2009,Africa
+Equatorial Guinea,53813,30,2010,Africa
+Equatorial Guinea,22466,52,2011,Africa
+Equatorial Guinea,15169,77,2012,Africa
+Guatemala,53311,0,2000,Americas
+Guatemala,35824,0,2001,Americas
+Guatemala,35540,0,2002,Americas
+Guatemala,31127,0,2003,Americas
+Guatemala,28955,2,2004,Americas
+Guatemala,39571,4,2005,Americas
+Guatemala,31093,2,2006,Americas
+Guatemala,7193,0,2008,Americas
+Guatemala,7080,0,2009,Americas
+Guatemala,7384,0,2010,Americas
+Guatemala,6817,0,2011,Americas
+Guatemala,5345,0,2012,Americas
+Guyana,27122,30,2001,Americas
+Guyana,21895,27,2002,Americas
+Guyana,27627,41,2003,Americas
+Guyana,28866,38,2004,Americas
+Guyana,38984,32,2005,Americas
+Guyana,21064,20,2006,Americas
+Guyana,11774,11,2008,Americas
+Guyana,13628,11,2009,Americas
+Guyana,22935,18,2010,Americas
+Guyana,29387,3,2011,Americas
+Guyana,31553,3,2012,Americas
+Honduras,35125,0,2000,Americas
+Honduras,24149,0,2001,Americas
+Honduras,17223,0,2002,Americas
+Honduras,14063,0,2003,Americas
+Honduras,17134,0,2004,Americas
+Honduras,15943,1,2005,Americas
+Honduras,11947,0,2006,Americas
+Honduras,8368,2,2008,Americas
+Honduras,9313,1,2009,Americas
+Honduras,9684,3,2010,Americas
+Honduras,7660,2,2011,Americas
+Honduras,6442,1,2012,Americas
+Haiti,16897,16,2000,Americas
+Haiti,9837,62,2001,Americas
+Haiti,10802,23,2004,Americas
+Haiti,21778,29,2005,Americas
+Haiti,32739,32,2006,Americas
+Haiti,29824,28,2007,Americas
+Haiti,36769,17,2008,Americas
+Haiti,49535,6,2009,Americas
+Haiti,84153,0,2010,Americas
+Haiti,32969,3,2011,Americas
+Haiti,25423,0,2012,Americas
+Iran (Islamic Republic of),12294,4,2000,Eastern Mediterranean
+Iran (Islamic Republic of),8924,2,2001,Eastern Mediterranean
+Iran (Islamic Republic of),9122,2,2002,Eastern Mediterranean
+Iran (Islamic Republic of),17060,5,2003,Eastern Mediterranean
+Iran (Islamic Republic of),7602,1,2004,Eastern Mediterranean
+Iran (Islamic Republic of),14396,1,2005,Eastern Mediterranean
+Iran (Islamic Republic of),13127,1,2006,Eastern Mediterranean
+Iran (Islamic Republic of),13278,3,2007,Eastern Mediterranean
+Iran (Islamic Republic of),8349,3,2008,Eastern Mediterranean
+Iran (Islamic Republic of),1847,0,2010,Eastern Mediterranean
+Iran (Islamic Republic of),1710,0,2011,Eastern Mediterranean
+Iraq,44,0,2005,Eastern Mediterranean
+Iraq,23,0,2006,Eastern Mediterranean
+Iraq,2,0,2007,Eastern Mediterranean
+Iraq,2,0,2008,Eastern Mediterranean
+Iraq,0,0,2009,Eastern Mediterranean
+Iraq,0,0,2010,Eastern Mediterranean
+Iraq,0,0,2011,Eastern Mediterranean
+Iraq,0,0,2012,Eastern Mediterranean
+Kenya,20049,47697,2002,Africa
+Kenya,39383,51842,2003,Africa
+Kenya,28328,25403,2004,Africa
+Kenya,898531,26017,2010,Africa
+Kenya,1002805,713,2011,Africa
+Kenya,1453471,785,2012,Africa
+Kyrgyzstan,7,0,2000,Europe
+Kyrgyzstan,15,0,2001,Europe
+Kyrgyzstan,2712,0,2002,Europe
+Kyrgyzstan,465,0,2003,Europe
+Kyrgyzstan,91,0,2004,Europe
+Kyrgyzstan,226,0,2005,Europe
+Kyrgyzstan,314,0,2006,Europe
+Kyrgyzstan,96,0,2007,Europe
+Kyrgyzstan,18,0,2008,Europe
+Kyrgyzstan,4,0,2009,Europe
+Kyrgyzstan,3,0,2010,Europe
+Kyrgyzstan,0,0,2011,Europe
+Kyrgyzstan,0,0,2012,Europe
+Liberia,44875,41,2005,Africa
+Liberia,761415,877,2006,Africa
+Liberia,492272,310,2007,Africa
+Liberia,606952,345,2008,Africa
+Liberia,839581,1706,2009,Africa
+Liberia,922173,1422,2010,Africa
+Liberia,1407455,1725,2012,Africa
+Madagascar,6946,591,2000,Africa
+Madagascar,8538,742,2001,Africa
+Madagascar,5272,575,2002,Africa
+Madagascar,6909,817,2003,Africa
+Madagascar,7638,715,2004,Africa
+Madagascar,6753,699,2005,Africa
+Madagascar,5689,441,2006,Africa
+Madagascar,48497,428,2007,Africa
+Madagascar,93234,355,2008,Africa
+Madagascar,215110,348,2009,Africa
+Madagascar,202450,427,2010,Africa
+Madagascar,224498,398,2011,Africa
+Madagascar,359420,552,2012,Africa
+Mexico,7390,0,2000,Americas
+Mexico,4996,0,2001,Americas
+Mexico,4624,0,2002,Americas
+Mexico,3819,0,2003,Americas
+Mexico,3406,0,2004,Americas
+Mexico,2967,0,2005,Americas
+Mexico,2514,0,2006,Americas
+Mexico,2361,0,2007,Americas
+Mexico,2357,0,2008,Americas
+Mexico,2703,0,2009,Americas
+Mexico,1219,0,2010,Americas
+Mexico,1118,0,2011,Americas
+Mexico,824,0,2012,Americas
+Mali,227482,3006,2010,Africa
+Mali,307035,2128,2011,Africa
+Mali,886482,1894,2012,Africa
+Mozambique,141663,5816,2007,Africa
+Mozambique,120259,4424,2008,Africa
+Mozambique,93874,3747,2009,Africa
+Mozambique,1522577,3354,2010,Africa
+Mozambique,1756874,3086,2011,Africa
+Mozambique,1813984,2818,2012,Africa
+Mauritania,1061,67,2006,Africa
+Mauritania,940,91,2009,Africa
+Mauritania,1994,211,2010,Africa
+Mauritania,2926,77,2011,Africa
+Mauritania,1888,106,2012,Africa
+Malawi,304499,6674,2011,Africa
+Malawi,1564984,5516,2012,Africa
+Namibia,41636,1728,2001,Africa
+Namibia,23984,1504,2002,Africa
+Namibia,20295,1106,2003,Africa
+Namibia,36043,1185,2004,Africa
+Namibia,23339,1325,2005,Africa
+Namibia,27690,571,2006,Africa
+Namibia,4242,181,2007,Africa
+Namibia,1092,152,2008,Africa
+Namibia,505,68,2009,Africa
+Namibia,556,63,2010,Africa
+Namibia,1860,36,2011,Africa
+Namibia,194,4,2012,Africa
+Niger,56460,2248,2003,Africa
+Niger,76030,1333,2004,Africa
+Niger,56043,2060,2005,Africa
+Niger,3956,1150,2006,Africa
+Niger,249027,1358,2007,Africa
+Niger,496858,2461,2008,Africa
+Niger,309675,2159,2009,Africa
+Niger,620058,3929,2010,Africa
+Niger,780876,2802,2011,Africa
+Niger,842343,2825,2012,Africa
+Nigeria,150,4317,2001,Africa
+Nigeria,380,4092,2002,Africa
+Nigeria,143079,8677,2008,Africa
+Nigeria,479845,7522,2009,Africa
+Nigeria,551187,4238,2010,Africa
+Nicaragua,23878,4,2000,Americas
+Nicaragua,10482,2,2001,Americas
+Nicaragua,7695,8,2002,Americas
+Nicaragua,6717,7,2003,Americas
+Nicaragua,6897,1,2004,Americas
+Nicaragua,6642,6,2005,Americas
+Nicaragua,3114,1,2006,Americas
+Nicaragua,1356,0,2007,Americas
+Nicaragua,762,0,2008,Americas
+Nicaragua,600,0,2009,Americas
+Nicaragua,685,1,2010,Americas
+Nicaragua,925,1,2011,Americas
+Nicaragua,1235,2,2012,Americas
+Pakistan,127536,52,2005,Eastern Mediterranean
+Pakistan,123761,9,2006,Eastern Mediterranean
+Pakistan,128380,24,2007,Eastern Mediterranean
+Pakistan,334589,4,2011,Eastern Mediterranean
+Pakistan,290781,260,2012,Eastern Mediterranean
+Panama,1013,1,2000,Americas
+Panama,906,1,2001,Americas
+Panama,2244,2,2002,Americas
+Panama,4474,4,2003,Americas
+Panama,5069,2,2004,Americas
+Panama,3647,1,2005,Americas
+Panama,1651,1,2006,Americas
+Panama,1265,1,2007,Americas
+Panama,732,1,2008,Americas
+Panama,770,0,2009,Americas
+Panama,413,1,2010,Americas
+Panama,345,0,2011,Americas
+Panama,836,0,2012,Americas
+Peru,68321,20,2000,Americas
+Peru,78544,25,2001,Americas
+Peru,99237,12,2002,Americas
+Peru,88408,9,2003,Americas
+Peru,93581,6,2004,Americas
+Peru,87699,4,2005,Americas
+Peru,64925,6,2006,Americas
+Peru,50797,2,2007,Americas
+Peru,44522,2,2008,Americas
+Peru,42645,2,2009,Americas
+Peru,31546,0,2010,Americas
+Peru,25039,0,2011,Americas
+Peru,31570,2,2012,Americas
+Democratic People's Republic of Korea,4345,0,2007,South-East Asia
+Democratic People's Republic of Korea,16611,0,2008,South-East Asia
+Democratic People's Republic of Korea,14632,0,2009,South-East Asia
+Democratic People's Republic of Korea,13393,0,2010,South-East Asia
+Paraguay,6853,0,2000,Americas
+Paraguay,2710,0,2001,Americas
+Paraguay,2778,0,2002,Americas
+Paraguay,1392,0,2003,Americas
+Paraguay,694,0,2004,Americas
+Paraguay,376,0,2005,Americas
+Paraguay,823,0,2006,Americas
+Paraguay,1341,0,2007,Americas
+Paraguay,340,0,2008,Americas
+Paraguay,79,0,2009,Americas
+Paraguay,18,0,2010,Americas
+Paraguay,0,0,2011,Americas
+Paraguay,0,0,2012,Americas
+Rwanda,423493,4275,2001,Africa
+Rwanda,506028,3167,2002,Africa
+Rwanda,553150,2679,2003,Africa
+Rwanda,589315,2362,2004,Africa
+Rwanda,683769,2581,2005,Africa
+Rwanda,573686,2486,2006,Africa
+Rwanda,382686,1772,2007,Africa
+Rwanda,316242,566,2008,Africa
+Rwanda,698745,809,2009,Africa
+Rwanda,638669,670,2010,Africa
+Rwanda,208858,380,2011,Africa
+Rwanda,483470,459,2012,Africa
+Saudi Arabia,1603,0,2001,Eastern Mediterranean
+Saudi Arabia,1210,0,2002,Eastern Mediterranean
+Saudi Arabia,700,0,2003,Eastern Mediterranean
+Saudi Arabia,308,0,2004,Eastern Mediterranean
+Saudi Arabia,207,0,2005,Eastern Mediterranean
+Saudi Arabia,270,0,2006,Eastern Mediterranean
+Saudi Arabia,467,2,2007,Eastern Mediterranean
+Saudi Arabia,61,0,2008,Eastern Mediterranean
+Saudi Arabia,58,0,2009,Eastern Mediterranean
+Saudi Arabia,29,0,2010,Eastern Mediterranean
+Saudi Arabia,69,2,2011,Eastern Mediterranean
+Saudi Arabia,82,0,2012,Eastern Mediterranean
+Sudan,368557,2162,2000,Eastern Mediterranean
+Sudan,203491,2252,2001,Eastern Mediterranean
+Sudan,280550,2125,2002,Eastern Mediterranean
+Sudan,933267,2479,2003,Eastern Mediterranean
+Sudan,537899,1814,2004,Eastern Mediterranean
+Sudan,628417,1789,2005,Eastern Mediterranean
+Sudan,721233,1193,2006,Eastern Mediterranean
+Sudan,686908,1254,2007,Eastern Mediterranean
+Sudan,569296,1125,2008,Eastern Mediterranean
+Sudan,711462,1142,2009,Eastern Mediterranean
+Sudan,720557,1023,2010,Eastern Mediterranean
+Sudan,506806,612,2011,Eastern Mediterranean
+Sudan,526931,618,2012,Eastern Mediterranean
+Senegal,44959,1275,2000,Africa
+Senegal,12920,1515,2001,Africa
+Senegal,14425,1226,2002,Africa
+Senegal,26865,1602,2003,Africa
+Senegal,22234,1524,2004,Africa
+Senegal,33160,1587,2005,Africa
+Senegal,48070,1678,2006,Africa
+Senegal,118332,1935,2007,Africa
+Senegal,241926,741,2008,Africa
+Senegal,165933,574,2009,Africa
+Senegal,343670,553,2010,Africa
+Senegal,276242,472,2011,Africa
+Senegal,281958,649,2012,Africa
+Sierra Leone,2206,328,2001,Africa
+Sierra Leone,3702,461,2002,Africa
+Sierra Leone,3945,157,2003,Africa
+Sierra Leone,2206,126,2004,Africa
+Sierra Leone,4808,50,2005,Africa
+Sierra Leone,4932,90,2006,Africa
+Sierra Leone,154459,871,2008,Africa
+Sierra Leone,646808,1734,2009,Africa
+Sierra Leone,934028,8188,2010,Africa
+Sierra Leone,638859,3573,2011,Africa
+Sierra Leone,1537322,3611,2012,Africa
+El Salvador,753,0,2000,Americas
+El Salvador,362,0,2001,Americas
+El Salvador,117,0,2002,Americas
+El Salvador,85,0,2003,Americas
+El Salvador,112,0,2004,Americas
+El Salvador,63,0,2005,Americas
+El Salvador,49,0,2006,Americas
+El Salvador,22,0,2007,Americas
+El Salvador,21,0,2008,Americas
+El Salvador,10,0,2009,Americas
+El Salvador,17,0,2010,Americas
+El Salvador,10,0,2011,Americas
+El Salvador,13,0,2012,Americas
+Somalia,15732,8,2002,Eastern Mediterranean
+Somalia,7571,54,2003,Eastern Mediterranean
+Somalia,11436,79,2004,Eastern Mediterranean
+Somalia,12516,15,2005,Eastern Mediterranean
+Somalia,16430,58,2006,Eastern Mediterranean
+Somalia,16675,45,2007,Eastern Mediterranean
+Somalia,36905,49,2008,Eastern Mediterranean
+Somalia,25202,45,2009,Eastern Mediterranean
+Somalia,24553,6,2010,Eastern Mediterranean
+Somalia,3351,5,2011,Eastern Mediterranean
+South Sudan,52011,263,2008,Eastern Mediterranean
+South Sudan,900283,1053,2010,Eastern Mediterranean
+South Sudan,112024,406,2011,Eastern Mediterranean
+South Sudan,225371,1321,2012,Eastern Mediterranean
+Sao Tome and Principe,31975,254,2000,Africa
+Sao Tome and Principe,42086,248,2001,Africa
+Sao Tome and Principe,50586,321,2002,Africa
+Sao Tome and Principe,42656,193,2003,Africa
+Sao Tome and Principe,46486,169,2004,Africa
+Sao Tome and Principe,18139,85,2005,Africa
+Sao Tome and Principe,5146,26,2006,Africa
+Sao Tome and Principe,2421,3,2007,Africa
+Sao Tome and Principe,6258,16,2008,Africa
+Sao Tome and Principe,6182,23,2009,Africa
+Sao Tome and Principe,2740,14,2010,Africa
+Sao Tome and Principe,8442,19,2011,Africa
+Sao Tome and Principe,12550,7,2012,Africa
+Suriname,11361,24,2000,Americas
+Suriname,16003,23,2001,Americas
+Suriname,12837,15,2002,Americas
+Suriname,10982,18,2003,Americas
+Suriname,8378,7,2004,Americas
+Suriname,9131,1,2005,Americas
+Suriname,3289,1,2006,Americas
+Suriname,1741,1,2007,Americas
+Suriname,2074,0,2008,Americas
+Suriname,1204,0,2009,Americas
+Suriname,680,1,2010,Americas
+Suriname,212,1,2011,Americas
+Suriname,345,0,2012,Americas
+Swaziland,1395,62,2001,Africa
+Swaziland,670,46,2002,Africa
+Swaziland,342,30,2003,Africa
+Swaziland,574,28,2004,Africa
+Swaziland,279,17,2005,Africa
+Swaziland,155,27,2006,Africa
+Swaziland,84,17,2007,Africa
+Swaziland,58,10,2008,Africa
+Swaziland,106,13,2009,Africa
+Swaziland,268,8,2010,Africa
+Swaziland,549,8,2011,Africa
+Swaziland,295,7,2012,Africa
+Chad,40078,712,2000,Africa
+Chad,38287,957,2001,Africa
+Chad,43933,98,2002,Africa
+Chad,45195,1021,2003,Africa
+Chad,1360,13,2004,Africa
+Chad,31668,558,2005,Africa
+Chad,45155,837,2006,Africa
+Chad,48288,617,2007,Africa
+Chad,47757,1018,2008,Africa
+Chad,200448,886,2010,Africa
+Chad,181126,1220,2011,Africa
+Togo,221110,1236,2007,Africa
+Togo,344862,2663,2008,Africa
+Togo,391338,1556,2009,Africa
+Togo,617101,1507,2010,Africa
+Togo,519450,1314,2011,Africa
+Togo,697374,1197,2012,Africa
+Tajikistan,11387,0,2001,Europe
+Tajikistan,6160,0,2002,Europe
+Tajikistan,5428,0,2003,Europe
+Tajikistan,3588,0,2004,Europe
+Tajikistan,2308,0,2005,Europe
+Tajikistan,1343,0,2006,Europe
+Tajikistan,628,0,2007,Europe
+Tajikistan,314,0,2008,Europe
+Tajikistan,164,0,2009,Europe
+Tajikistan,111,0,2010,Europe
+Tajikistan,65,0,2011,Europe
+Tajikistan,18,0,2012,Europe
+Turkey,11381,0,2000,Europe
+Turkey,10758,0,2001,Europe
+Turkey,10184,0,2002,Europe
+Turkey,9182,0,2003,Europe
+Turkey,5252,0,2004,Europe
+Turkey,2036,0,2005,Europe
+Turkey,751,0,2006,Europe
+Turkey,313,1,2007,Europe
+Turkey,166,3,2008,Europe
+Turkey,38,1,2009,Europe
+Turkey,9,0,2010,Europe
+Turkey,0,0,2011,Europe
+United Republic of Tanzania,17734,379,2000,Africa
+United Republic of Tanzania,38537,1228,2001,Africa
+United Republic of Tanzania,42468,815,2002,Africa
+United Republic of Tanzania,1976614,15251,2003,Africa
+United Republic of Tanzania,2502382,19859,2004,Africa
+United Republic of Tanzania,2764049,18322,2005,Africa
+United Republic of Tanzania,1928296,20962,2006,Africa
+United Republic of Tanzania,1845917,12593,2007,Africa
+United Republic of Tanzania,67,12434,2008,Africa
+United Republic of Tanzania,3242,16776,2009,Africa
+United Republic of Tanzania,1278998,15867,2010,Africa
+United Republic of Tanzania,2150761,11806,2011,Africa
+United Republic of Tanzania,1986955,7820,2012,Africa
+Uganda,867398,4252,2006,Africa
+Uganda,1045378,7003,2007,Africa
+Uganda,979298,2372,2008,Africa
+Uganda,1301337,6296,2009,Africa
+Uganda,1581160,8431,2010,Africa
+Uganda,231873,5958,2011,Africa
+Uganda,2662258,6585,2012,Africa
+Uzbekistan,46,0,2000,Europe
+Uzbekistan,9,0,2001,Europe
+Uzbekistan,11,0,2002,Europe
+Uzbekistan,33,0,2003,Europe
+Uzbekistan,31,0,2004,Europe
+Uzbekistan,64,0,2005,Europe
+Uzbekistan,60,0,2006,Europe
+Uzbekistan,30,1,2007,Europe
+Uzbekistan,7,0,2008,Europe
+Uzbekistan,0,0,2009,Europe
+Uzbekistan,3,0,2010,Europe
+Uzbekistan,0,0,2011,Europe
+Uzbekistan,0,0,2012,Europe
+Venezuela (Bolivarian Republic of),29736,24,2000,Americas
+Venezuela (Bolivarian Republic of),20006,28,2001,Americas
+Venezuela (Bolivarian Republic of),29491,23,2002,Americas
+Venezuela (Bolivarian Republic of),31719,40,2003,Americas
+Venezuela (Bolivarian Republic of),46655,35,2004,Americas
+Venezuela (Bolivarian Republic of),45049,17,2005,Americas
+Venezuela (Bolivarian Republic of),37062,11,2006,Americas
+Venezuela (Bolivarian Republic of),41243,16,2007,Americas
+Venezuela (Bolivarian Republic of),31483,9,2008,Americas
+Venezuela (Bolivarian Republic of),35100,11,2009,Americas
+Venezuela (Bolivarian Republic of),44341,18,2010,Americas
+Venezuela (Bolivarian Republic of),44744,3,2011,Americas
+Venezuela (Bolivarian Republic of),51264,6,2012,Americas
+Yemen,55000,73,2006,Eastern Mediterranean
+Yemen,55446,38,2009,Eastern Mediterranean
+Yemen,106697,92,2010,Eastern Mediterranean
+Yemen,90410,75,2011,Eastern Mediterranean
+Yemen,109908,72,2012,Eastern Mediterranean
+South Africa,26506,81,2001,Africa
+South Africa,15649,96,2002,Africa
+South Africa,13459,142,2003,Africa
+South Africa,13399,88,2004,Africa
+South Africa,7755,63,2005,Africa
+South Africa,12098,87,2006,Africa
+South Africa,6327,37,2007,Africa
+South Africa,7796,43,2008,Africa
+South Africa,2759,45,2009,Africa
+South Africa,3875,83,2010,Africa
+South Africa,9866,54,2011,Africa
+South Africa,5629,72,2012,Africa
+Zambia,0,6183,2007,Africa
+Zambia,0,3781,2008,Africa
+Zambia,0,3862,2009,Africa
+Zimbabwe,33980,1809,2004,Africa
+Zimbabwe,37908,1916,2005,Africa
+Zimbabwe,39404,802,2006,Africa
+Zimbabwe,116518,401,2007,Africa
+Zimbabwe,32788,232,2008,Africa
+Zimbabwe,114028,108,2009,Africa
+Zimbabwe,249379,255,2010,Africa
+Zimbabwe,319935,451,2011,Africa
+Zimbabwe,276963,351,2012,Africa

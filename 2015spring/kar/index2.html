@@ -1,0 +1,178 @@
+<head>
+<style>
+  .range {
+     
+    font-size: 40%;
+    width: 20%;
+	}
+  </style>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="js/jquery.csv-0.71.js"></script>
+  <link rel="stylesheet" href="css/range_slider.css">
+
+  <script type="text/javascript">
+ 
+	var oldYear = 1990;
+  	function filterArray(array, pos, value) {
+	var newArray = [];
+	for (var i = 0; i < array.length; i++) {
+			if(array[i][pos]==value){
+				newArray.push(array[i]);
+			}
+		}
+		return newArray;
+	}
+	
+	function showValue(newValue)
+	{
+		if(newValue==2010){
+			newValue=2012;
+		}
+		document.getElementById("range").innerHTML=newValue;
+	//	newId = "bubble_chart"+newValue;
+		document.getElementById("bubble_chart"+oldYear).style.display='none'; 
+		document.getElementById("bubble_chart"+newValue).style.display='block'; 
+		document.getElementById("barchart_material"+oldYear).style.display='none'; 
+		document.getElementById("barchart_material"+newValue).style.display='block'; 
+		oldYear=newValue;
+	}
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawCharts);
+	
+	function drawCharts() {
+		drawBubbleChart();
+		drawBarChart();
+	}
+
+    function drawBubbleChart() {
+      $.get("data/life_expectancy_chart1.csv", function(csvString) {
+	  
+      arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+	  years = [1990,2000,2012];
+			
+	for(j=0; j<years.length; j++){
+	var temp=arrayData[0];
+	arrayData_year = filterArray(arrayData, 4, years[j]);
+	arrayData_year.unshift(temp);
+	
+//	cleanData = new Array(arrayData_year.length+1);
+//	cleanData[0] = arrayData[0];
+//	for (var i = 0; i <= arrayData_year.length; i++) {
+//		cleanData.push(arrayData_year[i]);
+//	}
+//	  	cleanData = arrayData_year.slice(0,arrayData.length-1);
+
+	  var data = new  google.visualization.arrayToDataTable(arrayData_year);
+
+
+
+      var options = {
+        title: 'Correlation between life expectancy, Income group level with respect to the countries',
+        hAxis: {title: 'Life Expectancy'},
+        vAxis: {title: 'Income group level'},
+        bubble: {
+          textStyle: {
+            fontSize: 12,
+            fontName: 'Times-Roman',
+            color: 'green',
+            bold: true,
+            italic: true
+          }
+        },
+		'width':1200,
+        'height':550
+      };
+	  chart_id="bubble_chart"+years[j];
+      var chart = new google.visualization.BubbleChart(document.getElementById(chart_id));
+
+      chart.draw(data, options);
+	  }
+	  });
+    }
+  </script>
+  
+  <script type="text/javascript">
+    //  google.load("visualization", "1.1", {packages:["bar"]});
+   //   google.setOnLoadCallback(drawBarChart);
+      function drawBarChart() {
+	  
+	   $.get("data/life_expectancy_chart2.csv", function(csvString) {
+	  
+      arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+	  years = [1990,2000,2012];
+		var temp=arrayData[0];	
+		for(j=0; j<years.length; j++){
+			//var temp=arrayData[0];
+			arrayData_year = filterArray(arrayData, 0, years[j]);
+			for(i=0; i<arrayData_year.length;i++){
+				arrayData_year[i].splice(0,1);
+			}
+			arrayData_year.unshift(['Country', 'Male', 'Female']);
+
+			var options = {
+			  
+			  title: 'Life expectancy comapred between gender throughout the world',
+			  subtitle: 'Country, Sex, and Year: 1990, 2000, 2012',
+			  bars: 'horizontal', // Required for Material Bar Charts.
+			  'width':1000,
+			  'height':3000,
+			  isStacked: false,
+			  fontSize:12,
+			  lineWidth:6
+
+			};
+			console.log(arrayData_year);
+			var data = new  google.visualization.arrayToDataTable(arrayData_year);
+
+			var chart_id="barchart_material"+years[j];
+			var chart = new google.visualization.BarChart(document.getElementById(chart_id));
+
+			chart.draw(data, options);
+		}
+		});
+		document.getElementById("barchart_material2000").style.display="none";
+		document.getElementById("barchart_material2012").style.display="none";
+
+      }
+    </script>
+</head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<body>
+<div class="container">
+  <h2>World Health Data</h2>
+  <p>Report for Immunization, Life Expectancy and Malaria</p>                 
+  <ul class="nav nav-tabs" role="tablist">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Immunization</a></li>
+    <li class="active"><a href="index2.html">Life Expectancy</a></li>
+    <li><a href="index3.html">Malaria</a></li>        
+  </ul>
+</div>
+<h3>Life Expectancy Report</h3>
+<p>
+<input type=range min=1990 max=2010 value="0" id="range_id" step=10 onchange="showValue(this.value)" style="width:200px">
+  <span id="range">1990</span>
+ </p>
+  <div id="bubble_chart1990" style="display:block;"></div>
+  <div id="bubble_chart2000" style="display:none;"></div>
+  <div id="bubble_chart2012" style="display:none;"></div>
+
+  <hr>
+  
+  <div id="barchart_material1990" style="display:block;"></div>
+  <div id="barchart_material2000" style="display:block;"></div>
+  <div id="barchart_material2012" style="display:block;"></div>
+
+<p>
+We can see that the life expectancy of females in most of the countries is significantly high than the males. We notice the average life expectancy of Sweeden is in the higher side. But in the immunization report we have seen that Sweeden always maintain a low profile on immunization.<br/>
+Most of the European countries has comparatively higher life expectancy and most of the African countries has lower life expectancy.<br/>
+It can be noticed that higher income group people may have higher life expectancy but it doesn't say that lower income group have lower life expectancy.
+</p>
+  
+
+
+</body>
+</html>

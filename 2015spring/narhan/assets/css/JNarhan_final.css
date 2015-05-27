@@ -1,0 +1,121 @@
+/*
+ * Final Project CSS styles
+ */
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.country:hover {
+    stroke:azure;
+    stroke-width: 1.5px;
+}
+
+.d3-tip {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: khaki;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.legend {
+    font-family: sans-serif;
+    font-size: 70%;
+}
+
+.legendlabel {
+    font-family: sans-serif;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+/* css styling for legend from www.mapbox.com/tilemill/docs/guides/advanced-legends/ */
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 90%;
+}
+.my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+}
+.my-legend .legend-scale ul li {
+    font-family: sans-serif;
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+}
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+}
+.my-legend .legend-source {
+    font-family: sans-serif;
+    font-size: 70%;
+    color: #999;
+    clear: both;
+}
+.my-legend a {
+    color: #777;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+svg {
+    background-color: white;
+}
+
+#mtooltip {
+    position: fixed;
+    width: 250px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
+#mtooltip.hidden {
+    display: none;
+}
+
+#mtooltip p {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}

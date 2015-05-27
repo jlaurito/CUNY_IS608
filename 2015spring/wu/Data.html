@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IS608 Final Project_XWu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script src="jquery.csv-0.71.js"></script> 
+	<script type="text/javascript">google.load('visualization', '1', {'packages':['corechart']});</script>
+  
+</head>
+<body>
+
+    <!--Nav bar-->
+    <nav style="background-color:#6facd8" class="navbar navbar-default navbar-fixed-top">
+        <div class="container navbar-font">
+            <div class="navbar-header">
+                <a class="navbar-brand" id="barHeader">Cancer mortality statistics</a>
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse navHeaderCollapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS608 Final Projects</a></li>
+                    <li><a href="http://sps.cuny.edu/programs/ms_dataanalytics">About MSDA</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Content-->
+
+    <br /><br /><br />
+
+    <div class="container">
+        <div class="row">
+            <div class="sidebar col-sm-3 col-md-2">
+                <ul class="nav nav-sidebar">
+                    <li><a href="Index.html">Introduction</a></li>
+                    <li class="active"><a href="Data.html">Data</a></li>
+                    <li class=""><a href="Statistics.html">Statistics</a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-sm-9  col-md-10  main">
+                <!--Data section-->
+                <div>
+                    <ul>
+						<h2> Data </h2>
+                        <p>
+                            The mortality data is available from <a href="http://www.who.int/healthinfo/statistics/mortality_rawdata/en/">WHO</a> website.
+                            There are four Mortality document representing four revisions of the International Classification of Diseases (ICD).
+                            ICD10 is the <a href="http://www.who.int/entity/healthinfo/statistics/morticd10.zip">latest revision</a>, which was the main data document.
+                            Total records are 2,692,114. Last updated was on November 3, 2014.
+                        </p>
+                        <h3>Features </h3>
+                        <p>The following features were included for this final project:</p>
+                        <li>Country</li>
+                        <p>
+                            Country code is in <a href="http://www.who.int/entity/healthinfo/statistics/country_codes.zip"> 'country_code' </a>document.
+                            Country name was merged with mortality data. Any sub-divisions from each country were grouped together.
+                        </p>
+                        <li>Year</li>
+                        <p>
+                            The <a href="http://www.who.int/entity/healthinfo/statistics/availability.zip">‘availability’ </a> document shows what’s available as for each country, year and ICD.
+                            Year 2000-2010 will be chosen since the data from this time period has better integrity (<a href="#icd10">see link</a>).
+                        </p>
+                        <li>Cause</li>
+                        <p>
+                            From this project, only data with 'cause' of cancer were selected. According to the <a href="http://apps.who.int/classifications/icd10/browse/2015/en">ICD10 online browser</a>,
+                            cancer is categorized in Chapter II Neoplasms, Malignant neoplasms, Blocks C00–C97.
+                        </p>
+                        <li>Crude mortality rate</li>
+                        <p>
+                            The mortality rate was calculated based on two data sources.
+                        </p>
+                        <ol>
+                            <li>Total death</li>
+                            <p>From <a href="http://www.who.int/entity/healthinfo/statistics/morticd10.zip">‘morticd10’</a>, ‘Deaths1’ column contains the total death. </p>
+                            <li>Total population</li>
+                            <p>From <a href="http://api.worldbank.org/v2/en/indicator/sp.pop.totl?downloadformat=csv"> the World Bank</a> total population data, the file was filtered and reshaped so that year 2000-2010 were included as a variable.</p>
+                            <p>The crude mortality rate will be calculated by dividing the number of cancer deaths observed during a given time period by the corresponding number of person years in the population. </p>
+                        </ol>
+                    <br><br>
+                    <h3 id = 'icd10' > Data availability with code icd10</h3>
+					<div id='chart' style='width:1000px; height:500px'>
+					</div>
+					  <p> The data were obtained from 'availability' dataset. This dataset was filtered to contain only the code icd10 data. As seen in the chart, the most available data were reported between year 2000-2010. Therefore, the year range is set to be 2000-2010 for the final project. </p>
+					
+					<br /><br />
+					
+                    <h3> Mean mortality rate of cancer (2000-2010) </h3>
+					
+					<div id="world"></div>
+					<p> Note: The mortality rate is expressed in units of deaths per 100,000 individuals per year. </p>
+					
+					<br />
+					<p>The graph shows the mean mortality rate from 2000-2010. Most of countries from Europe, South and North America, and Australia reported the mortality of cancer to the WHO. The rest of the world (Asia, Africa) is grey (no data present). </p>
+					
+					</ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!--- Pull Data from CSV -->
+	<script type="text/javascript">
+  // jQuery is called with the '$'
+	function drawChart(){
+		// get data
+		$.get('data/icd10.csv', function(csvData){
+		  var arrayData = $.csv.toArrays(csvData, {
+			onParseValue: $.csv.hooks.castToScalar
+		  });
+	console.log(arrayData);
+	
+	var data = new google.visualization.DataTable();
+                  data.addColumn('string', 'Year');
+                  data.addColumn('number', 'Count');
+                  
+    var myArray = [];
+    for (i = 1; i < arrayData.length; i++){
+      //console.log([arrayData[i][1], arrayData[i][2],arrayData[i][0]]);
+      myArray.push([arrayData[i][0].toString(), arrayData[i][1]]);
+    };
+
+    data.addRows(myArray);
+		//console.log(data);
+	var options = { 'width':1000,
+					'height':500,
+					vAxis: {title: 'Count', 
+                            minValue: data.getColumnRange(1).min,
+                            maxValue: data.getColumnRange(1).max,
+							
+							},
+					
+                    hAxis: {title: 'Year', 
+                            minValue: data.getColumnRange(0).min, 
+                            maxValue: data.getColumnRange(0).max,
+                          },
+                    tooltip: { textStyle: {color:'#F0000'}
+                             },  
+					bar: {groupWidth: '90%'},
+                    legend: 'none',
+					titleTextStyle: {fontSize: 28,
+									bold: true,}
+					}
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart'));;
+    chart.draw(data, options);
+    })
+};
+  drawChart();
+  </script>
+
+  <script type="text/javascript">
+
+	//var jdata;
+	//var cdata;
+	
+	//Ref: http://chimera.labs.oreilly.com/books/1230000000345/ch12.html
+	
+	var projection = d3.geo.mercator()
+        .center([10, 30])
+        .scale(140);
+		
+	var path = d3.geo.path().projection(projection);
+	
+	var color = d3.scale
+				.quantize()
+				.range(["#fee5d9", "#fcbba1", "#fc9272", "#fb6a4a", "#de2d26", "#a50f15"]);
+	//color source: http://colorbrewer2.org/
+
+	var svg = d3.select("#world")
+						.append("svg")
+						.attr("width", 950)
+						.attr("height", 500)
+						.style("background-color", "#F9F9F9");	
+
+	d3.csv("data/mortMeanWB1.csv", function(data) {
+		//cdata = data
+
+		//Set input domain for color scale
+		color.domain([
+			d3.min(data, function(d) { return d.meanMort;}), 
+			d3.max(data, function(d) { return d.meanMort;})
+		]);	
+											
+						
+		d3.json("data/countries.json", function(json){
+			//console.log(data);
+			//jdata = json
+			for (var i = 0; i < data.length; i++) {
+				
+				var country = data[i].name;
+				var mort = parseFloat(data[i].meanMort);
+										
+				//Find the corresponding country inside the GeoJSON
+				for (var j = 0; j < json.features.length; j++) {
+						
+					var jsonCountry = json.features[j].properties.ADMIN;
+				
+					if (country == jsonCountry) {
+						
+						//Copy the data value into the JSON
+						json.features[j].properties.meanMort = mort;
+						//console.log(json.features[j].properties.meanMort)
+						//Stop looking through the JSON
+						break;
+								
+					}
+				}		
+			}	
+					
+		//console.log(json.features);
+		svg.selectAll("path")
+			.data(json.features)
+			.enter()
+				.append("path")
+				.attr("d", path)
+				.style("stroke", "#252525")
+				.style("stroke-width", 0.2)
+				.style("fill", function(d) {
+					//Get data value
+					var value = d.properties.meanMort;
+					if (value) {
+					   	//If value exists…
+						return color(value);
+					} else {
+					   	//If value is undefined…
+						return "#CCCCCC";
+					}
+				})
+				.append("title")
+				.text(function(d) {
+					if(d.properties.meanMort){
+						return d.properties.ADMIN + "\n" + (d.properties.meanMort).toFixed(2);
+					} else {
+						return d.properties.ADMIN + "\nInadequate data";
+					}
+			   	})
+				//.attr("text-anchor", "middle")
+		});
+	});
+
+//legend
+	var colorset = ["#fee5d9", "#fcbba1", "#fc9272", "#fb6a4a", "#de2d26", "#a50f15"];
+	//var colorset = ["#e0f3db","#ccebc5","#7bccc4","#4eb3d3","#2b8cbe","#08589e"];
+
+	var legend = svg.append("g").attr("transform", "translate(730,470)");
+
+	legend.append("g")
+		.attr("transform", "translate(35, 0)")
+		.attr("height", 40)
+		.attr("width", 330)
+		.selectAll("rect")
+		.data(colorset)
+		.enter()
+			.append("rect")
+			.attr("height", 20)
+			.attr("width", 30)
+			.attr("transform", function(d,i){return "translate(" + i*30 + ",0)";})
+			.style("fill", function(d){return d;})
+
+	legend.append("text")
+		.attr("x", 0)
+		.attr("y", 15)
+		.text("Low");
+
+	legend.append("text")
+		.attr("x", 220)			
+		.attr("y", 15)
+		.text("High");				
+	
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,583 @@
+Country,Numeric_Value,World_bank_Income_grp_Code,WHO_region,Year
+Equatorial Guinea,50,4,Africa,2000
+Equatorial Guinea,48,4,Africa,1990
+Benin,59,,Africa,2012
+Burkina Faso,58,,Africa,2012
+Central African Republic,48,,Africa,1990
+Comoros,59,,Africa,2000
+Eritrea,45,,Africa,2000
+Ethiopia,51,,Africa,2000
+Guinea,58,,Africa,2012
+Gambia,52,,Africa,1990
+Gambia,61,,Africa,2012
+Guinea-Bissau,49,,Africa,1990
+Madagascar,64,,Africa,2012
+Mali,46,,Africa,1990
+Mali,57,,Africa,2012
+Malawi,44,,Africa,2000
+Niger,50,,Africa,2000
+Rwanda,48,,Africa,1990
+Rwanda,65,,Africa,2012
+Senegal,57,,Africa,1990
+United Republic of Tanzania,51,,Africa,1990
+United Republic of Tanzania,61,,Africa,2012
+Uganda,47,,Africa,1990
+Zambia,41,,Africa,2000
+Angola,51,2,Africa,2012
+C?te d'Ivoire,53,2,Africa,2012
+Cameroon,54,2,Africa,1990
+Cameroon,56,2,Africa,2012
+Congo,56,2,Africa,1990
+Congo,59,2,Africa,2012
+Cabo Verde,66,2,Africa,1990
+Lesotho,61,2,Africa,1990
+Lesotho,50,2,Africa,2012
+Equatorial Guinea,55,4,Africa,2012
+Burundi,49,,Africa,1990
+Burundi,48,,Africa,2000
+Burundi,56,,Africa,2012
+Burkina Faso,50,,Africa,1990
+Democratic Republic of the Congo,49,,Africa,1990
+Democratic Republic of the Congo,48,,Africa,2000
+Democratic Republic of the Congo,52,,Africa,2012
+Ethiopia,64,,Africa,2012
+Guinea,47,,Africa,1990
+Guinea,51,,Africa,2000
+Liberia,42,,Africa,1990
+Liberia,51,,Africa,2000
+Liberia,62,,Africa,2012
+Mauritania,58,,Africa,1990
+Mauritania,60,,Africa,2000
+Sierra Leone,38,,Africa,1990
+Sierra Leone,39,,Africa,2000
+Sierra Leone,46,,Africa,2012
+Chad,46,,Africa,2000
+Chad,51,,Africa,2012
+Nigeria,46,2,Africa,1990
+Nigeria,47,2,Africa,2000
+Nigeria,54,2,Africa,2012
+Swaziland,54,2,Africa,2012
+Algeria,70,3,Africa,2000
+Namibia,57,3,Africa,2000
+Seychelles,72,3,Africa,2000
+Swaziland,61,2,Africa,1990
+Swaziland,48,2,Africa,2000
+Botswana,65,3,Africa,1990
+Botswana,47,3,Africa,2000
+Botswana,62,3,Africa,2012
+South Africa,62,3,Africa,1990
+South Africa,59,3,Africa,2000
+South Africa,59,3,Africa,2012
+Burkina Faso,49,,Africa,2000
+Comoros,62,,Africa,2012
+Eritrea,48,,Africa,1990
+Eritrea,63,,Africa,2012
+Ethiopia,45,,Africa,1990
+Gambia,56,,Africa,2000
+Guinea-Bissau,52,,Africa,2000
+Kenya,61,,Africa,2012
+Madagascar,58,,Africa,2000
+Mali,48,,Africa,2000
+Mauritania,63,,Africa,2012
+Malawi,45,,Africa,1990
+Malawi,59,,Africa,2012
+Niger,43,,Africa,1990
+Rwanda,46,,Africa,2000
+Chad,45,,Africa,1990
+United Republic of Tanzania,50,,Africa,2000
+Uganda,45,,Africa,2000
+Zambia,43,,Africa,1990
+Zambia,57,,Africa,2012
+Zimbabwe,62,,Africa,1990
+Angola,46,2,Africa,2000
+Cameroon,51,2,Africa,2000
+Congo,52,2,Africa,2000
+Lesotho,48,2,Africa,2000
+Algeria,68,3,Africa,1990
+Algeria,72,3,Africa,2012
+Namibia,63,3,Africa,1990
+Namibia,67,3,Africa,2012
+Seychelles,69,3,Africa,1990
+Seychelles,74,3,Africa,2012
+Benin,53,,Africa,1990
+Benin,54,,Africa,2000
+Central African Republic,45,,Africa,2000
+Central African Republic,51,,Africa,2012
+Comoros,56,,Africa,1990
+Ghana,57,,Africa,1990
+Ghana,58,,Africa,2000
+Ghana,62,,Africa,2012
+Guinea-Bissau,54,,Africa,2012
+Kenya,60,,Africa,1990
+Kenya,52,,Africa,2000
+Madagascar,51,,Africa,1990
+Mozambique,43,,Africa,1990
+Mozambique,47,,Africa,2000
+Mozambique,53,,Africa,2012
+Niger,59,,Africa,2012
+Senegal,57,,Africa,2000
+Senegal,64,,Africa,2012
+Togo,55,,Africa,1990
+Togo,55,,Africa,2000
+Togo,58,,Africa,2012
+Uganda,57,,Africa,2012
+Zimbabwe,42,,Africa,2000
+Zimbabwe,58,,Africa,2012
+Angola,43,2,Africa,1990
+C?te d'Ivoire,51,2,Africa,1990
+C?te d'Ivoire,48,2,Africa,2000
+Cabo Verde,70,2,Africa,2000
+Cabo Verde,74,2,Africa,2012
+Sao Tome and Principe,61,2,Africa,1990
+Sao Tome and Principe,63,2,Africa,2000
+Sao Tome and Principe,67,2,Africa,2012
+Gabon,61,3,Africa,1990
+Gabon,59,3,Africa,2000
+Gabon,63,3,Africa,2012
+Mauritius,70,3,Africa,1990
+Mauritius,72,3,Africa,2000
+Mauritius,74,3,Africa,2012
+Bahamas,75,4,Americas,2012
+Barbados,74,4,Americas,1990
+Barbados,78,4,Americas,2012
+Bahamas,73,4,Americas,2000
+Barbados,75,4,Americas,2000
+Bolivia (Plurinational State of),63,2,Americas,2000
+Ecuador,73,2,Americas,2000
+Guatemala,72,2,Americas,2012
+Guyana,63,2,Americas,1990
+Guyana,63,2,Americas,2012
+Honduras,67,2,Americas,1990
+Nicaragua,73,2,Americas,2012
+United States,75,4,Americas,1990
+United States,77,4,Americas,2000
+Haiti,54,,Americas,1990
+Haiti,56,,Americas,2000
+Haiti,62,,Americas,2012
+Belize,71,2,Americas,1990
+Belize,72,2,Americas,2000
+Guatemala,62,2,Americas,1990
+Guatemala,68,2,Americas,2000
+Paraguay,73,2,Americas,1990
+Paraguay,74,2,Americas,2000
+Paraguay,75,2,Americas,2012
+Argentina,73,3,Americas,1990
+Brazil,71,3,Americas,2000
+Chile,80,3,Americas,2012
+Colombia,71,3,Americas,1990
+Colombia,79,3,Americas,2012
+Costa Rica,77,3,Americas,1990
+Costa Rica,79,3,Americas,2012
+Cuba,74,3,Americas,1990
+Dominican Republic,73,3,Americas,2000
+Grenada,73,3,Americas,2012
+Jamaica,71,3,Americas,1990
+Jamaica,74,3,Americas,2012
+Saint Lucia,74,3,Americas,2000
+Mexico,76,3,Americas,2012
+Panama,76,3,Americas,2000
+Suriname,74,3,Americas,2000
+Uruguay,77,3,Americas,2012
+Saint Vincent and the Grenadines,72,3,Americas,1990
+Saint Vincent and the Grenadines,74,3,Americas,2012
+Venezuela (Bolivarian Republic of),72,3,Americas,1990
+El Salvador,70,2,Americas,2000
+El Salvador,72,2,Americas,2012
+Argentina,75,3,Americas,2000
+Argentina,76,3,Americas,2012
+Dominica,74,3,Americas,1990
+Dominica,74,3,Americas,2000
+Dominica,75,3,Americas,2012
+Grenada,70,3,Americas,1990
+Grenada,73,3,Americas,2000
+Saint Kitts and Nevis,68,3,Americas,1990
+Saint Kitts and Nevis,71,3,Americas,2000
+Saint Kitts and Nevis,74,3,Americas,2012
+Saint Lucia,75,3,Americas,2012
+Peru,70,3,Americas,1990
+Peru,72,3,Americas,2000
+Peru,77,3,Americas,2012
+Uruguay,73,3,Americas,1990
+United States,79,4,Americas,2012
+Belize,75,2,Americas,2012
+Bolivia (Plurinational State of),58,2,Americas,1990
+Bolivia (Plurinational State of),68,2,Americas,2012
+Ecuador,75,2,Americas,2012
+Guyana,65,2,Americas,2000
+Honduras,71,2,Americas,2000
+El Salvador,65,2,Americas,1990
+Brazil,66,3,Americas,1990
+Colombia,74,3,Americas,2000
+Costa Rica,77,3,Americas,2000
+Dominican Republic,77,3,Americas,2012
+Jamaica,71,3,Americas,2000
+Saint Lucia,72,3,Americas,1990
+Mexico,75,3,Americas,2000
+Panama,74,3,Americas,1990
+Suriname,77,3,Americas,2012
+Uruguay,75,3,Americas,2000
+Saint Vincent and the Grenadines,70,3,Americas,2000
+Venezuela (Bolivarian Republic of),74,3,Americas,2000
+Antigua and Barbuda,71,4,Americas,1990
+Antigua and Barbuda,73,4,Americas,2000
+Antigua and Barbuda,75,4,Americas,2012
+Bahamas,72,4,Americas,1990
+Canada,77,4,Americas,1990
+Canada,79,4,Americas,2000
+Canada,82,4,Americas,2012
+Trinidad and Tobago,68,4,Americas,1990
+Trinidad and Tobago,69,4,Americas,2000
+Trinidad and Tobago,70,4,Americas,2012
+Ecuador,69,2,Americas,1990
+Honduras,74,2,Americas,2012
+Nicaragua,71,2,Americas,1990
+Nicaragua,73,2,Americas,2000
+Brazil,74,3,Americas,2012
+Chile,73,3,Americas,1990
+Chile,77,3,Americas,2000
+Cuba,77,3,Americas,2000
+Cuba,79,3,Americas,2012
+Dominican Republic,69,3,Americas,1990
+Mexico,71,3,Americas,1990
+Panama,77,3,Americas,2012
+Suriname,73,3,Americas,1990
+Venezuela (Bolivarian Republic of),76,3,Americas,2012
+Qatar,79,4,Eastern Mediterranean,2012
+Saudi Arabia,69,4,Eastern Mediterranean,1990
+Saudi Arabia,76,4,Eastern Mediterranean,2012
+Qatar,77,4,Eastern Mediterranean,2000
+Saudi Arabia,73,4,Eastern Mediterranean,2000
+Afghanistan,55,,Eastern Mediterranean,2000
+Somalia,50,,Eastern Mediterranean,2000
+South Sudan,49,,Eastern Mediterranean,2000
+Yemen,61,,Eastern Mediterranean,2000
+Egypt,68,2,Eastern Mediterranean,2000
+Iran (Islamic Republic of),70,2,Eastern Mediterranean,2000
+Iraq,71,2,Eastern Mediterranean,2000
+Morocco,64,2,Eastern Mediterranean,1990
+Pakistan,60,2,Eastern Mediterranean,1990
+Pakistan,65,2,Eastern Mediterranean,2012
+Sudan,58,2,Eastern Mediterranean,2000
+United Arab Emirates,72,4,Eastern Mediterranean,1990
+United Arab Emirates,74,4,Eastern Mediterranean,2000
+United Arab Emirates,76,4,Eastern Mediterranean,2012
+Bahrain,73,4,Eastern Mediterranean,1990
+Bahrain,74,4,Eastern Mediterranean,2000
+Bahrain,77,4,Eastern Mediterranean,2012
+Kuwait,73,4,Eastern Mediterranean,1990
+Kuwait,75,4,Eastern Mediterranean,2000
+Kuwait,78,4,Eastern Mediterranean,2012
+Oman,68,4,Eastern Mediterranean,1990
+Oman,72,4,Eastern Mediterranean,2000
+Oman,76,4,Eastern Mediterranean,2012
+Qatar,75,4,Eastern Mediterranean,1990
+Djibouti,57,2,Eastern Mediterranean,1990
+Djibouti,57,2,Eastern Mediterranean,2000
+Djibouti,61,2,Eastern Mediterranean,2012
+Morocco,68,2,Eastern Mediterranean,2000
+Morocco,71,2,Eastern Mediterranean,2012
+Syrian Arab Republic,70,2,Eastern Mediterranean,1990
+Syrian Arab Republic,68,2,Eastern Mediterranean,2012
+Tunisia,73,2,Eastern Mediterranean,2000
+Libya,72,3,Eastern Mediterranean,2000
+Afghanistan,49,,Eastern Mediterranean,1990
+Somalia,53,,Eastern Mediterranean,2012
+South Sudan,42,,Eastern Mediterranean,1990
+South Sudan,55,,Eastern Mediterranean,2012
+Yemen,58,,Eastern Mediterranean,1990
+Yemen,64,,Eastern Mediterranean,2012
+Egypt,65,2,Eastern Mediterranean,1990
+Egypt,71,2,Eastern Mediterranean,2012
+Iran (Islamic Republic of),64,2,Eastern Mediterranean,1990
+Iran (Islamic Republic of),74,2,Eastern Mediterranean,2012
+Iraq,69,2,Eastern Mediterranean,1990
+Iraq,70,2,Eastern Mediterranean,2012
+Jordan,70,2,Eastern Mediterranean,1990
+Pakistan,63,2,Eastern Mediterranean,2000
+Sudan,63,2,Eastern Mediterranean,2012
+Syrian Arab Republic,73,2,Eastern Mediterranean,2000
+Tunisia,70,2,Eastern Mediterranean,1990
+Tunisia,76,2,Eastern Mediterranean,2012
+Lebanon,80,3,Eastern Mediterranean,2012
+Libya,68,3,Eastern Mediterranean,1990
+Libya,75,3,Eastern Mediterranean,2012
+Afghanistan,60,,Eastern Mediterranean,2012
+Somalia,47,,Eastern Mediterranean,1990
+Jordan,72,2,Eastern Mediterranean,2000
+Jordan,74,2,Eastern Mediterranean,2012
+Sudan,55,2,Eastern Mediterranean,1990
+Lebanon,67,3,Eastern Mediterranean,1990
+Lebanon,74,3,Eastern Mediterranean,2000
+Andorra,77,4,Europe,1990
+Austria,78,4,Europe,2000
+Cyprus,77,4,Europe,2000
+Denmark,80,4,Europe,2012
+Spain,77,4,Europe,1990
+Spain,82,4,Europe,2012
+Estonia,70,4,Europe,1990
+France,79,4,Europe,2000
+United Kingdom,78,4,Europe,2000
+Croatia,78,4,Europe,2012
+Hungary,69,4,Europe,1990
+Hungary,75,4,Europe,2012
+Ireland,75,4,Europe,1990
+Italy,80,4,Europe,2000
+Luxembourg,82,4,Europe,2012
+Monaco,78,4,Europe,1990
+Monaco,82,4,Europe,2012
+Malta,76,4,Europe,1990
+Slovakia,73,4,Europe,2000
+Andorra,80,4,Europe,2000
+Austria,76,4,Europe,1990
+Austria,81,4,Europe,2012
+Belgium,76,4,Europe,1990
+Switzerland,83,4,Europe,2012
+Cyprus,76,4,Europe,1990
+Denmark,77,4,Europe,2000
+Spain,79,4,Europe,2000
+France,82,4,Europe,2012
+United Kingdom,76,4,Europe,1990
+United Kingdom,81,4,Europe,2012
+Hungary,72,4,Europe,2000
+Ireland,77,4,Europe,2000
+Italy,83,4,Europe,2012
+Luxembourg,78,4,Europe,2000
+Monaco,80,4,Europe,2000
+Malta,78,4,Europe,2000
+Norway,82,4,Europe,2012
+Slovakia,76,4,Europe,2012
+Slovenia,74,4,Europe,1990
+Slovenia,80,4,Europe,2012
+Sweden,78,4,Europe,1990
+Kyrgyzstan,66,,Europe,2000
+Tajikistan,68,,Europe,2012
+Albania,69,2,Europe,1990
+Albania,74,2,Europe,2012
+Armenia,67,2,Europe,1990
+Switzerland,78,4,Europe,1990
+Switzerland,80,4,Europe,2000
+Czech Republic,71,4,Europe,1990
+Czech Republic,75,4,Europe,2000
+Czech Republic,78,4,Europe,2012
+Denmark,75,4,Europe,1990
+Finland,75,4,Europe,1990
+Finland,78,4,Europe,2000
+Finland,81,4,Europe,2012
+Croatia,73,4,Europe,1990
+Croatia,74,4,Europe,2000
+Iceland,78,4,Europe,1990
+Iceland,80,4,Europe,2000
+Iceland,82,4,Europe,2012
+Italy,77,4,Europe,1990
+Malta,81,4,Europe,2012
+Norway,77,4,Europe,1990
+Norway,79,4,Europe,2000
+San Marino,79,4,Europe,1990
+San Marino,82,4,Europe,2000
+San Marino,83,4,Europe,2012
+Sweden,82,4,Europe,2012
+Kyrgyzstan,66,,Europe,1990
+Tajikistan,64,,Europe,1990
+Tajikistan,64,,Europe,2000
+Uzbekistan,67,,Europe,1990
+Uzbekistan,66,,Europe,2000
+Uzbekistan,69,,Europe,2012
+Armenia,71,2,Europe,2000
+Armenia,71,2,Europe,2012
+Belarus,69,3,Europe,2000
+Kazakhstan,66,3,Europe,1990
+The former Yugoslav Republic of Macedonia,72,3,Europe,1990
+The former Yugoslav Republic of Macedonia,76,3,Europe,2012
+Montenegro,76,3,Europe,1990
+Poland,71,3,Europe,1990
+Poland,77,3,Europe,2012
+Romania,70,3,Europe,1990
+Turkmenistan,62,2,Europe,1990
+Turkmenistan,62,2,Europe,2000
+Turkmenistan,63,2,Europe,2012
+Bosnia and Herzegovina,73,3,Europe,1990
+Bosnia and Herzegovina,75,3,Europe,2000
+Latvia,69,3,Europe,1990
+Latvia,70,3,Europe,2000
+Latvia,74,3,Europe,2012
+Montenegro,75,3,Europe,2000
+Montenegro,76,3,Europe,2012
+Romania,74,3,Europe,2012
+Serbia,72,3,Europe,1990
+Serbia,72,3,Europe,2000
+Serbia,75,3,Europe,2012
+Turkey,70,3,Europe,2000
+Turkey,75,3,Europe,2012
+Slovenia,76,4,Europe,2000
+Sweden,80,4,Europe,2000
+Kyrgyzstan,69,,Europe,2012
+Albania,70,2,Europe,2000
+Ukraine,70,2,Europe,1990
+Bosnia and Herzegovina,77,3,Europe,2012
+Belarus,71,3,Europe,1990
+Belarus,72,3,Europe,2012
+Kazakhstan,63,3,Europe,2000
+Lithuania,71,3,Europe,1990
+The former Yugoslav Republic of Macedonia,73,3,Europe,2000
+Poland,74,3,Europe,2000
+Romania,71,3,Europe,2000
+Turkey,65,3,Europe,1990
+Andorra,83,4,Europe,2012
+Belgium,78,4,Europe,2000
+Belgium,80,4,Europe,2012
+Cyprus,82,4,Europe,2012
+Germany,76,4,Europe,1990
+Germany,78,4,Europe,2000
+Germany,81,4,Europe,2012
+Estonia,71,4,Europe,2000
+Estonia,77,4,Europe,2012
+France,78,4,Europe,1990
+Greece,77,4,Europe,1990
+Greece,78,4,Europe,2000
+Greece,81,4,Europe,2012
+Ireland,81,4,Europe,2012
+Israel,77,4,Europe,1990
+Israel,79,4,Europe,2000
+Israel,82,4,Europe,2012
+Luxembourg,76,4,Europe,1990
+Netherlands,77,4,Europe,1990
+Netherlands,78,4,Europe,2000
+Netherlands,81,4,Europe,2012
+Portugal,74,4,Europe,1990
+Portugal,77,4,Europe,2000
+Portugal,81,4,Europe,2012
+Slovakia,71,4,Europe,1990
+Azerbaijan,63,2,Europe,1990
+Azerbaijan,66,2,Europe,2000
+Azerbaijan,72,2,Europe,2012
+Georgia,71,2,Europe,1990
+Georgia,72,2,Europe,2000
+Georgia,74,2,Europe,2012
+Republic of Moldova,68,2,Europe,1990
+Republic of Moldova,67,2,Europe,2000
+Republic of Moldova,71,2,Europe,2012
+Ukraine,68,2,Europe,2000
+Ukraine,71,2,Europe,2012
+Bulgaria,71,3,Europe,1990
+Bulgaria,71,3,Europe,2000
+Bulgaria,74,3,Europe,2012
+Kazakhstan,68,3,Europe,2012
+Lithuania,72,3,Europe,2000
+Lithuania,74,3,Europe,2012
+Russian Federation,69,3,Europe,1990
+Russian Federation,65,3,Europe,2000
+Russian Federation,69,3,Europe,2012
+Bangladesh,60,,South-East Asia,1990
+Bangladesh,70,,South-East Asia,2012
+Myanmar,59,,South-East Asia,1990
+Nepal,68,,South-East Asia,2012
+Democratic People's Republic of Korea,70,,South-East Asia,1990
+Democratic People's Republic of Korea,70,,South-East Asia,2012
+Bhutan,60,2,South-East Asia,2000
+Sri Lanka,75,2,South-East Asia,2012
+Myanmar,62,,South-East Asia,2000
+Myanmar,66,,South-East Asia,2012
+Indonesia,62,2,South-East Asia,1990
+Indonesia,67,2,South-East Asia,2000
+Indonesia,71,2,South-East Asia,2012
+Maldives,58,2,South-East Asia,1990
+Maldives,68,2,South-East Asia,2000
+Thailand,69,2,South-East Asia,1990
+Bangladesh,65,,South-East Asia,2000
+Democratic People's Republic of Korea,65,,South-East Asia,2000
+Bhutan,53,2,South-East Asia,1990
+India,66,2,South-East Asia,2012
+Sri Lanka,70,2,South-East Asia,2000
+Maldives,77,2,South-East Asia,2012
+Thailand,70,2,South-East Asia,2000
+Timor-Leste,66,2,South-East Asia,2012
+Nepal,54,,South-East Asia,1990
+Nepal,62,,South-East Asia,2000
+Bhutan,68,2,South-East Asia,2012
+India,58,2,South-East Asia,1990
+India,62,2,South-East Asia,2000
+Sri Lanka,69,2,South-East Asia,1990
+Thailand,75,2,South-East Asia,2012
+Timor-Leste,50,2,South-East Asia,1990
+Timor-Leste,59,2,South-East Asia,2000
+Australia,80,4,Western Pacific,2000
+Brunei Darussalam,73,4,Western Pacific,1990
+Cook Islands,72,4,Western Pacific,2000
+Japan,81,4,Western Pacific,2000
+Nauru,77,4,Western Pacific,2000
+New Zealand,79,4,Western Pacific,2000
+Singapore,75,4,Western Pacific,1990
+Australia,83,4,Western Pacific,2012
+Brunei Darussalam,76,4,Western Pacific,2000
+Cook Islands,69,4,Western Pacific,1990
+Cook Islands,76,4,Western Pacific,2012
+Japan,79,4,Western Pacific,1990
+Japan,84,4,Western Pacific,2012
+Republic of Korea,72,4,Western Pacific,1990
+Nauru,73,4,Western Pacific,1990
+Nauru,79,4,Western Pacific,2012
+New Zealand,76,4,Western Pacific,1990
+Cambodia,61,,Western Pacific,2000
+Marshall Islands,66,2,Western Pacific,2000
+Mongolia,63,2,Western Pacific,2000
+Philippines,66,2,Western Pacific,1990
+Philippines,69,2,Western Pacific,2012
+Papua New Guinea,56,2,Western Pacific,1990
+Solomon Islands,65,2,Western Pacific,2000
+Australia,77,4,Western Pacific,1990
+Brunei Darussalam,77,4,Western Pacific,2012
+Niue,71,,Western Pacific,1990
+Niue,73,,Western Pacific,2000
+Niue,74,,Western Pacific,2012
+China,69,2,Western Pacific,1990
+China,71,2,Western Pacific,2000
+China,75,2,Western Pacific,2012
+Micronesia (Federated States of),67,2,Western Pacific,2000
+Micronesia (Federated States of),69,2,Western Pacific,2012
+Kiribati,60,2,Western Pacific,1990
+Kiribati,64,2,Western Pacific,2000
+Kiribati,66,2,Western Pacific,2012
+Tonga,69,2,Western Pacific,2000
+Samoa,73,2,Western Pacific,2012
+Malaysia,71,3,Western Pacific,2000
+Palau,73,3,Western Pacific,2012
+Vanuatu,66,2,Western Pacific,1990
+Vanuatu,69,2,Western Pacific,2000
+Vanuatu,72,2,Western Pacific,2012
+Fiji,68,3,Western Pacific,2000
+Fiji,69,3,Western Pacific,2012
+Malaysia,71,3,Western Pacific,1990
+Cambodia,54,,Western Pacific,1990
+Cambodia,72,,Western Pacific,2012
+Lao People's Democratic Republic,53,,Western Pacific,1990
+Viet Nam,76,,Western Pacific,2012
+Micronesia (Federated States of),66,2,Western Pacific,1990
+Marshall Islands,63,2,Western Pacific,1990
+Marshall Islands,70,2,Western Pacific,2012
+Mongolia,61,2,Western Pacific,1990
+Philippines,69,2,Western Pacific,2000
+Solomon Islands,62,2,Western Pacific,1990
+Solomon Islands,69,2,Western Pacific,2012
+Tonga,68,2,Western Pacific,1990
+Tonga,71,2,Western Pacific,2012
+Samoa,70,2,Western Pacific,2000
+Fiji,66,3,Western Pacific,1990
+Malaysia,74,3,Western Pacific,2012
+Republic of Korea,76,4,Western Pacific,2000
+Republic of Korea,81,4,Western Pacific,2012
+New Zealand,82,4,Western Pacific,2012
+Singapore,79,4,Western Pacific,2000
+Singapore,83,4,Western Pacific,2012
+Lao People's Democratic Republic,59,,Western Pacific,2000
+Lao People's Democratic Republic,66,,Western Pacific,2012
+Viet Nam,70,,Western Pacific,1990
+Viet Nam,73,,Western Pacific,2000
+Mongolia,67,2,Western Pacific,2012
+Papua New Guinea,59,2,Western Pacific,2000
+Papua New Guinea,62,2,Western Pacific,2012
+Samoa,66,2,Western Pacific,1990
+Palau,66,3,Western Pacific,1990
+Palau,70,3,Western Pacific,2000
+Tuvalu,62,3,Western Pacific,1990
+Tuvalu,64,3,Western Pacific,2000
+Tuvalu,68,3,Western Pacific,2012

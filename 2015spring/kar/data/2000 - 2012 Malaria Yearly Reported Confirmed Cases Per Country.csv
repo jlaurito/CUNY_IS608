@@ -1,0 +1,1092 @@
+GHO,Indicator,Year,Region_Code,Region,Country_Code,Country,Numeric_Value
+WHS3_48,Malaria,2001,AFR,Africa,BFA,Burkina Faso,0
+WHS3_48,Malaria,2002,AFR,Africa,BFA,Burkina Faso,0
+WHS3_48,Malaria,2003,AFR,Africa,BFA,Burkina Faso,0
+WHS3_48,Malaria,2009,AFR,Africa,CMR,Cameroon,0
+WHS3_48,Malaria,2000,AFR,Africa,SWZ,Swaziland,0
+WHS3_48,Malaria,2007,AFR,Africa,ZMB,Zambia,0
+WHS3_48,Malaria,2008,AFR,Africa,ZMB,Zambia,0
+WHS3_48,Malaria,2009,AFR,Africa,ZMB,Zambia,0
+WHS3_48,Malaria,2011,AMR,Americas,ARG,Argentina,0
+WHS3_48,Malaria,2012,AMR,Americas,ARG,Argentina,0
+WHS3_48,Malaria,2011,AMR,Americas,PRY,Paraguay,0
+WHS3_48,Malaria,2012,AMR,Americas,PRY,Paraguay,0
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,IRQ,Iraq,0
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,IRQ,Iraq,0
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,IRQ,Iraq,0
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,IRQ,Iraq,0
+WHS3_48,Malaria,2010,EUR,Europe,GEO,Georgia,0
+WHS3_48,Malaria,2011,EUR,Europe,KGZ,Kyrgyzstan,0
+WHS3_48,Malaria,2012,EUR,Europe,KGZ,Kyrgyzstan,0
+WHS3_48,Malaria,2011,EUR,Europe,TUR,Turkey,0
+WHS3_48,Malaria,2009,EUR,Europe,UZB,Uzbekistan,0
+WHS3_48,Malaria,2011,EUR,Europe,UZB,Uzbekistan,0
+WHS3_48,Malaria,2012,EUR,Europe,UZB,Uzbekistan,0
+WHS3_48,Malaria,2006,AFR,Africa,DZA,Algeria,1
+WHS3_48,Malaria,2012,AFR,Africa,CPV,Cabo Verde,1
+WHS3_48,Malaria,2009,EUR,Europe,GEO,Georgia,1
+WHS3_48,Malaria,2011,EUR,Europe,GEO,Georgia,1
+WHS3_48,Malaria,2012,EUR,Europe,GEO,Georgia,1
+WHS3_48,Malaria,2005,AFR,Africa,DZA,Algeria,2
+WHS3_48,Malaria,2007,AFR,Africa,CPV,Cabo Verde,2
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,IRQ,Iraq,2
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,IRQ,Iraq,2
+WHS3_48,Malaria,2004,AFR,Africa,DZA,Algeria,3
+WHS3_48,Malaria,2012,EUR,Europe,AZE,Azerbaijan,3
+WHS3_48,Malaria,2010,EUR,Europe,KGZ,Kyrgyzstan,3
+WHS3_48,Malaria,2010,EUR,Europe,UZB,Uzbekistan,3
+WHS3_48,Malaria,2008,AFR,Africa,DZA,Algeria,4
+WHS3_48,Malaria,2009,AFR,Africa,DZA,Algeria,4
+WHS3_48,Malaria,2011,AFR,Africa,DZA,Algeria,4
+WHS3_48,Malaria,2011,EUR,Europe,AZE,Azerbaijan,4
+WHS3_48,Malaria,2009,EUR,Europe,KGZ,Kyrgyzstan,4
+WHS3_48,Malaria,2003,AFR,Africa,DZA,Algeria,6
+WHS3_48,Malaria,2008,EUR,Europe,GEO,Georgia,6
+WHS3_48,Malaria,2012,AMR,Americas,CRI,Costa Rica,7
+WHS3_48,Malaria,2000,EUR,Europe,KGZ,Kyrgyzstan,7
+WHS3_48,Malaria,2008,EUR,Europe,UZB,Uzbekistan,7
+WHS3_48,Malaria,2001,AFR,Africa,DZA,Algeria,8
+WHS3_48,Malaria,2002,AFR,Africa,DZA,Algeria,8
+WHS3_48,Malaria,2010,EUR,Europe,TUR,Turkey,9
+WHS3_48,Malaria,2001,EUR,Europe,UZB,Uzbekistan,9
+WHS3_48,Malaria,2009,AMR,Americas,SLV,El Salvador,10
+WHS3_48,Malaria,2011,AMR,Americas,SLV,El Salvador,10
+WHS3_48,Malaria,2011,AMR,Americas,CRI,Costa Rica,11
+WHS3_48,Malaria,2002,EUR,Europe,UZB,Uzbekistan,11
+WHS3_48,Malaria,2010,AFR,Africa,DZA,Algeria,12
+WHS3_48,Malaria,2012,AMR,Americas,SLV,El Salvador,13
+WHS3_48,Malaria,2001,EUR,Europe,KGZ,Kyrgyzstan,15
+WHS3_48,Malaria,2008,AFR,Africa,CPV,Cabo Verde,16
+WHS3_48,Malaria,2010,AMR,Americas,SLV,El Salvador,17
+WHS3_48,Malaria,2010,AFR,Africa,CPV,Cabo Verde,18
+WHS3_48,Malaria,2010,AMR,Americas,PRY,Paraguay,18
+WHS3_48,Malaria,2008,EUR,Europe,KGZ,Kyrgyzstan,18
+WHS3_48,Malaria,2012,EUR,Europe,TJK,Tajikistan,18
+WHS3_48,Malaria,2008,AMR,Americas,SLV,El Salvador,21
+WHS3_48,Malaria,2007,AMR,Americas,SLV,El Salvador,22
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,IRQ,Iraq,23
+WHS3_48,Malaria,2012,SEAR,South-East Asia,LKA,Sri Lanka,23
+WHS3_48,Malaria,2007,EUR,Europe,GEO,Georgia,24
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,DJI,Djibouti,25
+WHS3_48,Malaria,2010,AMR,Americas,ARG,Argentina,26
+WHS3_48,Malaria,2007,AFR,Africa,DZA,Algeria,27
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,SAU,Saudi Arabia,29
+WHS3_48,Malaria,2007,EUR,Europe,UZB,Uzbekistan,30
+WHS3_48,Malaria,2004,EUR,Europe,UZB,Uzbekistan,31
+WHS3_48,Malaria,2004,AFR,Africa,CPV,Cabo Verde,32
+WHS3_48,Malaria,2003,EUR,Europe,UZB,Uzbekistan,33
+WHS3_48,Malaria,2000,AFR,Africa,DZA,Algeria,35
+WHS3_48,Malaria,2011,AFR,Africa,CPV,Cabo Verde,36
+WHS3_48,Malaria,2012,AMR,Americas,BLZ,Belize,37
+WHS3_48,Malaria,2009,EUR,Europe,TUR,Turkey,38
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,IRQ,Iraq,44
+WHS3_48,Malaria,2000,EUR,Europe,UZB,Uzbekistan,46
+WHS3_48,Malaria,2003,AFR,Africa,CPV,Cabo Verde,48
+WHS3_48,Malaria,2006,AMR,Americas,SLV,El Salvador,49
+WHS3_48,Malaria,2010,EUR,Europe,AZE,Azerbaijan,50
+WHS3_48,Malaria,2005,AFR,Africa,CPV,Cabo Verde,54
+WHS3_48,Malaria,2002,AFR,Africa,CPV,Cabo Verde,58
+WHS3_48,Malaria,2008,AFR,Africa,SWZ,Swaziland,58
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,SAU,Saudi Arabia,58
+WHS3_48,Malaria,2006,EUR,Europe,GEO,Georgia,58
+WHS3_48,Malaria,2012,AFR,Africa,DZA,Algeria,59
+WHS3_48,Malaria,2006,EUR,Europe,UZB,Uzbekistan,60
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,SAU,Saudi Arabia,61
+WHS3_48,Malaria,2006,AFR,Africa,CPV,Cabo Verde,63
+WHS3_48,Malaria,2005,AMR,Americas,SLV,El Salvador,63
+WHS3_48,Malaria,2005,EUR,Europe,UZB,Uzbekistan,64
+WHS3_48,Malaria,2009,AFR,Africa,CPV,Cabo Verde,65
+WHS3_48,Malaria,2011,EUR,Europe,TJK,Tajikistan,65
+WHS3_48,Malaria,2008,AFR,Africa,TZA,United Republic of Tanzania,67
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,SAU,Saudi Arabia,69
+WHS3_48,Malaria,2008,EUR,Europe,AZE,Azerbaijan,72
+WHS3_48,Malaria,2009,EUR,Europe,AZE,Azerbaijan,78
+WHS3_48,Malaria,2011,AMR,Americas,BLZ,Belize,79
+WHS3_48,Malaria,2009,AMR,Americas,PRY,Paraguay,79
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,SAU,Saudi Arabia,82
+WHS3_48,Malaria,2012,SEAR,South-East Asia,BTN,Bhutan,82
+WHS3_48,Malaria,2007,AFR,Africa,SWZ,Swaziland,84
+WHS3_48,Malaria,2003,AMR,Americas,SLV,El Salvador,85
+WHS3_48,Malaria,2009,AMR,Americas,ARG,Argentina,86
+WHS3_48,Malaria,2004,EUR,Europe,KGZ,Kyrgyzstan,91
+WHS3_48,Malaria,2007,EUR,Europe,KGZ,Kyrgyzstan,96
+WHS3_48,Malaria,2001,AFR,Africa,CPV,Cabo Verde,100
+WHS3_48,Malaria,2009,AFR,Africa,SWZ,Swaziland,106
+WHS3_48,Malaria,2007,EUR,Europe,AZE,Azerbaijan,108
+WHS3_48,Malaria,2010,AMR,Americas,CRI,Costa Rica,110
+WHS3_48,Malaria,2010,EUR,Europe,TJK,Tajikistan,111
+WHS3_48,Malaria,2004,AMR,Americas,SLV,El Salvador,112
+WHS3_48,Malaria,2004,AMR,Americas,ARG,Argentina,115
+WHS3_48,Malaria,2002,AMR,Americas,SLV,El Salvador,117
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,DJI,Djibouti,119
+WHS3_48,Malaria,2003,AMR,Americas,ARG,Argentina,122
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,DJI,Djibouti,122
+WHS3_48,Malaria,2011,SEAR,South-East Asia,LKA,Sri Lanka,124
+WHS3_48,Malaria,2002,AMR,Americas,ARG,Argentina,125
+WHS3_48,Malaria,2000,AFR,Africa,CPV,Cabo Verde,129
+WHS3_48,Malaria,2008,AMR,Americas,ARG,Argentina,130
+WHS3_48,Malaria,2006,EUR,Europe,AZE,Azerbaijan,141
+WHS3_48,Malaria,2001,AFR,Africa,NGA,Nigeria,150
+WHS3_48,Malaria,2010,AMR,Americas,BLZ,Belize,150
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,IRQ,Iraq,150
+WHS3_48,Malaria,2005,EUR,Europe,GEO,Georgia,154
+WHS3_48,Malaria,2006,AFR,Africa,SWZ,Swaziland,155
+WHS3_48,Malaria,2009,EUR,Europe,TJK,Tajikistan,164
+WHS3_48,Malaria,2008,EUR,Europe,TUR,Turkey,166
+WHS3_48,Malaria,2012,AFR,Africa,BWA,Botswana,193
+WHS3_48,Malaria,2012,AFR,Africa,NAM,Namibia,194
+WHS3_48,Malaria,2011,SEAR,South-East Asia,BTN,Bhutan,194
+WHS3_48,Malaria,2007,SEAR,South-East Asia,LKA,Sri Lanka,198
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,SAU,Saudi Arabia,207
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,DJI,Djibouti,210
+WHS3_48,Malaria,2006,AMR,Americas,ARG,Argentina,212
+WHS3_48,Malaria,2011,AMR,Americas,SUR,Suriname,212
+WHS3_48,Malaria,2001,AMR,Americas,ARG,Argentina,215
+WHS3_48,Malaria,2012,EUR,Europe,TUR,Turkey,219
+WHS3_48,Malaria,2005,EUR,Europe,KGZ,Kyrgyzstan,226
+WHS3_48,Malaria,2005,EUR,Europe,AZE,Azerbaijan,242
+WHS3_48,Malaria,2000,EUR,Europe,GEO,Georgia,244
+WHS3_48,Malaria,2005,AMR,Americas,ARG,Argentina,252
+WHS3_48,Malaria,2004,EUR,Europe,GEO,Georgia,254
+WHS3_48,Malaria,2009,AMR,Americas,BLZ,Belize,256
+WHS3_48,Malaria,2009,AMR,Americas,CRI,Costa Rica,262
+WHS3_48,Malaria,2010,AFR,Africa,SWZ,Swaziland,268
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,SAU,Saudi Arabia,270
+WHS3_48,Malaria,2005,AFR,Africa,SWZ,Swaziland,279
+WHS3_48,Malaria,2012,AFR,Africa,SWZ,Swaziland,295
+WHS3_48,Malaria,2008,AFR,Africa,MRT,Mauritania,302
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,SAU,Saudi Arabia,308
+WHS3_48,Malaria,2003,EUR,Europe,GEO,Georgia,308
+WHS3_48,Malaria,2007,EUR,Europe,TUR,Turkey,313
+WHS3_48,Malaria,2006,EUR,Europe,KGZ,Kyrgyzstan,314
+WHS3_48,Malaria,2008,EUR,Europe,TJK,Tajikistan,314
+WHS3_48,Malaria,2008,SEAR,South-East Asia,BTN,Bhutan,329
+WHS3_48,Malaria,2008,AMR,Americas,PRY,Paraguay,340
+WHS3_48,Malaria,2003,AFR,Africa,SWZ,Swaziland,342
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,IRQ,Iraq,344
+WHS3_48,Malaria,2011,AMR,Americas,PAN,Panama,345
+WHS3_48,Malaria,2012,AMR,Americas,SUR,Suriname,345
+WHS3_48,Malaria,2001,AMR,Americas,SLV,El Salvador,362
+WHS3_48,Malaria,2005,AMR,Americas,PRY,Paraguay,376
+WHS3_48,Malaria,2002,AFR,Africa,NGA,Nigeria,380
+WHS3_48,Malaria,2004,EUR,Europe,AZE,Azerbaijan,386
+WHS3_48,Malaria,2007,AMR,Americas,ARG,Argentina,387
+WHS3_48,Malaria,2007,AFR,Africa,BWA,Botswana,390
+WHS3_48,Malaria,2010,AMR,Americas,PAN,Panama,413
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,DJI,Djibouti,413
+WHS3_48,Malaria,2011,AFR,Africa,BWA,Botswana,432
+WHS3_48,Malaria,2010,SEAR,South-East Asia,BTN,Bhutan,436
+WHS3_48,Malaria,2001,EUR,Europe,GEO,Georgia,437
+WHS3_48,Malaria,2000,AMR,Americas,ARG,Argentina,440
+WHS3_48,Malaria,2003,EUR,Europe,KGZ,Kyrgyzstan,465
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,SAU,Saudi Arabia,467
+WHS3_48,Malaria,2002,EUR,Europe,GEO,Georgia,473
+WHS3_48,Malaria,2003,EUR,Europe,AZE,Azerbaijan,480
+WHS3_48,Malaria,2009,AFR,Africa,NAM,Namibia,505
+WHS3_48,Malaria,2002,EUR,Europe,AZE,Azerbaijan,505
+WHS3_48,Malaria,2012,WPR,Western Pacific,KOR,Republic of Korea,508
+WHS3_48,Malaria,2005,AFR,Africa,BWA,Botswana,530
+WHS3_48,Malaria,2009,SEAR,South-East Asia,LKA,Sri Lanka,531
+WHS3_48,Malaria,2008,AMR,Americas,BLZ,Belize,540
+WHS3_48,Malaria,2012,AMR,Americas,ECU,Ecuador,544
+WHS3_48,Malaria,2011,AFR,Africa,SWZ,Swaziland,549
+WHS3_48,Malaria,2010,AFR,Africa,NAM,Namibia,556
+WHS3_48,Malaria,2004,AFR,Africa,SWZ,Swaziland,574
+WHS3_48,Malaria,2006,SEAR,South-East Asia,LKA,Sri Lanka,591
+WHS3_48,Malaria,2009,AMR,Americas,NIC,Nicaragua,600
+WHS3_48,Malaria,2012,AMR,Americas,DOM,Dominican Republic,603
+WHS3_48,Malaria,2007,EUR,Europe,TJK,Tajikistan,628
+WHS3_48,Malaria,2008,SEAR,South-East Asia,LKA,Sri Lanka,649
+WHS3_48,Malaria,2009,AFR,Africa,GAB,Gabon,660
+WHS3_48,Malaria,2002,AFR,Africa,SWZ,Swaziland,670
+WHS3_48,Malaria,2010,AMR,Americas,SUR,Suriname,680
+WHS3_48,Malaria,2010,SEAR,South-East Asia,LKA,Sri Lanka,684
+WHS3_48,Malaria,2010,AMR,Americas,NIC,Nicaragua,685
+WHS3_48,Malaria,2004,AMR,Americas,PRY,Paraguay,694
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,SAU,Saudi Arabia,700
+WHS3_48,Malaria,2003,AMR,Americas,CRI,Costa Rica,718
+WHS3_48,Malaria,2008,AMR,Americas,PAN,Panama,732
+WHS3_48,Malaria,2006,EUR,Europe,TUR,Turkey,751
+WHS3_48,Malaria,2000,AMR,Americas,SLV,El Salvador,753
+WHS3_48,Malaria,2008,AMR,Americas,NIC,Nicaragua,762
+WHS3_48,Malaria,2009,AMR,Americas,PAN,Panama,770
+WHS3_48,Malaria,2011,WPR,Western Pacific,KOR,Republic of Korea,774
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),787
+WHS3_48,Malaria,2002,AMR,Americas,DOM,Dominican Republic,789
+WHS3_48,Malaria,2007,SEAR,South-East Asia,BTN,Bhutan,793
+WHS3_48,Malaria,2006,AMR,Americas,PRY,Paraguay,823
+WHS3_48,Malaria,2012,AMR,Americas,MEX,Mexico,824
+WHS3_48,Malaria,2004,WPR,Western Pacific,KOR,Republic of Korea,826
+WHS3_48,Malaria,2001,AMR,Americas,DOM,Dominican Republic,828
+WHS3_48,Malaria,2012,AMR,Americas,PAN,Panama,836
+WHS3_48,Malaria,2006,AMR,Americas,BLZ,Belize,844
+WHS3_48,Malaria,2007,AMR,Americas,BLZ,Belize,845
+WHS3_48,Malaria,2000,AFR,Africa,COD,Democratic Republic of the Congo,897
+WHS3_48,Malaria,2001,AMR,Americas,PAN,Panama,906
+WHS3_48,Malaria,2000,AMR,Americas,DOM,Dominican Republic,911
+WHS3_48,Malaria,2011,AMR,Americas,NIC,Nicaragua,925
+WHS3_48,Malaria,2008,AFR,Africa,BWA,Botswana,927
+WHS3_48,Malaria,2009,AFR,Africa,MRT,Mauritania,940
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,IRQ,Iraq,952
+WHS3_48,Malaria,2008,AMR,Americas,CRI,Costa Rica,966
+WHS3_48,Malaria,2009,SEAR,South-East Asia,BTN,Bhutan,972
+WHS3_48,Malaria,2003,AMR,Americas,DOM,Dominican Republic,997
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,DJI,Djibouti,1010
+WHS3_48,Malaria,2000,AMR,Americas,PAN,Panama,1013
+WHS3_48,Malaria,2002,AMR,Americas,CRI,Costa Rica,1021
+WHS3_48,Malaria,2008,WPR,Western Pacific,KOR,Republic of Korea,1023
+WHS3_48,Malaria,2009,AFR,Africa,BWA,Botswana,1024
+WHS3_48,Malaria,2011,AMR,Americas,DOM,Dominican Republic,1039
+WHS3_48,Malaria,2010,AFR,Africa,BWA,Botswana,1046
+WHS3_48,Malaria,2001,EUR,Europe,AZE,Azerbaijan,1055
+WHS3_48,Malaria,2006,AFR,Africa,MRT,Mauritania,1061
+WHS3_48,Malaria,2004,AMR,Americas,BLZ,Belize,1066
+WHS3_48,Malaria,2003,AMR,Americas,BLZ,Belize,1084
+WHS3_48,Malaria,2008,AFR,Africa,NAM,Namibia,1092
+WHS3_48,Malaria,2003,WPR,Western Pacific,KOR,Republic of Korea,1107
+WHS3_48,Malaria,2011,AMR,Americas,MEX,Mexico,1118
+WHS3_48,Malaria,2002,AMR,Americas,BLZ,Belize,1134
+WHS3_48,Malaria,2001,AMR,Americas,BLZ,Belize,1162
+WHS3_48,Malaria,2009,AMR,Americas,SUR,Suriname,1204
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,SAU,Saudi Arabia,1210
+WHS3_48,Malaria,2011,AMR,Americas,ECU,Ecuador,1219
+WHS3_48,Malaria,2010,AMR,Americas,MEX,Mexico,1219
+WHS3_48,Malaria,2007,AMR,Americas,CRI,Costa Rica,1223
+WHS3_48,Malaria,2012,AMR,Americas,NIC,Nicaragua,1235
+WHS3_48,Malaria,2007,AMR,Americas,PAN,Panama,1265
+WHS3_48,Malaria,2001,EMR,Eastern Mediterranean,IRQ,Iraq,1265
+WHS3_48,Malaria,2004,AMR,Americas,CRI,Costa Rica,1289
+WHS3_48,Malaria,2009,WPR,Western Pacific,KOR,Republic of Korea,1309
+WHS3_48,Malaria,2005,WPR,Western Pacific,KOR,Republic of Korea,1324
+WHS3_48,Malaria,2007,AMR,Americas,PRY,Paraguay,1341
+WHS3_48,Malaria,2006,EUR,Europe,TJK,Tajikistan,1343
+WHS3_48,Malaria,2007,AMR,Americas,NIC,Nicaragua,1356
+WHS3_48,Malaria,2004,AFR,Africa,TCD,Chad,1360
+WHS3_48,Malaria,2001,AMR,Americas,CRI,Costa Rica,1363
+WHS3_48,Malaria,2003,AMR,Americas,PRY,Paraguay,1392
+WHS3_48,Malaria,2001,AFR,Africa,SWZ,Swaziland,1395
+WHS3_48,Malaria,2000,AMR,Americas,BLZ,Belize,1486
+WHS3_48,Malaria,2009,AMR,Americas,DOM,Dominican Republic,1494
+WHS3_48,Malaria,2000,EUR,Europe,AZE,Azerbaijan,1526
+WHS3_48,Malaria,2001,AFR,Africa,COD,Democratic Republic of the Congo,1531
+WHS3_48,Malaria,2005,AMR,Americas,BLZ,Belize,1549
+WHS3_48,Malaria,2002,AFR,Africa,BWA,Botswana,1588
+WHS3_48,Malaria,2001,EMR,Eastern Mediterranean,SAU,Saudi Arabia,1603
+WHS3_48,Malaria,2005,SEAR,South-East Asia,LKA,Sri Lanka,1640
+WHS3_48,Malaria,2006,AMR,Americas,PAN,Panama,1651
+WHS3_48,Malaria,2008,AMR,Americas,DOM,Dominican Republic,1668
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),1710
+WHS3_48,Malaria,2010,WPR,Western Pacific,KOR,Republic of Korea,1716
+WHS3_48,Malaria,2002,AFR,Africa,COD,Democratic Republic of the Congo,1735
+WHS3_48,Malaria,2007,AMR,Americas,SUR,Suriname,1741
+WHS3_48,Malaria,2002,WPR,Western Pacific,KOR,Republic of Korea,1763
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,DJI,Djibouti,1796
+WHS3_48,Malaria,2005,SEAR,South-East Asia,BTN,Bhutan,1825
+WHS3_48,Malaria,2003,AFR,Africa,BWA,Botswana,1830
+WHS3_48,Malaria,2004,AMR,Americas,DOM,Dominican Republic,1831
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),1847
+WHS3_48,Malaria,2011,AFR,Africa,NAM,Namibia,1860
+WHS3_48,Malaria,2000,EMR,Eastern Mediterranean,IRQ,Iraq,1860
+WHS3_48,Malaria,2006,SEAR,South-East Asia,BTN,Bhutan,1868
+WHS3_48,Malaria,2010,AMR,Americas,ECU,Ecuador,1871
+WHS3_48,Malaria,2000,AMR,Americas,CRI,Costa Rica,1879
+WHS3_48,Malaria,2012,AFR,Africa,MRT,Mauritania,1888
+WHS3_48,Malaria,2010,AFR,Africa,MRT,Mauritania,1994
+WHS3_48,Malaria,2006,WPR,Western Pacific,KOR,Republic of Korea,2021
+WHS3_48,Malaria,2005,EUR,Europe,TUR,Turkey,2036
+WHS3_48,Malaria,2006,AFR,Africa,COD,Democratic Republic of the Congo,2050
+WHS3_48,Malaria,2008,AMR,Americas,SUR,Suriname,2074
+WHS3_48,Malaria,2012,SEAR,South-East Asia,NPL,Nepal,2092
+WHS3_48,Malaria,2007,WPR,Western Pacific,KOR,Republic of Korea,2192
+WHS3_48,Malaria,2007,AMR,Americas,DOM,Dominican Republic,2193
+WHS3_48,Malaria,2001,AFR,Africa,SLE,Sierra Leone,2206
+WHS3_48,Malaria,2004,AFR,Africa,SLE,Sierra Leone,2206
+WHS3_48,Malaria,2002,AMR,Americas,PAN,Panama,2244
+WHS3_48,Malaria,2011,SEAR,South-East Asia,NPL,Nepal,2288
+WHS3_48,Malaria,2005,EUR,Europe,TJK,Tajikistan,2308
+WHS3_48,Malaria,2008,AMR,Americas,MEX,Mexico,2357
+WHS3_48,Malaria,2007,AMR,Americas,MEX,Mexico,2361
+WHS3_48,Malaria,2007,AFR,Africa,STP,Sao Tome and Principe,2421
+WHS3_48,Malaria,2003,AFR,Africa,COD,Democratic Republic of the Congo,2438
+WHS3_48,Malaria,2005,AMR,Americas,DOM,Dominican Republic,2461
+WHS3_48,Malaria,2001,WPR,Western Pacific,KOR,Republic of Korea,2488
+WHS3_48,Malaria,2006,AMR,Americas,DOM,Dominican Republic,2494
+WHS3_48,Malaria,2006,AMR,Americas,MEX,Mexico,2514
+WHS3_48,Malaria,2006,AFR,Africa,BWA,Botswana,2548
+WHS3_48,Malaria,2012,WPR,Western Pacific,CHN,China,2603
+WHS3_48,Malaria,2004,SEAR,South-East Asia,BTN,Bhutan,2670
+WHS3_48,Malaria,2004,AFR,Africa,COD,Democratic Republic of the Congo,2684
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,DJI,Djibouti,2686
+WHS3_48,Malaria,2009,AMR,Americas,MEX,Mexico,2703
+WHS3_48,Malaria,2001,AMR,Americas,PRY,Paraguay,2710
+WHS3_48,Malaria,2002,EUR,Europe,KGZ,Kyrgyzstan,2712
+WHS3_48,Malaria,2009,SEAR,South-East Asia,NPL,Nepal,2725
+WHS3_48,Malaria,2010,AFR,Africa,STP,Sao Tome and Principe,2740
+WHS3_48,Malaria,2009,AFR,Africa,ZAF,South Africa,2759
+WHS3_48,Malaria,2002,AMR,Americas,PRY,Paraguay,2778
+WHS3_48,Malaria,2010,SEAR,South-East Asia,NPL,Nepal,2792
+WHS3_48,Malaria,2006,AMR,Americas,CRI,Costa Rica,2903
+WHS3_48,Malaria,2011,AFR,Africa,MRT,Mauritania,2926
+WHS3_48,Malaria,2010,AMR,Americas,DOM,Dominican Republic,2953
+WHS3_48,Malaria,2005,AMR,Americas,MEX,Mexico,2967
+WHS3_48,Malaria,2005,AFR,Africa,COD,Democratic Republic of the Congo,2971
+WHS3_48,Malaria,2006,AMR,Americas,NIC,Nicaragua,3114
+WHS3_48,Malaria,2008,SEAR,South-East Asia,NPL,Nepal,3228
+WHS3_48,Malaria,2009,AFR,Africa,TZA,United Republic of Tanzania,3242
+WHS3_48,Malaria,2006,AMR,Americas,SUR,Suriname,3289
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,SOM,Somalia,3351
+WHS3_48,Malaria,2011,WPR,Western Pacific,CHN,China,3367
+WHS3_48,Malaria,2004,AMR,Americas,MEX,Mexico,3406
+WHS3_48,Malaria,2012,WPR,Western Pacific,VUT,Vanuatu,3435
+WHS3_48,Malaria,2004,AFR,Africa,BWA,Botswana,3453
+WHS3_48,Malaria,2008,AFR,Africa,CIV,C?te d'Ivoire,3527
+WHS3_48,Malaria,2005,AMR,Americas,CRI,Costa Rica,3541
+WHS3_48,Malaria,2004,EUR,Europe,TJK,Tajikistan,3588
+WHS3_48,Malaria,2005,AMR,Americas,PAN,Panama,3647
+WHS3_48,Malaria,2002,AFR,Africa,SLE,Sierra Leone,3702
+WHS3_48,Malaria,2012,AFR,Africa,COG,Congo,3717
+WHS3_48,Malaria,2004,SEAR,South-East Asia,LKA,Sri Lanka,3720
+WHS3_48,Malaria,2008,WPR,Western Pacific,VUT,Vanuatu,3765
+WHS3_48,Malaria,2012,WPR,Western Pacific,MYS,Malaysia,3801
+WHS3_48,Malaria,2003,SEAR,South-East Asia,BTN,Bhutan,3806
+WHS3_48,Malaria,2003,AMR,Americas,MEX,Mexico,3819
+WHS3_48,Malaria,2010,AFR,Africa,ZAF,South Africa,3875
+WHS3_48,Malaria,2003,AFR,Africa,SLE,Sierra Leone,3945
+WHS3_48,Malaria,2006,AFR,Africa,NER,Niger,3956
+WHS3_48,Malaria,2004,SEAR,South-East Asia,NPL,Nepal,4090
+WHS3_48,Malaria,2004,AFR,Africa,ERI,Eritrea,4119
+WHS3_48,Malaria,2009,AMR,Americas,ECU,Ecuador,4120
+WHS3_48,Malaria,2000,WPR,Western Pacific,KOR,Republic of Korea,4142
+WHS3_48,Malaria,2011,WPR,Western Pacific,MYS,Malaysia,4164
+WHS3_48,Malaria,2009,WPR,Western Pacific,VUT,Vanuatu,4189
+WHS3_48,Malaria,2007,AFR,Africa,NAM,Namibia,4242
+WHS3_48,Malaria,2007,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,4345
+WHS3_48,Malaria,2006,SEAR,South-East Asia,NPL,Nepal,4351
+WHS3_48,Malaria,2005,SEAR,South-East Asia,NPL,Nepal,4409
+WHS3_48,Malaria,2003,AMR,Americas,PAN,Panama,4474
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),4477
+WHS3_48,Malaria,2006,WPR,Western Pacific,MYS,Malaysia,4597
+WHS3_48,Malaria,2002,AMR,Americas,MEX,Mexico,4624
+WHS3_48,Malaria,2007,WPR,Western Pacific,MYS,Malaysia,4627
+WHS3_48,Malaria,2001,AFR,Africa,BWA,Botswana,4716
+WHS3_48,Malaria,2000,EMR,Eastern Mediterranean,SAU,Saudi Arabia,4736
+WHS3_48,Malaria,2007,SEAR,South-East Asia,NPL,Nepal,4741
+WHS3_48,Malaria,2000,AFR,Africa,GIN,Guinea,4800
+WHS3_48,Malaria,2005,AFR,Africa,SLE,Sierra Leone,4808
+WHS3_48,Malaria,2011,WPR,Western Pacific,VUT,Vanuatu,4820
+WHS3_48,Malaria,2008,AMR,Americas,ECU,Ecuador,4891
+WHS3_48,Malaria,2006,AFR,Africa,SLE,Sierra Leone,4932
+WHS3_48,Malaria,2005,WPR,Western Pacific,MYS,Malaysia,4981
+WHS3_48,Malaria,2010,WPR,Western Pacific,CHN,China,4990
+WHS3_48,Malaria,2001,AMR,Americas,MEX,Mexico,4996
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,DJI,Djibouti,5036
+WHS3_48,Malaria,2004,AMR,Americas,PAN,Panama,5069
+WHS3_48,Malaria,2006,AFR,Africa,STP,Sao Tome and Principe,5146
+WHS3_48,Malaria,2001,SEAR,South-East Asia,NPL,Nepal,5198
+WHS3_48,Malaria,2012,SEAR,South-East Asia,TLS,Timor-Leste,5211
+WHS3_48,Malaria,2004,EUR,Europe,TUR,Turkey,5252
+WHS3_48,Malaria,2002,AFR,Africa,MDG,Madagascar,5272
+WHS3_48,Malaria,2012,AMR,Americas,GTM,Guatemala,5345
+WHS3_48,Malaria,2004,WPR,Western Pacific,MYS,Malaysia,5366
+WHS3_48,Malaria,2003,EUR,Europe,TJK,Tajikistan,5428
+WHS3_48,Malaria,2003,WPR,Western Pacific,MYS,Malaysia,5470
+WHS3_48,Malaria,2007,WPR,Western Pacific,VUT,Vanuatu,5471
+WHS3_48,Malaria,2012,AFR,Africa,ZAF,South Africa,5629
+WHS3_48,Malaria,2006,AFR,Africa,MDG,Madagascar,5689
+WHS3_48,Malaria,2010,WPR,Western Pacific,MYS,Malaysia,5819
+WHS3_48,Malaria,2000,SEAR,South-East Asia,BTN,Bhutan,5935
+WHS3_48,Malaria,2009,AFR,Africa,COM,Comoros,5982
+WHS3_48,Malaria,2001,SEAR,South-East Asia,BTN,Bhutan,5982
+WHS3_48,Malaria,2002,AFR,Africa,ERI,Eritrea,6078
+WHS3_48,Malaria,2005,AFR,Africa,COM,Comoros,6086
+WHS3_48,Malaria,2002,EUR,Europe,TJK,Tajikistan,6160
+WHS3_48,Malaria,2009,AFR,Africa,STP,Sao Tome and Principe,6182
+WHS3_48,Malaria,2001,AFR,Africa,GIN,Guinea,6238
+WHS3_48,Malaria,2008,AFR,Africa,STP,Sao Tome and Principe,6258
+WHS3_48,Malaria,2007,AFR,Africa,GNQ,Equatorial Guinea,6287
+WHS3_48,Malaria,2007,AFR,Africa,ZAF,South Africa,6327
+WHS3_48,Malaria,2009,WPR,Western Pacific,MYS,Malaysia,6426
+WHS3_48,Malaria,2012,AMR,Americas,HND,Honduras,6442
+WHS3_48,Malaria,2002,SEAR,South-East Asia,BTN,Bhutan,6511
+WHS3_48,Malaria,2008,WPR,Western Pacific,MYS,Malaysia,6517
+WHS3_48,Malaria,2006,AFR,Africa,ERI,Eritrea,6541
+WHS3_48,Malaria,2005,AMR,Americas,NIC,Nicaragua,6642
+WHS3_48,Malaria,2003,AMR,Americas,NIC,Nicaragua,6717
+WHS3_48,Malaria,2005,AFR,Africa,MDG,Madagascar,6753
+WHS3_48,Malaria,2000,WPR,Western Pacific,VUT,Vanuatu,6768
+WHS3_48,Malaria,2011,AMR,Americas,GTM,Guatemala,6817
+WHS3_48,Malaria,2000,AMR,Americas,PRY,Paraguay,6853
+WHS3_48,Malaria,2004,AMR,Americas,NIC,Nicaragua,6897
+WHS3_48,Malaria,2003,AFR,Africa,MDG,Madagascar,6909
+WHS3_48,Malaria,2000,AFR,Africa,MDG,Madagascar,6946
+WHS3_48,Malaria,2009,AMR,Americas,GTM,Guatemala,7080
+WHS3_48,Malaria,2011,AMR,Americas,BOL,Bolivia (Plurinational State of),7126
+WHS3_48,Malaria,2012,WPR,Western Pacific,PHL,Philippines,7133
+WHS3_48,Malaria,2008,AMR,Americas,GTM,Guatemala,7193
+WHS3_48,Malaria,2010,AMR,Americas,GTM,Guatemala,7384
+WHS3_48,Malaria,2009,AFR,Africa,CIV,C?te d'Ivoire,7388
+WHS3_48,Malaria,2000,AMR,Americas,MEX,Mexico,7390
+WHS3_48,Malaria,2012,AMR,Americas,BOL,Bolivia (Plurinational State of),7415
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,SOM,Somalia,7571
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),7602
+WHS3_48,Malaria,2004,AFR,Africa,MDG,Madagascar,7638
+WHS3_48,Malaria,2001,WPR,Western Pacific,VUT,Vanuatu,7647
+WHS3_48,Malaria,2011,AMR,Americas,HND,Honduras,7660
+WHS3_48,Malaria,2002,AMR,Americas,NIC,Nicaragua,7695
+WHS3_48,Malaria,2005,AFR,Africa,ZAF,South Africa,7755
+WHS3_48,Malaria,2008,AFR,Africa,ZAF,South Africa,7796
+WHS3_48,Malaria,2000,SEAR,South-East Asia,NPL,Nepal,7981
+WHS3_48,Malaria,2006,WPR,Western Pacific,VUT,Vanuatu,8055
+WHS3_48,Malaria,2000,AFR,Africa,BWA,Botswana,8056
+WHS3_48,Malaria,2010,WPR,Western Pacific,VUT,Vanuatu,8169
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),8349
+WHS3_48,Malaria,2008,AMR,Americas,HND,Honduras,8368
+WHS3_48,Malaria,2003,SEAR,South-East Asia,NPL,Nepal,8374
+WHS3_48,Malaria,2004,AMR,Americas,SUR,Suriname,8378
+WHS3_48,Malaria,2011,AFR,Africa,STP,Sao Tome and Principe,8442
+WHS3_48,Malaria,2007,AMR,Americas,ECU,Ecuador,8464
+WHS3_48,Malaria,2001,AFR,Africa,MDG,Madagascar,8538
+WHS3_48,Malaria,2008,AFR,Africa,ERI,Eritrea,8764
+WHS3_48,Malaria,2001,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),8924
+WHS3_48,Malaria,2005,AFR,Africa,ERI,Eritrea,9073
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),9122
+WHS3_48,Malaria,2005,AMR,Americas,SUR,Suriname,9131
+WHS3_48,Malaria,2003,EUR,Europe,TUR,Turkey,9182
+WHS3_48,Malaria,2009,WPR,Western Pacific,CHN,China,9287
+WHS3_48,Malaria,2009,AMR,Americas,HND,Honduras,9313
+WHS3_48,Malaria,2008,AFR,Africa,GNQ,Equatorial Guinea,9503
+WHS3_48,Malaria,2011,WPR,Western Pacific,PHL,Philippines,9552
+WHS3_48,Malaria,2010,AMR,Americas,HND,Honduras,9684
+WHS3_48,Malaria,2001,AFR,Africa,ERI,Eritrea,9716
+WHS3_48,Malaria,2008,AMR,Americas,BOL,Bolivia (Plurinational State of),9742
+WHS3_48,Malaria,2009,AMR,Americas,BOL,Bolivia (Plurinational State of),9743
+WHS3_48,Malaria,2005,WPR,Western Pacific,VUT,Vanuatu,9834
+WHS3_48,Malaria,2001,AMR,Americas,HTI,Haiti,9837
+WHS3_48,Malaria,2006,AMR,Americas,ECU,Ecuador,9863
+WHS3_48,Malaria,2011,AFR,Africa,ZAF,South Africa,9866
+WHS3_48,Malaria,2012,SEAR,South-East Asia,BGD,Bangladesh,9901
+WHS3_48,Malaria,2002,WPR,Western Pacific,MYS,Malaysia,9981
+WHS3_48,Malaria,2002,EUR,Europe,TUR,Turkey,10184
+WHS3_48,Malaria,2003,AFR,Africa,ERI,Eritrea,10346
+WHS3_48,Malaria,2001,AMR,Americas,NIC,Nicaragua,10482
+WHS3_48,Malaria,2003,SEAR,South-East Asia,LKA,Sri Lanka,10510
+WHS3_48,Malaria,2007,AMR,Americas,HND,Honduras,10512
+WHS3_48,Malaria,2000,WPR,Western Pacific,MYS,Malaysia,10703
+WHS3_48,Malaria,2001,EUR,Europe,TUR,Turkey,10758
+WHS3_48,Malaria,2004,AMR,Americas,HTI,Haiti,10802
+WHS3_48,Malaria,2003,AMR,Americas,SUR,Suriname,10982
+WHS3_48,Malaria,2008,AFR,Africa,GNB,Guinea-Bissau,11299
+WHS3_48,Malaria,2005,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,11315
+WHS3_48,Malaria,2008,WPR,Western Pacific,VNM,Viet Nam,11355
+WHS3_48,Malaria,2000,AMR,Americas,SUR,Suriname,11361
+WHS3_48,Malaria,2000,EUR,Europe,TUR,Turkey,11381
+WHS3_48,Malaria,2001,EUR,Europe,TJK,Tajikistan,11387
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,SOM,Somalia,11436
+WHS3_48,Malaria,2002,SEAR,South-East Asia,NPL,Nepal,11470
+WHS3_48,Malaria,2001,WPR,Western Pacific,MYS,Malaysia,11556
+WHS3_48,Malaria,2007,AMR,Americas,GUY,Guyana,11656
+WHS3_48,Malaria,2009,AFR,Africa,GNB,Guinea-Bissau,11757
+WHS3_48,Malaria,2009,AFR,Africa,ERI,Eritrea,11759
+WHS3_48,Malaria,2008,AMR,Americas,GUY,Guyana,11774
+WHS3_48,Malaria,2006,AMR,Americas,HND,Honduras,11947
+WHS3_48,Malaria,2006,AFR,Africa,ZAF,South Africa,12098
+WHS3_48,Malaria,2000,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),12294
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,SOM,Somalia,12516
+WHS3_48,Malaria,2012,AFR,Africa,STP,Sao Tome and Principe,12550
+WHS3_48,Malaria,2002,AMR,Americas,SUR,Suriname,12837
+WHS3_48,Malaria,2004,AFR,Africa,COM,Comoros,12874
+WHS3_48,Malaria,2001,AFR,Africa,SEN,Senegal,12920
+WHS3_48,Malaria,2006,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,12983
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),13127
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),13278
+WHS3_48,Malaria,2010,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,13393
+WHS3_48,Malaria,2004,AFR,Africa,ZAF,South Africa,13399
+WHS3_48,Malaria,2003,AFR,Africa,ZAF,South Africa,13459
+WHS3_48,Malaria,2005,WPR,Western Pacific,LAO,Lao People's Democratic Republic,13615
+WHS3_48,Malaria,2009,AMR,Americas,GUY,Guyana,13628
+WHS3_48,Malaria,2010,AMR,Americas,BOL,Bolivia (Plurinational State of),13748
+WHS3_48,Malaria,2010,AFR,Africa,GAB,Gabon,13936
+WHS3_48,Malaria,2003,AMR,Americas,HND,Honduras,14063
+WHS3_48,Malaria,2009,AFR,Africa,GNQ,Equatorial Guinea,14184
+WHS3_48,Malaria,2002,AMR,Americas,BOL,Bolivia (Plurinational State of),14276
+WHS3_48,Malaria,2007,AFR,Africa,GNB,Guinea-Bissau,14284
+WHS3_48,Malaria,2002,WPR,Western Pacific,VUT,Vanuatu,14339
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),14396
+WHS3_48,Malaria,2002,AFR,Africa,SEN,Senegal,14425
+WHS3_48,Malaria,2007,AMR,Americas,BOL,Bolivia (Plurinational State of),14610
+WHS3_48,Malaria,2009,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,14632
+WHS3_48,Malaria,2004,WPR,Western Pacific,VUT,Vanuatu,14653
+WHS3_48,Malaria,2005,AFR,Africa,GNB,Guinea-Bissau,14659
+WHS3_48,Malaria,2009,WPR,Western Pacific,LAO,Lao People's Democratic Republic,14674
+WHS3_48,Malaria,2004,AMR,Americas,BOL,Bolivia (Plurinational State of),14910
+WHS3_48,Malaria,2006,AFR,Africa,GNB,Guinea-Bissau,15120
+WHS3_48,Malaria,2012,AFR,Africa,GNQ,Equatorial Guinea,15169
+WHS3_48,Malaria,2000,SEAR,South-East Asia,TLS,Timor-Leste,15212
+WHS3_48,Malaria,2003,WPR,Western Pacific,VUT,Vanuatu,15240
+WHS3_48,Malaria,2007,AMR,Americas,GTM,Guatemala,15382
+WHS3_48,Malaria,2007,AFR,Africa,ERI,Eritrea,15565
+WHS3_48,Malaria,2011,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,15633
+WHS3_48,Malaria,2002,AFR,Africa,ZAF,South Africa,15649
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,SOM,Somalia,15732
+WHS3_48,Malaria,2001,AMR,Americas,BOL,Bolivia (Plurinational State of),15765
+WHS3_48,Malaria,2008,WPR,Western Pacific,CHN,China,15870
+WHS3_48,Malaria,2005,AMR,Americas,HND,Honduras,15943
+WHS3_48,Malaria,2001,AMR,Americas,SUR,Suriname,16003
+WHS3_48,Malaria,2009,WPR,Western Pacific,VNM,Viet Nam,16130
+WHS3_48,Malaria,2004,WPR,Western Pacific,LAO,Lao People's Democratic Republic,16183
+WHS3_48,Malaria,2007,WPR,Western Pacific,VNM,Viet Nam,16389
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,SOM,Somalia,16430
+WHS3_48,Malaria,2003,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,16538
+WHS3_48,Malaria,2002,AFR,Africa,GIN,Guinea,16561
+WHS3_48,Malaria,2002,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,16578
+WHS3_48,Malaria,2008,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,16611
+WHS3_48,Malaria,2011,WPR,Western Pacific,VNM,Viet Nam,16612
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,SOM,Somalia,16675
+WHS3_48,Malaria,2000,AMR,Americas,HTI,Haiti,16897
+WHS3_48,Malaria,2005,AMR,Americas,ECU,Ecuador,17050
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),17060
+WHS3_48,Malaria,2004,AMR,Americas,HND,Honduras,17134
+WHS3_48,Malaria,2002,AMR,Americas,HND,Honduras,17223
+WHS3_48,Malaria,2007,WPR,Western Pacific,LAO,Lao People's Democratic Republic,17458
+WHS3_48,Malaria,2010,WPR,Western Pacific,VNM,Viet Nam,17515
+WHS3_48,Malaria,2000,AFR,Africa,TZA,United Republic of Tanzania,17734
+WHS3_48,Malaria,2011,WPR,Western Pacific,LAO,Lao People's Democratic Republic,17835
+WHS3_48,Malaria,2005,AFR,Africa,STP,Sao Tome and Principe,18139
+WHS3_48,Malaria,2004,AFR,Africa,BFA,Burkina Faso,18256
+WHS3_48,Malaria,2006,WPR,Western Pacific,LAO,Lao People's Democratic Republic,18382
+WHS3_48,Malaria,2010,WPR,Western Pacific,PHL,Philippines,18560
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,SOM,Somalia,18842
+WHS3_48,Malaria,2003,WPR,Western Pacific,LAO,Lao People's Democratic Republic,18894
+WHS3_48,Malaria,2000,EUR,Europe,TJK,Tajikistan,19064
+WHS3_48,Malaria,2005,WPR,Western Pacific,CHN,China,19304
+WHS3_48,Malaria,2009,WPR,Western Pacific,PHL,Philippines,19316
+WHS3_48,Malaria,2008,WPR,Western Pacific,LAO,Lao People's Democratic Republic,19347
+WHS3_48,Malaria,2005,WPR,Western Pacific,VNM,Viet Nam,19496
+WHS3_48,Malaria,2012,WPR,Western Pacific,VNM,Viet Nam,19638
+WHS3_48,Malaria,2006,AMR,Americas,BOL,Bolivia (Plurinational State of),19725
+WHS3_48,Malaria,2011,SEAR,South-East Asia,TLS,Timor-Leste,19739
+WHS3_48,Malaria,2012,AFR,Africa,GAB,Gabon,19753
+WHS3_48,Malaria,2001,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),20006
+WHS3_48,Malaria,2002,AFR,Africa,KEN,Kenya,20049
+WHS3_48,Malaria,2003,AFR,Africa,NAM,Namibia,20295
+WHS3_48,Malaria,2003,AMR,Americas,BOL,Bolivia (Plurinational State of),20343
+WHS3_48,Malaria,2006,AFR,Africa,COM,Comoros,20559
+WHS3_48,Malaria,2010,WPR,Western Pacific,LAO,Lao People's Democratic Republic,20800
+WHS3_48,Malaria,2010,AFR,Africa,GIN,Guinea,20936
+WHS3_48,Malaria,2006,AMR,Americas,GUY,Guyana,21064
+WHS3_48,Malaria,2001,WPR,Western Pacific,CHN,China,21237
+WHS3_48,Malaria,2005,AFR,Africa,BFA,Burkina Faso,21335
+WHS3_48,Malaria,2002,WPR,Western Pacific,LAO,Lao People's Democratic Republic,21420
+WHS3_48,Malaria,2005,AMR,Americas,BOL,Bolivia (Plurinational State of),21442
+WHS3_48,Malaria,2005,AMR,Americas,HTI,Haiti,21778
+WHS3_48,Malaria,2012,AFR,Africa,ERI,Eritrea,21815
+WHS3_48,Malaria,2012,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,21850
+WHS3_48,Malaria,2002,AMR,Americas,GUY,Guyana,21895
+WHS3_48,Malaria,2004,AFR,Africa,SEN,Senegal,22234
+WHS3_48,Malaria,2011,AFR,Africa,GNQ,Equatorial Guinea,22466
+WHS3_48,Malaria,2006,WPR,Western Pacific,VNM,Viet Nam,22637
+WHS3_48,Malaria,2010,AMR,Americas,GUY,Guyana,22935
+WHS3_48,Malaria,2005,AFR,Africa,NAM,Namibia,23339
+WHS3_48,Malaria,2008,WPR,Western Pacific,PHL,Philippines,23653
+WHS3_48,Malaria,2000,AMR,Americas,NIC,Nicaragua,23878
+WHS3_48,Malaria,2002,AFR,Africa,NAM,Namibia,23984
+WHS3_48,Malaria,2000,AMR,Americas,GUY,Guyana,24018
+WHS3_48,Malaria,2001,AMR,Americas,HND,Honduras,24149
+WHS3_48,Malaria,2012,WPR,Western Pacific,SLB,Solomon Islands,24383
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,SOM,Somalia,24553
+WHS3_48,Malaria,2011,AFR,Africa,COM,Comoros,24856
+WHS3_48,Malaria,2011,SEAR,South-East Asia,THA,Thailand,24897
+WHS3_48,Malaria,2004,WPR,Western Pacific,VNM,Viet Nam,24909
+WHS3_48,Malaria,2002,WPR,Western Pacific,CHN,China,24964
+WHS3_48,Malaria,2011,AMR,Americas,PER,Peru,25039
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,SOM,Somalia,25202
+WHS3_48,Malaria,2012,AMR,Americas,HTI,Haiti,25423
+WHS3_48,Malaria,2004,WPR,Western Pacific,CHN,China,25483
+WHS3_48,Malaria,2001,AFR,Africa,ZAF,South Africa,26506
+WHS3_48,Malaria,2002,SEAR,South-East Asia,TLS,Timor-Leste,26651
+WHS3_48,Malaria,2011,WPR,Western Pacific,SLB,Solomon Islands,26657
+WHS3_48,Malaria,2004,SEAR,South-East Asia,THA,Thailand,26690
+WHS3_48,Malaria,2003,AFR,Africa,SEN,Senegal,26865
+WHS3_48,Malaria,2001,WPR,Western Pacific,LAO,Lao People's Democratic Republic,27076
+WHS3_48,Malaria,2004,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,27090
+WHS3_48,Malaria,2001,AMR,Americas,GUY,Guyana,27122
+WHS3_48,Malaria,2003,AMR,Americas,GUY,Guyana,27627
+WHS3_48,Malaria,2006,AFR,Africa,NAM,Namibia,27690
+WHS3_48,Malaria,2003,WPR,Western Pacific,CHN,China,27870
+WHS3_48,Malaria,2007,WPR,Western Pacific,CHN,China,28112
+WHS3_48,Malaria,2004,AFR,Africa,KEN,Kenya,28328
+WHS3_48,Malaria,2008,SEAR,South-East Asia,THA,Thailand,28569
+WHS3_48,Malaria,2004,AMR,Americas,ECU,Ecuador,28730
+WHS3_48,Malaria,2004,AMR,Americas,GUY,Guyana,28866
+WHS3_48,Malaria,2004,AMR,Americas,GTM,Guatemala,28955
+WHS3_48,Malaria,2011,AMR,Americas,GUY,Guyana,29387
+WHS3_48,Malaria,2009,SEAR,South-East Asia,THA,Thailand,29462
+WHS3_48,Malaria,2002,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),29491
+WHS3_48,Malaria,2000,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),29736
+WHS3_48,Malaria,2005,SEAR,South-East Asia,THA,Thailand,29782
+WHS3_48,Malaria,2007,AMR,Americas,HTI,Haiti,29824
+WHS3_48,Malaria,2011,AFR,Africa,CIV,C?te d'Ivoire,29976
+WHS3_48,Malaria,2006,SEAR,South-East Asia,THA,Thailand,30294
+WHS3_48,Malaria,2006,AMR,Americas,GTM,Guatemala,31093
+WHS3_48,Malaria,2003,AMR,Americas,GTM,Guatemala,31127
+WHS3_48,Malaria,2000,AMR,Americas,BOL,Bolivia (Plurinational State of),31469
+WHS3_48,Malaria,2008,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),31483
+WHS3_48,Malaria,2010,AMR,Americas,PER,Peru,31546
+WHS3_48,Malaria,2012,AMR,Americas,GUY,Guyana,31553
+WHS3_48,Malaria,2012,AMR,Americas,PER,Peru,31570
+WHS3_48,Malaria,2005,AFR,Africa,TCD,Chad,31668
+WHS3_48,Malaria,2003,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),31719
+WHS3_48,Malaria,2000,AFR,Africa,STP,Sao Tome and Principe,31975
+WHS3_48,Malaria,2010,SEAR,South-East Asia,THA,Thailand,32480
+WHS3_48,Malaria,2012,SEAR,South-East Asia,THA,Thailand,32569
+WHS3_48,Malaria,2006,AMR,Americas,HTI,Haiti,32739
+WHS3_48,Malaria,2008,AFR,Africa,ZWE,Zimbabwe,32788
+WHS3_48,Malaria,2006,SEAR,South-East Asia,BGD,Bangladesh,32857
+WHS3_48,Malaria,2011,AMR,Americas,HTI,Haiti,32969
+WHS3_48,Malaria,2009,WPR,Western Pacific,SLB,Solomon Islands,33002
+WHS3_48,Malaria,2005,AFR,Africa,SEN,Senegal,33160
+WHS3_48,Malaria,2007,SEAR,South-East Asia,THA,Thailand,33178
+WHS3_48,Malaria,2006,WPR,Western Pacific,CHN,China,33286
+WHS3_48,Malaria,2008,AFR,Africa,GIN,Guinea,33405
+WHS3_48,Malaria,2003,SEAR,South-East Asia,TLS,Timor-Leste,33411
+WHS3_48,Malaria,2006,AFR,Africa,GAB,Gabon,33458
+WHS3_48,Malaria,2004,AFR,Africa,ZWE,Zimbabwe,33980
+WHS3_48,Malaria,2001,WPR,Western Pacific,PHL,Philippines,34787
+WHS3_48,Malaria,2011,AFR,Africa,ERI,Eritrea,34848
+WHS3_48,Malaria,2009,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),35100
+WHS3_48,Malaria,2000,AMR,Americas,HND,Honduras,35125
+WHS3_48,Malaria,2006,WPR,Western Pacific,PHL,Philippines,35405
+WHS3_48,Malaria,2002,AMR,Americas,GTM,Guatemala,35540
+WHS3_48,Malaria,2001,AMR,Americas,GTM,Guatemala,35824
+WHS3_48,Malaria,2009,AFR,Africa,GIN,Guinea,35841
+WHS3_48,Malaria,2010,AFR,Africa,ERI,Eritrea,35982
+WHS3_48,Malaria,2004,AFR,Africa,NAM,Namibia,36043
+WHS3_48,Malaria,2007,WPR,Western Pacific,PHL,Philippines,36234
+WHS3_48,Malaria,2008,AFR,Africa,BFA,Burkina Faso,36514
+WHS3_48,Malaria,2010,AFR,Africa,COM,Comoros,36538
+WHS3_48,Malaria,2000,WPR,Western Pacific,PHL,Philippines,36596
+WHS3_48,Malaria,2008,AMR,Americas,HTI,Haiti,36769
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,SOM,Somalia,36905
+WHS3_48,Malaria,2002,WPR,Western Pacific,PHL,Philippines,37005
+WHS3_48,Malaria,2006,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),37062
+WHS3_48,Malaria,2003,SEAR,South-East Asia,THA,Thailand,37355
+WHS3_48,Malaria,2006,SEAR,South-East Asia,TLS,Timor-Leste,37896
+WHS3_48,Malaria,2005,AFR,Africa,ZWE,Zimbabwe,37908
+WHS3_48,Malaria,2001,AFR,Africa,TCD,Chad,38287
+WHS3_48,Malaria,2001,AFR,Africa,TZA,United Republic of Tanzania,38537
+WHS3_48,Malaria,2003,WPR,Western Pacific,VNM,Viet Nam,38790
+WHS3_48,Malaria,2005,AMR,Americas,GUY,Guyana,38984
+WHS3_48,Malaria,2008,AFR,Africa,GMB,Gambia,39164
+WHS3_48,Malaria,2004,SEAR,South-East Asia,TLS,Timor-Leste,39164
+WHS3_48,Malaria,2003,AFR,Africa,KEN,Kenya,39383
+WHS3_48,Malaria,2006,AFR,Africa,ZWE,Zimbabwe,39404
+WHS3_48,Malaria,2005,AMR,Americas,GTM,Guatemala,39571
+WHS3_48,Malaria,2010,WPR,Western Pacific,SLB,Solomon Islands,39704
+WHS3_48,Malaria,2000,AFR,Africa,TCD,Chad,40078
+WHS3_48,Malaria,2000,WPR,Western Pacific,LAO,Lao People's Democratic Republic,40106
+WHS3_48,Malaria,2012,WPR,Western Pacific,KHM,Cambodia,40476
+WHS3_48,Malaria,2008,WPR,Western Pacific,SLB,Solomon Islands,40535
+WHS3_48,Malaria,2008,AFR,Africa,GAB,Gabon,40701
+WHS3_48,Malaria,2007,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),41243
+WHS3_48,Malaria,2002,SEAR,South-East Asia,LKA,Sri Lanka,41411
+WHS3_48,Malaria,2001,AFR,Africa,NAM,Namibia,41636
+WHS3_48,Malaria,2001,AFR,Africa,STP,Sao Tome and Principe,42086
+WHS3_48,Malaria,2008,WPR,Western Pacific,KHM,Cambodia,42124
+WHS3_48,Malaria,2002,AFR,Africa,TZA,United Republic of Tanzania,42468
+WHS3_48,Malaria,2007,WPR,Western Pacific,KHM,Cambodia,42518
+WHS3_48,Malaria,2009,AMR,Americas,PER,Peru,42645
+WHS3_48,Malaria,2003,AFR,Africa,STP,Sao Tome and Principe,42656
+WHS3_48,Malaria,2005,SEAR,South-East Asia,TLS,Timor-Leste,43093
+WHS3_48,Malaria,2002,AFR,Africa,TCD,Chad,43933
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,YEM,Yemen,44150
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,YEM,Yemen,44206
+WHS3_48,Malaria,2007,AFR,Africa,BFA,Burkina Faso,44246
+WHS3_48,Malaria,2006,AFR,Africa,BFA,Burkina Faso,44265
+WHS3_48,Malaria,2010,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),44341
+WHS3_48,Malaria,2007,AFR,Africa,GIN,Guinea,44518
+WHS3_48,Malaria,2008,AMR,Americas,PER,Peru,44522
+WHS3_48,Malaria,2002,SEAR,South-East Asia,THA,Thailand,44555
+WHS3_48,Malaria,2011,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),44744
+WHS3_48,Malaria,2005,AFR,Africa,LBR,Liberia,44875
+WHS3_48,Malaria,2000,AFR,Africa,SEN,Senegal,44959
+WHS3_48,Malaria,2005,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),45049
+WHS3_48,Malaria,2006,AFR,Africa,TCD,Chad,45155
+WHS3_48,Malaria,2007,AFR,Africa,GAB,Gabon,45186
+WHS3_48,Malaria,2003,AFR,Africa,TCD,Chad,45195
+WHS3_48,Malaria,2012,WPR,Western Pacific,LAO,Lao People's Democratic Republic,46202
+WHS3_48,Malaria,2005,WPR,Western Pacific,PHL,Philippines,46342
+WHS3_48,Malaria,2004,AFR,Africa,STP,Sao Tome and Principe,46486
+WHS3_48,Malaria,2004,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),46655
+WHS3_48,Malaria,2012,AFR,Africa,CAF,Central African Republic,46759
+WHS3_48,Malaria,2002,WPR,Western Pacific,KHM,Cambodia,46902
+WHS3_48,Malaria,2009,SEAR,South-East Asia,TLS,Timor-Leste,47527
+WHS3_48,Malaria,2008,AFR,Africa,TCD,Chad,47757
+WHS3_48,Malaria,2002,WPR,Western Pacific,VNM,Viet Nam,47807
+WHS3_48,Malaria,2006,AFR,Africa,SEN,Senegal,48070
+WHS3_48,Malaria,2005,SEAR,South-East Asia,BGD,Bangladesh,48121
+WHS3_48,Malaria,2010,SEAR,South-East Asia,TLS,Timor-Leste,48137
+WHS3_48,Malaria,2007,AFR,Africa,TCD,Chad,48288
+WHS3_48,Malaria,2003,WPR,Western Pacific,PHL,Philippines,48441
+WHS3_48,Malaria,2007,AFR,Africa,MDG,Madagascar,48497
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,YEM,Yemen,48756
+WHS3_48,Malaria,2010,WPR,Western Pacific,KHM,Cambodia,49356
+WHS3_48,Malaria,2005,WPR,Western Pacific,KHM,Cambodia,49436
+WHS3_48,Malaria,2009,AMR,Americas,HTI,Haiti,49535
+WHS3_48,Malaria,2012,AFR,Africa,COM,Comoros,49840
+WHS3_48,Malaria,2009,AFR,Africa,GMB,Gambia,50378
+WHS3_48,Malaria,2012,AFR,Africa,GNB,Guinea-Bissau,50381
+WHS3_48,Malaria,2010,AFR,Africa,GNB,Guinea-Bissau,50391
+WHS3_48,Malaria,2005,AFR,Africa,GIN,Guinea,50452
+WHS3_48,Malaria,2002,AFR,Africa,STP,Sao Tome and Principe,50586
+WHS3_48,Malaria,2007,AMR,Americas,PER,Peru,50797
+WHS3_48,Malaria,2000,AFR,Africa,GAB,Gabon,50810
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,YEM,Yemen,50811
+WHS3_48,Malaria,2004,WPR,Western Pacific,PHL,Philippines,50850
+WHS3_48,Malaria,2008,SEAR,South-East Asia,TLS,Timor-Leste,51260
+WHS3_48,Malaria,2012,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),51264
+WHS3_48,Malaria,2011,SEAR,South-East Asia,BGD,Bangladesh,51773
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,SSD,South Sudan,52011
+WHS3_48,Malaria,2003,AMR,Americas,ECU,Ecuador,52065
+WHS3_48,Malaria,2007,SEAR,South-East Asia,TLS,Timor-Leste,52813
+WHS3_48,Malaria,2001,AFR,Africa,GAB,Gabon,53167
+WHS3_48,Malaria,2000,AMR,Americas,GTM,Guatemala,53311
+WHS3_48,Malaria,2001,WPR,Western Pacific,KHM,Cambodia,53601
+WHS3_48,Malaria,2010,AFR,Africa,GNQ,Equatorial Guinea,53813
+WHS3_48,Malaria,2001,SEAR,South-East Asia,BGD,Bangladesh,54216
+WHS3_48,Malaria,2006,AFR,Africa,GIN,Guinea,54227
+WHS3_48,Malaria,2003,SEAR,South-East Asia,BGD,Bangladesh,54654
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,AFG,Afghanistan,54840
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,YEM,Yemen,55000
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,YEM,Yemen,55446
+WHS3_48,Malaria,2000,SEAR,South-East Asia,BGD,Bangladesh,55599
+WHS3_48,Malaria,2010,SEAR,South-East Asia,BGD,Bangladesh,55873
+WHS3_48,Malaria,2005,AFR,Africa,NER,Niger,56043
+WHS3_48,Malaria,2003,AFR,Africa,NER,Niger,56460
+WHS3_48,Malaria,2011,WPR,Western Pacific,KHM,Cambodia,57423
+WHS3_48,Malaria,2003,AFR,Africa,GAB,Gabon,58212
+WHS3_48,Malaria,2004,SEAR,South-East Asia,BGD,Bangladesh,58894
+WHS3_48,Malaria,2004,WPR,Western Pacific,KHM,Cambodia,59745
+WHS3_48,Malaria,2007,SEAR,South-East Asia,BGD,Bangladesh,59866
+WHS3_48,Malaria,2012,AMR,Americas,COL,Colombia,60179
+WHS3_48,Malaria,2002,SEAR,South-East Asia,BGD,Bangladesh,62269
+WHS3_48,Malaria,2000,WPR,Western Pacific,KHM,Cambodia,62442
+WHS3_48,Malaria,2010,AFR,Africa,CIV,C?te d'Ivoire,62726
+WHS3_48,Malaria,2002,AFR,Africa,GAB,Gabon,62976
+WHS3_48,Malaria,2001,SEAR,South-East Asia,THA,Thailand,63528
+WHS3_48,Malaria,2009,SEAR,South-East Asia,BGD,Bangladesh,63873
+WHS3_48,Malaria,2011,AMR,Americas,COL,Colombia,64309
+WHS3_48,Malaria,2009,WPR,Western Pacific,KHM,Cambodia,64595
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,AFG,Afghanistan,64880
+WHS3_48,Malaria,2006,AMR,Americas,PER,Peru,64925
+WHS3_48,Malaria,2007,WPR,Western Pacific,SLB,Solomon Islands,65404
+WHS3_48,Malaria,2001,SEAR,South-East Asia,LKA,Sri Lanka,66522
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,YEM,Yemen,67677
+WHS3_48,Malaria,2000,WPR,Western Pacific,SLB,Solomon Islands,68107
+WHS3_48,Malaria,2000,AMR,Americas,PER,Peru,68321
+WHS3_48,Malaria,2001,WPR,Western Pacific,VNM,Viet Nam,68699
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,AFG,Afghanistan,69397
+WHS3_48,Malaria,2004,AFR,Africa,GAB,Gabon,70075
+WHS3_48,Malaria,2005,AFR,Africa,GAB,Gabon,70644
+WHS3_48,Malaria,2011,AFR,Africa,COG,Congo,71048
+WHS3_48,Malaria,2003,WPR,Western Pacific,KHM,Cambodia,71265
+WHS3_48,Malaria,2011,AFR,Africa,GNB,Guinea-Bissau,71982
+WHS3_48,Malaria,2003,WPR,Western Pacific,PNG,Papua New Guinea,72620
+WHS3_48,Malaria,2000,WPR,Western Pacific,VNM,Viet Nam,74316
+WHS3_48,Malaria,2002,WPR,Western Pacific,SLB,Solomon Islands,74936
+WHS3_48,Malaria,2006,WPR,Western Pacific,SLB,Solomon Islands,75337
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,YEM,Yemen,75508
+WHS3_48,Malaria,2002,WPR,Western Pacific,PNG,Papua New Guinea,75748
+WHS3_48,Malaria,2004,AFR,Africa,NER,Niger,76030
+WHS3_48,Malaria,2005,WPR,Western Pacific,SLB,Solomon Islands,76390
+WHS3_48,Malaria,2001,WPR,Western Pacific,SLB,Solomon Islands,76493
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,AFG,Afghanistan,77549
+WHS3_48,Malaria,2009,WPR,Western Pacific,PNG,Papua New Guinea,77758
+WHS3_48,Malaria,2001,AMR,Americas,PER,Peru,78544
+WHS3_48,Malaria,2000,SEAR,South-East Asia,THA,Thailand,78561
+WHS3_48,Malaria,2006,WPR,Western Pacific,KHM,Cambodia,78696
+WHS3_48,Malaria,2009,AMR,Americas,COL,Colombia,79347
+WHS3_48,Malaria,2000,WPR,Western Pacific,PNG,Papua New Guinea,79839
+WHS3_48,Malaria,2008,AMR,Americas,COL,Colombia,80501
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,AFG,Afghanistan,81574
+WHS3_48,Malaria,2000,EMR,Eastern Mediterranean,PAK,Pakistan,82526
+WHS3_48,Malaria,2011,WPR,Western Pacific,PNG,Papua New Guinea,84060
+WHS3_48,Malaria,2010,AMR,Americas,HTI,Haiti,84153
+WHS3_48,Malaria,2008,WPR,Western Pacific,PNG,Papua New Guinea,84452
+WHS3_48,Malaria,2008,SEAR,South-East Asia,BGD,Bangladesh,84690
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,AFG,Afghanistan,86129
+WHS3_48,Malaria,2002,AMR,Americas,ECU,Ecuador,86757
+WHS3_48,Malaria,2007,WPR,Western Pacific,PNG,Papua New Guinea,86955
+WHS3_48,Malaria,2005,AMR,Americas,PER,Peru,87699
+WHS3_48,Malaria,2003,AMR,Americas,PER,Peru,88408
+WHS3_48,Malaria,2004,WPR,Western Pacific,SLB,Solomon Islands,90297
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,YEM,Yemen,90410
+WHS3_48,Malaria,2000,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,90582
+WHS3_48,Malaria,2004,WPR,Western Pacific,PNG,Papua New Guinea,91055
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,AFG,Afghanistan,92202
+WHS3_48,Malaria,2003,WPR,Western Pacific,SLB,Solomon Islands,92227
+WHS3_48,Malaria,2009,AFR,Africa,COG,Congo,92855
+WHS3_48,Malaria,2005,WPR,Western Pacific,PNG,Papua New Guinea,92957
+WHS3_48,Malaria,2008,AFR,Africa,MDG,Madagascar,93234
+WHS3_48,Malaria,2004,AMR,Americas,PER,Peru,93581
+WHS3_48,Malaria,2009,AFR,Africa,MOZ,Mozambique,93874
+WHS3_48,Malaria,2006,WPR,Western Pacific,PNG,Papua New Guinea,93938
+WHS3_48,Malaria,2010,WPR,Western Pacific,PNG,Papua New Guinea,93956
+WHS3_48,Malaria,2000,EMR,Eastern Mediterranean,AFG,Afghanistan,94475
+WHS3_48,Malaria,2001,WPR,Western Pacific,PNG,Papua New Guinea,94484
+WHS3_48,Malaria,2011,AFR,Africa,GIN,Guinea,95574
+WHS3_48,Malaria,2002,AMR,Americas,PER,Peru,99237
+WHS3_48,Malaria,2004,AFR,Africa,GIN,Guinea,103069
+WHS3_48,Malaria,2007,AFR,Africa,COG,Congo,103213
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,PAK,Pakistan,104334
+WHS3_48,Malaria,2000,AMR,Americas,ECU,Ecuador,104528
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,YEM,Yemen,106697
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,PAK,Pakistan,107666
+WHS3_48,Malaria,2003,AFR,Africa,GIN,Guinea,107925
+WHS3_48,Malaria,2001,AMR,Americas,ECU,Ecuador,108903
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,YEM,Yemen,109908
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,SSD,South Sudan,112024
+WHS3_48,Malaria,2009,AFR,Africa,ZWE,Zimbabwe,114028
+WHS3_48,Malaria,2010,AFR,Africa,GMB,Gambia,116353
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,AFG,Afghanistan,116444
+WHS3_48,Malaria,2007,AFR,Africa,ZWE,Zimbabwe,116518
+WHS3_48,Malaria,2008,AFR,Africa,COG,Congo,117291
+WHS3_48,Malaria,2010,AMR,Americas,COL,Colombia,117650
+WHS3_48,Malaria,2007,AFR,Africa,SEN,Senegal,118332
+WHS3_48,Malaria,2000,SEAR,South-East Asia,MMR,Myanmar,120083
+WHS3_48,Malaria,2006,AMR,Americas,COL,Colombia,120096
+WHS3_48,Malaria,2008,AFR,Africa,MOZ,Mozambique,120259
+WHS3_48,Malaria,2005,AMR,Americas,COL,Colombia,121629
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,PAK,Pakistan,122560
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,PAK,Pakistan,123761
+WHS3_48,Malaria,2001,EMR,Eastern Mediterranean,PAK,Pakistan,125292
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,PAK,Pakistan,125618
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,PAK,Pakistan,127536
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,PAK,Pakistan,128380
+WHS3_48,Malaria,2007,AMR,Americas,COL,Colombia,128462
+WHS3_48,Malaria,2007,AFR,Africa,MOZ,Mozambique,141663
+WHS3_48,Malaria,2004,AMR,Americas,COL,Colombia,142241
+WHS3_48,Malaria,2008,AFR,Africa,NGA,Nigeria,143079
+WHS3_48,Malaria,2001,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,143674
+WHS3_48,Malaria,2000,AMR,Americas,COL,Colombia,144432
+WHS3_48,Malaria,2012,WPR,Western Pacific,PNG,Papua New Guinea,150195
+WHS3_48,Malaria,2004,SEAR,South-East Asia,MMR,Myanmar,152070
+WHS3_48,Malaria,2008,AFR,Africa,SLE,Sierra Leone,154459
+WHS3_48,Malaria,2005,SEAR,South-East Asia,MMR,Myanmar,165737
+WHS3_48,Malaria,2009,AFR,Africa,SEN,Senegal,165933
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,PAK,Pakistan,167579
+WHS3_48,Malaria,2001,SEAR,South-East Asia,MMR,Myanmar,170502
+WHS3_48,Malaria,2002,SEAR,South-East Asia,MMR,Myanmar,173096
+WHS3_48,Malaria,2003,SEAR,South-East Asia,MMR,Myanmar,177530
+WHS3_48,Malaria,2003,AMR,Americas,COL,Colombia,180956
+WHS3_48,Malaria,2011,AFR,Africa,TCD,Chad,181126
+WHS3_48,Malaria,2009,AFR,Africa,BFA,Burkina Faso,182527
+WHS3_48,Malaria,2010,AFR,Africa,TCD,Chad,200448
+WHS3_48,Malaria,2010,AFR,Africa,MDG,Madagascar,202450
+WHS3_48,Malaria,2006,SEAR,South-East Asia,MMR,Myanmar,203071
+WHS3_48,Malaria,2001,EMR,Eastern Mediterranean,SDN,Sudan,203491
+WHS3_48,Malaria,2002,AMR,Americas,COL,Colombia,204916
+WHS3_48,Malaria,2011,AFR,Africa,RWA,Rwanda,208858
+WHS3_48,Malaria,2000,SEAR,South-East Asia,LKA,Sri Lanka,210039
+WHS3_48,Malaria,2009,AFR,Africa,MDG,Madagascar,215110
+WHS3_48,Malaria,2007,AFR,Africa,TGO,Togo,221110
+WHS3_48,Malaria,2003,SEAR,South-East Asia,IDN,Indonesia,223074
+WHS3_48,Malaria,2011,AFR,Africa,MDG,Madagascar,224498
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,SSD,South Sudan,225371
+WHS3_48,Malaria,2010,AFR,Africa,MLI,Mali,227482
+WHS3_48,Malaria,2001,AMR,Americas,COL,Colombia,231233
+WHS3_48,Malaria,2011,AFR,Africa,UGA,Uganda,231873
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,PAK,Pakistan,240591
+WHS3_48,Malaria,2008,AFR,Africa,SEN,Senegal,241926
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,AFG,Afghanistan,242022
+WHS3_48,Malaria,2012,AMR,Americas,BRA,Brazil,242758
+WHS3_48,Malaria,2000,SEAR,South-East Asia,IDN,Indonesia,245612
+WHS3_48,Malaria,2007,AFR,Africa,NER,Niger,249027
+WHS3_48,Malaria,2010,AFR,Africa,ZWE,Zimbabwe,249379
+WHS3_48,Malaria,2011,AFR,Africa,GMB,Gambia,261967
+WHS3_48,Malaria,2008,SEAR,South-East Asia,IDN,Indonesia,266277
+WHS3_48,Malaria,2011,AMR,Americas,BRA,Brazil,267146
+WHS3_48,Malaria,2001,SEAR,South-East Asia,IDN,Indonesia,267592
+WHS3_48,Malaria,2004,SEAR,South-East Asia,IDN,Indonesia,268852
+WHS3_48,Malaria,2009,SEAR,South-East Asia,IDN,Indonesia,272491
+WHS3_48,Malaria,2002,SEAR,South-East Asia,IDN,Indonesia,273793
+WHS3_48,Malaria,2011,AFR,Africa,SEN,Senegal,276242
+WHS3_48,Malaria,2012,AFR,Africa,ZWE,Zimbabwe,276963
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,SDN,Sudan,280550
+WHS3_48,Malaria,2012,AFR,Africa,SEN,Senegal,281958
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,PAK,Pakistan,290781
+WHS3_48,Malaria,2012,AFR,Africa,GMB,Gambia,300363
+WHS3_48,Malaria,2011,AFR,Africa,MWI,Malawi,304499
+WHS3_48,Malaria,2011,AFR,Africa,MLI,Mali,307035
+WHS3_48,Malaria,2000,AFR,Africa,BDI,Burundi,308095
+WHS3_48,Malaria,2009,AMR,Americas,BRA,Brazil,309316
+WHS3_48,Malaria,2009,AFR,Africa,NER,Niger,309675
+WHS3_48,Malaria,2001,AFR,Africa,BDI,Burundi,312015
+WHS3_48,Malaria,2007,AFR,Africa,CMR,Cameroon,313083
+WHS3_48,Malaria,2008,AMR,Americas,BRA,Brazil,315746
+WHS3_48,Malaria,2008,AFR,Africa,RWA,Rwanda,316242
+WHS3_48,Malaria,2012,AFR,Africa,GIN,Guinea,317200
+WHS3_48,Malaria,2011,AFR,Africa,ZWE,Zimbabwe,319935
+WHS3_48,Malaria,2002,AFR,Africa,BDI,Burundi,327138
+WHS3_48,Malaria,2005,AFR,Africa,BDI,Burundi,327464
+WHS3_48,Malaria,2007,SEAR,South-East Asia,IDN,Indonesia,333792
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,PAK,Pakistan,334589
+WHS3_48,Malaria,2010,AMR,Americas,BRA,Brazil,334667
+WHS3_48,Malaria,2010,AFR,Africa,SEN,Senegal,343670
+WHS3_48,Malaria,2008,AFR,Africa,TGO,Togo,344862
+WHS3_48,Malaria,2006,SEAR,South-East Asia,IDN,Indonesia,347597
+WHS3_48,Malaria,2002,AMR,Americas,BRA,Brazil,348259
+WHS3_48,Malaria,2003,AFR,Africa,BDI,Burundi,353459
+WHS3_48,Malaria,2012,AFR,Africa,MDG,Madagascar,359420
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,AFG,Afghanistan,360940
+WHS3_48,Malaria,2004,AFR,Africa,BDI,Burundi,363395
+WHS3_48,Malaria,2000,EMR,Eastern Mediterranean,SDN,Sudan,368557
+WHS3_48,Malaria,2007,SEAR,South-East Asia,MMR,Myanmar,373958
+WHS3_48,Malaria,2007,AFR,Africa,RWA,Rwanda,382686
+WHS3_48,Malaria,2001,AMR,Americas,BRA,Brazil,388303
+WHS3_48,Malaria,2009,AFR,Africa,TGO,Togo,391338
+WHS3_48,Malaria,2001,AFR,Africa,ETH,Ethiopia,392377
+WHS3_48,Malaria,2003,AMR,Americas,BRA,Brazil,408886
+WHS3_48,Malaria,2002,EMR,Eastern Mediterranean,AFG,Afghanistan,415356
+WHS3_48,Malaria,2012,SEAR,South-East Asia,IDN,Indonesia,417819
+WHS3_48,Malaria,2010,SEAR,South-East Asia,MMR,Myanmar,420808
+WHS3_48,Malaria,2011,SEAR,South-East Asia,IDN,Indonesia,422447
+WHS3_48,Malaria,2011,AFR,Africa,BEN,Benin,422968
+WHS3_48,Malaria,2001,AFR,Africa,RWA,Rwanda,423493
+WHS3_48,Malaria,2002,AFR,Africa,ETH,Ethiopia,427795
+WHS3_48,Malaria,2011,AFR,Africa,BFA,Burkina Faso,428113
+WHS3_48,Malaria,2009,SEAR,South-East Asia,MMR,Myanmar,436068
+WHS3_48,Malaria,2005,SEAR,South-East Asia,IDN,Indonesia,437323
+WHS3_48,Malaria,2008,SEAR,South-East Asia,MMR,Myanmar,447073
+WHS3_48,Malaria,2006,AFR,Africa,ETH,Ethiopia,447780
+WHS3_48,Malaria,2007,AFR,Africa,ETH,Ethiopia,451816
+WHS3_48,Malaria,2008,AFR,Africa,ETH,Ethiopia,458561
+WHS3_48,Malaria,2007,AMR,Americas,BRA,Brazil,458652
+WHS3_48,Malaria,2003,AFR,Africa,ETH,Ethiopia,463797
+WHS3_48,Malaria,2004,AMR,Americas,BRA,Brazil,465004
+WHS3_48,Malaria,2011,SEAR,South-East Asia,MMR,Myanmar,465294
+WHS3_48,Malaria,2010,SEAR,South-East Asia,IDN,Indonesia,465764
+WHS3_48,Malaria,2006,AFR,Africa,GHA,Ghana,472255
+WHS3_48,Malaria,2004,AFR,Africa,GHA,Ghana,475441
+WHS3_48,Malaria,2007,AFR,Africa,GHA,Ghana,476484
+WHS3_48,Malaria,2009,AFR,Africa,NGA,Nigeria,479845
+WHS3_48,Malaria,2012,SEAR,South-East Asia,MMR,Myanmar,480586
+WHS3_48,Malaria,2012,AFR,Africa,RWA,Rwanda,483470
+WHS3_48,Malaria,2007,AFR,Africa,LBR,Liberia,492272
+WHS3_48,Malaria,2008,AFR,Africa,NER,Niger,496858
+WHS3_48,Malaria,2002,AFR,Africa,RWA,Rwanda,506028
+WHS3_48,Malaria,2011,EMR,Eastern Mediterranean,SDN,Sudan,506806
+WHS3_48,Malaria,2011,AFR,Africa,TGO,Togo,519450
+WHS3_48,Malaria,2012,EMR,Eastern Mediterranean,SDN,Sudan,526931
+WHS3_48,Malaria,2004,EMR,Eastern Mediterranean,SDN,Sudan,537899
+WHS3_48,Malaria,2005,AFR,Africa,ETH,Ethiopia,538942
+WHS3_48,Malaria,2006,AMR,Americas,BRA,Brazil,549469
+WHS3_48,Malaria,2010,AFR,Africa,NGA,Nigeria,551187
+WHS3_48,Malaria,2003,AFR,Africa,RWA,Rwanda,553150
+WHS3_48,Malaria,2002,AFR,Africa,UGA,Uganda,557159
+WHS3_48,Malaria,2008,EMR,Eastern Mediterranean,SDN,Sudan,569296
+WHS3_48,Malaria,2006,AFR,Africa,RWA,Rwanda,573686
+WHS3_48,Malaria,2004,AFR,Africa,ETH,Ethiopia,578904
+WHS3_48,Malaria,2004,AFR,Africa,RWA,Rwanda,589315
+WHS3_48,Malaria,2005,AMR,Americas,BRA,Brazil,606067
+WHS3_48,Malaria,2008,AFR,Africa,LBR,Liberia,606952
+WHS3_48,Malaria,2000,AMR,Americas,BRA,Brazil,613241
+WHS3_48,Malaria,2010,AFR,Africa,TGO,Togo,617101
+WHS3_48,Malaria,2010,AFR,Africa,NER,Niger,620058
+WHS3_48,Malaria,2005,EMR,Eastern Mediterranean,SDN,Sudan,628417
+WHS3_48,Malaria,2010,AFR,Africa,RWA,Rwanda,638669
+WHS3_48,Malaria,2011,AFR,Africa,SLE,Sierra Leone,638859
+WHS3_48,Malaria,2009,AFR,Africa,SLE,Sierra Leone,646808
+WHS3_48,Malaria,2005,AFR,Africa,GHA,Ghana,655093
+WHS3_48,Malaria,2005,AFR,Africa,RWA,Rwanda,683769
+WHS3_48,Malaria,2007,EMR,Eastern Mediterranean,SDN,Sudan,686908
+WHS3_48,Malaria,2012,AFR,Africa,TGO,Togo,697374
+WHS3_48,Malaria,2009,AFR,Africa,RWA,Rwanda,698745
+WHS3_48,Malaria,2012,AFR,Africa,BEN,Benin,705839
+WHS3_48,Malaria,2009,EMR,Eastern Mediterranean,SDN,Sudan,711462
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,SDN,Sudan,720557
+WHS3_48,Malaria,2006,EMR,Eastern Mediterranean,SDN,Sudan,721233
+WHS3_48,Malaria,2007,AFR,Africa,COD,Democratic Republic of the Congo,740858
+WHS3_48,Malaria,2006,AFR,Africa,LBR,Liberia,761415
+WHS3_48,Malaria,2011,AFR,Africa,NER,Niger,780876
+WHS3_48,Malaria,2006,AFR,Africa,BDI,Burundi,791731
+WHS3_48,Malaria,2003,AFR,Africa,UGA,Uganda,801784
+WHS3_48,Malaria,2010,AFR,Africa,BFA,Burkina Faso,804539
+WHS3_48,Malaria,2009,AFR,Africa,LBR,Liberia,839581
+WHS3_48,Malaria,2008,AFR,Africa,KEN,Kenya,839904
+WHS3_48,Malaria,2012,AFR,Africa,NER,Niger,842343
+WHS3_48,Malaria,2006,AFR,Africa,UGA,Uganda,867398
+WHS3_48,Malaria,2008,AFR,Africa,BDI,Burundi,876741
+WHS3_48,Malaria,2004,AFR,Africa,UGA,Uganda,879032
+WHS3_48,Malaria,2012,AFR,Africa,MLI,Mali,886482
+WHS3_48,Malaria,2005,AFR,Africa,AGO,Angola,889572
+WHS3_48,Malaria,2009,AFR,Africa,BEN,Benin,889597
+WHS3_48,Malaria,2010,AFR,Africa,KEN,Kenya,898531
+WHS3_48,Malaria,2010,EMR,Eastern Mediterranean,SSD,South Sudan,900283
+WHS3_48,Malaria,2010,AFR,Africa,LBR,Liberia,922173
+WHS3_48,Malaria,2003,EMR,Eastern Mediterranean,SDN,Sudan,933267
+WHS3_48,Malaria,2010,AFR,Africa,SLE,Sierra Leone,934028
+WHS3_48,Malaria,2008,AFR,Africa,UGA,Uganda,979298
+WHS3_48,Malaria,2011,AFR,Africa,KEN,Kenya,1002805
+WHS3_48,Malaria,2009,AFR,Africa,ETH,Ethiopia,1036316
+WHS3_48,Malaria,2011,AFR,Africa,GHA,Ghana,1041260
+WHS3_48,Malaria,2007,AFR,Africa,UGA,Uganda,1045378
+WHS3_48,Malaria,2012,SEAR,South-East Asia,IND,India,1067824
+WHS3_48,Malaria,2010,AFR,Africa,GHA,Ghana,1071637
+WHS3_48,Malaria,2006,AFR,Africa,AGO,Angola,1082398
+WHS3_48,Malaria,2008,AFR,Africa,GHA,Ghana,1094483
+WHS3_48,Malaria,2007,AFR,Africa,BDI,Burundi,1101644
+WHS3_48,Malaria,2005,AFR,Africa,UGA,Uganda,1104310
+WHS3_48,Malaria,2009,AFR,Africa,GHA,Ghana,1104370
+WHS3_48,Malaria,2012,AFR,Africa,CIV,C?te d'Ivoire,1140627
+WHS3_48,Malaria,2010,AFR,Africa,ETH,Ethiopia,1158197
+WHS3_48,Malaria,2009,AFR,Africa,BDI,Burundi,1185622
+WHS3_48,Malaria,2010,AFR,Africa,TZA,United Republic of Tanzania,1278998
+WHS3_48,Malaria,2009,AFR,Africa,UGA,Uganda,1301337
+WHS3_48,Malaria,2011,SEAR,South-East Asia,IND,India,1310656
+WHS3_48,Malaria,2008,AFR,Africa,AGO,Angola,1377992
+WHS3_48,Malaria,2000,EMR,Eastern Mediterranean,YEM,Yemen,1394495
+WHS3_48,Malaria,2012,AFR,Africa,LBR,Liberia,1407455
+WHS3_48,Malaria,2012,AFR,Africa,KEN,Kenya,1453471
+WHS3_48,Malaria,2011,AFR,Africa,ETH,Ethiopia,1480306
+WHS3_48,Malaria,2012,AFR,Africa,AGO,Angola,1496834
+WHS3_48,Malaria,2007,SEAR,South-East Asia,IND,India,1508927
+WHS3_48,Malaria,2010,AFR,Africa,MOZ,Mozambique,1522577
+WHS3_48,Malaria,2008,SEAR,South-East Asia,IND,India,1532497
+WHS3_48,Malaria,2007,AFR,Africa,AGO,Angola,1533485
+WHS3_48,Malaria,2012,AFR,Africa,SLE,Sierra Leone,1537322
+WHS3_48,Malaria,2009,SEAR,South-East Asia,IND,India,1563574
+WHS3_48,Malaria,2012,AFR,Africa,MWI,Malawi,1564984
+WHS3_48,Malaria,2011,AFR,Africa,BDI,Burundi,1571874
+WHS3_48,Malaria,2009,AFR,Africa,AGO,Angola,1573422
+WHS3_48,Malaria,2010,AFR,Africa,UGA,Uganda,1581160
+WHS3_48,Malaria,2010,SEAR,South-East Asia,IND,India,1599986
+WHS3_48,Malaria,2008,AFR,Africa,COD,Democratic Republic of the Congo,1618218
+WHS3_48,Malaria,2011,AFR,Africa,AGO,Angola,1632282
+WHS3_48,Malaria,2010,AFR,Africa,AGO,Angola,1682870
+WHS3_48,Malaria,2012,AFR,Africa,ETH,Ethiopia,1692578
+WHS3_48,Malaria,2011,AFR,Africa,MOZ,Mozambique,1756874
+WHS3_48,Malaria,2010,AFR,Africa,BDI,Burundi,1763447
+WHS3_48,Malaria,2006,SEAR,South-East Asia,IND,India,1785109
+WHS3_48,Malaria,2012,AFR,Africa,MOZ,Mozambique,1813984
+WHS3_48,Malaria,2005,SEAR,South-East Asia,IND,India,1816569
+WHS3_48,Malaria,2002,SEAR,South-East Asia,IND,India,1841227
+WHS3_48,Malaria,2007,AFR,Africa,TZA,United Republic of Tanzania,1845917
+WHS3_48,Malaria,2003,SEAR,South-East Asia,IND,India,1869403
+WHS3_48,Malaria,2009,AFR,Africa,COD,Democratic Republic of the Congo,1878705
+WHS3_48,Malaria,2004,SEAR,South-East Asia,IND,India,1915363
+WHS3_48,Malaria,2011,AFR,Africa,LBR,Liberia,1915762
+WHS3_48,Malaria,2006,AFR,Africa,TZA,United Republic of Tanzania,1928296
+WHS3_48,Malaria,2003,AFR,Africa,TZA,United Republic of Tanzania,1976614
+WHS3_48,Malaria,2012,AFR,Africa,TZA,United Republic of Tanzania,1986955
+WHS3_48,Malaria,2000,SEAR,South-East Asia,IND,India,2031790
+WHS3_48,Malaria,2001,SEAR,South-East Asia,IND,India,2085484
+WHS3_48,Malaria,2011,AFR,Africa,TZA,United Republic of Tanzania,2150761
+WHS3_48,Malaria,2012,AFR,Africa,BDI,Burundi,2151076
+WHS3_48,Malaria,2010,AFR,Africa,COD,Democratic Republic of the Congo,2417780
+WHS3_48,Malaria,2004,AFR,Africa,TZA,United Republic of Tanzania,2502382
+WHS3_48,Malaria,2012,AFR,Africa,UGA,Uganda,2662258
+WHS3_48,Malaria,2005,AFR,Africa,TZA,United Republic of Tanzania,2764049
+WHS3_48,Malaria,2012,AFR,Africa,GHA,Ghana,3755166
+WHS3_48,Malaria,2012,AFR,Africa,BFA,Burkina Faso,3858046
+WHS3_48,Malaria,2011,AFR,Africa,COD,Democratic Republic of the Congo,4561981
+WHS3_48,Malaria,2012,AFR,Africa,COD,Democratic Republic of the Congo,4791598

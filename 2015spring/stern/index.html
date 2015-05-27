@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>
+            IS 608 Final Project
+        </title>
+    	<style type="text/css">
+         #map {
+     	height: 576px;
+     	width: 768px
+	 }	
+        </style>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+ 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src= "http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0.2/src/markerclusterer.js"></script>
+
+
+        <script language="JavaScript"  type="text/javascript">
+            $(window).load(function () {
+       
+        var url = 'https://data.cityofnewyork.us/resource/h9gi-nx95.json?$where=number_of_persons_killed>0'
+
+
+    	// Intialize our map - Center at Brooklyn Nacy Yard
+        var center = new google.maps.LatLng(40.700292,-73.972106);
+    	var mapOptions = {
+        zoom: 11,
+        center: center,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var markers = []; // Create array of marker objects
+    
+
+
+    	// Pull the JSON Data
+    	$.getJSON(url, function (data) {
+
+        console.log(data);
+        $.each(data, function (i, entry) { //Create each marker by coordinate
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(entry.latitude,
+                entry.longitude),
+            });
+
+            markers.push(marker); // Add marker objects to array
+            marker.setMap(map);
+
+            // Next we want to add an information window for each marker containing information for each accident
+
+            var infowindow = new google.maps.InfoWindow({
+            content: 'Intersection: ' + entry.on_street_name + ' and ' + entry.off_street_name + "<br>"+
+                     'Time:' + entry.time + "<br>"+
+                     'Vehicle Type: ' + entry.vehicle_type_code1 + "<br>"+
+                     'Fatalities: ' + entry.number_of_persons_killed + "<br>"+
+                     'Injuries: ' + entry.number_of_persons_injured + "<br>" +
+                     'Date: ' + entry.date
+            });
+
+            google.maps.event.addListener(marker, 'click', function() { // This will Open the Info Window On Click
+            infowindow.open(map,marker);
+            map.setCenter(marker.getPosition());
+
+
+  });
+        });
+        var markerCluster = new MarkerClusterer(map, markers); // Set the Marker Clusters to the map
+    });
+});
+        </script>  
+    </head>
+
+    <body>
+        <h1>
+            CUNY MS Data Analytics
+        </h1>
+        <h2>
+            <a href="http://jlaurito.github.io/CUNY_IS608/">IS 608 - Final Project</a>
+        </h2>
+        <author>
+            David Stern
+        </author>
+        <p>
+            This feature shows a map of Motor Vehicle Collisions in NYC as registered by the NYPD. Each marker
+            on the map represents a single collision that resulted in an injury or fatality. By clicking on a marker, an info window appears with the time of the collision along with information on vehicle type(s), injuries, and fatalities. The data comes from NYC OpenData and is pulled from a live dataset, which the NYPD updates every weekday. It contains all accidents going back to July 1, 2012. With growing emphasis on pedestrian and cyclist safety with the Vision Zero initiative, I hope this will be a useful tool for accessing accident data. The visualization is designed to include the live updates on NYC Open Data, in addition to all accidents over the last three years.
+        </p>
+        <h3>
+            Methodology
+        </h3>
+        <p>
+            This page accesses the live data in the json format. The url query allows SQL-like commands to specify the JSON objects where the number of injuries or fatalities for a paricular accident is greater than zero. Given the volume of motor vehicle accidents in NYC, I decided to implement the Marker Clusterer in the Google Maps API. This feature will aggregate markers in each region and display the number of markers in each. Upon clicking a Cluster marker, the map will zoom in any either show individual pins or recalculate and show the distribution of sub-clusters in each area. This is a very useful tool to visualize the number of accidents, particularly in high-traffic neighborhoods.
+        </p>
+            <p>
+            <i>
+            Users can click on individual markers to see the details of each accident, including: time, date, number or injuries or fatalities, and type of vehicle involved.
+            </i>
+        </p>
+        <p>
+        <p>
+           <center>
+            <a href="https://nycopendata.socrata.com/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">
+                <b>
+                You can access the full dataset here.
+                </b>
+            </a>
+           </center>
+        </p>
+    	<center>
+            <div id="map"></div> 
+        </center>
+    </body>
+</html>

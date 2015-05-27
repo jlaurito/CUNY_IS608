@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IS608 Final Project_XWu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"></link>
+    
+</head>
+<body>
+
+    <!--Nav bar-->
+    <nav style="background-color:#6facd8" class="navbar navbar-default navbar-fixed-top">
+        <div class="container navbar-font">
+            <div class="navbar-header">
+                <a class="navbar-brand" id="barHeader">Cancer mortality statistics</a>
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse navHeaderCollapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS608 Final Projects</a></li>
+                    <li><a href="http://sps.cuny.edu/programs/ms_dataanalytics">About MSDA</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Content-->
+
+    <br /><br /><br />
+
+    <div class="container">
+        <div class="row">
+            <div class="sidebar col-sm-3 col-md-2">
+                <ul class="nav nav-sidebar">
+                    <li class=""><a href="Index.html">Introduction</a></li>
+                    <li class=""><a href="Data.html">Data</a></li>
+                    <li class="active"><a href="Statistics.html">Statistics</a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-sm-9 col-md-10 main">
+				<div id="statistic">
+                <!-- Statistics section -->
+				<h2> Cancer mortality statistics </h2>
+				<p> This page has two different statistics of cancer mortality rate from available countries. The first chart shows the top 10 countries given certain cancer type. The second chart shows the comparison of year 2000-2010 between countries given certain cancer type. To avoid crowdedness in the chart, only up to 5 countries is allowed for each comparison. </p>
+				
+                <h3> Top 10 countries for cancers (2000-2010) </h3>
+				<p>Please choose a cancer type: <select id="catSelector" ></select> </p>
+				<div id="top10bar"></div>
+				<br />
+				
+				<h3> Mortality rate comparison </h3>
+				<p>Please choose up to 5 countries to compare the mortality rate: 
+					<form>
+						<select multiple id="countrySelector"></select> 
+					</form>
+					<button id="clearCountry">Clear</button>
+				</p>
+				<div id="yearSeries"></div>
+				</div>		
+				</div>
+<script type="text/javascript">
+
+	var margin = {top: 20, right: 20, bottom: 30, left: 40},
+		width = 600 - margin.left - margin.right,
+		height = 450 - margin.top - margin.bottom;
+
+	var formatNum = d3.format("f.2");
+
+	var x = d3.scale.linear()
+		.range([0, width]);
+
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom")
+		.tickFormat(formatNum);
+
+	var svg = d3.select("body #top10bar").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+	d3.csv("data/mod6Comp.csv", function(data) {
+	
+		//Find cancer category
+		var cat = d3.nest()
+					.key(function(d){return d.category;}).sortKeys(d3.ascending)
+					.rollup(function(leaves){return leaves.length;})					
+					.entries(data);
+		//console.log(cat)
+		
+		//create cancer option in select tab (catSelector).
+		var list = d3.select("#catSelector").selectAll("option")
+						.data(cat)
+						.enter()
+						.append("option")
+						.attr("value", function(d) {return d.key;})
+						.text(function(d) {return d.key;});
+		
+		//Find country
+		
+		function cancerFilter(){
+			var selected = document.getElementById("catSelector").value; //Get value of cancer selector 
+			
+			//console.log(selected);
+			
+			var fil = data.filter(function(d){return d.category===selected;})
+			return fil;
+		}
+		
+		var fil = cancerFilter();
+		var country = d3.nest(fil)
+					.key(function(d){return d.name;}).sortKeys(d3.ascending)
+					.rollup(function(leaves){return leaves.length;})					
+					.entries(data);
+		//console.log(country);
+		
+		//create country selector in select tab
+		var clist = d3.select("#countrySelector").selectAll("option")
+						.data(country)
+						.enter()
+						.append("option")
+						.attr("value", function(d) {return d.key;})
+						.text(function(d) {return d.key;});
+		
+		//Find the top ten country of selected cancer
+		
+		function top10filter(){
+			
+			var fil = cancerFilter()
+			//console.log(fil)
+			var nested = d3.nest()
+						.key(function(d){return d.name;})
+						.rollup(function(leaves){return d3.sum(leaves, function (d){return parseFloat(d.Death)/parseFloat(d.Pop)*100000})})
+						.entries(fil);
+			//console.log(nested)
+			
+			var top10 = nested.sort(function(a, b){return b.values-a.values;}).slice(0,10);
+			//console.log(top10)
+			
+			return top10;
+		}
+		
+		var top10 = top10filter();
+		//console.log(top10)
+			
+		x.domain([0, d3.max(top10, function(d) { return +d.values; })]);
+		
+		//x axis  
+		svg.append("g")
+			  .attr("class", "x axis")
+			  .call(xAxis)
+			.append("text")
+			  .attr("x", width)
+			  .attr("y", 20)
+			  .attr("dy", ".71em")
+			  .style("text-anchor", "end")
+			  .text("Mean Mortality");
+		
+		//bar chart
+		svg.selectAll(".bar")
+			  .data(top10)
+			.enter().append("rect")
+			  .attr("class", "bar")
+			  .attr("y", function(d,i) { return 40+i*40;})
+			  .attr("width", function(d) { return x(d.values); })
+			  .attr("x", 0)
+			  .attr("height", 30)
+			  .append("title")
+					.text(function(d){return d.values.toFixed(2)});
+		
+		var countryTitle = svg.append("g").attr("class", "countryTitle")
+		
+		countryTitle.selectAll("text")
+					.data(top10)
+					.enter()
+					.append("text")
+					.attr("x", 5)
+					.attr("y", function (d,i){ return 60 + i*40;})
+					.text(function(d){return d.key;})
+					.style("fill", "white");
+			  
+					
+		//event listener (on cancer selector change)
+		d3.select("#catSelector").on("change", change);
+		
+		function change(){
+			// Update dataset
+			var top10 = top10filter();
+			//console.log(top10);
+			
+			x.domain([0, d3.max(top10, function(d) { return +d.values; })]);
+			
+			var transition = svg.transition().duration(750),
+				delay = function(d, i) { return i * 50; };
+
+			transition.select(".x.axis")
+				.call(xAxis);
+				
+			//update bar
+			d3.selectAll("rect").data(top10).transition().delay(delay)
+					.attr("y", function(d,i) { return 40+i*40})
+					  .attr("width", function(d) { return x(d.values); })
+					  .attr("x", 0)
+					  .attr("height", 30)
+					  
+			//update tooltip
+			d3.selectAll("#top10bar title")
+				.data(top10)
+				.text(function(d){return d.values.toFixed(2)});
+			
+			//update lable
+			d3.select(".countryTitle").selectAll("text")
+				.data(top10)
+					.attr("y", function (d,i){ return 60 + i*40;})
+					.text(function(d){return d.key;});	
+
+			//update the country option
+			fil = cancerFilter();
+			//console.log(fil)
+			country = d3.nest()
+						.key(function(d){return d.name;}).sortKeys(d3.ascending)
+						.rollup(function(leaves){return leaves.length;})					
+						.entries(fil);
+			//console.log(country);
+			
+			//create country selector in select tab
+			d3.select("#countrySelector").selectAll("option").remove()
+			d3.select("#countrySelector").selectAll("option")
+						.data(country)
+						.enter()
+						.append("option")
+						.attr("value", function(d) {return d.key;})
+						.text(function(d) {return d.key;});
+						
+			//console.log(clist)
+						
+			clear();
+		}
+		
+		//country year series chart
+		d3.select("#countrySelector").on("change", change1);
+		
+		var vis = d3.select("#yearSeries").append("svg"),
+                WIDTH = 800,
+                HEIGHT = 500,
+                MARGINS = {top: 20, right: 120, bottom: 20, left: 50},
+						
+            xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]),
+            yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]),
+						
+			x_Axis = d3.svg.axis()
+						.scale(xScale)
+						.tickFormat(d3.format('0f')),
+								
+            y_Axis = d3.svg.axis()
+						.scale(yScale)
+						.orient("left");
+						
+		vis.attr("width", WIDTH + MARGINS.left + MARGINS.right)
+			.attr("height", HEIGHT + MARGINS.top + MARGINS.bottom);
+		
+		var lineGen = d3.svg.line()
+							.x(function(d) {
+								return xScale(d.Year);
+							})
+							.y(function(d) {
+								return yScale(+d.Mortality);
+							})
+							//.interpolate("basis");
+		
+		var countryCount = 0; //count country not over 5;
+		d3.select("#clearCountry").on("click", clear);
+		
+		function clear(){
+			countryCount = 0;
+			y_list = [];
+			countryYear = [];
+			d3.select("#yearSeries svg").selectAll("path").remove();
+			d3.select("#yearSeries svg").selectAll("g").remove();
+			d3.select("#yearSeries svg").selectAll("line").remove();
+			d3.select("#yearSeries svg").selectAll("text").remove();
+			
+		}
+		
+		var yMax;
+		var countryYear = [];
+		var y_list = []
+		var qcolor = ["#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"];
+		
+		function change1(){
+			
+			d3.select("#yearSeries svg").selectAll("path").remove();
+			d3.select("#yearSeries svg").selectAll("g").remove();
+			d3.select("#yearSeries svg").selectAll("text").remove();
+			d3.select("#yearSeries svg").selectAll("line").remove();
+			
+			var cSelect = document.getElementById("countrySelector").value;
+						
+			//use cancerFilter file --> filter for selected country
+			var cyFilter = fil.filter(function(d){return d.name === cSelect;})
+			
+			countryYear.push(cyFilter);
+			
+			//console.log(countryYear);
+			
+			countryCount+=1;
+			
+			//line chart ref:
+			//http://bl.ocks.org/mbostock/3883245
+			//https://github.com/jay3dec/MultiLineChart_D3/blob/master/index.html
+			
+			//Find y domain
+					
+			countryYear.forEach(function(d,i){
+				//console.log(d)
+				y_list.push(d3.max(d, function(d) {return +d.Mortality;}));
+				
+			});
+			//console.log(y_list);
+			yDomain=d3.max(y_list);
+			//console.log(yDomain);
+			
+			if (countryCount <=5){
+				
+				yMax = yDomain
+				//console.log("inside if " + yMax);
+				xScale.domain([1999, 2011]);
+				yScale.domain([0, yMax]);
+						
+				vis.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+					.call(x_Axis);
+						
+				vis.append("g")
+					.attr("class", "y axis")
+					.attr("transform", "translate(" + (MARGINS.left) + ",0)")
+					.call(y_Axis)
+					.append("text")
+					  .attr("transform", "rotate(-90)")
+					  .attr("y", 6)
+					  .attr("dy", ".71em")
+					  .style("text-anchor", "end")
+					  .text("Mortality Rate");;
+				
+				countryYear.forEach(function(d,i) {
+						
+                        vis.append('svg:path')
+							.attr('d', lineGen(d))
+							.attr('stroke', qcolor[i])
+							.attr('stroke-width', 2)
+							.attr('fill', 'none')
+						
+						//console.log(d[0].name);
+						vis.append("text")
+                            .attr("x", WIDTH-MARGINS.right+55)
+                            .attr("y", 55+i*50)
+                            .style("fill", "black")
+                            .attr("class","legend")
+                            .text(d[0].name);
+						
+						vis.append("line")
+							.attr("x1", WIDTH-MARGINS.right)
+							.attr("y1", 50+i*50)
+							.attr("x2", WIDTH-MARGINS.right+50)
+							.attr("y2", 50+i*50)
+							.attr('stroke', qcolor[i])
+							.attr('stroke-width', 2)
+							.attr('fill', 'none')
+							});		
+						
+			} else {
+				alert ("You can only choose up to 5 countries for comparison. Please click 'Clear' button to restart.");
+			
+			};	
+
+		};
+		
+	});
+
+
+
+
+
+</script>
+</body>
+</html>

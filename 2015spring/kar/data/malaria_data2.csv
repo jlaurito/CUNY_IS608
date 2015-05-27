@@ -1,0 +1,66 @@
+Region,Year,Confirmation_Number,Death_Number
+Africa,2000,506329,10402
+Africa,2001,1415622,24601
+Africa,2002,1571075,70064
+Africa,2003,3783328,86879
+Africa,2004,4992277,79092
+Africa,2005,6299420,69079
+Africa,2006,7242919,71438
+Africa,2007,9607536,79358
+Africa,2008,9320095,84969
+Africa,2009,13346482,118835
+Africa,2010,20087565,130367
+Africa,2011,20679307,91039
+Africa,2012,36692009,86781
+Americas,2000,1153024,390
+Americas,2001,978713,388
+Americas,2002,890958,235
+Americas,2003,884500,260
+Americas,2004,905735,259
+Americas,2005,1045841,261
+Americas,2006,915876,243
+Americas,2007,744786,177
+Americas,2008,560579,143
+Americas,2009,567291,143
+Americas,2010,674250,156
+Americas,2011,490155,110
+Americas,2012,466393,106
+Eastern Mediterranean,2000,380851,2166
+Eastern Mediterranean,2001,214018,2254
+Eastern Mediterranean,2002,306614,2135
+Eastern Mediterranean,2003,958598,2538
+Eastern Mediterranean,2004,557245,1894
+Eastern Mediterranean,2005,899560,1857
+Eastern Mediterranean,2006,931640,1363
+Eastern Mediterranean,2007,938122,1354
+Eastern Mediterranean,2008,748198,1486
+Eastern Mediterranean,2009,859734,1257
+Eastern Mediterranean,2010,1824373,2196
+Eastern Mediterranean,2011,1126508,1144
+Eastern Mediterranean,2012,1207938,2307
+Europe,2000,12960,0
+Europe,2001,23661,0
+Europe,2002,20045,0
+Europe,2003,15896,0
+Europe,2004,9602,0
+Europe,2005,5030,0
+Europe,2006,2667,0
+Europe,2007,1199,2
+Europe,2008,583,3
+Europe,2009,285,1
+Europe,2010,176,0
+Europe,2011,70,0
+Europe,2012,22,0
+South-East Asia,2000,61534,499
+South-East Asia,2001,60198,484
+South-East Asia,2002,68780,609
+South-East Asia,2003,58460,588
+South-East Asia,2004,61564,512
+South-East Asia,2005,49946,506
+South-East Asia,2006,34725,515
+South-East Asia,2007,65004,230
+South-East Asia,2008,101630,156
+South-East Asia,2009,79477,51
+South-East Asia,2010,69702,39
+South-East Asia,2011,51967,37
+South-East Asia,2012,9983,12

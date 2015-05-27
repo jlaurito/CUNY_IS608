@@ -1,0 +1,914 @@
+GHO,Indicator,Year,Region_Code,Region,Country_Code,Country,Numeric_Value
+MALARIA001,Malaria,2009,AFR,Africa,DZA,Algeria,0
+MALARIA001,Malaria,2008,AFR,Africa,DZA,Algeria,0
+MALARIA001,Malaria,2012,AFR,Africa,DZA,Algeria,0
+MALARIA001,Malaria,2011,AFR,Africa,DZA,Algeria,0
+MALARIA001,Malaria,2001,AFR,Africa,CPV,Cabo Verde,0
+MALARIA001,Malaria,2012,AFR,Africa,CPV,Cabo Verde,0
+MALARIA001,Malaria,2010,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2008,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2007,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2009,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2012,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2011,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2006,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2002,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2001,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2000,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2005,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2004,AMR,Americas,ARG,Argentina,0
+MALARIA001,Malaria,2002,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2001,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2005,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2000,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2009,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2008,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2007,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2012,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2011,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2010,AMR,Americas,BLZ,Belize,0
+MALARIA001,Malaria,2007,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2011,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2010,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2012,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2008,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2009,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2001,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2006,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2005,AMR,Americas,BOL,Bolivia (Plurinational State of),0
+MALARIA001,Malaria,2006,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2005,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2004,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2008,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2007,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2003,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2011,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2010,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2012,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2002,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2001,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2000,AMR,Americas,CRI,Costa Rica,0
+MALARIA001,Malaria,2006,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2005,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2004,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2012,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2011,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2007,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2003,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2010,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2009,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2002,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2001,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2000,AMR,Americas,ECU,Ecuador,0
+MALARIA001,Malaria,2012,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2006,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2005,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2008,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2007,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2000,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2004,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2010,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2009,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2011,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2003,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2002,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2001,AMR,Americas,SLV,El Salvador,0
+MALARIA001,Malaria,2009,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2010,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2008,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2000,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2012,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2011,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2003,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2002,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2001,AMR,Americas,GTM,Guatemala,0
+MALARIA001,Malaria,2010,AMR,Americas,HTI,Haiti,0
+MALARIA001,Malaria,2012,AMR,Americas,HTI,Haiti,0
+MALARIA001,Malaria,2002,AMR,Americas,HND,Honduras,0
+MALARIA001,Malaria,2001,AMR,Americas,HND,Honduras,0
+MALARIA001,Malaria,2000,AMR,Americas,HND,Honduras,0
+MALARIA001,Malaria,2004,AMR,Americas,HND,Honduras,0
+MALARIA001,Malaria,2003,AMR,Americas,HND,Honduras,0
+MALARIA001,Malaria,2006,AMR,Americas,HND,Honduras,0
+MALARIA001,Malaria,2005,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2004,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2003,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2008,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2007,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2006,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2002,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2009,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2011,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2010,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2001,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2000,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2012,AMR,Americas,MEX,Mexico,0
+MALARIA001,Malaria,2007,AMR,Americas,NIC,Nicaragua,0
+MALARIA001,Malaria,2009,AMR,Americas,NIC,Nicaragua,0
+MALARIA001,Malaria,2008,AMR,Americas,NIC,Nicaragua,0
+MALARIA001,Malaria,2011,AMR,Americas,PAN,Panama,0
+MALARIA001,Malaria,2012,AMR,Americas,PAN,Panama,0
+MALARIA001,Malaria,2009,AMR,Americas,PAN,Panama,0
+MALARIA001,Malaria,2006,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2005,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2004,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2012,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2011,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2007,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2003,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2010,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2009,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2008,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2002,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2001,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2000,AMR,Americas,PRY,Paraguay,0
+MALARIA001,Malaria,2011,AMR,Americas,PER,Peru,0
+MALARIA001,Malaria,2010,AMR,Americas,PER,Peru,0
+MALARIA001,Malaria,2009,AMR,Americas,SUR,Suriname,0
+MALARIA001,Malaria,2012,AMR,Americas,SUR,Suriname,0
+MALARIA001,Malaria,2008,AMR,Americas,SUR,Suriname,0
+MALARIA001,Malaria,2005,EMR,Eastern Mediterranean,AFG,Afghanistan,0
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,DJI,Djibouti,0
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,DJI,Djibouti,0
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,DJI,Djibouti,0
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,DJI,Djibouti,0
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),0
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),0
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2008,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2005,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,IRQ,Iraq,0
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2008,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2001,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2005,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2004,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2003,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2002,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,SAU,Saudi Arabia,0
+MALARIA001,Malaria,2009,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2008,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2007,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2010,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2011,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2012,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2006,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2002,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2001,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2000,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2005,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2004,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2003,EUR,Europe,AZE,Azerbaijan,0
+MALARIA001,Malaria,2009,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2008,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2007,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2011,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2010,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2012,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2006,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2002,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2001,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2005,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2004,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2003,EUR,Europe,GEO,Georgia,0
+MALARIA001,Malaria,2009,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2008,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2007,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2010,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2011,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2012,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2006,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2002,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2001,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2000,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2005,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2004,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2003,EUR,Europe,KGZ,Kyrgyzstan,0
+MALARIA001,Malaria,2009,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2006,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2005,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2010,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2011,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2012,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2004,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2008,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2007,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2003,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2002,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2001,EUR,Europe,TJK,Tajikistan,0
+MALARIA001,Malaria,2010,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2011,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2006,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2002,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2001,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2000,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2005,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2004,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2003,EUR,Europe,TUR,Turkey,0
+MALARIA001,Malaria,2009,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2008,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2012,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2010,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2011,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2006,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2002,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2001,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2000,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2005,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2004,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2003,EUR,Europe,UZB,Uzbekistan,0
+MALARIA001,Malaria,2008,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,0
+MALARIA001,Malaria,2007,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,0
+MALARIA001,Malaria,2009,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,0
+MALARIA001,Malaria,2010,SEAR,South-East Asia,PRK,Democratic People's Republic of Korea,0
+MALARIA001,Malaria,2001,AFR,Africa,DZA,Algeria,1
+MALARIA001,Malaria,2010,AFR,Africa,DZA,Algeria,1
+MALARIA001,Malaria,2010,AFR,Africa,CPV,Cabo Verde,1
+MALARIA001,Malaria,2003,AMR,Americas,ARG,Argentina,1
+MALARIA001,Malaria,2006,AMR,Americas,BLZ,Belize,1
+MALARIA001,Malaria,2004,AMR,Americas,BLZ,Belize,1
+MALARIA001,Malaria,2003,AMR,Americas,BOL,Bolivia (Plurinational State of),1
+MALARIA001,Malaria,2009,AMR,Americas,CRI,Costa Rica,1
+MALARIA001,Malaria,2008,AMR,Americas,ECU,Ecuador,1
+MALARIA001,Malaria,2012,AMR,Americas,HND,Honduras,1
+MALARIA001,Malaria,2009,AMR,Americas,HND,Honduras,1
+MALARIA001,Malaria,2005,AMR,Americas,HND,Honduras,1
+MALARIA001,Malaria,2010,AMR,Americas,NIC,Nicaragua,1
+MALARIA001,Malaria,2011,AMR,Americas,NIC,Nicaragua,1
+MALARIA001,Malaria,2004,AMR,Americas,NIC,Nicaragua,1
+MALARIA001,Malaria,2006,AMR,Americas,NIC,Nicaragua,1
+MALARIA001,Malaria,2001,AMR,Americas,PAN,Panama,1
+MALARIA001,Malaria,2006,AMR,Americas,PAN,Panama,1
+MALARIA001,Malaria,2005,AMR,Americas,PAN,Panama,1
+MALARIA001,Malaria,2000,AMR,Americas,PAN,Panama,1
+MALARIA001,Malaria,2007,AMR,Americas,PAN,Panama,1
+MALARIA001,Malaria,2010,AMR,Americas,PAN,Panama,1
+MALARIA001,Malaria,2008,AMR,Americas,PAN,Panama,1
+MALARIA001,Malaria,2006,AMR,Americas,SUR,Suriname,1
+MALARIA001,Malaria,2005,AMR,Americas,SUR,Suriname,1
+MALARIA001,Malaria,2011,AMR,Americas,SUR,Suriname,1
+MALARIA001,Malaria,2010,AMR,Americas,SUR,Suriname,1
+MALARIA001,Malaria,2007,AMR,Americas,SUR,Suriname,1
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,DJI,Djibouti,1
+MALARIA001,Malaria,2005,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),1
+MALARIA001,Malaria,2004,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),1
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),1
+MALARIA001,Malaria,2009,EUR,Europe,TUR,Turkey,1
+MALARIA001,Malaria,2007,EUR,Europe,TUR,Turkey,1
+MALARIA001,Malaria,2007,EUR,Europe,UZB,Uzbekistan,1
+MALARIA001,Malaria,2012,SEAR,South-East Asia,BTN,Bhutan,1
+MALARIA001,Malaria,2011,SEAR,South-East Asia,BTN,Bhutan,1
+MALARIA001,Malaria,2000,AFR,Africa,DZA,Algeria,2
+MALARIA001,Malaria,2008,AFR,Africa,CPV,Cabo Verde,2
+MALARIA001,Malaria,2007,AFR,Africa,CPV,Cabo Verde,2
+MALARIA001,Malaria,2009,AFR,Africa,CPV,Cabo Verde,2
+MALARIA001,Malaria,2005,AFR,Africa,CPV,Cabo Verde,2
+MALARIA001,Malaria,2002,AFR,Africa,CPV,Cabo Verde,2
+MALARIA001,Malaria,2006,AMR,Americas,GTM,Guatemala,2
+MALARIA001,Malaria,2004,AMR,Americas,GTM,Guatemala,2
+MALARIA001,Malaria,2011,AMR,Americas,HND,Honduras,2
+MALARIA001,Malaria,2008,AMR,Americas,HND,Honduras,2
+MALARIA001,Malaria,2012,AMR,Americas,NIC,Nicaragua,2
+MALARIA001,Malaria,2001,AMR,Americas,NIC,Nicaragua,2
+MALARIA001,Malaria,2002,AMR,Americas,PAN,Panama,2
+MALARIA001,Malaria,2004,AMR,Americas,PAN,Panama,2
+MALARIA001,Malaria,2009,AMR,Americas,PER,Peru,2
+MALARIA001,Malaria,2007,AMR,Americas,PER,Peru,2
+MALARIA001,Malaria,2012,AMR,Americas,PER,Peru,2
+MALARIA001,Malaria,2008,AMR,Americas,PER,Peru,2
+MALARIA001,Malaria,2002,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),2
+MALARIA001,Malaria,2001,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),2
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,SAU,Saudi Arabia,2
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,SAU,Saudi Arabia,2
+MALARIA001,Malaria,2007,SEAR,South-East Asia,BTN,Bhutan,2
+MALARIA001,Malaria,2010,SEAR,South-East Asia,BTN,Bhutan,2
+MALARIA001,Malaria,2008,SEAR,South-East Asia,BTN,Bhutan,2
+MALARIA001,Malaria,2012,AFR,Africa,BWA,Botswana,3
+MALARIA001,Malaria,2007,AFR,Africa,STP,Sao Tome and Principe,3
+MALARIA001,Malaria,2004,AMR,Americas,BOL,Bolivia (Plurinational State of),3
+MALARIA001,Malaria,2012,AMR,Americas,GUY,Guyana,3
+MALARIA001,Malaria,2011,AMR,Americas,GUY,Guyana,3
+MALARIA001,Malaria,2011,AMR,Americas,HTI,Haiti,3
+MALARIA001,Malaria,2010,AMR,Americas,HND,Honduras,3
+MALARIA001,Malaria,2011,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),3
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),3
+MALARIA001,Malaria,2008,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),3
+MALARIA001,Malaria,2008,EUR,Europe,TUR,Turkey,3
+MALARIA001,Malaria,2011,AFR,Africa,CPV,Cabo Verde,4
+MALARIA001,Malaria,2004,AFR,Africa,CPV,Cabo Verde,4
+MALARIA001,Malaria,2003,AFR,Africa,CPV,Cabo Verde,4
+MALARIA001,Malaria,2008,AFR,Africa,GNQ,Equatorial Guinea,4
+MALARIA001,Malaria,2012,AFR,Africa,NAM,Namibia,4
+MALARIA001,Malaria,2002,AMR,Americas,BOL,Bolivia (Plurinational State of),4
+MALARIA001,Malaria,2005,AMR,Americas,GTM,Guatemala,4
+MALARIA001,Malaria,2000,AMR,Americas,NIC,Nicaragua,4
+MALARIA001,Malaria,2003,AMR,Americas,PAN,Panama,4
+MALARIA001,Malaria,2005,AMR,Americas,PER,Peru,4
+MALARIA001,Malaria,2000,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),4
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,PAK,Pakistan,4
+MALARIA001,Malaria,2009,SEAR,South-East Asia,BTN,Bhutan,4
+MALARIA001,Malaria,2003,EMR,Eastern Mediterranean,IRN,Iran (Islamic Republic of),5
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,SOM,Somalia,5
+MALARIA001,Malaria,2005,SEAR,South-East Asia,BTN,Bhutan,5
+MALARIA001,Malaria,2009,AFR,Africa,BWA,Botswana,6
+MALARIA001,Malaria,2007,AFR,Africa,BWA,Botswana,6
+MALARIA001,Malaria,2000,AMR,Americas,DOM,Dominican Republic,6
+MALARIA001,Malaria,2009,AMR,Americas,HTI,Haiti,6
+MALARIA001,Malaria,2005,AMR,Americas,NIC,Nicaragua,6
+MALARIA001,Malaria,2004,AMR,Americas,PER,Peru,6
+MALARIA001,Malaria,2006,AMR,Americas,PER,Peru,6
+MALARIA001,Malaria,2012,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),6
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,SOM,Somalia,6
+MALARIA001,Malaria,2012,AFR,Africa,STP,Sao Tome and Principe,7
+MALARIA001,Malaria,2012,AFR,Africa,SWZ,Swaziland,7
+MALARIA001,Malaria,2003,AMR,Americas,NIC,Nicaragua,7
+MALARIA001,Malaria,2004,AMR,Americas,SUR,Suriname,7
+MALARIA001,Malaria,2006,SEAR,South-East Asia,BTN,Bhutan,7
+MALARIA001,Malaria,2004,SEAR,South-East Asia,BTN,Bhutan,7
+MALARIA001,Malaria,2011,AFR,Africa,BWA,Botswana,8
+MALARIA001,Malaria,2010,AFR,Africa,BWA,Botswana,8
+MALARIA001,Malaria,2006,AFR,Africa,CPV,Cabo Verde,8
+MALARIA001,Malaria,2011,AFR,Africa,SWZ,Swaziland,8
+MALARIA001,Malaria,2010,AFR,Africa,SWZ,Swaziland,8
+MALARIA001,Malaria,2012,AMR,Americas,DOM,Dominican Republic,8
+MALARIA001,Malaria,2002,AMR,Americas,NIC,Nicaragua,8
+MALARIA001,Malaria,2002,EMR,Eastern Mediterranean,SOM,Somalia,8
+MALARIA001,Malaria,2003,AMR,Americas,PER,Peru,9
+MALARIA001,Malaria,2008,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),9
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,PAK,Pakistan,9
+MALARIA001,Malaria,2008,AFR,Africa,SWZ,Swaziland,10
+MALARIA001,Malaria,2006,AMR,Americas,DOM,Dominican Republic,10
+MALARIA001,Malaria,2011,AMR,Americas,DOM,Dominican Republic,10
+MALARIA001,Malaria,2005,AFR,Africa,BWA,Botswana,11
+MALARIA001,Malaria,2000,AMR,Americas,BOL,Bolivia (Plurinational State of),11
+MALARIA001,Malaria,2002,AMR,Americas,DOM,Dominican Republic,11
+MALARIA001,Malaria,2008,AMR,Americas,DOM,Dominican Republic,11
+MALARIA001,Malaria,2009,AMR,Americas,GUY,Guyana,11
+MALARIA001,Malaria,2008,AMR,Americas,GUY,Guyana,11
+MALARIA001,Malaria,2009,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),11
+MALARIA001,Malaria,2006,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),11
+MALARIA001,Malaria,2012,SEAR,South-East Asia,BGD,Bangladesh,11
+MALARIA001,Malaria,2002,SEAR,South-East Asia,BTN,Bhutan,11
+MALARIA001,Malaria,2008,AFR,Africa,BWA,Botswana,12
+MALARIA001,Malaria,2011,AFR,Africa,ERI,Eritrea,12
+MALARIA001,Malaria,2009,AMR,Americas,COL,Colombia,12
+MALARIA001,Malaria,2003,AMR,Americas,DOM,Dominican Republic,12
+MALARIA001,Malaria,2002,AMR,Americas,PER,Peru,12
+MALARIA001,Malaria,2004,AFR,Africa,TCD,Chad,13
+MALARIA001,Malaria,2009,AFR,Africa,SWZ,Swaziland,13
+MALARIA001,Malaria,2010,AFR,Africa,STP,Sao Tome and Principe,14
+MALARIA001,Malaria,2009,AMR,Americas,DOM,Dominican Republic,14
+MALARIA001,Malaria,2003,SEAR,South-East Asia,BTN,Bhutan,14
+MALARIA001,Malaria,2001,SEAR,South-East Asia,BTN,Bhutan,14
+MALARIA001,Malaria,2010,AMR,Americas,DOM,Dominican Republic,15
+MALARIA001,Malaria,2002,AMR,Americas,SUR,Suriname,15
+MALARIA001,Malaria,2005,EMR,Eastern Mediterranean,SOM,Somalia,15
+MALARIA001,Malaria,2000,SEAR,South-East Asia,BTN,Bhutan,15
+MALARIA001,Malaria,2008,AFR,Africa,STP,Sao Tome and Principe,16
+MALARIA001,Malaria,2005,AMR,Americas,DOM,Dominican Republic,16
+MALARIA001,Malaria,2004,AMR,Americas,DOM,Dominican Republic,16
+MALARIA001,Malaria,2000,AMR,Americas,HTI,Haiti,16
+MALARIA001,Malaria,2007,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),16
+MALARIA001,Malaria,2012,AFR,Africa,COM,Comoros,17
+MALARIA001,Malaria,2005,AFR,Africa,SWZ,Swaziland,17
+MALARIA001,Malaria,2007,AFR,Africa,SWZ,Swaziland,17
+MALARIA001,Malaria,2001,AMR,Americas,DOM,Dominican Republic,17
+MALARIA001,Malaria,2007,AMR,Americas,DOM,Dominican Republic,17
+MALARIA001,Malaria,2008,AMR,Americas,HTI,Haiti,17
+MALARIA001,Malaria,2005,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),17
+MALARIA001,Malaria,2003,AFR,Africa,BWA,Botswana,18
+MALARIA001,Malaria,2011,AMR,Americas,COL,Colombia,18
+MALARIA001,Malaria,2010,AMR,Americas,GUY,Guyana,18
+MALARIA001,Malaria,2003,AMR,Americas,SUR,Suriname,18
+MALARIA001,Malaria,2010,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),18
+MALARIA001,Malaria,2004,AFR,Africa,BWA,Botswana,19
+MALARIA001,Malaria,2011,AFR,Africa,COM,Comoros,19
+MALARIA001,Malaria,2008,AFR,Africa,ERI,Eritrea,19
+MALARIA001,Malaria,2011,AFR,Africa,STP,Sao Tome and Principe,19
+MALARIA001,Malaria,2007,AMR,Americas,COL,Colombia,19
+MALARIA001,Malaria,2007,AFR,Africa,COM,Comoros,20
+MALARIA001,Malaria,2012,AMR,Americas,COL,Colombia,20
+MALARIA001,Malaria,2006,AMR,Americas,GUY,Guyana,20
+MALARIA001,Malaria,2000,AMR,Americas,PER,Peru,20
+MALARIA001,Malaria,2008,AMR,Americas,COL,Colombia,22
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,AFG,Afghanistan,22
+MALARIA001,Malaria,2002,AFR,Africa,BWA,Botswana,23
+MALARIA001,Malaria,2009,AFR,Africa,GNQ,Equatorial Guinea,23
+MALARIA001,Malaria,2009,AFR,Africa,ERI,Eritrea,23
+MALARIA001,Malaria,2009,AFR,Africa,STP,Sao Tome and Principe,23
+MALARIA001,Malaria,2010,AMR,Americas,COL,Colombia,23
+MALARIA001,Malaria,2004,AMR,Americas,HTI,Haiti,23
+MALARIA001,Malaria,2001,AMR,Americas,SUR,Suriname,23
+MALARIA001,Malaria,2002,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),23
+MALARIA001,Malaria,2004,AFR,Africa,ERI,Eritrea,24
+MALARIA001,Malaria,2003,AMR,Americas,COL,Colombia,24
+MALARIA001,Malaria,2000,AMR,Americas,SUR,Suriname,24
+MALARIA001,Malaria,2000,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),24
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,PAK,Pakistan,24
+MALARIA001,Malaria,2004,AMR,Americas,COL,Colombia,25
+MALARIA001,Malaria,2001,AMR,Americas,PER,Peru,25
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,AFG,Afghanistan,25
+MALARIA001,Malaria,2006,AFR,Africa,STP,Sao Tome and Principe,26
+MALARIA001,Malaria,2010,AFR,Africa,ERI,Eritrea,27
+MALARIA001,Malaria,2006,AFR,Africa,SWZ,Swaziland,27
+MALARIA001,Malaria,2002,AMR,Americas,GUY,Guyana,27
+MALARIA001,Malaria,2004,AFR,Africa,COM,Comoros,28
+MALARIA001,Malaria,2004,AFR,Africa,SWZ,Swaziland,28
+MALARIA001,Malaria,2005,AMR,Americas,COL,Colombia,28
+MALARIA001,Malaria,2007,AMR,Americas,HTI,Haiti,28
+MALARIA001,Malaria,2001,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),28
+MALARIA001,Malaria,2001,AFR,Africa,BWA,Botswana,29
+MALARIA001,Malaria,2005,AMR,Americas,HTI,Haiti,29
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,DJI,Djibouti,29
+MALARIA001,Malaria,2010,AFR,Africa,GNQ,Equatorial Guinea,30
+MALARIA001,Malaria,2012,AFR,Africa,ERI,Eritrea,30
+MALARIA001,Malaria,2003,AFR,Africa,SWZ,Swaziland,30
+MALARIA001,Malaria,2001,AMR,Americas,GUY,Guyana,30
+MALARIA001,Malaria,2005,AMR,Americas,GUY,Guyana,32
+MALARIA001,Malaria,2006,AMR,Americas,HTI,Haiti,32
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,AFG,Afghanistan,32
+MALARIA001,Malaria,2004,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),35
+MALARIA001,Malaria,2011,AFR,Africa,NAM,Namibia,36
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,AFG,Afghanistan,36
+MALARIA001,Malaria,2011,SEAR,South-East Asia,BGD,Bangladesh,36
+MALARIA001,Malaria,2007,AFR,Africa,ZAF,South Africa,37
+MALARIA001,Malaria,2010,SEAR,South-East Asia,BGD,Bangladesh,37
+MALARIA001,Malaria,2004,AMR,Americas,GUY,Guyana,38
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,YEM,Yemen,38
+MALARIA001,Malaria,2006,AFR,Africa,BWA,Botswana,40
+MALARIA001,Malaria,2002,AMR,Americas,COL,Colombia,40
+MALARIA001,Malaria,2003,AMR,Americas,VEN,Venezuela (Bolivarian Republic of),40
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,AFG,Afghanistan,40
+MALARIA001,Malaria,2005,AFR,Africa,LBR,Liberia,41
+MALARIA001,Malaria,2000,AMR,Americas,COL,Colombia,41
+MALARIA001,Malaria,2003,AMR,Americas,GUY,Guyana,41
+MALARIA001,Malaria,2007,AFR,Africa,ERI,Eritrea,42
+MALARIA001,Malaria,2008,AFR,Africa,ZAF,South Africa,43
+MALARIA001,Malaria,2009,AFR,Africa,ZAF,South Africa,45
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,SOM,Somalia,45
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,SOM,Somalia,45
+MALARIA001,Malaria,2002,AFR,Africa,SWZ,Swaziland,46
+MALARIA001,Malaria,2008,EMR,Eastern Mediterranean,AFG,Afghanistan,46
+MALARIA001,Malaria,2008,AFR,Africa,COM,Comoros,47
+MALARIA001,Malaria,2006,AFR,Africa,ERI,Eritrea,47
+MALARIA001,Malaria,2009,SEAR,South-East Asia,BGD,Bangladesh,47
+MALARIA001,Malaria,2005,AFR,Africa,ERI,Eritrea,49
+MALARIA001,Malaria,2008,EMR,Eastern Mediterranean,SOM,Somalia,49
+MALARIA001,Malaria,2005,AFR,Africa,SLE,Sierra Leone,50
+MALARIA001,Malaria,2011,AFR,Africa,GNQ,Equatorial Guinea,52
+MALARIA001,Malaria,2005,EMR,Eastern Mediterranean,PAK,Pakistan,52
+MALARIA001,Malaria,2010,AFR,Africa,COM,Comoros,53
+MALARIA001,Malaria,2006,AMR,Americas,COL,Colombia,53
+MALARIA001,Malaria,2011,AFR,Africa,ZAF,South Africa,54
+MALARIA001,Malaria,2003,EMR,Eastern Mediterranean,SOM,Somalia,54
+MALARIA001,Malaria,2006,AFR,Africa,COM,Comoros,56
+MALARIA001,Malaria,2001,AMR,Americas,COL,Colombia,58
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,SOM,Somalia,58
+MALARIA001,Malaria,2001,AFR,Africa,SWZ,Swaziland,62
+MALARIA001,Malaria,2001,AMR,Americas,HTI,Haiti,62
+MALARIA001,Malaria,2010,AFR,Africa,NAM,Namibia,63
+MALARIA001,Malaria,2005,AFR,Africa,ZAF,South Africa,63
+MALARIA001,Malaria,2012,AMR,Americas,BRA,Brazil,64
+MALARIA001,Malaria,2006,AFR,Africa,MRT,Mauritania,67
+MALARIA001,Malaria,2008,AMR,Americas,BRA,Brazil,67
+MALARIA001,Malaria,2009,AFR,Africa,NAM,Namibia,68
+MALARIA001,Malaria,2011,AMR,Americas,BRA,Brazil,69
+MALARIA001,Malaria,2012,AFR,Africa,ZAF,South Africa,72
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,YEM,Yemen,72
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,YEM,Yemen,73
+MALARIA001,Malaria,2011,AFR,Africa,GAB,Gabon,74
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,YEM,Yemen,75
+MALARIA001,Malaria,2010,AMR,Americas,BRA,Brazil,76
+MALARIA001,Malaria,2002,AMR,Americas,HTI,Haiti,76
+MALARIA001,Malaria,2012,AFR,Africa,GNQ,Equatorial Guinea,77
+MALARIA001,Malaria,2011,AFR,Africa,MRT,Mauritania,77
+MALARIA001,Malaria,2003,AFR,Africa,ERI,Eritrea,79
+MALARIA001,Malaria,2004,EMR,Eastern Mediterranean,SOM,Somalia,79
+MALARIA001,Malaria,2001,AFR,Africa,ZAF,South Africa,81
+MALARIA001,Malaria,2010,AFR,Africa,ZAF,South Africa,83
+MALARIA001,Malaria,2005,AFR,Africa,STP,Sao Tome and Principe,85
+MALARIA001,Malaria,2009,AMR,Americas,BRA,Brazil,85
+MALARIA001,Malaria,2002,AFR,Africa,ERI,Eritrea,86
+MALARIA001,Malaria,2006,AFR,Africa,ZAF,South Africa,87
+MALARIA001,Malaria,2004,AFR,Africa,ZAF,South Africa,88
+MALARIA001,Malaria,2006,AFR,Africa,SLE,Sierra Leone,90
+MALARIA001,Malaria,2009,AFR,Africa,MRT,Mauritania,91
+MALARIA001,Malaria,2005,AFR,Africa,COM,Comoros,92
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,YEM,Yemen,92
+MALARIA001,Malaria,2007,AMR,Americas,BRA,Brazil,93
+MALARIA001,Malaria,2002,AMR,Americas,BRA,Brazil,93
+MALARIA001,Malaria,2002,AFR,Africa,ZAF,South Africa,96
+MALARIA001,Malaria,2002,AFR,Africa,TCD,Chad,98
+MALARIA001,Malaria,2004,AMR,Americas,BRA,Brazil,100
+MALARIA001,Malaria,2003,AMR,Americas,HTI,Haiti,102
+MALARIA001,Malaria,2003,AMR,Americas,BRA,Brazil,103
+MALARIA001,Malaria,2006,AMR,Americas,BRA,Brazil,105
+MALARIA001,Malaria,2012,AFR,Africa,MRT,Mauritania,106
+MALARIA001,Malaria,2009,AFR,Africa,ZWE,Zimbabwe,108
+MALARIA001,Malaria,2007,AFR,Africa,COG,Congo,113
+MALARIA001,Malaria,2009,AFR,Africa,COG,Congo,116
+MALARIA001,Malaria,2005,AMR,Americas,BRA,Brazil,122
+MALARIA001,Malaria,2004,AFR,Africa,SLE,Sierra Leone,126
+MALARIA001,Malaria,2001,AFR,Africa,ERI,Eritrea,133
+MALARIA001,Malaria,2012,AFR,Africa,GAB,Gabon,134
+MALARIA001,Malaria,2007,AFR,Africa,MRT,Mauritania,142
+MALARIA001,Malaria,2003,AFR,Africa,ZAF,South Africa,142
+MALARIA001,Malaria,2001,AMR,Americas,BRA,Brazil,142
+MALARIA001,Malaria,2008,AFR,Africa,COG,Congo,143
+MALARIA001,Malaria,2006,AFR,Africa,GMB,Gambia,150
+MALARIA001,Malaria,2010,AFR,Africa,GMB,Gambia,151
+MALARIA001,Malaria,2008,AFR,Africa,NAM,Namibia,152
+MALARIA001,Malaria,2004,AFR,Africa,GMB,Gambia,153
+MALARIA001,Malaria,2008,SEAR,South-East Asia,BGD,Bangladesh,154
+MALARIA001,Malaria,2008,AFR,Africa,GAB,Gabon,156
+MALARIA001,Malaria,2003,AFR,Africa,SLE,Sierra Leone,157
+MALARIA001,Malaria,2007,AFR,Africa,BDI,Burundi,167
+MALARIA001,Malaria,2004,AFR,Africa,STP,Sao Tome and Principe,169
+MALARIA001,Malaria,2007,AFR,Africa,NAM,Namibia,181
+MALARIA001,Malaria,2010,AFR,Africa,GAB,Gabon,182
+MALARIA001,Malaria,2003,AFR,Africa,GMB,Gambia,192
+MALARIA001,Malaria,2003,AFR,Africa,STP,Sao Tome and Principe,193
+MALARIA001,Malaria,2009,AFR,Africa,GAB,Gabon,197
+MALARIA001,Malaria,2010,AFR,Africa,MRT,Mauritania,211
+MALARIA001,Malaria,2007,AFR,Africa,GAB,Gabon,216
+MALARIA001,Malaria,2009,AFR,Africa,TCD,Chad,221
+MALARIA001,Malaria,2007,SEAR,South-East Asia,BGD,Bangladesh,228
+MALARIA001,Malaria,2008,AFR,Africa,ZWE,Zimbabwe,232
+MALARIA001,Malaria,2006,AFR,Africa,GAB,Gabon,238
+MALARIA001,Malaria,2009,AFR,Africa,GMB,Gambia,240
+MALARIA001,Malaria,2000,AMR,Americas,BRA,Brazil,243
+MALARIA001,Malaria,2001,AFR,Africa,STP,Sao Tome and Principe,248
+MALARIA001,Malaria,2000,AFR,Africa,STP,Sao Tome and Principe,254
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,SSD,South Sudan,254
+MALARIA001,Malaria,2010,AFR,Africa,ZWE,Zimbabwe,255
+MALARIA001,Malaria,2002,AFR,Africa,GMB,Gambia,259
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,PAK,Pakistan,260
+MALARIA001,Malaria,2008,EMR,Eastern Mediterranean,SSD,South Sudan,263
+MALARIA001,Malaria,2001,AFR,Africa,GMB,Gambia,275
+MALARIA001,Malaria,2012,AFR,Africa,GMB,Gambia,289
+MALARIA001,Malaria,2010,AFR,Africa,GNB,Guinea-Bissau,296
+MALARIA001,Malaria,2007,AFR,Africa,LBR,Liberia,310
+MALARIA001,Malaria,2002,AFR,Africa,STP,Sao Tome and Principe,321
+MALARIA001,Malaria,2005,AFR,Africa,BEN,Benin,322
+MALARIA001,Malaria,2007,AFR,Africa,SLE,Sierra Leone,324
+MALARIA001,Malaria,2001,AFR,Africa,SLE,Sierra Leone,328
+MALARIA001,Malaria,2008,AFR,Africa,LBR,Liberia,345
+MALARIA001,Malaria,2009,AFR,Africa,MDG,Madagascar,348
+MALARIA001,Malaria,2012,AFR,Africa,ZWE,Zimbabwe,351
+MALARIA001,Malaria,2005,AFR,Africa,GAB,Gabon,353
+MALARIA001,Malaria,2008,AFR,Africa,MDG,Madagascar,355
+MALARIA001,Malaria,2009,AFR,Africa,GNB,Guinea-Bissau,369
+MALARIA001,Malaria,2007,AFR,Africa,GNB,Guinea-Bissau,370
+MALARIA001,Malaria,2012,AFR,Africa,GNB,Guinea-Bissau,370
+MALARIA001,Malaria,2000,AFR,Africa,TZA,United Republic of Tanzania,379
+MALARIA001,Malaria,2011,AFR,Africa,RWA,Rwanda,380
+MALARIA001,Malaria,2011,AFR,Africa,MDG,Madagascar,398
+MALARIA001,Malaria,2007,AFR,Africa,ZWE,Zimbabwe,401
+MALARIA001,Malaria,2008,AFR,Africa,GMB,Gambia,403
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,SSD,South Sudan,406
+MALARIA001,Malaria,2001,AFR,Africa,COD,Democratic Republic of the Congo,416
+MALARIA001,Malaria,2001,AFR,Africa,BDI,Burundi,417
+MALARIA001,Malaria,2003,AFR,Africa,CAF,Central African Republic,417
+MALARIA001,Malaria,2007,AFR,Africa,GMB,Gambia,424
+MALARIA001,Malaria,2000,AFR,Africa,ZAF,South Africa,424
+MALARIA001,Malaria,2003,AFR,Africa,BDI,Burundi,425
+MALARIA001,Malaria,2005,AFR,Africa,GMB,Gambia,426
+MALARIA001,Malaria,2010,AFR,Africa,MDG,Madagascar,427
+MALARIA001,Malaria,2007,AFR,Africa,MDG,Madagascar,428
+MALARIA001,Malaria,2006,AFR,Africa,BDI,Burundi,434
+MALARIA001,Malaria,2000,AFR,Africa,CAF,Central African Republic,439
+MALARIA001,Malaria,2011,AFR,Africa,GMB,Gambia,440
+MALARIA001,Malaria,2002,AFR,Africa,GIN,Guinea,440
+MALARIA001,Malaria,2008,AFR,Africa,GIN,Guinea,441
+MALARIA001,Malaria,2006,AFR,Africa,MDG,Madagascar,441
+MALARIA001,Malaria,2011,AFR,Africa,ZWE,Zimbabwe,451
+MALARIA001,Malaria,2008,AFR,Africa,CAF,Central African Republic,456
+MALARIA001,Malaria,2012,AFR,Africa,RWA,Rwanda,459
+MALARIA001,Malaria,2002,AFR,Africa,SLE,Sierra Leone,461
+MALARIA001,Malaria,2004,AFR,Africa,GAB,Gabon,466
+MALARIA001,Malaria,2001,AFR,Africa,BEN,Benin,468
+MALARIA001,Malaria,2001,SEAR,South-East Asia,BGD,Bangladesh,470
+MALARIA001,Malaria,2007,AFR,Africa,GIN,Guinea,472
+MALARIA001,Malaria,2011,AFR,Africa,GNB,Guinea-Bissau,472
+MALARIA001,Malaria,2011,AFR,Africa,SEN,Senegal,472
+MALARIA001,Malaria,2002,AFR,Africa,BDI,Burundi,483
+MALARIA001,Malaria,2000,SEAR,South-East Asia,BGD,Bangladesh,484
+MALARIA001,Malaria,2008,AFR,Africa,GNB,Guinea-Bissau,487
+MALARIA001,Malaria,2005,AFR,Africa,GIN,Guinea,490
+MALARIA001,Malaria,2005,SEAR,South-East Asia,BGD,Bangladesh,501
+MALARIA001,Malaria,2004,SEAR,South-East Asia,BGD,Bangladesh,505
+MALARIA001,Malaria,2006,AFR,Africa,GNB,Guinea-Bissau,507
+MALARIA001,Malaria,2006,SEAR,South-East Asia,BGD,Bangladesh,508
+MALARIA001,Malaria,2001,AFR,Africa,GIN,Guinea,517
+MALARIA001,Malaria,2010,AFR,Africa,CAF,Central African Republic,526
+MALARIA001,Malaria,2004,AFR,Africa,GIN,Guinea,528
+MALARIA001,Malaria,2001,AFR,Africa,CAF,Central African Republic,535
+MALARIA001,Malaria,2012,AFR,Africa,MDG,Madagascar,552
+MALARIA001,Malaria,2010,AFR,Africa,SEN,Senegal,553
+MALARIA001,Malaria,2005,AFR,Africa,TCD,Chad,558
+MALARIA001,Malaria,2003,AFR,Africa,BEN,Benin,560
+MALARIA001,Malaria,2001,AFR,Africa,MLI,Mali,562
+MALARIA001,Malaria,2004,AFR,Africa,GNB,Guinea-Bissau,565
+MALARIA001,Malaria,2005,AFR,Africa,GNB,Guinea-Bissau,565
+MALARIA001,Malaria,2008,AFR,Africa,RWA,Rwanda,566
+MALARIA001,Malaria,2006,AFR,Africa,NAM,Namibia,571
+MALARIA001,Malaria,2009,AFR,Africa,SEN,Senegal,574
+MALARIA001,Malaria,2003,SEAR,South-East Asia,BGD,Bangladesh,574
+MALARIA001,Malaria,2002,AFR,Africa,MDG,Madagascar,575
+MALARIA001,Malaria,2007,AFR,Africa,CAF,Central African Republic,578
+MALARIA001,Malaria,2009,AFR,Africa,GIN,Guinea,586
+MALARIA001,Malaria,2003,AFR,Africa,GIN,Guinea,586
+MALARIA001,Malaria,2000,AFR,Africa,MDG,Madagascar,591
+MALARIA001,Malaria,2008,AFR,Africa,BDI,Burundi,595
+MALARIA001,Malaria,2002,SEAR,South-East Asia,BGD,Bangladesh,598
+MALARIA001,Malaria,2011,EMR,Eastern Mediterranean,SDN,Sudan,612
+MALARIA001,Malaria,2007,AFR,Africa,TCD,Chad,617
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,SDN,Sudan,618
+MALARIA001,Malaria,2012,AFR,Africa,COG,Congo,623
+MALARIA001,Malaria,2000,AFR,Africa,GIN,Guinea,626
+MALARIA001,Malaria,2001,AFR,Africa,GNB,Guinea-Bissau,635
+MALARIA001,Malaria,2012,AFR,Africa,SEN,Senegal,649
+MALARIA001,Malaria,2009,AFR,Africa,CAF,Central African Republic,667
+MALARIA001,Malaria,2005,AFR,Africa,CAF,Central African Republic,668
+MALARIA001,Malaria,2010,AFR,Africa,RWA,Rwanda,670
+MALARIA001,Malaria,2004,AFR,Africa,BDI,Burundi,689
+MALARIA001,Malaria,2000,AFR,Africa,BDI,Burundi,691
+MALARIA001,Malaria,2003,AFR,Africa,GAB,Gabon,692
+MALARIA001,Malaria,2005,AFR,Africa,MDG,Madagascar,699
+MALARIA001,Malaria,2002,AFR,Africa,BEN,Benin,707
+MALARIA001,Malaria,2000,AFR,Africa,TCD,Chad,712
+MALARIA001,Malaria,2011,AFR,Africa,KEN,Kenya,713
+MALARIA001,Malaria,2004,AFR,Africa,MDG,Madagascar,715
+MALARIA001,Malaria,2010,AFR,Africa,GIN,Guinea,735
+MALARIA001,Malaria,2008,AFR,Africa,SEN,Senegal,741
+MALARIA001,Malaria,2001,AFR,Africa,MDG,Madagascar,742
+MALARIA001,Malaria,2011,AFR,Africa,GIN,Guinea,743
+MALARIA001,Malaria,2000,AFR,Africa,MLI,Mali,748
+MALARIA001,Malaria,2005,AFR,Africa,BDI,Burundi,776
+MALARIA001,Malaria,2002,AFR,Africa,GNB,Guinea-Bissau,780
+MALARIA001,Malaria,2012,AFR,Africa,KEN,Kenya,785
+MALARIA001,Malaria,2007,AFR,Africa,CIV,C?te d'Ivoire,797
+MALARIA001,Malaria,2006,AFR,Africa,ZWE,Zimbabwe,802
+MALARIA001,Malaria,2009,AFR,Africa,RWA,Rwanda,809
+MALARIA001,Malaria,2002,AFR,Africa,TZA,United Republic of Tanzania,815
+MALARIA001,Malaria,2003,AFR,Africa,MDG,Madagascar,817
+MALARIA001,Malaria,2006,AFR,Africa,TGO,Togo,819
+MALARIA001,Malaria,2002,AFR,Africa,MLI,Mali,826
+MALARIA001,Malaria,2005,AFR,Africa,CMR,Cameroon,836
+MALARIA001,Malaria,2006,AFR,Africa,TCD,Chad,837
+MALARIA001,Malaria,2011,AFR,Africa,CAF,Central African Republic,858
+MALARIA001,Malaria,2004,AFR,Africa,CAF,Central African Republic,859
+MALARIA001,Malaria,2006,AFR,Africa,CAF,Central African Republic,865
+MALARIA001,Malaria,2008,AFR,Africa,SLE,Sierra Leone,871
+MALARIA001,Malaria,2006,AFR,Africa,LBR,Liberia,877
+MALARIA001,Malaria,2010,AFR,Africa,TCD,Chad,886
+MALARIA001,Malaria,2011,AFR,Africa,COG,Congo,892
+MALARIA001,Malaria,2008,AFR,Africa,BEN,Benin,918
+MALARIA001,Malaria,2006,AFR,Africa,CMR,Cameroon,930
+MALARIA001,Malaria,2011,AFR,Africa,ETH,Ethiopia,936
+MALARIA001,Malaria,2004,AFR,Africa,BEN,Benin,944
+MALARIA001,Malaria,2001,AFR,Africa,TCD,Chad,957
+MALARIA001,Malaria,2010,AFR,Africa,BEN,Benin,964
+MALARIA001,Malaria,2012,AFR,Africa,GIN,Guinea,979
+MALARIA001,Malaria,2003,AFR,Africa,COD,Democratic Republic of the Congo,989
+MALARIA001,Malaria,2007,AFR,Africa,ETH,Ethiopia,991
+MALARIA001,Malaria,2004,AFR,Africa,MLI,Mali,1012
+MALARIA001,Malaria,2008,AFR,Africa,TCD,Chad,1018
+MALARIA001,Malaria,2003,AFR,Africa,TCD,Chad,1021
+MALARIA001,Malaria,2010,AFR,Africa,CIV,C?te d'Ivoire,1023
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,SDN,Sudan,1023
+MALARIA001,Malaria,2005,AFR,Africa,TGO,Togo,1024
+MALARIA001,Malaria,2003,AFR,Africa,ZWE,Zimbabwe,1044
+MALARIA001,Malaria,2010,EMR,Eastern Mediterranean,SSD,South Sudan,1053
+MALARIA001,Malaria,2005,AFR,Africa,ETH,Ethiopia,1086
+MALARIA001,Malaria,2003,AFR,Africa,NAM,Namibia,1106
+MALARIA001,Malaria,2009,AFR,Africa,ETH,Ethiopia,1121
+MALARIA001,Malaria,2008,EMR,Eastern Mediterranean,SDN,Sudan,1125
+MALARIA001,Malaria,2003,AFR,Africa,TGO,Togo,1130
+MALARIA001,Malaria,2003,AFR,Africa,GNB,Guinea-Bissau,1137
+MALARIA001,Malaria,2002,AFR,Africa,GAB,Gabon,1141
+MALARIA001,Malaria,2009,EMR,Eastern Mediterranean,SDN,Sudan,1142
+MALARIA001,Malaria,2006,AFR,Africa,NER,Niger,1150
+MALARIA001,Malaria,2008,AFR,Africa,ETH,Ethiopia,1169
+MALARIA001,Malaria,2009,AFR,Africa,BDI,Burundi,1183
+MALARIA001,Malaria,2004,AFR,Africa,TGO,Togo,1183
+MALARIA001,Malaria,2004,AFR,Africa,NAM,Namibia,1185
+MALARIA001,Malaria,2006,EMR,Eastern Mediterranean,SDN,Sudan,1193
+MALARIA001,Malaria,2012,AFR,Africa,TGO,Togo,1197
+MALARIA001,Malaria,2011,AFR,Africa,TCD,Chad,1220
+MALARIA001,Malaria,2006,AFR,Africa,BEN,Benin,1226
+MALARIA001,Malaria,2002,AFR,Africa,SEN,Senegal,1226
+MALARIA001,Malaria,2008,AFR,Africa,MLI,Mali,1227
+MALARIA001,Malaria,2001,AFR,Africa,TZA,United Republic of Tanzania,1228
+MALARIA001,Malaria,2007,AFR,Africa,TGO,Togo,1236
+MALARIA001,Malaria,2000,AFR,Africa,NER,Niger,1244
+MALARIA001,Malaria,2008,AFR,Africa,CIV,C?te d'Ivoire,1249
+MALARIA001,Malaria,2007,EMR,Eastern Mediterranean,SDN,Sudan,1254
+MALARIA001,Malaria,2000,AFR,Africa,SEN,Senegal,1275
+MALARIA001,Malaria,2005,AFR,Africa,MLI,Mali,1285
+MALARIA001,Malaria,2007,AFR,Africa,BEN,Benin,1290
+MALARIA001,Malaria,2003,AFR,Africa,MLI,Mali,1309
+MALARIA001,Malaria,2011,AFR,Africa,TGO,Togo,1314
+MALARIA001,Malaria,2012,EMR,Eastern Mediterranean,SSD,South Sudan,1321
+MALARIA001,Malaria,2005,AFR,Africa,NAM,Namibia,1325
+MALARIA001,Malaria,2004,AFR,Africa,NER,Niger,1333
+MALARIA001,Malaria,2006,AFR,Africa,ETH,Ethiopia,1357
+MALARIA001,Malaria,2007,AFR,Africa,NER,Niger,1358
+MALARIA001,Malaria,2012,AFR,Africa,TCD,Chad,1359
+MALARIA001,Malaria,2009,AFR,Africa,BEN,Benin,1375
+MALARIA001,Malaria,2011,AFR,Africa,CIV,C?te d'Ivoire,1389
+MALARIA001,Malaria,2001,AFR,Africa,TGO,Togo,1394
+MALARIA001,Malaria,2010,AFR,Africa,LBR,Liberia,1422
+MALARIA001,Malaria,2012,AFR,Africa,CAF,Central African Republic,1442
+MALARIA001,Malaria,2002,AFR,Africa,NAM,Namibia,1504
+MALARIA001,Malaria,2010,AFR,Africa,TGO,Togo,1507
+MALARIA001,Malaria,2001,AFR,Africa,SEN,Senegal,1515
+MALARIA001,Malaria,2004,AFR,Africa,SEN,Senegal,1524
+MALARIA001,Malaria,2012,AFR,Africa,CIV,C?te d'Ivoire,1534
+MALARIA001,Malaria,2009,AFR,Africa,TGO,Togo,1556
+MALARIA001,Malaria,2004,AFR,Africa,GHA,Ghana,1575
+MALARIA001,Malaria,2010,AFR,Africa,ETH,Ethiopia,1581
+MALARIA001,Malaria,2005,AFR,Africa,SEN,Senegal,1587
+MALARIA001,Malaria,2003,AFR,Africa,SEN,Senegal,1602
+MALARIA001,Malaria,2002,AFR,Africa,ETH,Ethiopia,1607
+MALARIA001,Malaria,2012,AFR,Africa,ETH,Ethiopia,1621
+MALARIA001,Malaria,2002,AFR,Africa,TGO,Togo,1661
+MALARIA001,Malaria,2006,AFR,Africa,SEN,Senegal,1678
+MALARIA001,Malaria,2001,AFR,Africa,ETH,Ethiopia,1681
+MALARIA001,Malaria,2001,AFR,Africa,GAB,Gabon,1693
+MALARIA001,Malaria,2009,AFR,Africa,LBR,Liberia,1706
+MALARIA001,Malaria,2001,AFR,Africa,GHA,Ghana,1717
+MALARIA001,Malaria,2012,AFR,Africa,LBR,Liberia,1725
+MALARIA001,Malaria,2001,AFR,Africa,NAM,Namibia,1728
+MALARIA001,Malaria,2009,AFR,Africa,SLE,Sierra Leone,1734
+MALARIA001,Malaria,2011,AFR,Africa,BEN,Benin,1753
+MALARIA001,Malaria,2007,AFR,Africa,RWA,Rwanda,1772
+MALARIA001,Malaria,2007,AFR,Africa,MLI,Mali,1782
+MALARIA001,Malaria,2005,EMR,Eastern Mediterranean,SDN,Sudan,1789
+MALARIA001,Malaria,2004,AFR,Africa,ZWE,Zimbabwe,1809
+MALARIA001,Malaria,2007,AFR,Africa,CMR,Cameroon,1811
+MALARIA001,Malaria,2004,EMR,Eastern Mediterranean,SDN,Sudan,1814
+MALARIA001,Malaria,2002,AFR,Africa,ZWE,Zimbabwe,1844
+MALARIA001,Malaria,2012,AFR,Africa,MLI,Mali,1894
+MALARIA001,Malaria,2006,AFR,Africa,MLI,Mali,1914
+MALARIA001,Malaria,2005,AFR,Africa,ZWE,Zimbabwe,1916
+MALARIA001,Malaria,2007,AFR,Africa,SEN,Senegal,1935
+MALARIA001,Malaria,2000,AFR,Africa,GAB,Gabon,2016
+MALARIA001,Malaria,2005,AFR,Africa,GHA,Ghana,2037
+MALARIA001,Malaria,2005,AFR,Africa,NER,Niger,2060
+MALARIA001,Malaria,2003,AFR,Africa,GHA,Ghana,2103
+MALARIA001,Malaria,2002,EMR,Eastern Mediterranean,SDN,Sudan,2125
+MALARIA001,Malaria,2011,AFR,Africa,MLI,Mali,2128
+MALARIA001,Malaria,2003,AFR,Africa,ETH,Ethiopia,2138
+MALARIA001,Malaria,2002,AFR,Africa,COD,Democratic Republic of the Congo,2152
+MALARIA001,Malaria,2009,AFR,Africa,NER,Niger,2159
+MALARIA001,Malaria,2000,EMR,Eastern Mediterranean,SDN,Sudan,2162
+MALARIA001,Malaria,2011,AFR,Africa,BDI,Burundi,2233
+MALARIA001,Malaria,2003,AFR,Africa,NER,Niger,2248
+MALARIA001,Malaria,2001,EMR,Eastern Mediterranean,SDN,Sudan,2252
+MALARIA001,Malaria,2012,AFR,Africa,BEN,Benin,2261
+MALARIA001,Malaria,2012,AFR,Africa,BDI,Burundi,2263
+MALARIA001,Malaria,2009,AFR,Africa,MLI,Mali,2331
+MALARIA001,Malaria,2004,AFR,Africa,RWA,Rwanda,2362
+MALARIA001,Malaria,2001,AFR,Africa,NER,Niger,2366
+MALARIA001,Malaria,2008,AFR,Africa,UGA,Uganda,2372
+MALARIA001,Malaria,2002,AFR,Africa,GHA,Ghana,2376
+MALARIA001,Malaria,2008,AFR,Africa,NER,Niger,2461
+MALARIA001,Malaria,2003,EMR,Eastern Mediterranean,SDN,Sudan,2479
+MALARIA001,Malaria,2006,AFR,Africa,RWA,Rwanda,2486
+MALARIA001,Malaria,2005,AFR,Africa,RWA,Rwanda,2581
+MALARIA001,Malaria,2008,AFR,Africa,TGO,Togo,2663
+MALARIA001,Malaria,2010,AFR,Africa,BDI,Burundi,2677
+MALARIA001,Malaria,2003,AFR,Africa,RWA,Rwanda,2679
+MALARIA001,Malaria,2002,AFR,Africa,NER,Niger,2769
+MALARIA001,Malaria,2011,AFR,Africa,NER,Niger,2802
+MALARIA001,Malaria,2012,AFR,Africa,MOZ,Mozambique,2818
+MALARIA001,Malaria,2012,AFR,Africa,NER,Niger,2825
+MALARIA001,Malaria,2012,AFR,Africa,GHA,Ghana,2855
+MALARIA001,Malaria,2010,AFR,Africa,MLI,Mali,3006
+MALARIA001,Malaria,2011,AFR,Africa,MOZ,Mozambique,3086
+MALARIA001,Malaria,2006,AFR,Africa,GHA,Ghana,3125
+MALARIA001,Malaria,2002,AFR,Africa,RWA,Rwanda,3167
+MALARIA001,Malaria,2012,AFR,Africa,CMR,Cameroon,3209
+MALARIA001,Malaria,2011,AFR,Africa,GHA,Ghana,3259
+MALARIA001,Malaria,2004,AFR,Africa,ETH,Ethiopia,3327
+MALARIA001,Malaria,2011,AFR,Africa,NGA,Nigeria,3353
+MALARIA001,Malaria,2010,AFR,Africa,MOZ,Mozambique,3354
+MALARIA001,Malaria,2001,AFR,Africa,MWI,Malawi,3355
+MALARIA001,Malaria,2009,AFR,Africa,GHA,Ghana,3378
+MALARIA001,Malaria,2004,AFR,Africa,MWI,Malawi,3457
+MALARIA001,Malaria,2011,AFR,Africa,SLE,Sierra Leone,3573
+MALARIA001,Malaria,2012,AFR,Africa,SLE,Sierra Leone,3611
+MALARIA001,Malaria,2012,AFR,Africa,ZMB,Zambia,3705
+MALARIA001,Malaria,2009,AFR,Africa,MOZ,Mozambique,3747
+MALARIA001,Malaria,2008,AFR,Africa,ZMB,Zambia,3781
+MALARIA001,Malaria,2011,AFR,Africa,CMR,Cameroon,3808
+MALARIA001,Malaria,2000,AFR,Africa,COD,Democratic Republic of the Congo,3856
+MALARIA001,Malaria,2010,AFR,Africa,GHA,Ghana,3859
+MALARIA001,Malaria,2009,AFR,Africa,ZMB,Zambia,3862
+MALARIA001,Malaria,2008,AFR,Africa,GHA,Ghana,3889
+MALARIA001,Malaria,2010,AFR,Africa,NER,Niger,3929
+MALARIA001,Malaria,2002,AFR,Africa,BFA,Burkina Faso,4032
+MALARIA001,Malaria,2002,AFR,Africa,NGA,Nigeria,4092
+MALARIA001,Malaria,2004,AFR,Africa,BFA,Burkina Faso,4205
+MALARIA001,Malaria,2001,AFR,Africa,BFA,Burkina Faso,4233
+MALARIA001,Malaria,2010,AFR,Africa,NGA,Nigeria,4238
+MALARIA001,Malaria,2006,AFR,Africa,UGA,Uganda,4252
+MALARIA001,Malaria,2001,AFR,Africa,RWA,Rwanda,4275
+MALARIA001,Malaria,2001,AFR,Africa,NGA,Nigeria,4317
+MALARIA001,Malaria,2008,AFR,Africa,MOZ,Mozambique,4424
+MALARIA001,Malaria,2010,AFR,Africa,CMR,Cameroon,4536
+MALARIA001,Malaria,2011,AFR,Africa,ZMB,Zambia,4540
+MALARIA001,Malaria,2007,AFR,Africa,GHA,Ghana,4622
+MALARIA001,Malaria,2003,AFR,Africa,MWI,Malawi,4767
+MALARIA001,Malaria,2010,AFR,Africa,ZMB,Zambia,4834
+MALARIA001,Malaria,2003,AFR,Africa,BFA,Burkina Faso,4860
+MALARIA001,Malaria,2009,AFR,Africa,CMR,Cameroon,4943
+MALARIA001,Malaria,2005,AFR,Africa,MWI,Malawi,5070
+MALARIA001,Malaria,2005,AFR,Africa,BFA,Burkina Faso,5224
+MALARIA001,Malaria,2003,AFR,Africa,NGA,Nigeria,5343
+MALARIA001,Malaria,2012,AFR,Africa,MWI,Malawi,5516
+MALARIA001,Malaria,2012,AFR,Africa,AGO,Angola,5736
+MALARIA001,Malaria,2002,AFR,Africa,MWI,Malawi,5775
+MALARIA001,Malaria,2007,AFR,Africa,MOZ,Mozambique,5816
+MALARIA001,Malaria,2011,AFR,Africa,UGA,Uganda,5958
+MALARIA001,Malaria,2004,AFR,Africa,NGA,Nigeria,6032
+MALARIA001,Malaria,2000,AFR,Africa,GHA,Ghana,6108
+MALARIA001,Malaria,2007,AFR,Africa,ZMB,Zambia,6183
+MALARIA001,Malaria,2009,AFR,Africa,UGA,Uganda,6296
+MALARIA001,Malaria,2006,AFR,Africa,MWI,Malawi,6464
+MALARIA001,Malaria,2007,AFR,Africa,BFA,Burkina Faso,6472
+MALARIA001,Malaria,2006,AFR,Africa,ZMB,Zambia,6484
+MALARIA001,Malaria,2005,AFR,Africa,NGA,Nigeria,6494
+MALARIA001,Malaria,2012,AFR,Africa,UGA,Uganda,6585
+MALARIA001,Malaria,2006,AFR,Africa,NGA,Nigeria,6586
+MALARIA001,Malaria,2011,AFR,Africa,MWI,Malawi,6674
+MALARIA001,Malaria,2011,AFR,Africa,AGO,Angola,6909
+MALARIA001,Malaria,2011,AFR,Africa,BFA,Burkina Faso,7001
+MALARIA001,Malaria,2007,AFR,Africa,UGA,Uganda,7003
+MALARIA001,Malaria,2007,AFR,Africa,MWI,Malawi,7486
+MALARIA001,Malaria,2009,AFR,Africa,NGA,Nigeria,7522
+MALARIA001,Malaria,2008,AFR,Africa,CMR,Cameroon,7673
+MALARIA001,Malaria,2012,AFR,Africa,NGA,Nigeria,7734
+MALARIA001,Malaria,2005,AFR,Africa,ZMB,Zambia,7737
+MALARIA001,Malaria,2012,AFR,Africa,TZA,United Republic of Tanzania,7820
+MALARIA001,Malaria,2008,AFR,Africa,BFA,Burkina Faso,7834
+MALARIA001,Malaria,2012,AFR,Africa,BFA,Burkina Faso,7963
+MALARIA001,Malaria,2009,AFR,Africa,BFA,Burkina Faso,7982
+MALARIA001,Malaria,2008,AFR,Africa,MWI,Malawi,8048
+MALARIA001,Malaria,2006,AFR,Africa,BFA,Burkina Faso,8083
+MALARIA001,Malaria,2010,AFR,Africa,AGO,Angola,8114
+MALARIA001,Malaria,2010,AFR,Africa,SLE,Sierra Leone,8188
+MALARIA001,Malaria,2010,AFR,Africa,MWI,Malawi,8206
+MALARIA001,Malaria,2004,AFR,Africa,ZMB,Zambia,8289
+MALARIA001,Malaria,2010,AFR,Africa,UGA,Uganda,8431
+MALARIA001,Malaria,2008,AFR,Africa,NGA,Nigeria,8677
+MALARIA001,Malaria,2009,AFR,Africa,MWI,Malawi,8915
+MALARIA001,Malaria,2002,AFR,Africa,ZMB,Zambia,9021
+MALARIA001,Malaria,2010,AFR,Africa,BFA,Burkina Faso,9024
+MALARIA001,Malaria,2003,AFR,Africa,ZMB,Zambia,9178
+MALARIA001,Malaria,2001,AFR,Africa,ZMB,Zambia,9369
+MALARIA001,Malaria,2008,AFR,Africa,AGO,Angola,9465
+MALARIA001,Malaria,2001,AFR,Africa,AGO,Angola,9473
+MALARIA001,Malaria,2000,AFR,Africa,AGO,Angola,9510
+MALARIA001,Malaria,2007,AFR,Africa,AGO,Angola,9812
+MALARIA001,Malaria,2006,AFR,Africa,AGO,Angola,10220
+MALARIA001,Malaria,2007,AFR,Africa,NGA,Nigeria,10289
+MALARIA001,Malaria,2009,AFR,Africa,AGO,Angola,10530
+MALARIA001,Malaria,2011,AFR,Africa,TZA,United Republic of Tanzania,11806
+MALARIA001,Malaria,2008,AFR,Africa,TZA,United Republic of Tanzania,12434
+MALARIA001,Malaria,2004,AFR,Africa,AGO,Angola,12459
+MALARIA001,Malaria,2007,AFR,Africa,TZA,United Republic of Tanzania,12593
+MALARIA001,Malaria,2006,AFR,Africa,COD,Democratic Republic of the Congo,12970
+MALARIA001,Malaria,2004,AFR,Africa,COD,Democratic Republic of the Congo,13613
+MALARIA001,Malaria,2005,AFR,Africa,AGO,Angola,13768
+MALARIA001,Malaria,2007,AFR,Africa,COD,Democratic Republic of the Congo,14372
+MALARIA001,Malaria,2002,AFR,Africa,AGO,Angola,14434
+MALARIA001,Malaria,2003,AFR,Africa,TZA,United Republic of Tanzania,15251
+MALARIA001,Malaria,2005,AFR,Africa,COD,Democratic Republic of the Congo,15322
+MALARIA001,Malaria,2010,AFR,Africa,TZA,United Republic of Tanzania,15867
+MALARIA001,Malaria,2009,AFR,Africa,TZA,United Republic of Tanzania,16776
+MALARIA001,Malaria,2008,AFR,Africa,COD,Democratic Republic of the Congo,17940
+MALARIA001,Malaria,2009,AFR,Africa,CIV,C?te d'Ivoire,18156
+MALARIA001,Malaria,2005,AFR,Africa,TZA,United Republic of Tanzania,18322
+MALARIA001,Malaria,2004,AFR,Africa,TZA,United Republic of Tanzania,19859
+MALARIA001,Malaria,2006,AFR,Africa,TZA,United Republic of Tanzania,20962
+MALARIA001,Malaria,2009,AFR,Africa,COD,Democratic Republic of the Congo,21168
+MALARIA001,Malaria,2012,AFR,Africa,COD,Democratic Republic of the Congo,21601
+MALARIA001,Malaria,2010,AFR,Africa,COD,Democratic Republic of the Congo,23476
+MALARIA001,Malaria,2011,AFR,Africa,COD,Democratic Republic of the Congo,23748
+MALARIA001,Malaria,2004,AFR,Africa,KEN,Kenya,25403
+MALARIA001,Malaria,2010,AFR,Africa,KEN,Kenya,26017
+MALARIA001,Malaria,2003,AFR,Africa,AGO,Angola,38598
+MALARIA001,Malaria,2006,AFR,Africa,KEN,Kenya,40079
+MALARIA001,Malaria,2005,AFR,Africa,KEN,Kenya,44328
+MALARIA001,Malaria,2002,AFR,Africa,KEN,Kenya,47697
+MALARIA001,Malaria,2001,AFR,Africa,KEN,Kenya,48286
+MALARIA001,Malaria,2000,AFR,Africa,KEN,Kenya,48767
+MALARIA001,Malaria,2003,AFR,Africa,KEN,Kenya,51842

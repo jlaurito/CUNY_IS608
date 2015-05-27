@@ -1,0 +1,146 @@
+
+library(shiny)
+library(plyr)
+library(ggplot2)
+
+options(warn=-1)
+
+# The line below sets the working directory for Shiny server.
+# Please adjust this according to your file system.
+setwd('C:/Temp/BIM_Project_608')
+
+# We filter any prices that fall outside of 3 standard deviations from the mean.
+filterOutLiers <- function(df){
+  closePrice = df$Close
+  sdClose = sd(closePrice)
+  meanClose = mean(closePrice)
+  df <- df[df$Close < (3*sdClose + meanClose),]
+  if(3*sdClose < meanClose){ #Prices cannot be negetive.
+    df <- df[df$Close > (3*sdClose - meanClose),]
+  }
+  return(df)
+}
+
+# The function below calculates the mean returns of the price.
+calculateReturnsMean <- function(price){
+  returns = c()
+  for(i in 1:length(price)){
+    ret = (price[i] - price[i+1])/price[i+1]
+    returns <- append(returns, ret)
+  }
+  returns <- returns[!is.na(returns)]
+  return(mean(returns))
+  
+}
+
+# The variable below will cause the data to be loaded dynamically from the web
+# if it is set to true. The data is read from yahoo finance.
+# If the variable is set to false, the data will be read from a local file.
+webData = FALSE
+
+# This Function will create the URL in the right format to fetch data from Yahoo Finance. The URL will be 
+# dynamically created using the asset symbol passed to the function.
+createURL <- function(asset){
+  return(paste("http://real-chart.finance.yahoo.com/table.csv?s=", asset, "&a=00&b=03&c=1950&d=04&e=21&f=2015&g=m&ignore=.csv", sep=''))
+}
+
+# The following function will get data from the web.
+# The arg asset is the URL for Yahoo finance.
+getAndTidyData <- function(asset){
+  if(webData){
+    df <- read.csv(createURL(asset), header=TRUE, stringsAsFactors=FALSE)      
+  }else{
+    df <- read.csv('./data/SAP_500.csv', header=TRUE, stringsAsFactors=FALSE)
+  }
+  
+  # We will convert the date column from a String to a Date 
+  df$Date <- as.Date(df$Date, "%Y-%m-%d")
+  # Check for outliers
+  df <- filterOutLiers(df)
+  return(df)
+}
+
+# Read the years in which mid-term elections were held into a dataframe. Comment the below two lines to read the 
+# election years from a file.
+#df_election_years <- read.csv('./data/election_years.csv', stringsAsFactors=FALSE, header=TRUE)
+#election_years <- sort(df_election_years$Year)
+election_years <- c(1954, 1958, 1962, 1966, 1970, 1974, 1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010)
+
+# Read the SAP_500 data into a data frame dynamically from the web.
+# We will filter any prices that fall 3 standard deviations outside the mean. This will filter outliers.
+df <- getAndTidyData('%5EGSPC')
+
+# We will add seperate Year, Month and Day columns to the dataframe in order to simplify the calculations.
+df <- cbind(df, Year=as.numeric(substr(df$Date, 1, 4)))
+df <- cbind(df, Month=as.numeric(substr(df$Date, 6, 7)))
+df <- cbind(df, Day=as.numeric(substr(df$Date, 9, 10)))
+
+# We will be taking the data for Years ranging from 1953 to 2011.
+# This is because we have data for election years from 1954 to 2010. So we can see one year before and one after.
+df<-df[df$Year>=1953 & df$Year<=2011,]
+
+# We want to bin data from October of each year to the October of the following year.
+# This is because the bump in the market has been historically seen between the October
+# of the election year and the October of the following year.
+df<-df[!(df$Year==1953 & df$Month<10) & !(df$Year==2012 & df$Month<9),]
+
+# Initialize the first bin number.
+binCount <- 1953
+
+years <- sort(unique(df$Year))
+# We will now mark the bins. Each bin from Oct to Oct is named with the start year.
+# e.g. the bin marked 1954 starts from Oct 1954 to Oct 1955.
+# The column period will hold the bin numbers.
+# We now create the bins which will later be bound to the data frame.
+period <- c()
+for(year in years){
+  period<-append(period, rep(binCount,length(df[df$Year==year&df$Month>=10,]$Day)))
+  if(year != max(years)){
+    period<-append(period, rep(binCount,length(df[df$Year==(year+1)&df$Month<10,]$Day)))
+  }
+  binCount = binCount + 1
+}
+
+# Sort the bins in decreasing order.
+period <- sort(period, decreasing = TRUE)
+# Bind the bins numbers to the dataframe.
+df <- cbind(df,period)
+
+# Calculate the % returns for each bin.
+returns <- ddply(df, .(period), function(x) c(YearlyReturns=calculateReturnsMean(x$Close)*100))
+
+# We want to color the election years and non-election years with different colors.
+# The following section will do that.
+election_color <- c()
+for(year in years){
+  if(year%in%election_years){
+    election_color <- append(election_color, 'firebrick1')
+  }else{
+    election_color <- append(election_color, 'skyblue1')
+  }
+}
+# Add a column marking if this year is an election year.
+returns <- ddply(returns, .(period), function(x) c(YearlyReturns=x$YearlyReturns, 
+                                                   Sign=sign(x$YearlyReturns), IsElectionYear=(x$period%in%election_years)))
+# Mark each bin with the appropriate color depending on whether the bin is for election year  or non-election year.
+returns <- cbind(returns, election_color, stringsAsFactors=FALSE)
+
+#Write the computed returns for each period to a file. This file will be used by Google charts to generate its graphics.
+write.table(file='./www/returns.csv', x=subset(returns, select=c("period", "YearlyReturns")), col.names=FALSE, row.names=FALSE, na="")
+
+# Following is the Shiny server code that takes two years and plots the SAP_500 returns between that period.
+shinyServer(function(input, output){
+  outputPlot <- function(){
+    startYear <- input$startYear
+    endYear <- input$endYear
+    returns <- returns[returns$period>=startYear & returns$period<=endYear,]
+    plot1 <- ggplot(returns, aes(x = period, y = YearlyReturns, ymax=max(YearlyReturns)*1.05)) + 
+      geom_bar(stat = "identity", colour="white", fill=returns$election_color)+
+      xlab("Time period") +
+      ylab("% Returns") +
+      geom_text( aes( label = period), vjust = .5, colour ='black',angle=90, position = position_dodge(5), size = 4)
+    print(plot1)
+  }
+  # push to output for display
+  output$values <- renderPlot(outputPlot())
+})

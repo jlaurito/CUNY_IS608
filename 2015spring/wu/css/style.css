@@ -1,0 +1,109 @@
+		body {
+		  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		} 
+		
+		#barHeader {
+            color: #ffffff;
+        }
+
+        .sidebar {
+            background-color: #f5f5f5;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 51px;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+                display: block;
+                padding: 56px;
+                overflow-x: hidden;
+                overflow-y: auto; /*Scrollable contents if viewport is shorter than content.*/
+                border-right: 1px solid #eee;
+            }
+        }
+
+        /*Sidebar navigation*/
+        .nav-sidebar {
+            margin-right: -16px;
+            margin-bottom: 20px;
+            margin-left: -15px;
+        }
+
+            .nav-sidebar > li > a {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            .nav-sidebar > .active > a,
+            .nav-sidebar > .active > a:hover,
+            .nav-sidebar > .active > a:focus {
+                color: #fff;
+                background-color: #428bca;
+            }
+
+        .main {
+            padding: 20px;
+            float: right;
+        }
+
+        @media (min-width: 768px) {
+            .main {
+                /*padding-left: 200px;*/
+            }
+        }
+		
+		#chart p {
+		  font: Arial;
+		  font-size: 18px;
+		  text-indent: 160px;
+		  }
+  
+		
+		.axis text {
+		  font: 12px sans-serif;
+		}
+
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+		.bar {
+		  fill: steelblue;
+		  fill-opacity: .9;
+		}
+
+		.bar:hover {
+			fill: orange;
+		}
+		
+		<!-- label {
+		  position: absolute;
+		  top: 12px;
+		  right: 12px;
+		}  -->
+		
+
+		.line {
+		  fill: none;
+		  stroke: steelblue;
+		  stroke-width: 1.5px;
+		}
+		
+		#introduction {
+			padding-left: 5%;
+		
+		}	
+		
+		#statistic {
+			padding-left: 5%;
+		
+		}	
+		
+		

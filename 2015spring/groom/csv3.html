@@ -1,0 +1,113 @@
+<html>
+<meta charset = "utf-8">
+  <head>
+    <link href="freedom_map.css"/>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+    <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+    <script type="text/javascript" src="http://techslides.com/demos/d3/js/queue.v1.min.js"></script>
+    <script type="text/javascript" src="http://techslides.com/demos/d3/js/topojson.js"></script>
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"-->
+    <script type="text/javascript">
+      var csvRows;
+
+    	d3.csv("hdi_info.csv", function(data) {
+	
+			return{
+				country: data.name,
+				freedom: data.freedom,
+				hdi: data.hdi,
+        life: data.life_expectancy,
+        school: data.schooling_years,
+        income: data.income,
+        birthrate: data.birthrate
+
+			};
+			}, function(error, rows){
+          csvRows = rows;
+        });
+			
+        
+            // Load the Visualization API and the piechart package.
+            google.load("visualization", "1", {packages:["corechart"]});
+              google.setOnLoadCallback(drawChart);
+          function drawChart() {
+            drawSingleChart("chart_div", "birthrate", "life", "country", 50, 90);
+            drawSingleChart("chart_div2", "birthrate", "school", "country", 4, 13);
+            drawSingleChart("chart_div3", "birthrate", "income", "country", 5000, 120000);
+        
+          }
+
+          function drawSingleChart(chartDivName, hVar, vVar, name, vmin, vmax){
+
+            var dataArray = [];// = [['Freedom', 'HDI', 'Name']]lt
+            csvRows.forEach(function(row){
+              dataArray.push([parseInt(row[hVar]),  parseFloat(row[vVar]), row[name] + ":  " + hVar + " = " + row[hVar] + ", " + vVar + " = "+ row[vVar]]);
+            });
+
+            //var data = google.visualization.arrayToDataTable(dataArray);
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', hVar);
+            data.addColumn('number', 'HDI');
+            data.addColumn({type:'string', role:'tooltip'});
+            data.addRows(dataArray);
+
+            var options = {
+              title: hVar + " vs. " + vVar, 
+              hAxis: {title: hVar, minValue: 0, maxValue: 7},
+              vAxis: {title: vVar, minValue: vmin, maxValue: vmax},
+              legend: 'none',
+              trendlines: { 0: {} }
+            };
+
+            var chart = new google.visualization.ScatterChart(document.getElementById(chartDivName));
+
+            chart.draw(data, options);
+          }
+    </script>
+    <style>
+p{
+
+  font-family:  "Arial", sans-serif;
+}
+h1{
+
+  font-family:  "Arial", sans-serif;
+}
+h3{
+
+  font-family:  "Arial", sans-serif;
+}
+</style>
+ 
+  </head>
+
+  <body>
+    <h1>Birthrates Around the World</h1>
+    <a href="http://localhost:8000/CSV/csv.html">To see freedom data, click here</a>
+    <!-- <h3>Freedom levels range from 1 (very free) to 7 (not free at all)</h3> -->
+ <div id="map2"></div> 
+ <p>The above map represents the expected number of children a woman in any given country will have in her lifetime (most recent World Bank figures). We can see that there is a very stark gap between developed countries in North America, East Asia and Europe, and the developing countries in Africa and Southeast Asia. As a result, population in developing areas is expected to rise from around 5.9 billion today to 8.2 billion in 2050. India is expected to surpass China as the world's most populous country by 2028. By 2050, fast-growing Nigeria is expected to pass the USA as the world's 3rd most populous country, with over 440 million people. </p>
+<p>
+We can see that higher birthrates correlate with lower ratings in all three HDI factors. Higher birthrates do correlate with lower life expectancies, schooling years and income levels. Therefore, it may be wise for policy makers in developing countries to devote resources to family planning services and contraception.
+</p>
+
+<!--Div that will hold the charts-->
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-4" style="float:left">
+      <div id="chart_div" style="width:400; height:300"></div>
+    </div>
+    <div class = "col-lg-4" style="float:left">
+      <div id="chart_div2" style="width:400; height:300"></div>
+    </div>
+    <div class = "col-lg-4"  style="float:left">
+     <div id="chart_div3" style="width:400; height:300"></div>
+    </div>
+  </div>
+</div>
+<script type = "text/javascript" src="birthrate_map.js"></script>
+
+  </body>
+</html>

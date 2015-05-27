@@ -1,0 +1,195 @@
+<head>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="js/jquery.csv-0.71.js"></script>
+   <link rel="stylesheet" href="css/range_slider.css">
+<style>
+.slider-width100
+{
+    width: 100px;
+}
+</style>
+  <script type="text/javascript">
+ 
+  
+	var oldYear = 2000;
+  	function filterArray(array, pos, value) {
+	var newArray = [];
+	for (var i = 0; i < array.length; i++) {
+			if(array[i][pos]==value){
+				newArray.push(array[i]);
+			}
+		}
+		return newArray;
+	}
+	
+	function showValue(newValue)
+	{
+		
+		document.getElementById("range").innerHTML=newValue;
+	//	newId = "bubble_chart"+newValue;
+		document.getElementById("barchart_material"+oldYear).style.display='none'; 
+		document.getElementById("barchart_material"+newValue).style.display='block'; 
+		document.getElementById("piechart_diff"+oldYear).style.display='none'; 
+		document.getElementById("piechart_diff"+newValue).style.display='block'; 
+		oldYear=newValue;
+	}
+
+	function drawChart(){
+		drawBarChart();
+		drawPieChart();
+	}
+		google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+  	  years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012];
+
+      function drawBarChart() {
+	  
+	   $.get("data/malaria_data.csv", function(csvString) {
+	  
+      arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+		var temp=arrayData[0];	
+		for(j=0; j<years.length; j++){
+			//var temp=arrayData[0];
+			arrayData_year = filterArray(arrayData, 3, years[j]);
+			for(i=0; i<arrayData_year.length;i++){
+				arrayData_year[i].splice(3,2);
+			}
+			arrayData_year.unshift(['Country', 'Confirmation Number', 'Death Number']);
+
+			var options = {
+				width: 1200,
+				height: 1200,
+				fontSize:9,
+				isStacked: true
+			  };
+			console.log(arrayData_year);
+			var data = new  google.visualization.arrayToDataTable(arrayData_year);
+
+			var chart_id="barchart_material"+years[j];
+			var chart = new google.visualization.BarChart(document.getElementById(chart_id));
+
+			chart.draw(data, options);
+		}
+		});
+	//	document.getElementById("barchart_material2000").style.display="none";
+	//	document.getElementById("barchart_material2012").style.display="none";
+
+      }
+	  var arrayData_death;
+	  var arrayData_confirm;
+
+	  function drawPieChart() {
+	   $.get("data/malaria_data2.csv", function(csvString) {
+	  
+		  arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+			var temp=arrayData[0];	
+			for(j=0; j<years.length; j++){
+		
+			arrayData_year = filterArray(arrayData, 1, years[j]);
+			
+			
+			arrayData_confirm = new Array(arrayData_year.length+1);
+			arrayData_death = new Array(arrayData_year.length+1);
+			
+			for (var i = 0; i < arrayData_year.length+1; i++) {
+				arrayData_confirm[i] = new Array(2);
+				arrayData_death[i] = new Array(2);
+			}
+			arrayData_confirm[0][0]="Region";
+			arrayData_confirm[0][1]="Confirmed";
+			
+			arrayData_death[0][0]="Region";
+			arrayData_death[0][1]="Death";
+			
+			
+			for(i=0; i<arrayData_year.length;i++){
+				arrayData_confirm[i+1][0]=arrayData_year[i][0];
+				arrayData_death[i+1][0]=arrayData_year[i][0];
+
+				arrayData_confirm[i+1][1]=arrayData_year[i][2];
+				arrayData_death[i+1][1]=arrayData_year[i][3];
+
+
+			}
+			var data1 = new  google.visualization.arrayToDataTable(arrayData_confirm);
+			var data2 = new  google.visualization.arrayToDataTable(arrayData_death);
+
+
+			var options = { pieSliceText: 'value',
+							tooltip:{ text:'value'}};
+
+			var chartId = "piechart_diff"+years[j];
+			var chartDiff = new google.visualization.PieChart(document.getElementById(chartId));
+
+
+
+		var diffData = chartDiff.computeDiff(data2, data1);
+		chartDiff.draw(diffData, options);
+		}
+	});
+  }
+    </script>
+</head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<body>
+<div class="container">
+  <h2>World Health Data</h2>
+  <p>Report for Immunization, Life Expectancy and Malaria</p>                  
+  <ul class="nav nav-tabs" role="tablist">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Immunization</a></li>
+	<li><a href="index2.html">Life Expectancy</a></li>        
+    <li class="active"><a href="index3.html">Malaria</a></li>
+  </ul>
+</div>
+<h3>Malaria Report</h3>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=range min=2000 max=2012 value="0" id="range_id" step=1 onchange="showValue(this.value)" style="width:200px" align=center>
+&nbsp;&nbsp;&nbsp;&nbsp; <span id="range">2000</span>
+ </p>
+ <h4>Pie chart showing malaria report region wise</h4>
+
+  <span id='piechart_diff2000' style='width: 450px; display:block;'></span>
+  <span id='piechart_diff2001' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2002' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2003' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2004' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2005' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2006' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2007' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2008' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2009' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2010' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2011' style='width: 450px; display:none;'></span>
+  <span id='piechart_diff2012' style='width: 450px; display:none;'></span>
+
+  <hr>
+   <h4>Bar chart showing malaria report through out the world</h4>
+
+  <div id="barchart_material2000" style="display:block;"></div>
+  <div id="barchart_material2001" style="display:none;"></div>
+  <div id="barchart_material2002" style="display:none;"></div>
+  <div id="barchart_material2003" style="display:none;"></div>
+  <div id="barchart_material2004" style="display:none;"></div>
+  <div id="barchart_material2005" style="display:none;"></div>
+  <div id="barchart_material2006" style="display:none;"></div>
+  <div id="barchart_material2007" style="display:none;"></div>
+  <div id="barchart_material2008" style="display:none;"></div>
+  <div id="barchart_material2009" style="display:none;"></div>
+  <div id="barchart_material2010" style="display:none;"></div>
+  <div id="barchart_material2011" style="display:none;"></div>
+  <div id="barchart_material2012" style="display:none;"></div>
+
+<p>
+We can see that the malaria is getting increased in most of the African countries and the concerning factor is the mortality rate due to malaria is also getting increased in African countries. This may be one of the factor in life expecatncy in African countries.
+American countries improved a lot from 2000 to 2012 in reducing malaria cases.
+
+</p>
+
+
+
+</body>
+</html>

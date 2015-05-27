@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Teachers Turnover and Students Performance (based on NY State data)" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="stylesheet.css">
+
+<title>Teachers Turnover and Students Performance</title>
+<meta charset="utf-8">
+ <title>Independent Farms by County - Choropleth</title>
+ <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+ <script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>
+ <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+</head>
+
+<style>
+ 
+path {
+ stroke:white;
+ stroke-width: 1px;
+}
+ 
+body {
+ font-family: Arial, sans-serif;
+}
+ 
+.city {
+ font: 10px sans-serif;
+ font-weight: bold;
+}
+ 
+.legend {
+ font-size: 12px;
+}
+ 
+div.tooltip {
+ position: absolute;
+ text-align: center;
+ width: 150px;
+ height: 25px;
+ padding: 2px;
+ font-size: 10px;
+ background: #FFFFE0;
+ border: 1px;
+ border-radius: 8px;
+ pointer-events: none;
+}
+</style>
+
+<body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <h1 id="project_title">Teachers Turnover and Students Performance</h1>
+          <h2 id="project_tagline">Based on NY State data</h2>
+        </header>
+    </div>
+  <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+          <br>
+          <p>by Igor Balagula</p>
+          <br>
+          
+        <h3>Motivation</h3>
+        <p><b>The purpose of this project is to see if teachers turnover has a significant impact on student performance. Intuitively we feel that when teachers leave school it may have a negative impact on students performance for a number of reasons:<br>
+-	Overall morale may suffer<br>
+-	Students need to adjust to a different style of teaching<br>
+On the other hand, if a less-effective teacher leaves school and is replaced with a more-effective teacher, this may result in improved performance of students.
+</a> 
+        <br>
+
+
+        <h3>Data</h3>
+        <p><b>New York State Department of Education - 2013-2014 Report Card Database: </b> <a href="http://data.nysed.gov/downloads.php">Data Source Website</a> 
+        <br>
+        <h3>Methodology</h3>
+        <p>Teachers turnover rate is defined in the Staff dataset for each school in NY State. As the first step I aggregated turnover rate by NY State County in order to rank counties according to teachers turnover rate.</p>
+<p>In order to measure students ELA performance I used test results for 3-8 grade students for 2014 and aggregated proficiency level by County. Student is considered Proficient if he/she receives Level 3 or Level 4 scores on the ELA State test.</p>
+<p>Likewise in order to measure students Math performance I used test results for 3-8 grade students for 2014 and aggregated proficiency level by County. Student is considered Proficient if he/she receives Level 3 or Level 4 scores on the Math State test.
+</p>
+        <br>
+        <h3>Discussion</h3>
+        <p>Scatter plots show that there is no significant correlation between teachers turnover and students performance in ELA and Math State tests. Calculated R-squared values (-0.003 for ELA and 0.001 for Math) also confirm absence of correlation.
+One of the possible explanations of this result is that less-effective teachers are more likely to leave their jobs and often replaced with more-effective teachers. As a result, increase in quality of teaching makes up for a negative effect of teachers turnover.
+The result can also be attributed to the fact that both Turnover and Performance data were aggregated for entire counties. More detail view (by district or school) may produce different results. 
+</p>
+        <br>
+<h3>Limitations</h3>
+        <p>This project is mainly an exercise in data visualizations and does not imply any statistical rigor. There are many factors that may impact results. Among them:<br>
+-	School location (urban vs suburban)<br>
+-	Socio-economic status of school population (high-poverty vs low-poverty schools)<br>
+-	Different ways of aggregation of teachers turnover and students performance data<br>
+
+</p>
+
+
+
+<script type="text/javascript">
+ var width = 960,
+ height = 500;
+ var color_domain = [8, 10, 12, 14, 16, 18, 20]
+ var ext_color_domain = [0, 8, 10, 12, 14, 16, 18, 20]
+ var legend_labels = ["<8", "10+", "12+", "14+", "16+", "18+", "20+"]
+ var color = d3.scale.threshold()
+ .domain(color_domain)
+ .range(["#d0d6cd",  "#aabdaf",  "#84a491", "#5e8b73", "#4b7e64", "#387255", "#256546",  "#004d28"]);
+ 
+var div = d3.select("body").append("div")
+ .attr("class", "tooltip")
+ .style("opacity", 0);
+ 
+var svg = d3.select("body").append("svg")
+ .attr("width", width)
+ .attr("height", height)
+ .style("margin", "10px auto");
+var projection = d3.geo.mercator()
+   .center([-72, 43])
+    .rotate([4.4, 0])
+    .scale(4000)
+    .translate([width / 2, height / 2])
+    ;
+var path = d3.geo.path()
+    .projection(projection);
+
+ 
+queue()
+ .defer(d3.json, "us.json")
+ .defer(d3.csv, "data.csv")
+ .await(ready);
+ 
+function ready(error, us, data) {
+ var pairRateWithId = {};
+ var pairNameWithId = {};
+ 
+data.forEach(function(d) {
+ pairRateWithId[d.id] = +d.rate;
+ pairNameWithId[d.id] = d.name;
+ });
+ svg.append("g")
+ .attr("class", "county")
+ .selectAll("path")
+ .data(topojson.feature(us, us.objects.counties).features)
+ .enter().append("path")
+ .attr("d", path)
+ .style ( "fill" , function (d) {
+ return color (pairRateWithId[d.id]);
+ })
+ .style("opacity", 0.8)
+ .on("mouseover", function(d) {
+ d3.select(this).transition().duration(300).style("opacity", 1);
+ div.transition().duration(300)
+ .style("opacity", 1)
+ div.text(pairNameWithId[d.id] + " : " + pairRateWithId[d.id])
+ .style("left", (d3.event.pageX) + "px")
+ .style("top", (d3.event.pageY -30) + "px");
+ })
+ .on("mouseout", function() {
+ d3.select(this)
+ .transition().duration(300)
+ .style("opacity", 0.8);
+ div.transition().duration(300)
+ .style("opacity", 0);
+ })
+ 
+ };
+ 
+var legend = svg.selectAll("g.legend")
+ .data(ext_color_domain)
+ .enter().append("g")
+ .attr("class", "legend");
+ 
+var ls_w = 20, ls_h = 20;
+ legend.append("rect")
+ .attr("x", 20)
+ .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h;})
+ .attr("width", ls_w)
+ .attr("height", ls_h)
+ .style("fill", function(d, i) { return color(d); })
+ .style("opacity", 0.8);
+ 
+legend.append("text")
+ .attr("x", 50)
+ .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4;})
+ .text(function(d, i){ return legend_labels[i]; });
+ 
+</script>
+ 
+<p class=MsoNormal><span style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_2" o:spid="_x0000_i1025" type="#_x0000_t75" alt="Description: turnover_vs_ela.png"
+ style='width:468pt;height:467.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="word_converted_files/image003.png" o:title="turnover_vs_ela"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=623
+src="turnover_vs_ela.png"
+alt="Description: turnover_vs_ela.png"
+v:shapes="Picture_x0020_2"><![endif]></span></p>
+
+<p class=MsoNormal><span style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_2" o:spid="_x0000_i1025" type="#_x0000_t75" alt="Description: turnover_vs_math.png"
+ style='width:468pt;height:467.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="word_converted_files/image003.png" o:title="turnover_vs_math"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=623
+src="turnover_vs_math.png"
+alt="Description: turnover_vs_math.png"
+v:shapes="Picture_x0020_2"><![endif]></span></p> 
+
+<h3>Teachers Turnover by NY State County (% of all teachers)</h3>
+
+  
+</body>
+</html>

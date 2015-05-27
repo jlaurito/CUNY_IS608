@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+ 
+.grow rect {
+  stroke: black;
+  shape-rendering: crispEdges;
+  fill: none;
+}
+ 
+ 
+.axis text {
+  font: 10px sans-serif;
+}
+ 
+.legend text {
+	font: 12px sans-serif;
+}
+ 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+ 
+.x.axis path,
+.x.axis line {
+  display: none;
+}
+ 
+ 
+.y.axis path,
+.y.axis line {
+  display: none;
+}
+ 
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<body>
+<div class="container">
+  <h2>World Health Data</h2>
+  <p>Report for Immunization, Life Expectancy and Malaria</p>                 
+  <ul class="nav nav-tabs" role="tablist">
+     <li><a href="home.html">Home</a></li>
+    <li class="active"><a href="index.html">Immunization</a></li>
+    <li><a href="index2.html">Life Expectancy</a></li>
+    <li><a href="index3.html">Malaria</a></li>        
+  </ul>
+</div>
+<h3>Immunization Report</h3>
+<p>Select a type of immunization:
+<select id="select_immunization" onchange=selecetOnChange(); style="width:200px;">
+  <option value="bcg">BCG</option>
+  <option value="dtp3">DTP 3</option>
+  <option value="hepB">Hepatitis B</option>
+  <option value="hib3">Hib 3</option>
+  <option value="measles">Measles</option>
+  <option value="neonatal">Neonatal Tetanus</option>
+  <option value="polio">Polio</option>
+</select>
+</p>
+<h4>Immunization Analysis on World Map</h4>
+<div align="center">
+		<div style="display:block;"  id = "map_1980">
+		<b>1980</b>
+		<div id="chart_div1980" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;" id = "map_1984">
+		<b>1984</b>
+		<div id="chart_div1984" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;"  id = "map_1988">
+		<b>1988</b>
+		<div id="chart_div1988" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;" id = "map_1992">
+		<b>1992</b>
+		<div id="chart_div1992" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;" id = "map_1996">
+		<b>1996</b>
+		<div id="chart_div1996" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;" id = "map_2000">
+		<b>2000</b>
+		<div id="chart_div2000" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;" id = "map_2004">
+		<b>2004</b>
+		<div id="chart_div2004" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;" id = "map_2008">
+		<b>2008</b>
+		<div id="chart_div2008" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+		<div style="display:none;" id = "map_2012">
+		<b>2012</b>
+		<div id="chart_div2012" style = "width: 700px; 	height: 450px;"></div>
+		</div>
+
+	
+<input type="range"  min="1980" max="2012" value="0" step="4" onchange="showValue(this.value)" style="width:200px" />
+<span id="range">1980</span>
+</div>
+
+<hr>
+
+<h4>Immunization analysis on heatmap</h4>
+<svg class="chart"></svg>
+
+<hr>
+
+<h4>Immunization analysis using Motion Chart</h4>
+
+<div id="chart_div" style="width: 600px; height: 600px;"></div>
+
+<p>
+We can see that we don't have no BCG immunization record for the most of North-America.
+From the above map plotting we can say that the immunization rate is getting increased with year. There is a sudden drop of BCG immunization from the year 1996 to 2000 in Kazakhstan.
+There is also a sudden drop of DTP3 immunization from 2010 to 2012 Ukraine.
+There is very contradicting nature in the immunization record for Hepatitis B.
+Looks like there is not too much custom of Hib 3 immunization all over the world in 90s. But at the end of 2012 most of the world has a good performance on this immunization.
+Most part of Africa and some of the countries of South-East Asia has low performance on Measles immunization with respect to the rest of the world.
+We dont have much of the records on Tetanus immunization.
+Almost most of the world is getting better in Polio immunization.
+Sweeden always maintained a low profile on immunization.
+<br\>
+From the motion chart we can say that there is no dependency of immunization with respect to the income group.
+</p>
+
+</body>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script src="js/jquery.csv-0.71.js"></script>
+	<script src="js/jssor.slider.mini.js"></script>
+	 <link rel="stylesheet" href="css/foundation.css">
+
+<script>
+	
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d, i, j) {
+    return "<span style='color:red'>"+d.value+"%</span>";
+  });
+  
+var totWidth = 1100,
+    totHeight = totWidth * 2.2,
+    margin = {top: 80, right: 30, bottom: 80, left: 200},
+    width = totWidth - (margin.left + margin.right),
+    height = totHeight - (margin.top + margin.bottom);
+    
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width]);
+    
+var y = d3.scale.ordinal()
+    .rangeRoundBands([height, 0]);
+  
+var xAxis = d3.svg.axis()
+  	.scale(x)
+  	.orient("top");
+ 
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    
+var chart = d3.select(".chart")
+    .attr("width", totWidth)
+    .attr("height", totHeight)
+  .append("g")
+    .attr("transform","translate("+margin.left+","+margin.top+")");
+
+var color = d3.scale.category10();
+
+var labels;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+chart.call(tip);
+var file="bcg_spread.csv";
+
+showHeatMap();
+
+function selecetOnChange(){
+	showHeatMap();
+	drawMarkersMap();
+	drawChart();
+}
+
+function showHeatMap(){
+	chart.selectAll("*").remove();
+	
+	value=document.getElementById("select_immunization").value;
+	var file="data/bcg_spread.csv";
+	
+	if(value=="bcg"){
+		file="data/bcg_spread.csv";
+	}
+	if(value=="dtp3"){
+		file="data/dtp3_spread.csv";
+	}
+	if(value=="hepB"){
+		file="data/hepB_spread.csv";
+	}
+	if(value=="hib3"){
+		file="data/hib3_spread.csv";
+	}
+	if(value=="measles"){
+		file="data/measles_spread.csv";
+	}
+	if(value=="neonatal"){
+		file="data/neonatal_spread.csv";
+	}
+	if(value=="polio"){
+		file="data/polio_spread.csv";
+	}
+	d3.csv(file/*, type*/, function(error, data) {
+ 
+	var grpNames = d3.keys(data[0]).filter(function(key) { return key !== "Country"; });
+ 
+  data.forEach(function(d) {
+    d.groups = grpNames.map(function(name) { return {name: name, value: +d[name]}; });
+  });
+	
+  y.domain(data.map(function(d) { return d.Country; }));
+  var allcols = Object.keys(data[0]),
+  	cols = allcols.slice(1,allcols.length);
+  x.domain(grpNames);
+      
+  chart.append("g")
+      .attr("class","x axis")
+      .attr("transform","translate(0,0)")
+      .call(xAxis)
+        .selectAll("text")
+	      	.style("text-anchor","start")
+	      	.attr("transform","rotate(-90)")
+	      	.attr("dx","0.5em")
+	      	.attr("dy",x.rangeBand()/2-10)
+   ;	
+ 
+  chart.append("g")
+      .attr("class","y axis")
+      .call(yAxis)
+   ;
+    
+  var grows = chart.selectAll(".grow")  		
+  		.data(data)
+  	.enter().append("g")
+  		.attr("class","grow")
+  		.attr("transform", function(d) { return "translate(0," + y(d.Country) + ")"; })
+  	;
+  	
+  var gcells = grows.selectAll(".gcell")
+  		.data(function(d) { return d.groups; })
+  	.enter() .append("g")
+  		.attr("transform", function(d,i,j) {return "translate(" + i*x.rangeBand() + ",0)" ; } )
+  		.attr("class","gcell")
+  	;
+	
+	gcells
+		.append("rect")
+			.attr("x",0)
+			.attr("y",0)
+			.attr("height",y.rangeBand())
+			.attr("width",x.rangeBand())
+			.style("fill-opacity",1)
+			.style("fill", function(d,i,j) {
+					if ((i % 2 != 0 && j % 2 == 0))
+						{return "#dddddd";}
+					else if (i % 2 != 0 || j % 2 == 0) 
+						{return "#eeeeee";} 
+					else 
+						{return "#ffffff";}
+					}
+				)
+	;	
+  
+  rmax = Math.min(y.rangeBand()/2-4,x.rangeBand()/2-4)
+  
+	 labels = gcells.append("text")
+	  .text(function(d) { return d.name; })
+	  .style("visibility", "hidden");
+	  
+	gcells.append("circle")
+    	.attr("cy",y.rangeBand()/2)
+    	.attr("cx",x.rangeBand()/2)
+    	.attr("r", function(d) {
+					var rind = d.value;
+					if(rind=="null")
+					{
+						return 0;
+					}
+					return rind/20;
+					}
+				)
+    	.style("fill", function(d,i,j) {
+					var gbval = 1+Math.floor(255 - (255/100*(j-1)));
+					var gbval2 = 1+Math.floor(255 - (255/100*(j+1)));
+					var gbval3 = 1+Math.floor(255 - (255/100*(j-2)));
+					if(j%2==0){
+						return "rgb(" + 255 + "," + 100 + "," + 100 + ")";
+					}
+					else{
+						return "rgb(" + 100 + "," + 100 + "," + 255 + ")";
+
+					}
+					}
+				)
+    	.style("stroke","black")
+		.on('mouseover', tip.show)
+		.on('mouseout', tip.hide)
+		;
+
+
+ 
+ }); 
+} 
+ 
+</script>
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart','corechart','table']});
+	var oldYear = 1980;
+	var data;
+	var arrayData;
+	var cleanData;
+     google.setOnLoadCallback(drawMarkersMap);
+	
+	
+	function filterArray(array, pos, value) {
+	var newArray = [];
+	for (var i = 0; i < array.length; i++) {
+			if(array[i][pos]==value){
+				newArray.push(array[i]);
+			}
+		}
+		return newArray;
+	}
+      function drawMarkersMap() {
+      //$(function() {
+         // grab the CSV
+		 var file="BCG Immunization Coverage Among 1-year-oldsd.csv";
+		var value=document.getElementById("select_immunization").value;
+
+		if(value=="bcg"){
+			file="data/BCG Immunization Coverage Among 1-year-olds.csv";
+		}
+		if(value=="dtp3"){
+			file="data/DTP3 Immunization Coverage Among 1-year-olds.csv";
+		}
+		if(value=="hepB"){
+			file="data/Hepatitis B Immunization Coverage Among 1-year-olds.csv";
+		}
+		if(value=="hib3"){
+			file="data/Hib3 Immunization Coverage Among 1-year-olds.csv";
+		}
+		if(value=="measles"){
+			file="data/Measles Immunization Coverage Among 1-year-olds.csv";
+		}
+		if(value=="neonatal"){
+			file="data/Neonatal tetanus Immunization Coverage.csv";
+		}
+		if(value=="polio"){
+			file="data/Polio Immunization Coverage Among 1-year-olds.csv";
+		}
+
+         $.get(file, function(csvString) {
+            // display the contents of the CSV
+            arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+			
+			years = [1980,1984,1988,1992,1996,2000,2004,2008,2012];
+			
+			for(j=0; j<years.length; j++){
+			arrayData_year = filterArray(arrayData, 2, years[j]);
+			
+			cleanData = new Array(arrayData_year.length);
+
+			for (var i = 0; i <= arrayData_year.length; i++) {
+				cleanData[i] = new Array(2);
+			}
+			cleanData[0][0] = "Country";
+			cleanData[0][1] = "Percent-value";
+			for(var i=0; i<arrayData_year.length;i++){ 
+				cleanData[i+1][0] = arrayData_year[i][8]; 
+				cleanData[i+1][1] = arrayData_year[i][9];
+
+			}
+	//		data_1980 = new  google.visualization.arrayToDataTable(cleanData);
+
+			data = new  google.visualization.arrayToDataTable(cleanData);
+
+		  var options = {
+			  colorAxis: {colors: ['#ffffcc', '#a1dab4', '#41b6c4', '#225ea8']},
+			  backgroundColor: '#525252',
+			  datalessRegionColor: '#fdcc8a',
+			  defaultColor: '#f5f5f5',
+			  'width':800,
+              'height':450
+		  };
+		chart_id = "chart_div"+years[j];
+		  var chart = new google.visualization.GeoChart(document.getElementById(chart_id));
+		  chart.draw(data, options);
+		//  document.getElementById(chart_id).className='map_style';
+
+		}
+         });
+		 
+
+    //  });
+	
+	
+    };
+	function showValue(newValue)
+	{
+		document.getElementById("range").innerHTML=newValue;
+		newId = "map_"+newValue;
+		document.getElementById("map_"+oldYear).style.display='none'; 
+		document.getElementById(newId).style.display='block'; 
+	//	document.getElementById(newId).className ='map_style'; 
+		oldYear=newValue;
+	}
+    </script>
+	<script type="text/javascript">
+      google.load("visualization", "1", {packages:["motionchart"]});
+      google.setOnLoadCallback(drawChart);
+	  function drawChart() {
+	  
+	  var file="bcg.csv";
+		var value=document.getElementById("select_immunization").value;
+
+		if(value=="bcg"){
+			file="data/bcg.csv";
+		}
+		if(value=="dtp3"){
+			file="data/dtp3.csv";
+		}
+		if(value=="hepB"){
+			file="data/hepB.csv";
+		}
+		if(value=="hib3"){
+			file="data/hib3.csv";
+		}
+		if(value=="measles"){
+			file="data/measles.csv";
+		}
+		if(value=="neonatal"){
+			file="data/neonatal.csv";
+		}
+		if(value=="polio"){
+			file="data/polio.csv";
+		}
+
+
+         $.get(file, function(csvString) {
+            // display the contents of the CSV
+            arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar}); 
+			data = new  google.visualization.arrayToDataTable(arrayData);
+			
+
+        var chart = new google.visualization.MotionChart(document.getElementById('chart_div'));
+
+        chart.draw(data, {width: 1000, height:600});
+      
+	  });
+	  }
+    </script>

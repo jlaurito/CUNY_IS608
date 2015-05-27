@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="jquery.csv-0.71.min.js"></script>
+     <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      //google.setOnLoadCallback(drawChart);
+google.setOnLoadCallback(drawChartForReturns);
+function test(){
+	alert("ok 1");
+
+	$("#chart_div").text("allText");
+
+$.get('pp.csv', function(data) {
+   alert(data);
+   $.csv.toArray(data);
+}, 'text');
+alert("ok 2");
+}
+
+	  var mydata;
+
+function drawChartForReturns() {
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Year');
+		data.addColumn('number', 'Returns');
+		var newdata = new Array(mydata.length);
+
+		for ( var i = 0, l = mydata.length; i < l; i++ ) {
+		var splited = mydata[i][0].split(" ");
+		newdata[i] = new Array(2);
+		newdata[i][0]=new Date(splited[0],9,1);
+		newdata[i][1]=parseFloat(splited[1]);
+		}
+		data.addRows(newdata);
+        // Set chart options
+        var options = {'title':'SAP 500 returns per year',
+                       'width':700,
+                       'height':700};
+
+        // Instantiate and draw our chart, passing in some options.
+        // var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+		var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+	  
+	  $.ajax({
+    url: "returns.csv",
+    async: false,
+    success: function (csvd) {
+        data = $.csv2Array(csvd);
+		mydata=data;
+    },
+    dataType: "text",
+    complete: function () {
+ 		$("#test_div").text('Test message here');
+    }
+});
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>

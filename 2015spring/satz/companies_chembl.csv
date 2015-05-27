@@ -1,0 +1,817 @@
+co_stem_id,res_stem_id,company,country,previous_company
+1,646,Xenome,Australia,\N
+2,121,Cellmid,Australia,\N
+3,630,Virax,Australia,\N
+4,34,AMRAD,Australia,\N
+5,161,CSL Ltd,Australia,\N
+6,440,Novogen,Australia,\N
+7,204,Elbion,Belgium,\N
+8,248,Galapagos,Belgium,\N
+9,71,Novartis,Switzerland,Ciba Geigy
+10,119,UCB,Belgium,\N
+11,406,UCB,Belgium,\N
+12,464,UCB,Belgium,\N
+13,621,UCB,Belgium,\N
+14,163,Cytochroma,Canada,\N
+15,81,BioChem Pharma,Canada,\N
+16,269,Hemosol,Canada,\N
+17,300,Inex Pharmaceutical,Canada,\N
+18,303,Inflazyme,Canada,\N
+19,310,Inflazyme,Canada,\N
+20,443,Nymox Pharmaceutical,Canada,\N
+21,44,Topotarget,Denmark,\N
+22,496,Topotarget,Denmark,\N
+23,557,Santaris ,Denmark,\N
+24,243,GEA,Denmark,\N
+25,346,Leo Pharma,Denmark,\N
+26,464,Leo Pharma,Denmark,\N
+27,359,Lundbeck,Denmark,\N
+28,436,NeuroSearch,Denmark,\N
+29,425,Novo-Nordisk,Denmark,\N
+30,426,Novo-Nordisk,Denmark,\N
+31,428,Novo-Nordisk,Denmark,\N
+32,228,Orion Pharma,Finland,\N
+33,398,Orion Pharma,Finland,\N
+34,454,Orion Pharma,Finland,\N
+35,640,SanofiAventis,France,\N
+36,245,GenFit,France,\N
+37,5,AB Science,France,\N
+38,87,Beaufour-Ipsen,France,\N
+39,96,Beaufour-Ipsen,France,\N
+40,98,Bioprojet Pharma,France,\N
+41,230,FGene,France,\N
+42,347,Fournier,France,\N
+43,301,Innate Pharma,France,\N
+44,297,Innothera Industries,France,\N
+45,314,Jouveinal Labs.,France,\N
+46,235,Labs. Delagrange,France,\N
+47,157,Labs. Lafon,France,\N
+48,342,Lacer,France,\N
+49,348,LFB Biotechnologies,France,\N
+50,439,Neurotech,France,\N
+51,411,NicOx,France,\N
+52,224,Pierre Fabre,France,\N
+53,564,Pierre Fabre,France,\N
+54,109,SanofiAventis,France,\N
+55,144,SanofiAventis,France,\N
+56,170,SanofiAventis,France,\N
+57,180,SanofiAventis,France,\N
+58,183,SanofiAventis,France,\N
+59,273,SanofiAventis,France,\N
+60,274,SanofiAventis,France,\N
+61,341,SanofiAventis,France,\N
+62,370,SanofiAventis,France,\N
+63,372,SanofiAventis,France,\N
+64,380,SanofiAventis,France,\N
+65,464,SanofiAventis,France,\N
+66,501,SanofiAventis,France,\N
+67,506,SanofiAventis,France,\N
+68,518,SanofiAventis,France,\N
+69,521,SanofiAventis,France,\N
+70,545,SanofiAventis,France,\N
+71,552,SanofiAventis,France,\N
+72,563,SanofiAventis,France,\N
+73,639,SanofiAventis,France,William H. orerR
+74,654,SanofiAventis,France,\N
+75,518,Servier,France,\N
+76,21,Aeterna Zentaris,Germany,\N
+77,43,Apogenix,Germany,\N
+78,179,DeveloGen,Germany,\N
+79,258,Ganymed,Germany,\N
+80,315,Jerini,Germany,\N
+81,327,KeyNeurotek,Germany,\N
+82,430,Noxxon Pharma,Germany,\N
+83,625,VasoPharm,Germany,\N
+84,502,Agennix,Germany,\N
+85,63,Asta Medica,Germany,\N
+86,173,Asta Medica,Germany,\N
+87,11,BASF,Germany,\N
+88,74,BASF,Germany,\N
+89,76,Bayer-Schering,Germany,\N
+90,140,Bayer-Schering,Germany,\N
+91,226,Bayer-Schering,Germany,\N
+92,541,Bayer-Schering,Germany,\N
+93,604,Bayer-Schering,Germany,\N
+94,614,Bayer-Schering,Germany,\N
+95,102,Biotest,Germany,\N
+96,85,Boehringer-Ingelheim,Germany,\N
+97,86,Boehringer-Ingelheim,Germany,\N
+98,107,Boehringer-Ingelheim,Germany,\N
+99,329,Boehringer-Ingelheim,Germany,\N
+100,564,Boehringer-Ingelheim,Germany,\N
+101,590,Boehringer-Ingelheim,Germany,\N
+102,637,Boehringer-Ingelheim,Germany,\N
+103,219,Evotec,Germany,\N
+104,227,Fresenius,Germany,\N
+105,349,Fresenius,Germany,\N
+106,260,Godecke,Germany,\N
+107,261,Godecke,Germany,\N
+108,127,Grunenthal,Germany,\N
+109,318,Klinge Pharma,Germany,\N
+110,103,Knoll,Germany,\N
+111,359,Knoll,Germany,\N
+112,513,Knoll,Germany,\N
+113,360,Luitpold Pharma,Germany,\N
+114,51,Merck-Serono,Germany,\N
+115,206,Merck-Serono,Germany,\N
+116,207,Merck-Serono,Germany,\N
+117,208,Merck-Serono,Germany,\N
+118,345,Merck-Serono,Germany,\N
+119,354,Merck-Serono,Germany,\N
+120,356,Merck-Serono,Germany,\N
+121,615,Merck-Serono,Germany,\N
+122,388,Merckle,Germany,\N
+123,402,Micromet,Germany,\N
+124,393,Morphosys,Germany,\N
+125,589,TeGenero,Germany,\N
+126,642,Wilex,Germany,\N
+127,199,EGIS,Hungary,\N
+128,200,EGIS,Hungary,\N
+129,503,Gedeon Richter,Hungary,\N
+130,179,Decode Genetics,Iceland,\N
+131,120,Central Drug Research Inst.,India,\N
+132,254,Glenmark,India,\N
+133,311,Jubilant Innovation,India,\N
+134,99,BioResearch Ireland,Ireland,\N
+135,39,Elan Corp.,Ireland,\N
+136,203,Elan Corp.,Ireland,\N
+137,128,Compugen,Israel,\N
+138,162,Cure Tech,Israel,\N
+139,488,Predix,Israel,\N
+140,613,Teva Pharm.,Israel,\N
+141,7,Abiogen,Italy,\N
+142,341,Alfa Wassermann,Italy,\N
+143,22,Angelini Group,Italy,\N
+144,304,Biomedica Foscama,italy,\N
+145,70,Bracco,Italy,\N
+146,133,Chiesi,italy,\N
+147,178,Dompe Farmaceutici,italy,\N
+148,232,Fidia,Italy,\N
+149,306,ISF,Italy,\N
+150,355,Istituto Lusofarmaco D'Italia,Italy,\N
+151,308,Italfarmaco,Italy,\N
+152,349,Lab. Guidotti,Italy,\N
+153,399,Medea Research,Italy,\N
+154,379,Mediolanum Farmaceutici,Italy,\N
+155,354,Menarini,Italy,\N
+156,378,Menarini,Italy,\N
+157,424,Nerviano Medical Sciences,Italy,\N
+158,464,Poli Group,Italy,\N
+159,483,Polifarma,Italy,\N
+160,516,Recordati,Italy,\N
+161,155,Rotta Farmaceutici,Italy,\N
+162,564,Sigma Tau,Italy,\N
+163,556,Societa Prodotti Antibiotici,Italy,\N
+164,661,Zambon Group,Italy,\N
+165,11,Ajinomoto,Japan,\N
+166,52,Astellas,Japan,\N
+167,89,Biowa,Japan,\N
+168,5,Dainippon,Japan,\N
+169,17,Dainippon,Japan,\N
+170,193,Eisai,Japan,\N
+171,224,Fujirebio,Japan,\N
+172,275,Hokuriku Seiyaku,Japan,\N
+173,402,Ishihara Sangyo,Japan,\N
+174,316,Japan Tobacco,Japan,\N
+175,317,Japan Tobacco,Japan,\N
+176,602,Japan Tobacco,Japan,\N
+177,331,Kaken,Japan,\N
+178,518,Kaken,Japan,\N
+179,321,Kanebo,Japan,\N
+180,333,Kirin Brewery,Japan,\N
+181,338,Kissei,Japan,\N
+182,318,Kowa Company,Japan,\N
+183,332,Kureha,Japan,\N
+184,34,Kyorin,Japan,\N
+185,334,Kyorin,Japan,\N
+186,337,Kyorin,Japan,\N
+187,175,Kyowa Hakko Kogyo,Japan,\N
+188,202,Kyowa Hakko Kogyo,Japan,\N
+189,323,Kyowa Hakko Kogyo,Japan,\N
+190,324,Kyowa Hakko Kogyo,Japan,\N
+191,336,Kyowa Hakko Kogyo,Japan,\N
+192,339,Kyowa Hakko Kogyo,Japan,\N
+193,620,Kyowa Hakko Kogyo,Japan,\N
+194,647,Kyowa Hakko Kogyo,Japan,\N
+195,73,Maruko Seiyaku,Japan,\N
+196,374,Meiji Seika Kaisha,Japan,\N
+197,534,Meiji Seika Kaisha,Japan,\N
+198,369,Mitsubishi Kasei,Japan,\N
+199,404,Mitsubishi Kasei,Japan,\N
+200,657,Mitsubishi Tanabe Pharmaceuticals,Japan,\N
+201,387,Mitsubishi-Tokyo,Japan,\N
+202,400,Mitsui Pharm,Japan,\N
+203,363,Mochida Pharmaceuticals,Japan,\N
+204,418,Nikken Chemical Co.,Japan,\N
+205,410,Nippon Chemiphar Co.,Japan,\N
+206,407,Nippon Kayaku Co.,Japan,\N
+207,421,Nippon Kayaku Co.,Japan,\N
+208,436,Nippon Shinyaku Co.,Japan,\N
+209,437,Nippon Shinyaku Co.,Japan,\N
+210,413,Nippon Soda Co.,Japan,\N
+211,431,Nippon Soda Co.,Japan,\N
+212,438,Nippon Soda Co.,Japan,\N
+213,445,Nippon Zoki Pharmaceutical,Japan,\N
+214,419,Nissan Chemical Ind.,Japan,\N
+215,406,Nisshin Flour Milling Co,Japan,\N
+216,450,Ono,Japan,\N
+217,451,Ono,Japan,\N
+218,453,Otsuka,Japan,\N
+219,177,Santen,Japan,\N
+220,519,Santen,Japan,\N
+221,529,Santen,Japan,\N
+222,542,Sanwa,Japan,\N
+223,518,Shionogi,Japan,\N
+224,554,Sosei,Japan,\N
+225,518,Sumitomo,Japan,\N
+226,548,Sumitomo,Japan,\N
+227,569,Suntory,Japan,\N
+228,573,Taiho,Japan,\N
+229,580,Taiho,Japan,\N
+230,587,Taiho,Japan,\N
+231,612,Taiho,Japan,\N
+232,660,Taiho,Japan,\N
+233,611,Taisho Seiyaku,Japan,\N
+234,599,Taiyo Pharm,Japan,\N
+235,4,Takeda,Japan,\N
+236,35,Takeda,Japan,\N
+237,116,Takeda,Japan,\N
+238,145,Takeda,Japan,\N
+239,166,Takeda,Japan,\N
+240,525,Takeda,Japan,\N
+241,575,Takeda,Japan,\N
+242,578,Takeda,Japan,\N
+243,585,Takeda,Japan,\N
+244,575,Tanabe Seiyaku,Japan,\N
+245,576,Tanabe Seiyaku,Japan,\N
+246,597,Tanabe Seiyaku,Japan,\N
+247,586,Teijin,Japan,\N
+248,591,Teijin,Japan,\N
+249,596,Teijin,Japan,\N
+250,617,Teikoku Hormone Mfg. Co.,Japan,\N
+251,598,Terumo Corp.,Japan,\N
+252,616,Toa Etyo,Japan,\N
+253,607,Toray Industries,Japan,\N
+254,239,Torii & Co.,Japan,\N
+255,575,Toyama,Japan,\N
+256,593,Tsumura Corp.,Japan,\N
+257,594,Tsumura Corp.,Japan,\N
+258,657,Welfide Corp.,Japan,\N
+259,661,Zeria Pharm,Japan,\N
+260,141,Chong Kun Dang,Korea,\N
+261,174,Dong A,Korea,\N
+262,658,SK Biopharm,Korea,\N
+263,427,Neuren Pharmaceuticals,New Zealand,\N
+264,271,Nycomed Pharma,Norway,\N
+265,444,Nycomed Pharma,Norway,\N
+266,522,S*Bio,Singapore,\N
+267,352,Lek Pharmaceuticals,Slovenia,\N
+268,572,Sylentis,Spain,\N
+269,343,Almirall,Spain,\N
+270,473,Almirall,Spain,\N
+271,193,Esteve,Spain,\N
+272,231,Ferrer,Spain,\N
+273,623,Grupo Uriach,Spain,\N
+274,431,Noscira,Spain,\N
+275,65,Axcentura,Sweden,\N
+276,230,AB Ferrosan,Sweden,\N
+277,8,Active BIotech,Sweden,\N
+278,64,Axelar,Sweden,\N
+279,105,Biovitrum,Sweden,\N
+280,224,Ferring,Sweden,\N
+281,321,KaroBio,Sweden,\N
+282,462,Orexo,Sweden,\N
+283,20,Addex,Switzerland,\N
+284,72,Basilea,Switzerland,\N
+285,156,Cermol,Switzerland,\N
+286,62,Novartis,Switzerland,\N
+287,80,Novartis,Switzerland,\N
+288,109,Novartis,Switzerland,\N
+289,241,Novartis,Switzerland,\N
+290,251,Novartis,Switzerland,\N
+291,256,Novartis,Switzerland,\N
+292,263,Novartis,Switzerland,\N
+293,442,Novartis,Switzerland,\N
+294,481,Novartis,Switzerland,\N
+295,574,Novartis,Switzerland,\N
+296,549,Novartis,Switzerland,\N
+297,550,Novartis,Switzerland,\N
+298,416,NovImmune,Switzerland,\N
+299,448,OM Pharma,Switzerland,\N
+300,78,Roche,Switzerland,\N
+301,92,Roche,Switzerland,\N
+302,498,Roche,Switzerland,\N
+303,517,Roche,Switzerland,\N
+304,510,Roche,Switzerland,\N
+305,645,Roche,Switzerland,\N
+306,536,Siegfried Pharma,Switzerland,\N
+307,484,Syngenta,Switzerland,\N
+308,507,Renovo,UK,\N
+309,198,Ark Therapetuics,UK,\N
+310,320,Karus,UK,\N
+311,546,Solace,UK,\N
+312,571,Syntaxin,UK,\N
+313,488,Proximagen,UK,\N
+314,69,Alizyme,UK,\N
+315,51,Antisoma,UK,\N
+316,55,Astex Therapeutics,UK,\N
+317,68,AstraZeneca,UK,\N
+318,262,AstraZeneca,UK,\N
+319,340,AstraZeneca,UK,\N
+320,363,AstraZeneca,UK,\N
+321,663,AstraZeneca,UK,\N
+322,665,AstraZeneca,UK,\N
+323,90,Biogglan Labs,UK,\N
+324,107,Biorex Laboratories,UK,\N
+325,135,Chroma Therapeutics,UK,\N
+326,171,Cyclacel,UK,\N
+327,197,Efamol,UK,\N
+328,209,Essential Nutrition,UK,\N
+329,172,EUSA,UK,\N
+330,217,Evolutec,UK,\N
+331,100,GlaxoSmithKline,UK,\N
+332,127,GlaxoSmithKline,UK,\N
+333,246,GlaxoSmithKline,UK,\N
+334,253,GlaxoSmithKline,UK,\N
+335,257,GlaxoSmithKline,UK,\N
+336,259,GlaxoSmithKline,UK,\N
+337,550,GlaxoSmithKline,UK,\N
+338,410,Nycomed Amersham,UK,\N
+339,515,Reckitt & Colman,UK,\N
+340,523,Scotia Pharmaceuticals,UK,\N
+341,624,Vernalis,UK,\N
+342,193,Elorac,USA,\N
+343,211,Epicept,USA,\N
+344,309,InterMune,USA,\N
+345,326,Kalypsis,USA,\N
+346,479,Palatin Technologies,USA,\N
+347,139,Pfizer,USA,\N
+348,14,Achilion Pharmaceuticals,USA,\N
+349,31,Alkermes,USA,\N
+350,55,Amicus Therapeutics,USA,\N
+351,40,Anadys,USA,\N
+352,24,Antigenics,USA,\N
+353,93,BioMarin Pharmaceuticals,USA,\N
+354,82,BrainCells,USA,\N
+355,155,Cara Therapeutics,USA,\N
+356,169,Cardioxyl Pharmaceuticals,USA,\N
+357,124,Cerenis,USA,\N
+358,115,Cleveland Biolabs,USA,\N
+359,158,CombinatoRx,USA,\N
+360,114,Cubist,USA,\N
+361,191,Dyax,USA,\N
+362,205,Elan Corp.,Ireland,\N
+363,195,Endocyte,USA,\N
+364,246,GlobeImmune,USA,\N
+365,277,Horizon Pharma,USA,\N
+366,285,Idenix,USA,\N
+367,291,Idera,USA,\N
+368,302,infinity,USA,\N
+369,328,Knopp Neuroscience,USA,\N
+370,361,Lexicon,USA,\N
+371,422,Nektar,USA,\N
+372,443,NephRx,USA,\N
+373,441,NovaBay,USA,\N
+374,429,Novelos,USA,\N
+375,431,NuPathe,USA,\N
+376,452,Onyx,USA,\N
+377,487,Proteon,USA,\N
+378,497,Quark Pharmaceuticals,USA,\N
+379,515,Rib-X,USA,\N
+380,584,Targacept,USA,\N
+381,595,TetraLogic Pharmaceuticals,USA,\N
+382,618,Tranzyme Pharma,USA,\N
+383,609,Trevana,USA,\N
+384,608,Trubion,USA,\N
+385,632,Versatis,USA,\N
+386,662,ZyStor Therapeutics,USA,\N
+387,47,Aradigm,USA,\N
+388,367,Metabolex,USA,\N
+389,560,SRI International,USA,\N
+390,366,3M Pharmaceuticals,USA,\N
+391,498,3M Pharmaceuticals,USA,\N
+392,518,3M Pharmaceuticals,USA,\N
+393,3,Abbott Laboratories,USA,\N
+394,9,Abbott Laboratories,USA,\N
+395,6,Abraxis,USA,\N
+396,15,Acadia,USA,\N
+397,39,Access,USA,\N
+398,18,Adolor,USA,\N
+399,38,Advanced Magnetics Inc.,USA,\N
+400,30,Alcon Labs.,USA,\N
+401,33,Alexion,USA,\N
+402,26,Allergan,USA,\N
+403,55,Althea,USA,\N
+404,11,Ambit Biosciences,USA,\N
+405,37,Amgen,USA,\N
+406,11,Amylin Pharmaceuticals,USA,\N
+407,39,Anacor,USA,\N
+408,36,Applied Molecular Evolution,USA,\N
+409,46,Archemix,USA,\N
+410,500,Ardea Biosciences,USA,\N
+411,42,Arena,USA,\N
+412,41,Ariad,USA,\N
+413,45,Arno Therapeutics,USA,\N
+414,49,Arqule,USA,\N
+415,50,Array BioPharma,USA,\N
+416,25,Athergenics,USA,\N
+417,58,Aveo Pharma,USA,\N
+418,75,Baxter Healthcare Corp.,USA,\N
+419,83,BioCryst Pharmaceuticals,USA,\N
+420,88,Biogen IDEC,USA,\N
+421,91,Biolex,USA,\N
+422,92,BioMarin Pharmaceuticals,USA,\N
+423,101,BioStratum,USA,\N
+424,79,Bolder BioTechnology,USA,\N
+425,77,Bristol-Myers Squibb,USA,\N
+426,90,Bristol-Myers Squibb,USA,\N
+427,94,Bristol-Myers Squibb,USA,\N
+428,95,Bristol-Myers Squibb,USA,\N
+429,104,Bristol-Myers Squibb,USA,\N
+430,384,Bristol-Myers Squibb,USA,\N
+431,559,Bristol-Myers Squibb,USA,\N
+432,110,Callistoga,USA,\N
+433,143,Calyx Therapeutics,USA,\N
+434,635,Carter-Wallace,USA,\N
+435,117,Celgene,USA,\N
+436,162,Cell Therapeutics,USA,\N
+437,150,Centocor,USA,\N
+438,123,Cephalon,USA,\N
+439,125,Ceregene,USA,\N
+440,136,Chemex Pharmaceuticals Inc.,USA,\N
+441,154,Clarion Pharmaceuticals,USA,\N
+442,151,Collagenex,USA,\N
+443,164,CoMentis,USA,\N
+444,152,Cortech Inc.,USA,\N
+445,168,Cortex Pharmaceuticals,USA,\N
+446,165,Curis,USA,\N
+447,167,CV Therapeutics,USA,\N
+448,168,Cylene,USA,\N
+449,148,Cytokine PharmaSciences,USA,\N
+450,176,Deciphera,USA,\N
+451,181,Diobex,USA,\N
+452,203,Dow AgroSciences,USA,\N
+453,12,DuPont,USA,\N
+454,53,DuPont,USA,\N
+455,184,DuPont,USA,\N
+456,186,DuPont,USA,\N
+457,192,DuPont,USA,\N
+458,221,DuPont,USA,\N
+459,531,DuPont,USA,\N
+460,187,DuPont Crop Protection,USA,\N
+461,3,Eli Lilly,USA,\N
+462,84,Eli Lilly,USA,\N
+463,362,Eli Lilly,USA,\N
+464,214,Elusys,USA,\N
+465,210,Entremed,USA,\N
+466,222,Enzon,USA,\N
+467,170,Epimmune,USA,\N
+468,212,Ergo Science,USA,\N
+469,648,Exelixis,USA,\N
+470,236,FMC,USA,\N
+471,252,Gem Pharmaceuticals,USA,\N
+472,247,Genelabs Technologies,USA,\N
+473,241,Genentech,USA,\N
+474,242,Genentech,USA,\N
+475,241,Genta Inc,USA,\N
+476,244,Genzyme,USA,\N
+477,256,Gilead Sciences,USA,\N
+478,258,Gliatech,USA,\N
+479,548,Greenwich Pharmaceuticals,USA,\N
+480,266,H. G. Pars Labs.,USA,\N
+481,11,Hercules,USA,\N
+482,265,Hollis-Eden Pharmaceuticals,USA,\N
+483,267,Human Genome Science,USA,\N
+484,280,Icagen,USA,\N
+485,282,ICN Pharmaceuticals,USA,\N
+486,518,ICN Pharmaceuticals,USA,\N
+487,287,ImClone Systems,USA,\N
+488,288,Immunogen,USA,\N
+489,290,Immunomedics,USA,\N
+490,292,Incyte,USA,\N
+491,294,Inhibitex,USA,\N
+492,296,Innovive Pharmaceuticals,USA,\N
+493,299,Insmed,USA,\N
+494,293,Introgen,USA,\N
+495,307,ISIS Pharmaceuticals,USA,\N
+496,313,Johnson & Johnson,USA,\N
+497,405,Johnson & Johnson,USA,McNeil
+498,456,Johnson & Johnson,USA,\N
+499,498,Johnson & Johnson,USA,\N
+500,514,Johnson & Johnson,USA,\N
+501,312,Johnson Matthey,USA,\N
+502,319,KAI Pharmaceuticals,USA,\N
+503,322,Kemia,USA,\N
+504,335,Keryx Biopharmaceuticals,USA,\N
+505,325,Kos,USA,\N
+506,330,Kosan,USA,\N
+507,249,Ligand Pharmaceuticals,USA,\N
+508,349,Ligand Pharmaceuticals,USA,\N
+509,350,Ligand Pharmaceuticals,USA,\N
+510,540,Lilly,USA,Structural Genomix
+511,356,Lymphosign,USA,\N
+512,381,MacroGenics,USA,\N
+513,401,Magainin Pharmaceuticals,USA,\N
+514,395,Mallinckrodt,USA,\N
+515,397,Matrix Pharmaceutical,USA,\N
+516,373,Medarex,USA,\N
+517,376,Medco,USA,\N
+518,375,MedImmune,USA,\N
+519,430,Medinox,USA,\N
+520,377,Memory Pharmaceuticals,USA,\N
+521,126,Merck,USA,\N
+522,341,Merck,USA,\N
+523,386,Merck,USA,\N
+524,391,Merrimack Pharmaceuticals,USA,\N
+525,365,MetaBasis,USA,\N
+526,382,MethylGene,USA,\N
+527,383,MGI Pharma,USA,\N
+528,403,Miravant,USA,\N
+529,395,Mitsubishi Pharma,USA,\N
+530,627,Mobil Chemical Co.,USA,\N
+531,371,Molecular Design International,USA,\N
+532,152,Monsanto,USA,\N
+533,392,Monsanto,USA,\N
+534,394,Morphotek,USA,\N
+535,396,Myriad,USA,\N
+536,431,Nascent,USA,\N
+537,417,National Institutes of Health,USA,\N
+538,437,National Institutes of Health,USA,\N
+539,406,Nelson Res. & Dev.,USA,\N
+540,27,Astellas,Japan,Agensys
+541,149,Vernalis,UK,Cita NeuroPharmaceuticals
+542,185,Euthymics Biociences,USA,DOV Pharmaceuticals
+543,507,Pfizer,USA,Rinat
+544,561,GlaxoSmithKline,USA,Sirtris
+545,547,Abbott Laboratories,USA,Solvay
+546,597,Johnson & Johnson,USA,Tibotec
+547,2,4SC,Germany,\N
+548,11,Acologix,USA,\N
+549,13,Acceleron,USA,\N
+550,16,Actelion,Switzerland,\N
+551,23,Affinium,USA,\N
+552,45,Aerie Pharmaceuticals,USA,\N
+553,48,Aragon Pharmaceuticals,USA,\N
+554,54,Astellas Pharma,Japan,\N
+555,55,Ascenta Therapeutics,USA,\N
+556,60,AVI Biopharma,USA,\N
+557,61,Avila Therapeutics,USA,\N
+558,67,Alexza,USA,\N
+559,90,BioLiine Rx,USA,\N
+560,97,Bionomics,Australia,\N
+561,111,Calanda Pharmaceuticals,USA,\N
+562,118,Centre of Cancer Therapeutics,UK,\N
+563,122,CEMPRA Pharmaceuticals,USA,\N
+564,140,Cytokinetics,USA,\N
+565,146,Chimerix,USA,\N
+566,153,Catalyst Pharmaceutical Partners,USA,\N
+567,168,CeNeRx,USA,\N
+568,190,Daewoong Pharmaceutical Co.,Korea,\N
+569,194,Euthymics Biosciences,USA,\N
+570,201,ExonHit Therapeutics,France,\N
+571,216,Eurand Pharmaceuticals,USA,\N
+572,218,EnVivo Pharmaceuticals,USA,\N
+573,220,Elixir Pharmaceuticals,USA,\N
+574,223,Enzon,USA,\N
+575,224,Forest,USA,\N
+576,230,FibroGen,USA,\N
+577,250,Genomics Research Institute Novartis Foundation,USA,\N
+578,255,Geron,USA,\N
+579,264,Hanwha Chemical,Korea,\N
+580,268,Hanmi Pharmaceuticals,Korea,\N
+581,276,Hypnion,USA,\N
+582,283,Institute Diabetes Discovery,USA,\N
+583,291,Idera Pharmaceuticals,USA,\N
+584,295,IntelliKine,USA,\N
+585,298,Inspire,USA,\N
+586,305,Isotechnika,Canada,\N
+587,357,Laboratoires Thea,France,\N
+588,358,Lytix Pharma,Norway,\N
+589,368,Medicure,Canada,\N
+590,390,Melior Discovery,USA,\N
+591,406,N30 Pharmaceuticals,USA,\N
+592,415,Torrey Pines Therapeutics,USA,\N
+593,434,NeoRx,USA,\N
+594,412,Neose Technologies,USA,\N
+595,410,Neurochem,USA,\N
+596,409,Neurocrine Biosciences,USA,\N
+597,414,Neurogen Corporation,USA,\N
+598,408,NewBiotics,USA,\N
+599,423,NitroMed,USA,\N
+600,433,NPS Pharmaceuticals,USA,\N
+601,3,Ohmeda Pharm. Prods.,USA,\N
+602,278,Ohmeda Pharm. Prods.,USA,\N
+603,450,Onconova,USA,\N
+604,459,OSI,USA,\N
+605,460,Othera,USA,\N
+606,466,Pacific,USA,\N
+607,492,Pain Therapeutics,USA,\N
+608,491,Palatin Technologies,USA,\N
+609,471,PDL Biopharma,USA,\N
+610,495,Penwest,USA,\N
+611,19,Pfizer,USA,\N
+612,29,Pfizer,USA,\N
+613,66,Pfizer,USA,Ayerst Laboratories
+614,137,Pfizer,USA,\N
+615,142,Pfizer,USA,\N
+616,152,Pfizer,USA,\N
+617,229,Pfizer,USA,\N
+618,289,Pfizer,USA,\N
+619,318,Pfizer,USA,\N
+620,351,Pfizer,USA,\N
+621,354,Pfizer,USA,\N
+622,464,Pfizer,USA,\N
+623,465,Pfizer,USA,\N
+624,473,Pfizer,USA,\N
+625,529,Pfizer,USA,\N
+626,622,Pfizer,USA,\N
+627,635,Pfizer,USA,Warner-Lambert
+628,489,Pharmacopeia,USA,\N
+629,469,Pharmacyclics,USA,\N
+630,473,Pharmos Corporation,USA,\N
+631,477,Phenomix,USA,\N
+632,480,Plexxicon,USA,\N
+633,215,Procter & Gamble,USA,\N
+634,225,Procter & Gamble,USA,\N
+635,412,Procter & Gamble,USA,\N
+636,474,Procter & Gamble,USA,\N
+637,468,ProCyte Corporation,USA,\N
+638,486,Progenics,USA,\N
+639,493,Provectus,USA,\N
+640,501,Repligen,USA,\N
+641,498,Rigel Pharmaceuticals,USA,\N
+642,240,Rohm & Haas,USA,\N
+643,505,Rohm & Haas,USA,\N
+644,432,Scios,USA,\N
+645,527,Scios,USA,\N
+646,538,Seattle Genetics,USA,\N
+647,534,Semafore,USA,\N
+648,533,Sepracor,USA,\N
+649,555,Shaman,USA,\N
+650,529,Shell Oil,USA,\N
+651,147,Pfizer,USA,Parke Davis
+652,555,Signal Pharmaceuticals,USA,\N
+653,557,Sphinx,USA,\N
+654,566,Stromedix,USA,\N
+655,551,Sunesis,USA,\N
+656,537,SuperGen,USA,\N
+657,565,Synta,USA,\N
+658,577,Takeda,USA,\N
+659,601,Tanox,USA,\N
+660,579,TAP Pharmaceuticals,USA,\N
+661,600,TAP Pharmaceuticals,USA,\N
+662,588,Targegen,USA,\N
+663,595,Thallion,USA,\N
+664,581,Thrombogenics,USA,\N
+665,603,Tolera Therapeutics,USA,\N
+666,610,TolerRx,USA,\N
+667,606,Tracon Pharmaceuticals,USA,\N
+668,588,Tragara,USA,\N
+669,620,Uniroyal Chemical,USA,\N
+670,628,Velsicol Chemical,USA,\N
+671,634,Vertex,USA,\N
+672,631,Vioquest,USA,\N
+673,626,Viventia,USA,\N
+674,641,Walter Reed Army Institute of Research,USA,\N
+675,649,Xoma,USA,\N
+676,650,Xoma,USA,\N
+677,655,XTL Bio,USA,\N
+678,666,Zycos,USA,\N
+679,10,Amgen,USA,AbGenix
+680,24,Pfizer,USA,Agouron
+681,28,GlaxoSmithKline,UK,Allen & Hanburys
+682,32,Althea,USA,Altus
+683,3,AstraZeneca,UK,Astra
+684,56,CoMentis,USA,Athenagen
+685,57,Silence Therapeutics,Germany,Atugen
+686,59,SanofiAventis,France,Aventis
+687,106,GlaxoSmithKline,UK,Borroughs Wellcome
+688,77,Vernalis,UK,British Biotech
+689,70,Altana,Germany,Byk Gulden Lomberg Chemische Fabrik
+690,108,Altana,Germany,Byk Gulden Lomberg Chemische Fabrik
+691,113,AstraZeneca,UK,CAT
+692,132,SanofiAventis,France,Chinoin Pharm.
+693,234,SanofiAventis,France,Chinoin Pharm.
+694,134,Novartis,Switzerland,Chiron
+695,322,Roche,Japan,Chugai
+696,535,Roche,Japan,Chugai
+697,138,Novartis,Switzerland,Ciba-Geigy
+698,127,Novartis,Switzerland,Ciba-Geigy
+699,129,Novartis,Switzerland,Ciba-Geigy
+700,130,Novartis,Switzerland,Ciba-Geigy
+701,131,Anesiva,USA,Corgentech
+702,173,DaiichiSankyo,Japan,Daiichi
+703,182,DaiichiSankyo,Japan,Daiichi
+704,188,DaiichiSankyo,Japan,Daiichi
+705,196,Thallion,USA,Ecopia
+706,233,Astellas,Japan,Fujisawa
+707,238,Astellas,Japan,Fujisawa
+708,638,Astellas,Japan,Fujisawa
+709,272,SanofiAventis,France,Hoescht
+710,270,SanofiAventis,France,Hoescht Marrion Roussell
+711,279,Eli Lilly,USA,ICOS
+712,284,Biogen IDEC,USA,IDEC
+713,286,Aphton,Austria,Igeneon
+714,281,AstraZeneca,UK,Imperial Chemical Industries
+715,337,AstraZeneca,UK,Kudos
+716,341,Pfizer,USA,Lederle
+717,353,Pfizer,USA,Lederle
+718,364,SanofiAventis,France,May & Baker
+719,112,AstraZeneca,UK,Medimmune
+720,389,Takeda,Japan,Millennium
+721,321,Merck,USA,Organon
+722,457,Merck,USA,Organon
+723,447,AstraZeneca,UK,Oxford GlycoSciences
+724,470,Pfizer,USA,Parke-Davis
+725,475,Pfizer,USA,Pharmacia
+726,476,Pfizer,USA,Pharmacia
+727,482,Pfizer,USA,Pharmacia and Upjohn
+728,478,Roche,UK,Piramed
+729,499,Macrogenics,USA,Raven
+730,508,SanofiAventis,France,Rhone-Poulenc
+731,509,SanofiAventis,France,Rhone-Poulenc-Rohrer
+732,512,SanofiAventis,France,Rousell-Uclaf
+733,539,Lundbeck,Denmark,Saegis
+734,520,Novartis,Switzerland,Sandoz
+735,530,Novartis,Switzerland,Sandoz
+736,159,DaiichiSankyo,Japan,Sankyo
+737,213,DaiichiSankyo,Japan,Sankyo
+738,224,DaiichiSankyo,Japan,Sankyo
+739,498,DaiichiSankyo,Japan,Sankyo
+740,510,DaiichiSankyo,Japan,Sankyo
+741,605,DaiichiSankyo,Japan,Sankyo
+742,560,SanofiAventis,France,Sanofi Research
+743,664,Bayer-Schering,Germany,Schering
+744,526,Merck,USA,Schering-Plough
+745,523,Pfizer,USA,Searle
+746,522,GlaxoSmithKline,UK,SmithKlineBeecham
+747,543,GlaxoSmithKline,UK,SmithKlineFrench
+748,544,GlaxoSmithKline,UK,SmithKlineFrench
+749,189,Abbott Laboratories,USA,Solvay
+750,322,Abbott Laboratories,USA,Solvay
+751,567,Ipsen,France,Sterix
+752,568,Pfizer,USA,Sugen
+753,582,Encysive,USA,Texas Biotechnology Corp
+754,575,Amgen,USA,Tularik
+755,619,Pfizer,USA,Upjohn
+756,640,Bayer-Schering,Germany,Winthrop
+757,636,Pfizer,USA,Wyeth
+758,643,Pfizer,USA,Wyeth
+759,644,Pfizer,USA,Wyeth
+760,653,UCB,UK,Xenova
+761,657,Astellas,Japan,Yamanouchi
+762,659,Astellas,Japan,Yamanouchi
+763,420,Novartis Institute Tropical Disease,Singapore,\N
+764,435,Norgine,Netherlands,\N
+765,446,Oxagen,UK,\N
+766,449,OncoMed Pharma,USA,\N
+767,455,Ore Pharmaceuticals,USA,\N
+768,458,Orion Pharma,Finland,\N
+769,461,Otonomy,USA,\N
+770,463,Oxygenics,Japan,\N
+771,465,Panacos,USA,\N
+772,467,Prana biotechnology,Australia,\N
+773,470,Phase 2 Discovery,USA,\N
+774,472,Pevion Biotech,Switzerland,\N
+775,485,Prescient,USA,\N
+776,488,Protox,USA,\N
+777,490,Psylin Neuroscience,USA,\N
+778,494,Pervasis Pharmaceuticals,USA,\N
+779,504,RegeneRx,USA,\N
+780,508,Remedy Pharmaceuticals,USA,\N
+781,511,Quark Pharmaceuticals,USA,\N
+782,515,Rexahn,USA,\N
+783,522,Sangamo Biosciences,USA,\N
+784,524,SynCore Biotechnology,China,\N
+785,528,Scynexis,USA,\N
+786,532,Siena Biotech,Italy,\N
+787,553,Sosei,Japan,\N
+788,555,Samaritan Pharmaceuticals,USA,\N
+789,558,Shire Pharmaceuticals,USA,\N
+790,562,Synstar Japan,Japan,\N
+791,570,Switch Biotech,USA,\N
+792,583,Tobira Therapeutics,USA,\N
+793,588,Transgene,France,\N
+794,590,Threshold,USA,\N
+795,592,Tikvah Pharmaceuticals,USA,\N
+796,604,Trius,USA,\N
+797,629,Vanda,USA,\N
+798,633,VIRxSYS,USA,\N
+799,651,XenoPort,USA,\N
+800,652,Xenon Pharmaceuticals,USA,\N
+801,656,Xytis,USA,\N
+802,160,Philips Roxane Laboratories,Netherlands,\N
+803,220,Lakeside Laboratories,USA,\N
+804,237,AstraZeneca,UK,Fisons
+805,385,Mead Johnson,USA,Mead Johnson
+806,410,Pfizer,USA,Warner-Lambert
+807,344,Novartis,Switzerland,\N
+808,667,GlaxoSmithKline,Spain,\N
+809,668,Drugs for Neglected Diseases initiative,Switzerland,\N
+810,669,Medicines for Malaria Venture,Switzerland,\N
+811,670,Virginia Commonwealth University,USA,\N
+812,671,St. Jude Children's Research Hospital,USA,\N
+813,672,Hoffman,Switzerland,
+814,673,Abbvie,USA,
+815,674,Watson,USA,
+816,675,Valeant,Canada,

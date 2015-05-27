@@ -1,0 +1,716 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>DangleFactory Visuals</title>
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load('visualization', '1', { 'packages': ['corechart'] });</script>
+    <!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript">
+        $(function () {
+            var salaryData = null;
+            var projData = null;
+            var partSelectedName = "";
+
+            // URLs of the webservice which serves as the data source for this project.
+            var playerListUrl = 'http://www.danglefactory.com/api/fantasytools/histdfsplayers';
+            var singlePlayerReportURL = 'http://www.danglefactory.com/api/fantasytools/histdfsplayerreport';
+            var multiPlayerReportURL = 'http://www.danglefactory.com/api/fantasytools/histdfsmultiplayerreport';
+            var oppReportURL = 'http://www.danglefactory.com/api/fantasytools/histdfsopponentreport';
+
+            // Utility Function
+            function split(val) {
+                return val.split(/,\s*/);
+            }
+
+            // Utility Function
+            function extractLast(term) {
+                return split(term).pop();
+            }
+
+            // Gather input and make service call for part 1
+            function initializePart1() {
+                $('#players').val('Sidney Crosby');
+                $('#players-id').val('106');
+
+                // Get Salary and projection data from dervice for the selected player
+                $.ajax({
+                    url: singlePlayerReportURL,
+                    type: "POST",
+                    data: { PlayerID: 106 },
+                    success: function (data) {
+
+                        partSelectedName = data.Name;
+
+                        var reportData = data.TimeSeries;
+
+                        salaryData = new google.visualization.DataTable();
+                        salaryData.addColumn({ date: 'Date', type: 'date' });
+                        salaryData.addColumn('number', 'FanDuel Salary');
+                        salaryData.addColumn('number', 'Draft Kings Salary');
+
+
+
+                        projData = new google.visualization.DataTable();
+                        projData.addColumn({ date: 'Date', type: 'date' });
+                        projData.addColumn('number', 'FanDuel Proj');
+                        projData.addColumn('number', 'Draft Kings Proj');
+
+                        var salaryArray = [];
+                        var projArray = [];
+                        for (i = 0; i < reportData.length; i++) {
+                            var gDate = new Date(reportData[i].Date);
+                            salaryArray.push([new Date(reportData[i].Date), reportData[i].FDSalary, reportData[i].DKSalary]);
+                            projArray.push([new Date(reportData[i].Date), parseFloat(reportData[i].FDPoints.toFixed(2)), parseFloat(reportData[i].DKPoints.toFixed(2))]);
+                        };
+
+                        salaryData.addRows(salaryArray);
+                        projData.addRows(projArray);
+                        drawPartIndPlayerChart();
+
+                    },
+                    error: function (msg) { }
+                });
+
+                return false;
+            }
+
+            function initializePart2()
+            {
+                $('#players-p2-1').val('Sidney Crosby');
+                $('#players-p2-2').val('Alex Ovechkin');
+                $('#players-p2-3').val('Steven Stamkos');
+
+                $("#part2-button").click();
+
+            }
+
+            function initializePart3and4()
+            {
+                // Get Part 3's Opponent Report for DraftKings
+                $.ajax({
+                    url: oppReportURL,
+                    type: "POST",
+                    data: { GameProvider: 'DK' },
+                    success: function (data) {
+
+                        var dkOppData = new google.visualization.DataTable();
+                        dkOppData.addColumn({ name: 'Opp', type: 'string' });
+                        dkOppData.addColumn('number', 'DK Value');
+
+                        var dkCorrData = new google.visualization.DataTable();
+                        dkCorrData.addColumn('number', 'Team Points');
+                        dkCorrData.addColumn('number', 'DK Value');
+                        dkCorrData.addColumn({ name: 'Opp', type: 'string', role: 'tooltip' });
+
+                        var dkOppArray = [];
+                        var dkCorrArray = [];
+                        for (i = 0; i < data.length; i++) {
+                            dkOppArray.push([data[i].Team, Math.round(data[i].DKValue)]);
+                            dkCorrArray.push([data[i].Points, Math.round(data[i].DKValue), data[i].Team]);
+                        };
+
+                        dkOppData.addRows(dkOppArray);
+                        dkCorrData.addRows(dkCorrArray);
+
+                        var barOptions = {
+                            title: 'Draft Kings',
+                            titlePosition: 'in',
+                            chartArea: { top: 20, width: '75%', height: '90%' },
+                            legend: { 'position': 'none' },
+                            hAxis: {
+                                textStyle: {
+                                    fontSize: '10',
+                                }
+                            },
+                            vAxis: {
+                                title: 'Value ($/point)',
+                                viewWindowMode: 'explicit',
+                                viewWindow: {
+                                    max: 1800,
+                                    min: 1000
+                                }
+                            },
+                            bars: 'vertical' // Required for Material Bar Charts.
+                        };
+
+                        var scatterOptions = {
+                            title: 'Draft Kings Value to Team Performance Correlation',
+                            titlePosition: 'out',
+                            hAxis: {
+                                title: 'Team Points'
+                            },
+                            vAxis: {
+                                title: 'Value ($/point)'
+                            },
+                            trendlines: {
+                                0: {
+                                    type: 'linear',
+                                    showR2: true,
+                                    visibleInLegend: true
+                                }
+                            }
+                        };
+
+                        var dkChart = new google.visualization.ColumnChart(document.getElementById("dkOpponentChart"));
+                        dkChart.draw(dkOppData, barOptions);
+
+                        var dkCorrChart = new google.visualization.ScatterChart(document.getElementById("dkCorrChart"));
+                        dkCorrChart.draw(dkCorrData, scatterOptions);
+                    },
+                    error: function (msg) { }
+                });
+
+                // Get Part 3's Opponent Report for DraftKings
+                $.ajax({
+                    url: oppReportURL,
+                    type: "POST",
+                    data: { GameProvider: 'FD' },
+                    success: function (data) {
+
+                        var fdOppData = new google.visualization.DataTable();
+                        fdOppData.addColumn({ name: 'Opp', type: 'string' });
+                        fdOppData.addColumn('number', 'FD Value');
+
+                        var fdCorrData = new google.visualization.DataTable();
+                        fdCorrData.addColumn('number', 'Team Points');
+                        fdCorrData.addColumn('number', 'FD Value');
+                        fdCorrData.addColumn({ name: 'Opp', type: 'string', role: 'tooltip' });
+
+                        var fdOppArray = [];
+                        var fdCorrArray = [];
+                        for (i = 0; i < data.length; i++) {
+                            fdOppArray.push([data[i].Team, Math.round(data[i].FDValue)]);
+                            fdCorrArray.push([data[i].Points, Math.round(data[i].FDValue), data[i].Team]);
+                        };
+                        fdOppData.addRows(fdOppArray);
+                        fdCorrData.addRows(fdCorrArray);
+
+                        var barOptions = {
+                            title: 'FanDuel',
+                            titlePosition: 'in',
+                            chartArea: { top: 20, width: '75%', height: '90%' },
+                            colors: ['red'],
+                            legend: { 'position': 'none' },
+                            hAxis: {
+                                textStyle: {
+                                    fontSize: '10',
+                                }
+                            },
+                            vAxis: {
+                                title: 'Value ($/point)',
+                                viewWindowMode: 'explicit',
+                                viewWindow: {
+                                    max: 2250,
+                                    min: 1500
+                                }
+                            },
+                            bars: 'vertical' // Required for Material Bar Charts.
+
+                        };
+
+                        var scatterOptions = {
+                            title: 'Draft Kings Value to Team Performance Correlation',
+                            titlePosition: 'out',
+                            hAxis: {
+                                title: 'Team Points'
+                            },
+                            vAxis: {
+                                title: 'Value ($/point)'
+                            },
+                            trendlines: {
+                                0: {
+                                    type: 'linear',
+                                    showR2: true,
+                                    visibleInLegend: true
+                                }
+                            }
+                        };
+
+                        var fdChart = new google.visualization.ColumnChart(document.getElementById("fdOpponentChart"));
+                        fdChart.draw(fdOppData, barOptions);
+
+                        var fdCorrChart = new google.visualization.ScatterChart(document.getElementById("fdCorrChart"));
+                        fdCorrChart.draw(fdCorrData, scatterOptions);
+
+                    },
+                    error: function (msg) { }
+                });
+            }
+
+
+            // Draw the visual for Part 1.  Time series charts for Salary and Projections.
+            // DraftKings and FanDuel trend lines shown on same chart
+            function drawPartIndPlayerChart()
+            {
+                var salaryLineOptions = {
+                    title: partSelectedName + ' Salary Game by Game',
+                    titlePosition: 'out',
+                    animation: {
+                        duration: 1000,
+                        easing: 'out',
+                        startup: true
+                    },
+                    vAxis: {
+                        title: 'Salary ($)'
+                    },
+                    width: 600,
+                    height: 400
+
+                };
+
+                var projLineOptions = {
+                    title: partSelectedName + ' Projected Points Game by Game',
+                    titlePosition: 'out',
+                    animation: {
+                        duration: 1000,
+                        easing: 'out',
+                        startup: true
+                    },
+                    vAxis: {
+                        title: 'Model Projected Points'
+                    },
+                    width: 600,
+                    height: 400
+
+                };
+
+                var salChart = new google.visualization.LineChart(document.getElementById('indSalChart'));
+                salChart.draw(salaryData, salaryLineOptions);
+
+                var projChart = new google.visualization.LineChart(document.getElementById('indPointChart'));
+                projChart.draw(projData, projLineOptions);
+
+            };
+
+            // Gather input and make service call for part 1
+            function part1playerSelected(event, ui)
+            {
+                // Get Salary and projection data from dervice for the selected player
+                $.ajax({
+                    url: singlePlayerReportURL,
+                    type: "POST",
+                    data: { PlayerID: ui.item.value },
+                    success: function (data) {
+
+                        partSelectedName = data.Name;
+
+                        var reportData = data.TimeSeries;
+
+                        salaryData = new google.visualization.DataTable();
+                        salaryData.addColumn({ date: 'Date', type: 'date' });
+                        salaryData.addColumn('number', 'FanDuel Salary');
+                        salaryData.addColumn('number', 'Draft Kings Salary');
+
+
+                        projData = new google.visualization.DataTable();
+                        projData.addColumn({ date: 'Date', type: 'date' });
+                        projData.addColumn('number', 'FanDuel Proj');
+                        projData.addColumn('number', 'Draft Kings Proj');
+
+                        var salaryArray = [];
+                        var projArray = [];
+                        for (i = 0; i < reportData.length; i++) {
+                            salaryArray.push([new Date(reportData[i].Date), reportData[i].FDSalary, reportData[i].DKSalary]);
+                            projArray.push([new Date(reportData[i].Date), parseFloat(reportData[i].FDPoints.toFixed(2)), parseFloat(reportData[i].DKPoints.toFixed(2))]);
+                        };
+
+                        salaryData.addRows(salaryArray);
+                        projData.addRows(projArray);
+
+                        drawPartIndPlayerChart();
+
+                    },
+                    error: function (msg) { }
+                });
+
+                return false;
+            }
+
+            // Generate Visuals for part 2.
+            // Looking at value (defined as $/point)
+            // Multiple players added to individual charts
+            function generatePart2Visuals(event, ui)
+            {
+                var part2PlayerIds = [];
+
+                // Gather inputs
+                if ($("#players-p2-1").val() != null && $("#players-p2-1").val() != '')
+                {
+                    part2PlayerIds.push($("#players-p2-1").val());
+                }
+                if ($("#players-p2-2").val() != null && $("#players-p2-2").val() != '') {
+                    part2PlayerIds.push($("#players-p2-2").val());
+                }
+                if ($("#players-p2-3").val() != null && $("#players-p2-3").val() != '') {
+                    part2PlayerIds.push($("#players-p2-3").val());
+                }
+
+                // fetch data from service for the player selected in the 3 autocomplete boxes
+                $.ajax({
+                    url: multiPlayerReportURL,
+                    type: "POST",
+                    data: { PlayerIDs: part2PlayerIds },
+                    success: function (data) {
+
+                        // Only plot the chart if there is a at least one player's data returned
+                        if (data.length > 0) {
+
+                            var dkLineOptions = {
+                                title: 'Draft Kings Game by Game Value',
+                                titlePosition: 'out',
+                                vAxis: {
+                                    title: '$ per Model Projected Points'
+                                },
+                                width: 600,
+                                height: 400,
+                                animation: {
+                                    duration: 1000,
+                                    easing: 'out',
+                                    startup: true
+                                },
+                                interpolateNulls: true
+                            };
+
+                            var fdLineOptions = {
+                                title: 'FanDuel Game by Game Value',
+                                titlePosition: 'out',
+                                vAxis: {
+                                    title: '$ per Model Projected Points'
+                                },
+                                animation: {
+                                    duration: 1000,
+                                    easing: 'out',
+                                    startup: true
+                                },
+                                width: 600,
+                                height: 400,
+                                interpolateNulls: true
+                            };
+
+                            var dkJoinedData = new google.visualization.DataTable();
+                            var fdJoinedData = new google.visualization.DataTable();
+
+                            var dkData1 = new google.visualization.DataTable();
+                            dkData1.addColumn({ date: 'Date', type: 'date' });
+                            dkData1.addColumn('number', data[0].Name);
+
+                            var fdData1 = new google.visualization.DataTable();
+                            fdData1.addColumn({ date: 'Date', type: 'date' });
+                            fdData1.addColumn('number', data[0].Name);
+
+                            var baseReportData = data[0].TimeSeries;
+                            var baseArrayDK = [];
+                            var baseArrayFD = [];
+                            for (i = 0; i < baseReportData.length; i++) {
+                                baseArrayDK.push([new Date(baseReportData[i].Date), Math.round(baseReportData[i].DKValue)]);
+                                baseArrayFD.push([new Date(baseReportData[i].Date), Math.round(baseReportData[i].FDValue)]);
+                            };
+
+                            dkData1.addRows(baseArrayDK);
+                            fdData1.addRows(baseArrayFD);
+                            dkJoinedData = dkData1;
+                            fdJoinedData = fdData1;
+
+                            if (data.length == 2) {
+                                // Two Players to plot
+
+                                // DraftKings first
+                                var dkData2 = new google.visualization.DataTable();
+                                dkData2.addColumn({ date: 'Date', type: 'date' });
+                                dkData2.addColumn('number', data[1].Name);
+
+                                reportData = data[1].TimeSeries;
+                                var dkArray = [];
+                                for (i = 0; i < reportData.length; i++) {
+                                    dkArray.push([new Date(reportData[i].Date), Math.round(reportData[i].DKValue)]);
+                                };
+
+                                dkData2.addRows(dkArray);
+
+                                dkJoinedData = google.visualization.data.join(dkJoinedData, dkData2, 'full', [[0, 0]], [1], [1]);
+
+                                var dkChart = new google.visualization.LineChart(document.getElementById('dkChartPt2'));
+                                dkChart.draw(dkJoinedData, dkLineOptions);
+
+                                // FanDuel
+
+                                var fdData2 = new google.visualization.DataTable();
+                                fdData2.addColumn({ date: 'Date', type: 'date' });
+                                fdData2.addColumn('number', data[1].Name);
+
+                                reportData = data[1].TimeSeries;
+                                var fdArray = [];
+                                for (i = 0; i < reportData.length; i++) {
+                                    fdArray.push([new Date(reportData[i].Date), Math.round(reportData[i].FDValue)]);
+                                };
+
+                                fdData2.addRows(fdArray);
+
+                                fdJoinedData = google.visualization.data.join(fdJoinedData, fdData2, 'full', [[0, 0]], [1], [1]);
+
+                                var fdChart = new google.visualization.LineChart(document.getElementById('fdChartPt2'));
+                                fdChart.draw(fdJoinedData, fdLineOptions);
+                            }
+                            else if (data.length == 3) {
+                                // 3 players
+
+                                // Draft Kings First
+                                var dkData2 = new google.visualization.DataTable();
+                                dkData2.addColumn({ date: 'Date', type: 'date' });
+                                dkData2.addColumn('number', data[1].Name);
+
+                                reportData = data[1].TimeSeries;
+                                var dkArray = [];
+                                for (i = 0; i < reportData.length; i++) {
+                                    dkArray.push([new Date(reportData[i].Date), Math.round(reportData[i].DKValue)]);
+                                };
+
+                                dkData2.addRows(dkArray);
+
+                                var JD1 = google.visualization.data.join(dkJoinedData, dkData2, 'full', [[0, 0]], [1], [1]);
+
+                                var dkData3 = new google.visualization.DataTable();
+                                dkData3.addColumn({ date: 'Date', type: 'date' });
+                                dkData3.addColumn('number', data[2].Name);
+
+                                reportData = data[2].TimeSeries;
+                                dkArray = [];
+                                for (i = 0; i < reportData.length; i++) {
+                                    dkArray.push([new Date(reportData[i].Date), Math.round(reportData[i].DKValue)]);
+                                };
+
+                                dkData3.addRows(dkArray);
+
+                                var JD2 = google.visualization.data.join(JD1, dkData3, 'full', [[0, 0]], [1], [1]);
+
+                                var jD = google.visualization.data.join(JD1, JD2, 'full', [[0, 0]], [1, 2], [1, 2]);
+
+                                jD.removeColumn(3);
+
+                                var dkChart = new google.visualization.LineChart(document.getElementById('dkChartPt2'));
+                                dkChart.draw(jD, dkLineOptions);
+
+                                // FanDuel
+
+                                var fdData2 = new google.visualization.DataTable();
+                                fdData2.addColumn({ date: 'Date', type: 'date' });
+                                fdData2.addColumn('number', data[1].Name);
+
+                                reportData = data[1].TimeSeries;
+                                var fdArray = [];
+                                for (i = 0; i < reportData.length; i++) {
+                                    fdArray.push([new Date(reportData[i].Date), Math.round(reportData[i].DKValue)]);
+                                };
+
+                                fdData2.addRows(dkArray);
+
+                                var JD1FD = google.visualization.data.join(dkJoinedData, dkData2, 'full', [[0, 0]], [1], [1]);
+
+                                var fdData3 = new google.visualization.DataTable();
+                                fdData3.addColumn({ date: 'Date', type: 'date' });
+                                fdData3.addColumn('number', data[2].Name);
+
+                                reportData = data[2].TimeSeries;
+                                fdArray = [];
+                                for (i = 0; i < reportData.length; i++) {
+                                    fdArray.push([new Date(reportData[i].Date), Math.round(reportData[i].FDValue)]);
+                                };
+
+                                fdData3.addRows(fdArray);
+
+                                var JD2FD = google.visualization.data.join(JD1FD, fdData3, 'full', [[0, 0]], [1], [1]);
+
+                                var jDFD = google.visualization.data.join(JD1FD, JD2FD, 'full', [[0, 0]], [1, 2], [1, 2]);
+
+                                jDFD.removeColumn(3);
+
+                                var fdChart = new google.visualization.LineChart(document.getElementById('fdChartPt2'));
+                                fdChart.draw(jDFD, fdLineOptions);
+                            }
+                            else
+                            {
+                                // just plot the one player
+                                var dkChart = new google.visualization.LineChart(document.getElementById('dkChartPt2'));
+                                dkChart.draw(dkJoinedData, dkLineOptions);
+
+                                var fdChart = new google.visualization.LineChart(document.getElementById('fdChartPt2'));
+                                fdChart.draw(fdJoinedData, fdLineOptions);
+                            }
+
+                        }
+
+                    },
+                    error: function (msg) { }
+                });
+            }
+
+            // Get a list of all possible selectable players
+            // Result used in autocomplete ui elements
+            $.ajax({
+                dataType: "json",
+                type: 'Get',
+                url: playerListUrl,
+                success: function (data) {
+
+                    $("#players").autocomplete({
+                        source: data.HistoricalPlayers,
+                        focus: function (event, ui) {
+                            $("#players").val(ui.item.label);
+                            return false;
+                        },
+                        select: function (event, ui) {
+                            $("#players").val(ui.item.label);
+                            $("#player-id").val(ui.item.value);
+
+                            part1playerSelected(event, ui);
+
+                            return false;
+                        }
+                    })
+                    .autocomplete("instance")._renderItem = function (ul, item) {
+                        return $("<li>")
+                          .append("<a>" + item.label +"</a>")
+                          .appendTo(ul);
+                    };
+
+                    $("#players-p2-1").autocomplete({
+                        source: data.HistoricalPlayers,
+                        focus: function (event, ui) {
+                            $("#players-p2-1").val(ui.item.label);
+                            return false;
+                        },
+                        select: function (event, ui) {
+                            $("#players-p2-1").val(ui.item.label);
+                            $("#players-id-p2-1").val(ui.item.value);
+
+                            return false;
+                        }
+                    })
+                    .autocomplete("instance")._renderItem = function (ul, item) {
+                        return $("<li>")
+                          .append("<a>" + item.label + "</a>")
+                          .appendTo(ul);
+                    };
+
+                    $("#players-p2-2").autocomplete({
+                        source: data.HistoricalPlayers,
+                        focus: function (event, ui) {
+                            $("#players-p2-2").val(ui.item.label);
+                            return false;
+                        },
+                        select: function (event, ui) {
+                            $("#players-p2-2").val(ui.item.label);
+                            $("#players-id-p2-2").val(ui.item.value);
+
+                            return false;
+                        }
+                    })
+                    .autocomplete("instance")._renderItem = function (ul, item) {
+                        return $("<li>")
+                          .append("<a>" + item.label + "</a>")
+                          .appendTo(ul);
+                    };
+
+                    $("#players-p2-3").autocomplete({
+                        source: data.HistoricalPlayers,
+                        focus: function (event, ui) {
+                            $("#players-p2-3").val(ui.item.label);
+                            return false;
+                        },
+                        select: function (event, ui) {
+                            $("#players-p2-3").val(ui.item.label);
+                            $("#players-id-p2-3").val(ui.item.value);
+
+                            return false;
+                        }
+                    })
+                    .autocomplete("instance")._renderItem = function (ul, item) {
+                        return $("<li>")
+                          .append("<a>" + item.label + "</a>")
+                          .appendTo(ul);
+                    };
+                },
+                error: function (data) {
+
+                }
+            });
+
+            // Click handler for the 'Generate Visuals' button in part 2.
+            // Triggers service call and chart generation/refresh
+            $("#part2-button").click(function () {
+                generatePart2Visuals();
+            });
+
+            // Initialize each section of the page.
+            initializePart1(); // Look at individual player over time
+
+            initializePart2(); // Compare up to 3 players over time
+
+            initializePart3and4(); // Look at value per team and Look at standings bias in value per team
+            // They use the same data so only one call to the service is necesarry
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>IS608 Final Project: DraftKings and FanDuel Hockey Visualizations</h1>
+
+        <!-- Navigation -->
+        <ul id="nav">
+            <li><a href="Visuals.html">Visuals</a></li>
+            <li><a href="Description.html">Description</a></li>
+            <li><a href="http://jlaurito.github.io/CUNY_IS608/">IS608</a></li>
+        </ul>
+
+        <div id="content">
+            <!-- Look at inidvidual players -->
+            <h2 style=' left: 20px; font-size:20px;'>Individual Player Over Time</h2>
+            <!--<div style='height:400px; width:180px; top: 50px; left:20px; position:absolute;'>-->
+            <div style='height:400px; width:180px; top: 50px; left:20px; float:left'>
+                <label for="players">Player</label>
+                <input id="players" style='width:170px;'>
+                <input type="hidden" id="player-id">
+            </div>
+            <div id='indSalChart' style='height:400px; width:600px; top: 50px; left:200px; float:left;'></div>
+            <div id='indPointChart' style='height:400px; width:600px; top: 50px; left:800px; float:left;'></div>
+
+            <!-- Player to player comparison -->
+            <h2 style=' left: 20px; font-size:20px;'>Player to Player Value Comparison</h2>
+            <div style='height:400px; width:180px; top: 500px; left:20px; float:left;'>
+                <label for="players">Players</label>
+                <input id="players-p2-1" style='width:170px;'>
+                <input type="hidden" id="players-id-p2-1">
+                <input id="players-p2-2" style='width:170px; margin-top:10px'>
+                <input type="hidden" id="players-id-p2-2">
+                <input id="players-p2-3" style='width:170px;margin-top:10px'>
+                <input type="hidden" id="players-id-p2-3">
+                <button id="part2-button" type="button" style='margin-top:10px'>Generate Visuals</button>
+            </div>
+            <div id='dkChartPt2' style='height:400px; width:600px; top: 500px; left:200px; float:left;'></div>
+            <div id='fdChartPt2' style='height:400px; width:600px; top: 500px; left:800px; float:left;'></div>
+
+            <!-- Value by team bar charts -->
+            <h2 style='left:20px; font-size:20px;'>Value by Opponent</h2>
+            <div id='dkOpponentChart' style='height:400px; width:1400px; top: 950px; left:200px; float:left;'></div>
+            <div id='fdOpponentChart' style='height:400px; width:1400px; top: 1500px; left:200px; float:left;'></div>
+
+            <!-- Correlation Charts -->
+            <h2 style='left:20px;font-size:20px;'>Standings Bias</h2>
+            <div style='height:400px; width:180px; top: 500px; left:20px; float:left;'></div>
+            <div id='dkCorrChart' style='height:400px; width:600px; top: 1950px; left:200px; float:left;'></div>
+            <div id='fdCorrChart' style='height:400px; width:600px; top: 1950px; left:800px; float:left;'></div>
+            <h3 style='left:20px;font-size:12px;'>Justin Hink 2015</h3>
+        </div>    
+    </div>
+
+</body>
+</html>

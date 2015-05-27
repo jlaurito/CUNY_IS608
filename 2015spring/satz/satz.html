@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+
+<body>
+<H1> Percent FDA NCE filings by Country of Company Headquarters (1982-2008) </H1>
+
+<div>
+<p> Alex Satz; <a href="http://jlaurito.github.io/CUNY_IS608/">IS608 Final</a>; May 17 2005 </p>
+
+</div>
+
+<div>
+<p> Data taken from Chembl <a href="url">https://www.ebi.ac.uk/chembl/</a> to assess global sources of NCE 
+<a href="url">http://en.wikipedia.org/wiki/New_chemical_entity</a> filings with the FDA.    
+The vast majority of filings are from companies headquartered in North America and Western Europe, particularly the USA.  
+This trend remains constant since 1982 and shows no signs of changing. Use the slider below to view changes over time.  Click on any country to see a 
+break-down of filings by company name for the currently chosen years (5-year rolling average).
+</p>
+</div>
+
+
+
+
+
+
+
+
+<style>
+
+/* style for table of company names selected with mouse click
+*/
+
+table2 {
+            border-collapse: collapse;
+                
+            font: 12px sans-serif;
+        }
+
+        td {
+            padding: 5px;
+            border: 1px black solid;
+        }
+/*style for choropleth legend
+*/          
+.legend{
+            border: 0px;
+        }
+        td {
+            border:0px;
+            padding: 0 px;
+        }
+
+/*
+Needed to set the color for those nations with a drug assigned to them.
+*/
+.subunit.AUS { fill: #C0C0C0; }
+.subunit.BEL { fill: #C0C0C0; }
+.subunit.CAN { fill: #C0C0C0; }
+.subunit.CHE { fill: #C0C0C0; }
+.subunit.DEU { fill: #C0C0C0; }
+.subunit.DNK { fill: #C0C0C0; }
+.subunit.FIN { fill: #C0C0C0; }
+.subunit.FRA { fill: #C0C0C0; }
+.subunit.GBR{ fill: #C0C0C0; }
+.subunit.IND { fill: #C0C0C0; }
+.subunit.ISR { fill: #C0C0C0; }
+.subunit.ITA { fill: #C0C0C0; }
+.subunit.JPN { fill: #C0C0C0; }
+.subunit.NOR { fill: #C0C0C0; }
+.subunit.SWE{ fill: #C0C0C0; }
+.subunit.USA { fill: #C0C0C0; }
+.subunit {fill:#C0C0C0 }
+
+.namesbold { font-weight: bold; }
+
+
+.axis {
+  font: 10px sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.axis .domain {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .3;
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+
+.axis .halo {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 8px;
+  stroke-linecap: round;
+}
+
+.slider .handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: .5;
+  stroke-width: 1.25px;
+  pointer-events: none;
+}
+
+/*
+style for tooptip box on mouseover
+*/
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  width: 150px;                  
+  height: 25px;                 
+  padding: 2px;             
+  font-size: 10px;     
+  background: #FFFFE0;
+  border: 1px;      
+  border-radius: 8px;           
+  pointer-events: none;         
+}   
+
+ 
+
+</style>
+
+
+
+<div>
+
+<table class = "legend", style="width:20%", align="right">
+  <tr>
+    <td><span class="namesbold">Color Code </span></td>
+    <td><span class="namesbold">% NCE Filings</span></td>		
+  </tr>
+  <tr>
+    <td><font color="#fa0000">&#9724</td>
+    <td>>90</td>		
+  </tr>
+  <tr>
+    <td><font color="#e60000">&#9724</td>
+    <td>>80</td>		
+  </tr>
+  <tr>
+    <td><font color="#d20000">&#9724</td>
+    <td>>50</td>		
+  </tr>
+  <tr>
+    <td><font color="#bf0000">&#9724</td>
+    <td>>30</td>		
+  </tr>
+  <tr>
+    <td><font color="#ab0000">&#9724</td>
+    <td>>20</td>		
+  </tr>
+  <tr>
+    <td><font color="#980000">&#9724</td>
+    <td>>10</td>		
+  </tr>
+  <tr>
+    <td><font color="#700000">&#9724</td>
+    <td>>1</td>		
+  </tr>
+  <tr>
+    <td><font color="#490000">&#9724</td>
+    <td>>0.1</td>		
+  </tr>
+  
+</table>
+
+</div>
+
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+<div>
+<script>
+// size of choropleth
+var width = 800,
+    height = 400;
+
+// many project types possible  equirectangular looks best I think
+var projection = d3.geo.equirectangular()
+    .scale(25 * 5)  // can adjust size of map
+    .translate([width / 2, height / 2]);
+
+//shows the map
+var path = d3.geo.path()
+    .projection(projection);
+
+//attaches attributes
+var svg1 = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    
+//attached the tooltip on mouseover!!    
+var div = d3.select("body").append("div")   
+  .attr("class", "tooltip")               
+  .style("opacity", 0);
+  
+ 
+
+
+
+d3.json("world3.json", function(error, uk) {
+  var subunits = topojson.feature(uk, uk.objects.subunits),
+      places = topojson.feature(uk, uk.objects.places);
+
+  svg1.selectAll(".subunit")
+      .data(subunits.features)
+      .enter().append("path")
+      .attr("class", function(d) { return "subunit " + d.id; })
+      .attr("d", path)
+      // the section below is added for the tooltip
+      .on("mouseover", function(d) {
+          d3.select(this).transition().duration(300).style("opacity", 1);
+          div.transition().duration(300)
+          .style("opacity", 1)
+          //text displayed on mouseover.  d.id is the country code.  list1 is global.
+          div.text("County Code: " +list1[dict1[d.id]][0] + ", " + "Count: " + list1[dict1[d.id]][1])
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY -30) + "px")
+      })
+      // and this section is added for the mouseclick.  Again, d.id is the country code.
+      .on("click", function(d){
+          updateTable(d.id);
+      })
+    
+  
+      // this is needed so that the tooltip goes away when the mouse if moved off the country
+      svg1.append("g")
+      .on("mouseout", function() {
+          d3.select(this)
+          .transition().duration(300)
+          .style("opacity", 0.8);
+          div.transition().duration(300)
+          .style("opacity", 0);
+       })
+  
+       svg1.append("g")
+  });
+
+</script>
+</div>
+
+
+
+<div>
+<h3> 5-Year Rolling Average </h3>
+
+<script>
+// Below the slider is generated
+currentValue = 0
+
+var margin = {top: 0, right: 500, bottom: 10, left: 10},
+    width2 = 400,
+    height2 = 30,
+    moving,
+    currentValue = 1984,
+    targetValue = 1984,
+    alpha = .2;
+
+var x = d3.scale.linear()
+    .domain([1984, 2008])
+    .range([0, width2])
+    .clamp(true);
+
+var brush = d3.svg.brush()
+    .x(x)
+    .extent([0, 0])
+    .on("brush", brushed);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width2 + margin.left + margin.right)
+    .attr("height", height2 + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height2 / 2 + ")")
+    .call(d3.svg.axis()
+    .scale(x)  //x is the scale described above
+    .orient("bottom")
+    .tickFormat(function(d) { return d + ""; })
+    .tickSize(0)
+    .tickPadding(12))
+    .select(".domain")
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "halo");
+
+var slider = svg.append("g")
+    .attr("class", "slider")
+    .call(brush);
+
+slider.selectAll(".extent,.resize")
+    .remove();
+
+slider.select(".background")
+    .attr("height", height2);
+
+var handle = slider.append("circle")
+    .attr("class", "handle")
+    .attr("transform", "translate(0," + height2 / 2 + ")")
+    .attr("r", 9);
+
+slider
+    .call(brush.event)
+    .transition() // gratuitous intro!
+    .duration(750)
+    .call(brush.extent([targetValue, targetValue]))
+    .call(brush.event);
+
+//used for the button to select all years
+// setting the year at 0, selects all years    
+function updateData(){
+    currentValue = 0;
+    loadCSV(0);
+}
+
+
+function brushed() {
+  if (d3.event.sourceEvent) { // not a programmatic event
+    targetValue = x.invert(d3.mouse(this)[0]);
+    move();
+  } else {
+    currentValue = brush.extent()[0];
+    handle.attr("cx", x(currentValue));
+    if (currentValue >1979){
+        //document.write(currentValue)
+        loadCSV(currentValue);
+    }
+  }
+}
+
+
+//this function is needed to prevent reading numerous value each time slider is moved
+var check2 = function(){
+    var sample = 5;
+    }
+
+//Senses moves in the slider
+function move() {
+  if (moving) return false;
+  moving = true;
+  d3.timer(function() {
+    currentValue = Math.abs(currentValue - targetValue) < 2
+        ? targetValue
+        : targetValue * alpha + currentValue * (1 - alpha);
+
+    slider
+        .call(brush.extent([currentValue, currentValue]))
+        .call(brush.event);
+    check2(); //this is needed to prevent the slider from reading multiple values simultaneously
+               // it is just a fake function that breaks up the loop
+    return !(moving = currentValue !== targetValue);
+  });
+}
+
+ 
+
+// getCSSRule was taken from a website, I didn't write it.         
+function getCSSRule(ruleName, deleteFlag) {               // Return requested style obejct
+   ruleName=ruleName.toLowerCase();                       // Convert test string to lower case.
+   if (document.styleSheets) {                            // If browser can play with stylesheets
+	  for (var i=0; i<document.styleSheets.length; i++) { // For each stylesheet
+		 var styleSheet=document.styleSheets[i];          // Get the current Stylesheet
+		 var ii=0;                                        // Initialize subCounter.
+		 var cssRule=false;                               // Initialize cssRule. 
+		 do {                                             // For each rule in stylesheet
+			if (styleSheet.cssRules) {                    // Browser uses cssRules?
+			   cssRule = styleSheet.cssRules[ii];         // Yes --Mozilla Style
+			} else {                                      // Browser usses rules?
+			   cssRule = styleSheet.rules[ii];            // Yes IE style. 
+			}                                             // End IE check.
+			if (cssRule)  {                               // If we found a rule...
+			   if (cssRule.selectorText.toLowerCase()==ruleName) { //  match ruleName?
+				  if (deleteFlag=='delete') {             // Yes.  Are we deleteing?
+					 if (styleSheet.cssRules) {           // Yes, deleting...
+						styleSheet.deleteRule(ii);        // Delete rule, Moz Style
+					 } else {                             // Still deleting.
+						styleSheet.removeRule(ii);        // Delete rule IE style.
+					 }                                    // End IE check.
+					 return true;                         // return true, class deleted.
+				  } else {                                // found and not deleting.
+					 return cssRule;                      // return the style object.
+				  }                                       // End delete Check
+			   }                                          // End found rule name
+			}                                             // end found cssRule
+			ii++;                                         // Increment sub-counter
+		 } while (cssRule)                                // end While loop
+	  }                                                   // end For loop
+   }                                                      // end styleSheet ability check
+   return false;                                          // we found NOTHING!
+}                                                         // end getCSSRule 
+
+   
+    
+// Here I read the datafile I've worked up in R
+// The file has two columns, country code and # drugs discovered
+
+function loadCSV(currentValue){    
+   d3.text("iso_dates.csv", function(data) {
+		parsedCSV = d3.csv.parseRows(data); // need to not declare with var to make global! 
+		//document.write(parsedCSV);
+		
+		setColors(currentValue);
+			
+	});
+}
+
+ 
+//the dict tracks the index value for each country in the list
+//I realize this is a bit convoluted...
+//currentValue is the date chosen by the slider.  Of set to zero if all dates are to included
+function groupAndSum(currentValue){
+	dict1 = {AUS:0, BEL:1,CAN:2, CHE:3,DEU:4, DNK:5, FIN:6, FRA:7, GBR:8, IND:9, ISR:10, ITA:11, JPN :12,NOR:13,SWE:14,USA:15};
+	var list1 = [["AUS",0], ["BEL",0], ["CAN",0], ["CHE",0], ["DEU",0], ["DNK",0], ["FIN",0], ["FRA",0], ["GBR",0], ["IND",0], ["ISR",0], ["ITA",0], ["JPN",0], ["NOR",0], ["SWE",0], ["USA",0]];
+	//document.write(list1[0]);
+	if (currentValue > -100){ //this if statement was used during testing
+		for (var i = 0; i<parsedCSV.length; ++i){
+		    // currentValue=0 takes all data
+			if ((currentValue == 0 )||(parseFloat(parsedCSV[i][0]) > (currentValue -3) && parseFloat(parsedCSV[i][0]) < (currentValue +3))){
+			 //document.write(list1[dict1[parsedCSV[i][1]]][1])
+			   if (parsedCSV[i][0] != "dates2"){
+				   list1[dict1[parsedCSV[i][1]]][1] = list1[dict1[parsedCSV[i][1]]][1] + 1   ; 
+			   }
+			 }
+		}
+	}
+	
+	//document.write(list1)
+	return (list1);
+
+}
+
+// based on the number of drugs discovered, assigns a shade of red         
+    function setColors(currentValue){
+        list1 = groupAndSum(currentValue)
+        //document.write(list1);
+        max = getMax(list1)
+		for (var i = 0; i<list1.length; ++i){
+			var count = (list1[i][1])/max;
+			
+			//document.write(count);
+			var iso = list1[i][0];
+			var subname = '.subunit.' + iso;
+			var glosub = getCSSRule(subname);
+			var color = pickShade(count);
+			glosub.style.fill = color;
+		}
+		return (" ");
+    
+    }
+    
+    
+// finds max value in the CSV file    
+function getMax(list1){
+   var max = 1;
+  
+   for (var i = 1; i<list1.length; ++i){
+	   
+	   if (list1[i][1] > max){
+		   
+		   max = parseFloat(list1[i][1]);
+	   }
+	 
+	
+   }
+   //document.write(max);
+   return max;
+}
+    
+// takes a normalized count and assigns shade of red    
+function pickShade(c){
+	var color = "#C0C0C0";
+	if (c > 0){
+		 color = "#490000";
+	}
+	if (c > 0.01){
+		 color = "#700000";
+	}
+	if (c > 0.1){
+		 color = "#980000";
+	}
+	if (c > 0.2){
+		 color = "#ab0000";
+	}
+	if (c > 0.3){
+		 color = "#bf0000";
+	}
+	if (c > 0.5){
+		 color = "#d20000";
+	}
+	
+	if (c > 0.8){
+		 color = "#e60000";
+	}
+	if (c > 0.9){
+		color = "#fa0000";
+	} 
+	
+	
+	
+	return (color);
+}
+    
+function dataForTable(parseddata, country){
+    companydict1 = {}
+    for (var i = 0; i<parseddata.length; ++i){
+                if ((currentValue == 0 )||(parseFloat(parsedCSV[i][0]) > (currentValue -3) && parseFloat(parsedCSV[i][0]) < (currentValue +3))){
+                 //document.write(list1[dict1[parsedCSV[i][1]]][1])
+                   if (parsedCSV[i][1] == country){
+                       if (parsedCSV[i][2] in companydict1){
+                       
+                           companydict1[parsedCSV[i][2]] = companydict1[parsedCSV[i][2]] + 1   ; 
+                        }
+                        else{
+                        
+                            companydict1[parsedCSV[i][2]] = 1
+                        }
+                   }
+                 }
+            }
+    companylist = []
+    count1 = 0
+    for (var key in companydict1){
+        companylist[count1] = [key,companydict1[key]];
+        count1 = count1 +1;
+    }
+    txt = country + " Company Names (1982-2008)"
+    if (currentValue != 0){
+        txt = country + " Company Names (" + Math.round(currentValue-2) + "-" + Math.round(currentValue+2) + ")"
+    }
+    companylist.sort().unshift([ txt, "Count"]);
+    return companylist
+}    
+    
+function updateTable(country){
+    //document.write(stuff)
+    d3.select("table2").remove();
+    d3.text("iso_dates.csv", function(data) {
+            parsedCSV2 = d3.csv.parseRows(data); 
+               companylist = dataForTable(parsedCSV2, country)
+
+               
+
+                var container = d3.select("body")
+                    .append("table2")
+                    
+
+                    .selectAll("tr")
+                        .data(companylist).enter()
+                        .append("tr")
+                        
+                        
+
+                    .selectAll("td")
+                        .data(function(d) { return d; }).enter()
+                        .append("td")
+                        .attr("style", "border: 1px black solid")
+                        .text(function(each_value_in_jsarray) { return each_value_in_jsarray; }
+                        
+                        );
+            });
+}
+
+</script>
+</div>
+
+<div id="option">
+    <input name="updateButton" 
+           type="button" 
+           style = "color: red"
+           value="Or Click To Select All Years" 
+           onclick="updateData()" /input>
+           
+</div>
+
+<script>
+// used to put a margin below the button
+document.getElementById("option").style.margin = "0px 10px 20px 0px";
+</script>
+
+
+
+
+
+</body>
