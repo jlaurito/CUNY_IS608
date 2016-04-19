@@ -77,35 +77,39 @@
   function drawChart(){
     // get data
     $.get('data/presidents.csv', function(csvData){
-      var arrayData = $.csv.toArrays(csvData, {
+      var memoryData = $.csv.toArrays(csvData, {
         onParseValue: $.csv.hooks.castToScalar
       });
-
-    //var data = new google.visualization.arrayToDataTable(arrayData);
+      
     
-    var data = new google.visualization.DataTable();
-                  data.addColumn('number', 'Height');
-                  data.addColumn('number', 'Weight');
+    var presData = new google.visualization.DataTable();
+                  presData.addColumn('number', 'Height');
+                  presData.addColumn('number', 'Weight');
                   // A column for custom tooltip content
-                  data.addColumn({name:'name', type:'string', role:'tooltip'});
+                  presData.addColumn({name:'name', type:'string', role:'tooltip'});
 
-    var myArray = [];
-    for (i = 1; i < arrayData.length; i++){
-      //console.log([arrayData[i][1], arrayData[i][2],arrayData[i][0]]);
-      myArray.push([arrayData[i][2], arrayData[i][1],arrayData[i][0]]);
+    var tempArray = [];
+    for (i = 1; i < memoryData.length; i++){
+      tempArray.push([memoryData[i][2], memoryData[i][1],memoryData[i][0]]);
+      // tempArray.push([
+      //     memoryData[i][2], 
+      //     memoryData[i][1],
+      //     String(memoryData[i][0]) + ": Height: " + String(memoryData[i][1]) + " Weight: " + String(memoryData[i][2])
+      // ]);
+      
     };
 
-    data.addRows(myArray);
-    console.log(data);
+    presData.addRows(tempArray);
+    console.log(presData);
 
     var options = { title:'Presidents',
                     hAxis: {title: 'Weight (lbs)', 
-                            minValue: data.getColumnRange(0).min,
-                            maxValue: data.getColumnRange(0).max
+                            minValue: presData.getColumnRange(0).min,
+                            maxValue: presData.getColumnRange(0).max
                           },
                     vAxis: {title: 'Height (in)', 
-                            minValue: data.getColumnRange(1).min, 
-                            maxValue: data.getColumnRange(1).max
+                            minValue: presData.getColumnRange(1).min, 
+                            maxValue: presData.getColumnRange(1).max
                           },
                     tooltip: { textStyle: {color:'#F0000'}
                              },  
@@ -113,7 +117,7 @@
                  }
 
     var chart = new google.visualization.ScatterChart(document.getElementById('chart2'));
-    chart.draw(data, options);
+    chart.draw(presData, options);
     })
 
   };
