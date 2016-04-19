@@ -3,5 +3,5 @@
 # otherwise it will continue to run (like a server)
 #
 library('shiny')
-setwd('/Users/JL/Box Sync/CUNY/CUNY_IS608/lecture3/shiny_graph_sample')
+setwd('/Users/josh.laurito/src/CUNY_IS608/lecture3/shiny_graph_sample')
 runApp()

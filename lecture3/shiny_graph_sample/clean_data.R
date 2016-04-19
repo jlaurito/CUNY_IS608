@@ -1,7 +1,7 @@
 #
 # getting and cleaning data (this code is only run once)
 # set working directory to where this file is
-setwd('~/Dropbox/CUNY/CUNY_IS608/lecture3/shiny_graph_sample')
+setwd('/Users/josh.laurito/src/CUNY_IS608/lecture3/shiny_graph_sample')
 
 
 # pull in data

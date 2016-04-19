@@ -15,6 +15,7 @@ shinyServer(function(input, output){
   outputPlot <- function(){
     # subset
     in_cause <- input$cause
+    #in_cause <- "Neoplasms"
     slcted <- mort[mort$Year == 2010 & mort$ICD.Chapter==in_cause, 
                    c('State','Crude.Rate', 'Population')
                   ]
@@ -22,12 +23,13 @@ shinyServer(function(input, output){
     slcted$State.Rank <- rank(-slcted$Crude.Rate, ties.method="random")
     slcted$State <- sapply(slcted$State, as.character)
     
-gvisBubbleChart(slcted, 
+    gvisBubbleChart(slcted, 
                     idvar='State', 
                     xvar='Crude.Rate', 
                     yvar='State.Rank',
                     sizevar='Population',
-                    options= list(chartArea='{left:0,top:0,width:600,height:900}', 
+                    options= list(chartArea='{width:600,height:"100%"}',
+                                  height=600,
                                   colorAxis.legend.position='none',
                                   vAxis='{direction:-1, maxValue:52, 
                                           minValue:0, gridlines:{count:0}}',

@@ -3,7 +3,7 @@
 
 library('shiny')
 library('ggplot2')
-setwd('/Users/JL/Box Sync/CUNY/CUNY_IS608/lecture3/shiny_graph_sample')
+#setwd('/Users/josh.laurito/src/CUNY_IS608/lecture3/shiny_graph_sample')
 
 # let's create a list of potential states and years
 mort_ui <- read.csv('../data/cleaned-cdc-mortality-1999-2010.csv')

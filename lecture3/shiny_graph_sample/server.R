@@ -4,7 +4,7 @@
 library('shiny')
 library('plyr')
 library('ggplot2')
-setwd('/Users/JL/Box Sync/CUNY/CUNY_IS608/lecture3/shiny_graph_sample')
+#setwd('/Users/josh.laurito/src/CUNY_IS608/lecture3/shiny_graph_sample')
 
 # load data
 mort <- read.csv('../data/cleaned-cdc-mortality-1999-2010.csv')

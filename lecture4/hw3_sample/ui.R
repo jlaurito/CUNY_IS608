@@ -12,14 +12,18 @@ cause  <- lapply(data.frame(table(mort_ui$ICD.Chapter))[table(mort_ui$ICD.Chapte
 
 
 # shiny UI
-shinyUI(pageWithSidebar(
-  headerPanel('States Ranked by Relative Mortality'),
-  sidebarPanel(selectInput("cause", "Cause: ", cause, selected='Certain infectious and parasitic diseases')
-              ),
-  mainPanel(
-    tabsetPanel(
-      tabPanel("2010 Rankings", htmlOutput('values')),
-      tabPanel("Change Over Time", htmlOutput('motion'))
-    )
+fluidPage(
+  titlePanel('States Ranked by Relative Mortality'),
+  sidebarLayout(
+    sidebarPanel(selectInput("cause", "Cause: ", 
+                           cause, selected='Certain infectious and parasitic diseases')
+                ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("2010 Rankings", htmlOutput('values')),
+        tabPanel("Change Over Time", htmlOutput('motion'))
+      )
+    ),
+  fluid=FALSE
   )
-))
+)
