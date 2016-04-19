@@ -1,4 +1,7 @@
 # sample code to create graphs using bigvis
+# installation
+# library('devtools')
+# install_github(repo='hadley/bigvis')
 
 library("bigvis")
 library("ggplot2")
