@@ -123,7 +123,7 @@
             .enter()
             .append('circle')
             .attr('class', 'dot')
-            .attr('r', 5)
+            .attr('r', function(d){return 2*d.weight/100;})
             .attr('cx', function(d){return x(d.weight);})
             .attr('cy', function(d){return y(d.height);})
             .text(function(d){return d.name;})
@@ -133,7 +133,7 @@
               tipData = d.name;
               return toolMove();
             })
-            .style('fill', 'purple');
+            .style('fill', 'red');
     });
 
 </script>

@@ -116,7 +116,7 @@ function writeTable(){
 <br><br>
 <h2>3. Write a function to load the presidents.csv data and display the data as an html table.</h2>
 
-<div id ='third'></div>
+<div id ='third' class='third'></div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
@@ -133,7 +133,7 @@ d3.csv('data/presidents.csv', function(data){
         height: +d.Height; 
         name: d.Name;
     });
-
+    console.log(data);
     // create a table with a row for each row of data
     var table = d3.select('#third').append('table');
     var header = table.append('thead')

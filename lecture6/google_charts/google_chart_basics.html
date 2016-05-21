@@ -82,42 +82,42 @@
       });
       
     
-    var presData = new google.visualization.DataTable();
-                  presData.addColumn('number', 'Height');
-                  presData.addColumn('number', 'Weight');
-                  // A column for custom tooltip content
-                  presData.addColumn({name:'name', type:'string', role:'tooltip'});
+      var presData = new google.visualization.DataTable();
+                    presData.addColumn('number', 'Height');
+                    presData.addColumn('number', 'Weight');
+                    // A column for custom tooltip content
+                    presData.addColumn({name:'name', type:'string', role:'tooltip'});
 
-    var tempArray = [];
-    for (i = 1; i < memoryData.length; i++){
-      tempArray.push([memoryData[i][2], memoryData[i][1],memoryData[i][0]]);
-      // tempArray.push([
-      //     memoryData[i][2], 
-      //     memoryData[i][1],
-      //     String(memoryData[i][0]) + ": Height: " + String(memoryData[i][1]) + " Weight: " + String(memoryData[i][2])
-      // ]);
-      
-    };
+      var tempArray = [];
+      for (i = 1; i < memoryData.length; i++){
+        // tempArray.push([memoryData[i][2], memoryData[i][1],memoryData[i][0]]);
+        tempArray.push([
+            memoryData[i][2], 
+            memoryData[i][1],
+            String(memoryData[i][0]) + ": Height: " + String(memoryData[i][1]) + " Weight: " + String(memoryData[i][2])
+        ]);
+        
+      };
 
-    presData.addRows(tempArray);
-    console.log(presData);
+      presData.addRows(tempArray);
+      console.log(presData);
 
-    var options = { title:'Presidents',
-                    hAxis: {title: 'Weight (lbs)', 
-                            minValue: presData.getColumnRange(0).min,
-                            maxValue: presData.getColumnRange(0).max
-                          },
-                    vAxis: {title: 'Height (in)', 
-                            minValue: presData.getColumnRange(1).min, 
-                            maxValue: presData.getColumnRange(1).max
-                          },
-                    tooltip: { textStyle: {color:'#F0000'}
-                             },  
-                    legend: 'none'
-                 }
+      var options = { title:'Presidents',
+                      hAxis: {title: 'Weight (lbs)', 
+                              minValue: presData.getColumnRange(0).min,
+                              maxValue: presData.getColumnRange(0).max
+                            },
+                      vAxis: {title: 'Height (in)', 
+                              minValue: presData.getColumnRange(1).min, 
+                              maxValue: presData.getColumnRange(1).max
+                            },
+                      tooltip: { textStyle: {color:'#F0000'}
+                               },  
+                      legend: 'none'
+                   }
 
-    var chart = new google.visualization.ScatterChart(document.getElementById('chart2'));
-    chart.draw(presData, options);
+      var chart = new google.visualization.ScatterChart(document.getElementById('chart2'));
+      chart.draw(presData, options);
     })
 
   };
