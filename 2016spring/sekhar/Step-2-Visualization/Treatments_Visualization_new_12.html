@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+      <!--The following HTML elements are needed to use Mabbox maps-->
+  	  <meta charset="utf-8">
+	  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+	  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.js'></script>
+	  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.css' rel='stylesheet' />
+
+	  <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+      <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+	  
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	  
+	  <!--script src="d3.legend.js"></script-->
+
+ <script>
+ 
+  //Initialize the starting percentile values.
+  //These global variables are updated as the slider position is changed
+  start_range = 0;
+  end_range = 100;
+  
+  tooltip1 = '<div class="tooltip"><div class="tooltip-inner">' + start_range  + '</div><div class="tooltip-arrow"></div></div>';
+  tooltip2 = '<div class="tooltip"><div class="tooltip-inner">' + end_range  + '</div><div class="tooltip-arrow"></div></div>';
+  
+  $(function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 100,
+      values: [ 0, 100 ],
+	  slide: function( event, ui ) {
+        $( "#percentile" ).val( "            Percentile: " + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+
+	
+		tooltip1 = '<div class="tooltip"><div class="tooltip-inner">' + ui.values[ 0 ] + '</div><div class="tooltip-arrow"></div></div>';
+		tooltip2 = '<div class="tooltip"><div class="tooltip-inner">' + ui.values[ 1 ]  + '</div><div class="tooltip-arrow"></div></div>';
+		
+		$('.ui-slider-handle:first').html(tooltip1);
+		$('.ui-slider-handle:last').html(tooltip2);
+
+	  
+	  },
+	  
+	  
+	  change: function( event, ui ) {
+	    start_range = ui.values[ 0 ];
+        end_range = ui.values[ 1 ];		
+		$( "#percentile1" ).val( "            Percentile: " + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+ 
+		//disableSlider is a global variable that controls the change functionality of the slider
+		if(disableSlider == 0){
+		        selectedPercentileData();
+		}
+	  }
+	  
+	  
+    });
+    $( "#percentile" ).val( "            Percentile: " + $( "#slider-range" ).slider( "values", 0 ) +
+      " - " + $( "#slider-range" ).slider( "values", 1 ) );
+	  
+		$('.ui-slider-handle:first').html(tooltip1);
+		$('.ui-slider-handle:last').html(tooltip2);
+
+  });
+  
+
+  
+</script>	  
+<!--The top attribute of #map is made as 250px, so that we have room to display the dropdown menu-->
+
+<style>
+	body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+
+   .tooltip {
+    position: absolute;
+    z-index: 1020;
+    display: block;
+    padding: 5px;
+    font-size: 11px;
+    visibility: visible;
+    margin-top: -2px;
+    bottom:120%;
+    margin-left: -2em;
+}
+
+.tooltip .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-top: 5px solid #000000;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.tooltip-inner {
+    max-width: 20px;
+    padding: 3px 8px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000000;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+	#map { 
+		  position:absolute; 
+		  width: 100%;
+		  height: 100%;
+		  top:250px;
+		}
+
+
+		svg {
+		  position: absolute;
+		  width: 100%;
+		  height: 100%;
+		}
+
+	select {
+		width:500px;
+		min-height: 45px;
+		background:transparent;
+		margin-left:150px;
+	}
+	
+	h2 {
+        margin-left  :50px;
+	}
+
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  /*width: 100px;                  
+  height: 100px;                 
+  padding: 2px;             
+  font: 12px sans-serif;        
+  background: lightsteelblue;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;*/         
+}
+
+  
+</style>
+
+<!--Loading the d3 library-->
+<script type="text/javascript" src="d3.min.js"></script>
+
+</head>
+
+
+
+<body>
+
+<h1 align="center">Visual analysis of Hospital charges across the USA</h1>
+<p align="center">Write-up <a href="/2016spring/sekhar/">here</a>. Completed for <a href="/">CUNY IS608</a>.
+<div>
+<div style="float:left;margin-right:5px;margin-left:20px">
+<h2>Select a treatment from the following menu:</h2>
+
+<select id="mySelect" onchange="selectedTreatmentData(this)" style="margin-left:50px" ></select>
+
+<P style="color:red; margin:0"><em>Click on a dot to highlight the dots which are within  
+<select id="myRange" style="width:60px;margin-left:0px;min-height: 35px;margin-top:2px">
+  <option value=5>&#177;5%</option>
+  <option value=10>&#177;10%</option>
+  <option value=15>&#177;15%</option>
+  <option value=20>&#177;20%</option>
+  <option value=25>&#177;25%</option>
+  <option value=30>&#177;30%</option>
+  <option value=35>&#177;35%</option>
+  <option value=40>&#177;40%</option>
+  <option value=45>&#177;45%</option>
+  <option value=50>&#177;50%</option>
+  <option value=55>&#177;55%</option>
+  <option value=60>&#177;60%</option>
+  <option value=65>&#177;65%</option>
+  <option value=70>&#177;70%</option>
+  <option value=75>&#177;75%</option>
+  <option value=80>&#177;80%</option>
+  <option value=85>&#177;85%</option>
+  <option value=90>&#177;90%</option>
+  <option value=95>&#177;95%</option>
+  <option value=100>&#177;100%</option>
+</select>
+range of the selected dot. 
+</em>
+</p>  
+
+<p id ="remove" style="color:blue; margin:0"></p>
+
+</div>
+
+<div style="float:left;margin-right:5px;margin-left:250px;">
+<p>
+<h2 style="clear:both;margin-left:300px;">Select the percentile ranking using the below slider:</h2>
+</p>
+
+ 
+
+<br/> 
+<div  id="slider-range" style="width:70%;margin-left:320px;float:left"></div>
+
+
+<p align = "center" id="cost" style="font-weight:bold;color:blue;font-family:courier;width: 500px; padding: 5px; margin-left: 320px; margin-bottom:0;float:left;position:absolute"></p>
+</br></br><p style="float:left;margin-left:320px"><b>NOTE:</b> All numbers are rounded to the nearest integer. Some percentile ranks may not exist or some duplicated.</p>
+</div>
+</div>
+<div id="map"></div> 
+
+<script>
+    //Tooltip related attribute setup
+    var div = d3.select("body").append("div")   
+      .attr("class", "tooltip")               
+      .style("opacity", 0);
+	
+	
+     
+	//Access key for the mapbox API
+	mapboxgl.accessToken = 'pk.eyJ1IjoibXNla2hhcjEyIiwiYSI6ImNpbm83azVjNDEwMWJ1OGtqMXN0b3g3c3QifQ.aRAR7FGquOK0venKUgd8zA'
+
+	//Let us define a global variable called "init", to differentiate the map refresh with initial selection of select box choice and subsequent selections of the select box choice.
+	//That is, we will create a map, only once, and if the user zooms in to a specific map location, and changes the choice, then 
+	//the map should retain the zoom, delete all the existing dots on the map, and plot new dots. 
+	//This way we can retain the user's view even though he changes the selection of the treatment via drop down menu.
+	//(if a variable is created without the keyword "var", then it is a global variable)
+	
+    init = 1;
+	
+	//Let us read the Distinct_treatments.csv data, to populate the dropdown menu
+	d3.csv("Distinct_treatments.csv", function(d) { 
+	  return {
+		Treatment_ID: d.Treatment_ID,
+		Treatment_Description: d.Treatment_Description
+	  };
+	}, function(error, rows) {
+
+    //Adds choices to the select box
+	addSelData(rows)
+	
+    if(init == 1) 
+	       {
+		       initializeMap();
+			   init = 2;
+		   }
+	
+	}); //End of d3.csv("Distinct_treatments.csv"...)
+
+	
+    //Function to add choices to the select box
+	function addSelData(rows){
+
+	  mySelect = document.getElementById('mySelect');
+
+
+	  for(i = 0; i<= rows.length - 1; i++)
+	  {
+		 mySelect.options[mySelect.options.length] = new Option(rows[i].Treatment_Description, rows[i].Treatment_ID);    
+	  }
+	} //End of addSelData(rows)
+
+	 
+	 //Used for legend, at a later point in time
+	 color_hash = {  0 : [" <  Selected dot", "green"],
+					    1 : [" =  Selected dot", "blue"],
+					    2 : [" > Selected dot", "red"]
+					  }     
+	
+	//Initializes map, for the first time, when the website is opened by the user	
+    function initializeMap()
+      {
+	  
+       				//Setup mapbox-gl map as a global variable
+					map = new mapboxgl.Map({
+					  container: 'map', // container id
+					  center: [-96,33],
+					style: 'mapbox://styles/mapbox/emerald-v8', //stylesheet location
+					  zoom: 4,
+										})
+					//map.scrollZoom.disable()
+					map.addControl(new mapboxgl.Navigation());
+					container = map.getCanvasContainer()
+					//d3.selectAll("svg > *").remove()
+					svg = d3.select(container).append("svg")
+					      
+					
+                    //Set init to 2, so that we know that the user's selection from dropdown is NOT initial
+					init = 2;
+                    
+					selectedTreatmentData(mySelect);
+	  
+      } //End of InitializeMap()	
+	  
+	  
+    //Returns a point on the map, based on latitude and longitude
+	function project(d) {
+		   return map.project(getLL(d));
+	  			        } //End of project(d) function
+					
+	//Converts latitude and longitude to a point on the graph	
+	function getLL(d) {
+		   return new mapboxgl.LngLat(+d.Longitude, +d.Latitude)
+				      } //End of getLL(d) function
+
+    //Gets the data related to the selection made from the drop down menu
+	function selectedTreatmentData(sel)
+	{
+	  var Selected_Treatment_ID = sel.value;
+	  d3.csv("Treatment_modified.csv", function(d) { 
+		disableSlider = 0;      
+		clicked = 0;		
+		clicked_node = [];
+		highlightedData=[];
+	
+	   //Let us start clean. Clear/Reset all the dynamic content from the page (except slider bar)
+	   //svg.selectAll("*").remove();
+	   svg.selectAll("g").remove();
+	   document.getElementById("remove").innerHTML = ""
+
+		
+		
+		if(d.Treatment_ID == Selected_Treatment_ID)
+			{ 
+			 return {
+					 Hospital_ID : d.Hospital_ID,
+					 Treatment_ID : d.Treatment_ID,
+					 Treatment_Description : d.Treatment_Description,
+					 Hospital_Name : d.Hospital_Name,
+					 Hospital_Street_Address : d.Hospital_Street_Address,
+					 Hospital_City : d.Hospital_City,
+					 Hospital_State : d.Hospital_State,
+					 Hospital_ZIP : d.Hospital_ZIP,
+					 Charges : +d.Charges,
+					 Corrected_ZIP : d.Corrected_ZIP,
+					 Address : d.Address,
+					 Alt_ddress : d.Alt_ddress,
+					 Latitude : +d.Latitude,
+					 Longitude : +d.Longitude,
+					 percentile : +d.percentile
+					  };
+		   }
+								   
+								   
+	 }, function(error, data) {
+           //Collect the data to a global variable called selectedData
+		     selectedData = data;		
+
+			 selectedPercentileData();
+			 
+						} //End of function(error, data)
+        //;		      
+		   );
+		
+	}
+	
+    //Filter the data further based on the slider bar values.
+	function selectedPercentileData()
+	{
+	   
+	   svg.selectAll("g").remove();
+	   document.getElementById("remove").innerHTML = ""
+	   
+	  var data = selectedData;
+	  var dataToBePlotted = [];
+	  var i = 0;
+	  rec_count = 0;			
+	  data.forEach(
+	               function(d)
+				     {
+				      if(start_range<=d3.round(d.percentile*100) && (end_range >= d3.round(d.percentile*100)))
+					  {  
+					     rec_count = rec_count + 1;
+					  
+						 dataToBePlotted[i] =  {
+								 Hospital_ID : d.Hospital_ID,
+								 Treatment_ID : d.Treatment_ID,
+								 Treatment_Description : d.Treatment_Description,
+								 Hospital_Name : d.Hospital_Name,
+								 Hospital_Street_Address : d.Hospital_Street_Address,
+								 Hospital_City : d.Hospital_City,
+								 Hospital_State : d.Hospital_State,
+								 Hospital_ZIP : d.Hospital_ZIP,
+								 Charges : +d.Charges,
+								 Corrected_ZIP : d.Corrected_ZIP,
+								 Address : d.Address,
+								 Alt_ddress : d.Alt_ddress,
+								 Latitude : +d.Latitude,
+								 Longitude : +d.Longitude,
+								 percentile : +d.percentile
+								  };
+						i = i + 1;
+					  };
+				     }
+					 
+				   )
+	   //Plot the selected data.
+	   plotMap(dataToBePlotted);
+	
+	}			   
+	
+
+
+
+    //Plots the data
+	function plotMap(data)
+	{
+	    //Get the max and min values from Charge. These values will be used to compute size of the dot.
+		max_charge = d3.max(data, function(d) { return +d.Charges});
+		min_charge = d3.min(data, function(d) { return +d.Charges});
+
+		
+		//If NO records qualify for plot, then display appropriate message underneath the slider bar.
+ 	    if(rec_count == 0)
+		  {
+		  document.getElementById("cost").innerHTML  = "No records exists in this percentile range";
+																 document.getElementById("cost").style.color  = "red";
+		   }
+	    else {
+		  document.getElementById("cost").innerHTML  = "Selected Cost Range is: $" + d3.round(min_charge) + " - $" + d3.round(max_charge);
+		  document.getElementById("cost").style.color  = "blue";
+		  }
+
+		var dots = svg.selectAll("circle.dot")
+			.data(data)
+	
+
+     //As and when the user updates the slider or selects a new treatment, the data points change, 
+	 //so update the dots on map accordingly, as per the number of existing dots, current data points, and the min/max charged values (for dot size)
+	 
+     //Update the size of the existing dots
+	 dots.transition()
+	 	    .duration(1500)
+			.delay(1500)
+			.style("fill", "#0082a3")
+			.attr("r", function(d2){
+				  //Irrespective of the treatment cost, the max dot radius must be 20
+						  return d2.Charges/max_charge * 20;
+							  })
+   
+     //Assign dots to new data points 
+	 dots.enter().append("circle").classed("dot", true)
+		  .attr("r", 1)
+		  .style({
+			fill: "#0082a3",
+			"fill-opacity": 0.6,
+			stroke: "#004d60",
+			"stroke-width": 1
+		  })
+		  .transition().duration(1000)
+		  //Radius is proportional to the Hospital's treatment cost
+		  .attr("r", function(d1){
+			  //Irrespective of the treatment cost, the max dot radius must be 20
+			  return d1.Charges/max_charge * 20;
+			  
+
+			  }
+			  )
+			  
+	  
+	 //Remove dots for unassigned data points   		  
+	 dots.exit()
+		.transition().duration(1000).delay(1000)
+	    .style("fill", "#0082a3")
+        .transition().duration(1000).delay(1500)
+ 	    .attr("r", 0).transition().remove();
+
+
+    //Tooltip logic		
+    dots.on("mouseover", function(d1) {      
+				div.transition()        
+					.duration(200)      
+					.style("opacity", 1)
+					.style("height","80px")
+					.style("width","200px")
+					.style("background","white")
+					.style("font", "15px sans-serif");
+				div.html("<strong></strong>" + d1.Hospital_Name+", "+d1.Hospital_State + "<br/>" 
+																	  + "<em><span style='color:blue'>Cost: $"
+																	  + d3.round(d1.Charges)
+																	  +"</span></em>" + "<br/>" 
+																	  + "<em><span style='color:blue'>Percentile Rank: "
+																	  + d3.round(d1.percentile*100)+
+																	  "</span></em>")
+					.style("left", (d3.event.pageX) + "px")     
+					.style("top", (d3.event.pageY - 120) + "px");    
+				})
+
+				
+	 dots.on("mouseout", function(d1) {       
+				div.transition()        
+					.duration(500)      
+					.style("opacity", 0);   
+			})
+
+	
+	 //Dots highlight logic
+	 dots.on("click", function(d1) {       
+
+				clicked = 1;
+				clicked_node = d1;
+
+   	           document.getElementById("remove").innerHTML = "<em>Click <a href='#foo' onclick='selectedTreatmentData(mySelect); return true;'>here </a> to remove highlighting or change the values of the slider bar</em>"
+				w = parseInt(svg.style("width"),10);
+				
+				h = parseInt(svg.style("height"),10);	
+
+				
+				//The three element JSON array will help us to add exactly 3 elements to the legend.
+				var dummy=[{1:1},{2:2},{3:3}];
+				  
+				 var legend = svg.append("g")
+				  .attr("class", "legend")
+					//.attr("x", 150)
+					//.attr("y", 150)
+				  .attr("height", 300)
+				  .attr("width", 300)
+				  .attr('transform', 'translate(25,50)')
+
+				
+				//Append rectangles to the legend. I purposefully avoided circles as the legend icons, since if the map overlaps with the legend, then there is a chance that the 
+				//user gets confused with the actual circles on the map
+				legend.selectAll('rect')
+				  .data(dummy)
+				  .enter()
+				  .append("rect")
+				  .attr("x", 65)
+				  .attr("y", function(d, i){ return i *  20;})
+				  .attr("width", 15)
+				  .attr("height", 15)
+				  .style("fill", function(d) { 
+					var color = color_hash[dummy.indexOf(d)];
+					return color[1];
+				  })
+				
+
+				//Add text to the legend icons	
+				legend.selectAll('text')
+				  .data(dummy)
+				  .enter()
+				  .append("text")
+				  .attr("x", 80)
+				  .attr("y", function(d, i){ return i *  20 + 15;})
+				  .style("font-size","20px")
+				  .text(function(d) {
+					var text = color_hash[dummy.indexOf(d)][0];
+					return text;
+				  });
+
+				//get the value from the range drop down (for highlight).
+				var rangeSel = +myRange.value;
+				highlightMin = d1.Charges * (100 - rangeSel)/100;
+				highlightMax = d1.Charges * (100 + rangeSel)/100;
+
+				minPercentile = d3.round(+d1.percentile * 100) - rangeSel;
+				maxPercentile = d3.round(+d1.percentile * 100) + rangeSel;
+
+				if(minPercentile < 0) {
+				minPercentile = 0;
+				highlightMin = min_charge;
+				}
+				if(maxPercentile > 100) 
+				{maxPercentile = 100;
+				 highlightMax = max_charge;
+				}
+				
+				//Disable the slidebar to unnecessarily process the change logic of the slider, also if the slider changes the legend will disappear.
+				//We want the legend to disappear only when the user slides the slider manually.
+				disableSlider = 1;
+								
+				$("#slider-range").slider('values',0, minPercentile); // sets first handle (index 0) to 50
+				$("#slider-range").slider('values',1,maxPercentile); // sets second handle (index 1) to 80
+				
+				tooltip1 = '<div class="tooltip"><div class="tooltip-inner">' + minPercentile + '</div><div class="tooltip-arrow"></div></div>';
+				tooltip2 = '<div class="tooltip"><div class="tooltip-inner">' + maxPercentile  + '</div><div class="tooltip-arrow"></div></div>';
+
+				$('.ui-slider-handle:first').html(tooltip1);
+				$('.ui-slider-handle:last').html(tooltip2);
+
+				document.getElementById("cost").innerHTML  = "Selected Cost Range is: $" + d3.round(highlightMin) + " - $" + d3.round(highlightMax);
+                document.getElementById("cost").style.color  = "blue";
+
+				
+				//Re-enable slider bar change functionality	
+				disableSlider = 0;
+								
+				//var highlightedData = [];
+				highlightedData = [];
+
+								var i = 0;
+								
+								data.forEach(function(d) {
+								  //if(d.Charges >= highlightMin && d.Charges <= highlightMax)
+								  
+								  //if(d3.round(100*d.percentile) >= minPercentile && d3.round(d.percentile*100) <= maxPercentile && d.Hospital_ID != d1.Hospital_ID)
+								  if(d3.round(100*d.percentile) >= minPercentile && d3.round(d.percentile*100) <= maxPercentile)
+											  {
+														 highlightedData[i] = 
+																			 {
+																			 Hospital_ID : d.Hospital_ID,
+																			 Treatment_ID : d.Treatment_ID,
+																			 Treatment_Description : d.Treatment_Description,
+																			 Hospital_Name : d.Hospital_Name,
+																			 Hospital_Street_Address : d.Hospital_Street_Address,
+																			 Hospital_City : d.Hospital_City,
+																			 Hospital_State : d.Hospital_State,
+																			 Hospital_ZIP : d.Hospital_ZIP,
+																			 Charges : d.Charges,
+																			 Corrected_ZIP : d.Corrected_ZIP,
+																			 Address : d.Address,
+																			 Alt_ddress : d.Alt_ddress,
+																			 Latitude :d.Latitude,
+																			 Longitude : d.Longitude,
+																			 percentile : d.percentile
+																			 };
+																			 i = i+1;
+
+											  };
+													});
+
+
+								var h_max = d3.max(highlightedData, function(d) { return +d.Charges});
+								var h_min = d3.min(highlightedData, function(d) { return +d.Charges});
+													
+
+								var h_dots = svg.selectAll("circle.dot")
+									.data(highlightedData)
+								
+							console.log(highlightedData)								
+							console.log(data)
+																
+								h_dots.transition()
+									.duration(1500)
+									.delay(1500)
+									//.style('fill', 'red')
+									//.attr('r', 30);
+									.style('fill', function(d2){
+																			  if(d3.round(d2.percentile*100) < d3.round(d1.percentile*100))
+																			  {
+																			  return "green";
+																			  }
+																			  else return "red";
+																			  }
+									)
+									.attr("r", function(d2){
+																			  //Irrespective of the treatment cost, the max dot radius must be 20
+																			  return d2.Charges/h_max * 20;
+																			  })
+								
+							h_dots.exit()
+							.transition().duration(500).delay(500)
+							.style("fill", "yellow")
+							.transition().duration(1500).delay(3000)
+							.attr("r", 0)
+							//Do NOT remove the dot. Just make it zero radius, so that we can reselect the dot if needed, due to resize in slider
+							//.transition().remove();
+
+
+							render(h_dots);					
+
+
+							var clicked_dot = svg.selectAll("circle.dot")
+								   .data([clicked_node])
+							
+							
+							
+				 clicked_dot
+							.transition().duration(500).delay(500)
+							.style("fill", "blue")
+							.transition().duration(1500).delay(3000)
+							.attr("r", 40);
+
+							
+							render(clicked_dot);			
+																
+											//			 render(clicked_dot);										
+								
+
+			})
+
+
+			
+			
+			
+    // re-render our visualization whenever the view changes
+	map.on("viewreset", function() {
+					render(dots)
+				  })
+
+				  
+	map.on("move", function() {
+					render(dots)
+				  })
+
+				  
+	// render our initial visualization
+	 render(dots);
+			  
+
+	}
+
+
+	function render(dots) {
+				dots
+				.attr({
+				 cx: function(d) { 
+				var x = project(d).x;
+				return x
+								  },
+				 cy: function(d) { 
+				var y = project(d).y;
+				return y
+						  }
+					})
+				 }
+				 
+</script>
+</body>
+</html> 

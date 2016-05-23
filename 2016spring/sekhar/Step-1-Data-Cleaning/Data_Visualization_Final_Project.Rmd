@@ -1,0 +1,361 @@
+---
+title: "Data_Visualization_Final_Project"
+author: "Sekhar Mekala"
+date: "Thursday, April 28, 2016"
+output: html_document
+---
+
+###Introduction
+As a part of final project for the Data Visualization course, I would like to provide graphical analysis of the hospital charges data for 30 most common outpatient and 100 most common inpatient services at various hospitals across the USA.
+
+The data is present at the following URL: 
+
+https://data.cms.gov/Medicare/Inpatient-Prospective-Payment-System-IPPS-Provider/97k6-zzx3
+
+The main aim of this project is to develop a data visualization, which can be used to explore treatments data set.
+
+This document explains the data cleaning and pre-processing steps performed to make the data suitable for visualizations using d3.js. At the end of this process, we will create a series of .csv files, which can be readily analyzed by various graphical tools.
+
+Before you knit this rmd, make sure that you installed the following R packages:
+
+library(knitr)
+library(stringr)
+library(dplyr)
+library(RDSTK)
+
+Also when you generate HTML document using this RMD, the process may run for some time, since one of the code blocks given below will fetch the latitude and longitude of all hospital addresses.
+
+I downloaded this file, to a location in my computer, and read the file's contents into a data frame.
+
+```{r}
+#setwd("C:/Users/Sekhar/Documents/R Programs/Data Visualization/Project")
+
+df <- read.csv("Hospital_Charges.csv")
+df <- data.frame(df)
+```
+
+
+###Data cleaning
+
+Here are the variable names:
+```{r}
+names(df)
+```
+
+
+The variables description is given below:
+
+```{r}
+variable <- c("DRG Definition",
+"Provider Id",
+"Provider Name",
+"Provider Street Address",
+"Provider City",
+"Provider State",
+"Provider Zip Code",
+"Hospital Referral Region Description",
+ "Total Discharges" ,
+ "Average Covered Charges", 
+ "Average Total Payments" ,
+"Average Medicare Payments"
+)
+
+description <- c(
+"Treatment name"
+,"Hospital ID"
+,"Hospital Name"
+,"Hospital Address"
+,"Hospital City"
+,"Hospital State"
+,"Hospital ZIP Code"
+,"Unknown"
+,"Number of discharges"
+,"Average Billed to insurance"
+,"Average Payments made by the patient"
+,"Average Payments made by the Medicare"
+  )
+
+
+df_1 <- data.frame(variable, description)
+library(knitr)
+kable(df_1)
+```
+
+We will use the variable "Average Covered Charges" to represent the Average amount charged by a hospital for a specific treatment. We will ignore the other average variables, since "Average Covered Charges" correctly reflects the treatment cost.
+
+Finally we will just consider the following variables:
+
+```{r}
+c("DRG Definition",
+"Provider Id",
+"Provider Name",
+"Provider Street Address",
+"Provider City",
+"Provider State",
+"Provider Zip Code",
+ "Average Covered Charges" 
+)
+```
+
+We will rename these variables to the following:
+
+```{r}
+variable <- c("DRG Definition",
+"Provider Id",
+"Provider Name",
+"Provider Street Address",
+"Provider City",
+"Provider State",
+"Provider Zip Code",
+ "Average Covered Charges" 
+)
+
+renamed_variable <- c("Treatment","Hospital_ID", "Hospital_Name", "Hospital_Street_Address",
+                      "Hospital_City","Hospital_State","Hospital_ZIP","Charges")
+
+var_map <- data.frame(variable,renamed_variable)
+kable(var_map)
+
+```
+
+
+Let us modify the data frame to ignore the unwanted variables:
+
+```{r}
+df <- df[,c(1,2,3,4,5,6,7,10)]
+```
+
+Rename the variables:
+
+```{r}
+names(df) <- c("Treatment","Hospital_ID", "Hospital_Name", "Hospital_Street_Address",
+                      "Hospital_City","Hospital_State","Hospital_ZIP","Charges")
+
+```
+Let us display a sample rows from the data frame:
+```{r}
+head(df)
+```
+
+In the above display , the Treatment variable has the treatment code and description combined. We will separate this into two parts: the "Treatment_ID " and "Treatment_Description".
+
+```{r}
+l <- strsplit(as.vector(df$Treatment)," - ")
+df$Treatment_ID <- do.call(rbind,l)[,1]
+df$Treatment_Description <- do.call(rbind,l)[,2]
+
+df <- df[,c(2,9,10,3:8)]
+df$Charges <- as.numeric(substring(df$Charges,2))
+df$Treatment_ID <- as.numeric(df$Treatment_ID)
+
+head(df)
+
+```
+
+####Tackeling with ZIP Codes
+
+Some ZIP codes in the data set have just 4 digits (since the ZIP codes beginning with 0 (such as 08536) are represented as numbers, and the leading 0 is dropped). We need to prefix zero to such zip codes:
+
+```{r}
+correct_ZIP <- function(x)
+{
+   l <- nchar(x)
+   if(l < 5)
+    {
+      return (paste(paste(rep("0",5-l),sep=""),x,sep=""))
+    }
+    else
+      return (x)
+}
+
+
+df$Corrected_ZIP <- sapply(df$Hospital_ZIP,FUN="correct_ZIP")
+df <- data.frame(df)
+```
+
+
+####Tackeling with addresses
+
+Let us create another variable in the data frame, to contain the complete hospital's address:
+
+```{r}
+
+
+#df$Address <- do.call(paste, c(df[c("Hospital_Name", "Hospital_Street_Address", "Hospital_City","Hospital_State","Corrected_ZIP")], sep = ","))
+
+df$Address <- do.call(paste, c(df[c("Hospital_Street_Address", "Hospital_City","Hospital_State","Corrected_ZIP")], sep = ","))
+
+df$Alt_Address <- do.call(paste, c(df[c("Hospital_Name", "Hospital_City","Hospital_State","Corrected_ZIP")], sep = ","))
+
+library(stringr)
+
+df$Address <- str_replace(df$Address,"&"," ")
+df$Alt_Address <- str_replace(df$Alt_Address,"&"," ")
+
+df$Address <- str_replace(df$Address,"#"," ")
+df$Alt_Address <- str_replace(df$Alt_Address,"#"," ")
+
+
+#gsub()
+```
+
+
+```{r}
+head(df)
+```
+
+Let us add latitude and longitude variables for each of the hospital's address to the data frame.
+
+We have duplicate addresses in the data frame (since a hospital is represented many times in the data frame, for different treatments):
+
+
+```{r}
+library(dplyr)
+
+
+distinct_address <- df %>%
+  distinct(Hospital_ID, Address)
+head(distinct_address)
+distinct_address <- distinct_address[c("Hospital_ID", "Address","Alt_Address")]
+
+distinct_address[grepl("box",distinct_address$Address,ignore.case=TRUE),]$Address <- 
+  distinct_address[grepl("box",distinct_address$Address,ignore.case=TRUE),]$Alt_Address
+
+head(distinct_address)
+```
+
+So the $distinct\mbox{_}address$ data frame contains the addresses of all the hospitals in the data frame, represented only once.
+
+We will use the http://www.datasciencetoolkit.org API to get the latitude and longitude details of the hospital's address. The given R code below will run for a while, since we have `r nrow(df)` rows. This code uses the function street2coordinates of RDSTK package (to query http://www.datasciencetoolkit.org).
+
+```{r}
+#install.packages("RDSTK")
+library(RDSTK)
+lat <- vector()
+lon <- vector()
+
+for(i in 1:nrow(distinct_address))
+{
+  
+  r <- tryCatch(street2coordinates(distinct_address$Address[i],session=getCurlHandle()),error=function(e) NULL)
+  if(is.null(r))
+    {
+      r <- tryCatch(street2coordinates(distinct_address$Alt_Address[i],session=getCurlHandle()),error=function(e) NULL)
+          if(is.null(r)){
+              lat[i] <- 0
+               lon[i] <- 0
+              }
+           else{
+               if(nrow(r) == 0){
+                 lat[i] <- 0
+                 lon[i] <- 0
+               }
+               else {
+                 
+               
+               lat[i] <- r$latitude
+               lon[i] <- r$longitude
+                 }
+           }
+    }
+  else{
+    if(nrow(r) == 0)
+      {
+         lat[i] <- 0
+         lon[i] <- 0
+      }
+    else{
+  lat[i] <- r$latitude
+  lon[i] <- r$longitude
+  }
+  }
+  if(i%%100 == 0)
+    print(i)
+
+}
+
+
+
+distinct_address$Latitude <- lat
+distinct_address$Longitude <- lon
+
+head(distinct_address)
+
+
+```
+
+As per the logic of the program, if we did not find the latitude and longitude of an address, then we populated the latitude and longitude with zero values. Let us identify how many such rows we have.
+
+
+
+```{r}
+distinct_address[(distinct_address$Longitude == 0 & distinct_address$Latitude == 0),]
+```
+
+So we have `r nrow(distinct_address)` rows, which do not have latitude and longitude. We will ignore such rows when we do geographical analysis using maps.
+
+Let us append the latitude and longitude information to the addresses in the data frame that has all the hospital charges:
+
+```{r}
+df <- inner_join(df,distinct_address,by="Hospital_ID" )
+df <- df[,c(1:12,15,16)]
+names(df)[c(3,11:12)] <- c("Treatment_Description","Address","Alt_ddress")
+head(df)
+  
+```
+
+Let us get the percentile ranking of charges grouped by treatment:
+
+```{r}
+df <- df %>%
+  group_by(Treatment_ID) %>%
+  mutate(percentile = rank(Charges)/length(Charges))
+
+
+df_1 <- data.frame(Treatment_ID=df$Treatment_ID,Charges=df$Charges)
+df_1 <- df_1 %>%
+  group_by(Treatment_ID) %>%
+  mutate(rank = rank(Charges)) 
+
+max(df_1$rank/length(df_1$rank)*100)
+
+typeof(df)
+```
+
+
+
+Let us save this to a file:
+
+```{r}
+write.csv(df,file="Treatment_modified.csv",row.names=FALSE)
+```
+
+
+Let us identify how many rows of the main data frame has Latitude and Longitude as 0:
+
+```{r}
+nrow(df[(df$Latitude == 0 & df$Longitude == 0),])
+```
+
+Hence we have to eliminate `r nrow(df[(df$Latitude == 0 & df$Longitude == 0),])` rows when we do geographical data analysis using maps.
+
+We will create another file, that has distinct treatment names, and their codes. This file will be used later to populate drop down lists in the d3 or googlevis code.
+
+```{r}
+
+head(df)
+distinct_treatment <- df %>%
+  distinct(Treatment_ID,Treatment_Description)
+
+distinct_treatment <- distinct_treatment[,c("Treatment_ID","Treatment_Description")]
+distinct_treatment
+distinct_treatment <- distinct_treatment[order(distinct_treatment$Treatment_Description),]
+
+```
+
+Let us save this to a file:
+
+```{r}
+write.csv(distinct_treatment,file="Distinct_treatments.csv",row.names=FALSE)
+```
+

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+
+<!-- The following data files need to be in the same directory as the
+       source file: all csv files (weather data file), us-states.json (for US map)
+-->
+
+<script type="text/javascript">
+
+// This function will draw the weather station graphics associated with selected month/year data.
+// First, the user-selected month/year is retrieved from the form and used to construct the data file name.
+// Next, any previous weatehr stations graphics are removed.
+// Finally, the data file associated with the selected month/year is retrieved and the weather station graphics drawn.
+
+function drawStations() {
+
+    // Retrieve the user-selected month and year from the form
+    var monthobj = document.getElementById("myMonth");
+    var yearobj = document.getElementById("myYear");
+
+    var month = monthobj.options[monthobj.selectedIndex].value;
+    var year = yearobj. options[yearobj.selectedIndex].value;
+
+    filename = "data/" + year + month + ".csv";
+
+    // Remove any previous weatehr station graphics
+    svg.selectAll("circle")
+        .remove();
+
+    //Load in weather station data
+    //In the Final Project, this will be user selectable from the UI
+    d3.csv(filename, function(error, d) {
+        if(error) {
+            document.getElementById("response").innerHTML = "Data for the requested Month/Year is not available";
+        }
+        else { // no erros encountered in loading the data
+
+            data = d;
+            // make sure all of the RH data readin is numeric
+            data.forEach(function (d) { d.wp = +d.wp; });
+
+            // Display the minimum and maximum RH values found in the selected dataset
+            document.getElementById("response").innerHTML = "Min(L) = " + d3.min(data,function(d){return(d.wp)}) + " Max(L) = " +d3.max(data,function(d){return(d.wp)});
+
+            // Set up a color scale for the display of the domain of RH values in the selected dataset
+            var scale = d3.scale.quantize()
+                .domain([d3.min(data,function(d){return(d.wp)}),d3.max(data,function(d){return(d.wp)})])
+                .range(["#67001f","#b2182b","#d6604d","#f4a582","#fddbc7","#d1e5f0","#92c5de","#4393c3","#2166ac","#053061"]);
+
+            svg.selectAll("circle")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("cx", function(d) {
+                    return projection([d.long, d.lat])[0];
+                    })
+                .attr("cy", function(d) {
+                    return projection([d.long, d.lat])[1];
+                    })
+                .attr("r", 5)
+                //Set the fill color based on how the monthly avg relative humidity value
+                .attr("fill",function(d) {return(scale(d.wp))})
+                .attr("opacity", 1.0)
+                .append("title")
+                // set up text for each weather station circle with relevent information
+                .text(function(d) {
+                    line1="Est Liters = "+ Math.round(d.wp);
+                    line2="\n"+d.stname;
+                    line3="\n"+d.ststate;
+                    return(line1+line2+line3) });
+                    }
+        	});
+    }
+</script>
+</head>
+
+<body>
+
+<div id="selection">
+<p id="response">Please select a month and year to analyze</p>
+
+<form>
+        <select id='myMonth'>
+    <option value='01'>January</option>
+    <option value='02'>February</option>
+    <option value='03'>March</option>
+    <option value='04'>April</option>
+    <option value='05'>May</option>
+    <option value='06'>June</option>
+    <option value='07'>July</option>
+    <option value='08'>August</option>
+    <option value='09'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+    </select> 
+  <br><br>
+
+
+        <select id='myYear'>
+    <option value='2008'>2008</option>
+    <option value='2009'>2009</option>
+    <option value='2010'>2010</option>
+    <option value='2011'>2011</option>
+    <option value='2012'>2012</option>
+    <option value='2013'>2013</option>
+    <option value='2014'>2014</option>
+    <option value='2015'>2015</option>
+    <option value='2016'>2016</option>
+    </select> 
+    <br><br>
+    <input type="button" onclick="drawStations()" value="OK"></div>
+    </form>
+</div> 
+    
+<h2 style="text-indent:150px">50 State Map of Estimated Monthly Water Production (Liters)</h2>
+
+<div id="us">
+
+<script type="text/javascript">
+
+//This section will set things up to read in the data for a map of the US with associated boundries.
+
+//Width and height
+var w = 1000;
+var h = 580;
+
+//Define map projection
+var projection = d3.geo.albersUsa()
+    .translate([w/2, h/2])
+    .scale([1200]);
+
+//Define path generator
+var path = d3.geo.path()
+    .projection(projection);
+
+
+//Create SVG element
+var svg = d3.select("#us")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+    .style("align","middle")
+
+//Load in GeoJSON data
+d3.json("us-states.json", function(json) {
+				
+    //Bind data and create one path per GeoJSON feature
+    svg.selectAll("path")
+        .data(json.features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+            .style("fill", "#ffff66")
+            .style("stroke","black");
+
+    });
+
+
+</script>
+</div>
+</body>
+</html>

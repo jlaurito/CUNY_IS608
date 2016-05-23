@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+ <head>
+ 
+           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+           <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+           <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+           <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+           <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+           <script src="https://rawgit.com/simonnyc/IS608-NYC-data/master/jquery.csv-0.71.js"></script>
+           <!--- which charts to load? -->
+           <script type="text/javascript">google.load('visualization', '1', {'packages':['corechart', 'map']});</script>
+
+
+          <!-- using google map to show the worst scored restaurants in 2016. -->
+           <script src="worstplaces16.js"></script>
+
+         <!--  using dashboard and controls to show the score of five known coffee shops in Manhattan over
+               the years (2012-2016).
+               The five restaurants are (Starbucks, Gregory’s, Dunkin donuts, the Coffee Bean Tea and Leaf, and Piccolo Cafe -->
+            <script src="coffeedashboard.js"></script>
+
+          <!--  using bubble and scatter charts to show the worst scored restaurants in 2016.
+                Restaurants with scores of 27 or higher are being shown. -->
+            <script src="scatter_bubble.js"></script>
+
+          <!--  showing coffee shops scores over the years compared to the yearly average.
+                The five restaurants are (Starbucks, Gregory’s, Dunkin donuts, the Coffee Bean Tea and Leaf, and Piccolo Cafe).-->
+            <script src="coffeeYearly.js"></script>
+
+           <!-- using chart filtering to show the performance of five known coffee shops in Manhattan over the years (2012-2016).
+                The five restaurants are (Starbucks, Gregory’s, Dunkin donuts, the Coffee Bean Tea and Leaf, and Piccolo Cafe).-->
+            <script src="coffeechartfilter.js"></script>
+
+           <!-- using two controls (neighborhood and cuisine type)
+                to select a subset restaurants and their subsequent score in 2016 -->
+            <script src="neighborcuisine.js"></script>
+
+            <!-- using google map pin colors to show the worst and best 50 scored restaurants in 2016.
+                 green pins show restaurants with better score; red pins show restaurants with bad pins-->
+            <script src="pincolors.js"></script>
+
+
+    <title>Final Project Data Vis 608</title>
+ </head>
+      <style>
+            body {background-color:white;}
+            h1 {color:blue;}
+            p  {color:blue;}
+       </style>
+ <body>
+    <style>
+            body {background-color:Gainsboro;}
+            h3 {color:black;}
+            p {color:black;}
+
+            .center {
+                margin: 10px;
+                width: 60%;
+                border: 3px solid #73AD21;
+                padding: 10px;
+            }
+            h6{margin-left:40px;margin-right:0;width:auto;text-align:left;}
+            .page-header{width:100%;}
+            h4{margin-left:auto;margin-right:auto;width:auto;text-align:center;}
+            .section{ margin-left: auto;margin-right: auto;text-align: center; width: 100%;}
+            h3{margin-left:auto;margin-right:auto;width:auto;text-align:center;}
+            p {text-indent: 0px}
+            p {margin-right: 20px;}
+            p {margin-left: 20px;}
+            p {margin-top: 20px;}
+            table {border-spacing: 5px;}
+            table {border-collapse: separate;}
+            p1 {margin-left: 10px;}
+
+            #chart_div {
+             overflow-x: scroll;
+             overflow-y: hidden;
+             width: 500px;
+             height: 550px;
+            }
+            ul { list-style-type: square; margin-left:40px }
+    </style>
+
+    <h3><b>IS-608: Data Visualization Final Project, Spring 2016 </b> </h3>
+    <h4><b>Manhattan Restaurant Inspection Data and Visualization </b> </h4>
+    <p align="center">This project was done for <a href="/">CUNY IS608</a>.</p>
+
+    <div id="Introduction">
+        <div id="#chartContainer"> </div>
+           <h5 style="font-weight:bold;font-size:16px;font-style:italic"> 1. Background </h5>
+                <p>  New York City Department of Health and Mental Hygiene (DOHMH) conducts unannounced inspections of restaurants at least once a year.
+                     Inspectors check for compliance in food handling, food temperature, personal hygiene and vermin control.
+                     Each violation of a regulation gets a certain number of points.
+                     At the end of the inspection, the inspector totals the points, and this number is the
+                     restaurant's inspection score—the lower the score, the better the Grade. Restaurants with a score between 0 and 13 points earn an A, those with 14 to 27 points receive a B and those with 28
+                     or more a C. Please note that not every restaurant receives one of these letter grades; inspectors can give other scores, primarily P or Z, or some version of “grade pending.”
+                </p>
+
+                <p>  The Health Department inspects about 24,000 restaurants a year to monitor compliance with City and State food safety
+                     regulations. Since July 2010, the Health Department has required restaurants to post letter grades showing sanitary inspection
+                     results.
+                </p><br>
+
+           <h5 style="font-weight:bold;font-size:16px;font-style:italic"> 2. Purpose </h5>
+
+               <p>   This project is intended to inform customers about the NYC’s restaurants’ sanitation inspection results.
+                     It will help customers decide where to eat based on restaurants ‘sanitation inspection grade and violation severity.
+               </p><br>
+
+           <h5 style="font-weight:bold;font-size:16px;font-style:italic"> 3. Description </h5>
+
+                <p>  The objective of the project is to analyze the restaurant inspection data from NYC Open Data.
+                     The main focus will be on the Borough of Manhattan and the analysis will be based on results from years 2010 - 2016.
+                </p>
+
+               <p>   The project application will interactively help customers select restaurants based on sanitation
+                     inspection grade and type of cuisine.  For instance, before making a dinner reservation,
+                     a customer may want to find all Tai cuisine restaurants
+                     with lower score; hence better grade.
+               </p>
+
+           <h5 style="font-weight:bold;font-size:16px;font-style:italic"> 4. Implementation </h5>
+                <p>  The project implementation will adhere to the below high level best practice phases as follow:</p>
+
+           <h6 style="font-weight:bold;font-size:14px;font-style:italic;text-decoration: underline;"> 4.1 Data Acquisition </h6>
+
+                <u1>
+                    <li style="margin-left:50px">The data will be sourced from NYC OpenData site provided by DOHMH New York City Restaurant Inspection.</li>
+                    <li style="margin-left:50px">The dataset provides restaurant inspections, violations, grades and adjudication information.</li>
+                    <li style="margin-left:50px">The dataset has NYC’s five boroughs. The data has been collected since 2010.</li>
+                    <li style="margin-left:50px">The total data size for all NYC boroughs is over 150MB. However, due to size limitation, we will
+                     focus only on the borough of Manhattan.</li>
+                    <li style="margin-left:50px">Please note that establishments with inspection date of 1/1/1900 are new establishments that
+                                    have not yet received a full inspection.</li>
+                </u1>
+
+           <h6 style="font-weight:bold;font-size:14px;font-style:italic;text-decoration: underline;"> 4.2 Data Cleansing </h6>
+                <p style="margin-left:50px">The data cleaning process will include handling outliers, null values, inappropriate negative values, and
+                          conforming to the English language type set.  The tools used to clean the data will be mainly R language.
+                        The data cleaning process will be done separately from the data presentation.
+                </p>
+
+            <h6 style="font-weight:bold;font-size:14px;font-style:italic;text-decoration: underline;"> 4.3 Data Presentation </h6>
+                <p>The data analysis will be presented via html, javascript, using Google chart.
+                    The visualization will be using over time based trends, map based analysis, as well as interactive and
+                    chart filtering analysis.
+                    The visualization will comprise of eight charts.
+                </p>
+    </div>
+            <table class="columns">
+                <tr>
+                   <td><p style="color:black;text-align:center"><b>Chart 1 shows the 2016 critical violation scores count. It only shows only restaurants with 27 score or higher.
+                         Restaurants with score 27 or higher receive bad grade of C.</b>
+                        </p>
+                   </td>
+                   <td><p style="color:black;text-align:center"><b>Chart 2 shows the 2016 restaurants with the worst grade.
+                       Please note a high score of a grade of Z or P pertains to those restaurants with pending grade.</b>
+                        </p>
+                   </td>
+                </tr>
+            </table>
+
+
+
+     <div class="row-fluid">
+        <div class="span6">
+            <table class="columns">
+                <tr>
+                   <td><div id="ViolationChar1" style = 'width: 600px; height: 500px;float:rightt'></div></td>
+                   <td><div id="bubble_chart_div" style = 'width: 600px; height: 500px;float:rightt'></div></td>
+                </tr>
+            </table>
+             <table class="columns">
+                <tr>
+                    <td><p style="color:black;text-align:center"><b><br>
+                         The below map shows the worst scored (scores greater than 27) restaurants in Manhattan in 2016 <br> </b>
+                        </p>
+                        <div  id="map_div2"  style='width: 600px; height:500px; float:right'></div>
+                    </td>
+
+                    <td>
+                        <p style="color:black;text-align:center"><b>The below pin colored map shows the locations of 50 Best and 50 worst Restaurants in Manhattan.
+                            Green pins shows best and red pins show worst graded restaurants in 2016</b>
+                        </p>
+                        <div id="map_div" style='width: 600px; height:500px; float:right'></div>
+                    </td>
+                </tr>
+
+            </table>
+            <table class="columns">
+                <tr>
+                    <td>
+                        <div id="dashboard_div">
+                            <p style="color:black;text-align:center"><b>Five coffee shops filtered by the average score over five years.</b> </p>
+                            <div id="filter_div"  style = 'width: 400px; height: 20px;float:rightt'></div>
+                            <div id="chart_div" style='width:400px;height:330px;float:right'></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="dashboard">
+                            <p style="color:black;text-align:center"><b>Five coffee shops yearly average filtered by year over five years </b> </p>
+                            <div id="chart" style='width: 400px; height:330px;float:right'></div>
+                            <div id="control" style='width: 400px; height: 20px;float:right'></div>
+                        </div>
+                    </td>
+                    <td>
+                        <p style="color:black;text-align:center"><b>Coffee shops scores over the years compared to the yearly average</b>
+                        </p>
+                        <div id="coffee_div" style = 'width: 400px; height: 350px;float:rightt'></div>
+                    </td>
+                </tr>
+            </table>
+
+                    <p style="color:black;text-align:left"><b><br><br><br>
+                    The below selection chart and table show restaurants 2016 scores filtered using Neighborhood and Cuisine type.
+
+                    </b></p>
+
+        <div id="dashboard2">
+            <table>
+                <tr style='vertical-align: top'>
+                   <td style='width: 600px; height: 500px; font-size: 0.9em;'>
+                         <p1 style="color:black;text-align:left"><b>Pease choose a neighborhood</b><br></p1>
+                         <div id="control1" style = "height:60px; width:300px; float:right"></div>
+
+                         <p1 style="color:black;text-align:left"><b>Pease choose a cuisine type</b></p1>
+                         <div id="control2" style = "height:60px; width:300px; float:righ"t></div>
+                   </td>
+                   <td style='width: 600px'>
+                        <p><br><br> </p>
+                        <p1 style="color:black;text-align:right"><b>Restaurants Scores by Neighborhood and Cuisine Type (2016)
+                                  <br></b>
+                        </p1>
+                        <div style="float: left;" id="chart1"></div>
+                        <p><br><br> </p>
+                        <p> <br><br><br><br><br><br><br><br><br><br></p>
+                        <p style="color:black;text-align:left"><b><br><br><br><br><br><br><br>
+                            Restaurants Scores by Neighborhood and Cuisine Type (2016)</b></p>
+                        <div style="float: left;" id="chart2"></div>
+                         <br><p> <br><br></p>
+                   </td>
+                </tr>
+            </table>
+        </div>
+                <h5 style="font-weight:bold;font-size:16px;font-style:italic"> 5. Conclusion </h5>
+                <p>The Health Department conducts unannounced inspections of restaurants at least once a year.
+                     Inspectors check for compliance in food handling, food temperature, personal hygiene and vermin control.
+                     Each violation of a regulation gets a certain number of points.
+                     At the end of the inspection, the inspector totals the points, and this number is the
+                     restaurant's inspection score—the lower the score, the better the Grade. <br><br>
+                     From the analysis we can infer that restaurants that are part of chain or franchise tend to score better and have better grades.
+                     Coffee shops also score better. However, they tend to fluctuate in scores perhaps as they mature in handling other foods
+                     in addition to beverages, such as sandwiches and salads.<br>
+                     In addition, neither restaurants geographical locations nor cuisine types have any impact on the score although
+                     it seems little higher in uptown and downtown. However, location is not a strong indicator of sanitation score
+                     differentiator.
+
+                      <br>  <br>  <br>  <br>  <br>  <br>
+                </p>
+            <footer>
+               <p>Created by: Mohamed Elmoudni <br>
+                  IS 608 - Knowledge and Visual Analytics Final Project Spring 2016 <br>
+               Dataset sourse: <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/">https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j</a>.</p>
+            </footer>
+        </div>
+     </div>
+ </body>
+</html>

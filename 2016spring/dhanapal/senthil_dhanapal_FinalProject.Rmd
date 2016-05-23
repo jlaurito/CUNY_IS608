@@ -1,0 +1,264 @@
+---
+title: "senthil_dhanapal_FinalProject"
+author: "Senthil Dhanapal"
+date: "May 12, 2016"
+output: html_document
+---
+
+## Change the working directory appropriately
+```{r, warning=FALSE}
+
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+
+#setwd("e:/temp/1")
+setwd("C:/Senthil/MSDataAnalytics/Semester3/608/Project")
+
+options(scipen = 999)
+
+```
+
+
+## Data cleansing
+### Change data types to numeric for columns that are used in the computation
+### rename columns to proper names for easy understanding of data
+### change lookup values of gender, education, marital status to actual string values 
+
+```{r, warning=FALSE}
+
+dataLoadAndCleanup <- function(dfDefault)
+{
+  
+  names(dfDefault) <- tolower(names(dfDefault))
+  
+  dfDefault <- transform(dfDefault, id <- as.numeric(id), 
+                         limit_bal <- as.numeric(limit_bal), 
+                         age <- as.numeric(age),
+                         education <- as.numeric(education),
+                         pay_0 <- as.numeric(pay_0),
+                         pay_2 <- as.numeric(pay_2),
+                         pay_3 <- as.numeric(pay_3),
+                         pay_4 <- as.numeric(pay_4),
+                         pay_5 <- as.numeric(pay_5),
+                         pay_6 <- as.numeric(pay_5),
+                         bill_amt1 <- as.numeric(bill_amt1), 
+                         bill_amt2 <- as.numeric(bill_amt2), 
+                         bill_amt3 <- as.numeric(bill_amt3), 
+                         bill_amt4 <- as.numeric(bill_amt4), 
+                         bill_amt5 <- as.numeric(bill_amt5), 
+                         bill_amt6 <- as.numeric(bill_amt6), 
+                         pay_amt1 <- as.numeric(pay_amt1), 
+                         pay_amt2 <- as.numeric(pay_amt2), 
+                         pay_amt3 <- as.numeric(pay_amt3), 
+                         pay_amt4 <- as.numeric(pay_amt4), 
+                         pay_amt5 <- as.numeric(pay_amt5), 
+                         pay_amt6 <- as.numeric(pay_amt6) 
+  )
+  names(dfDefault)[13:18] <- c('sep_bill_amt', 'aug_bill_amt', 'jul_bill_amt', 'jun_bill_amt', 'may_bill_amt', 'apr_bill_amt')
+  names(dfDefault)[19:24] <- c('sep_pay_amt', 'aug_pay_amt', 'jul_pay_amt', 'jun_pay_amt', 'may_pay_amt', 'apr_pay_amt')
+  
+  names(dfDefault)[25] <- c('default.expected')
+  
+  #Convert numbers to actual values for sex
+  dfDefault$sex[which(dfDefault$sex==1)] <- 'Male'
+  dfDefault$sex[which(dfDefault$sex==2)] <- 'Female'
+  
+  #Convert numbers to actual values for education
+  dfDefault$education[which(dfDefault$education==1)] <- 'Graduate'
+  dfDefault$education[which(dfDefault$education==2)] <- 'University'
+  dfDefault$education[which(dfDefault$education==3)] <- 'HighSchool'
+  dfDefault$education[which(dfDefault$education==4)] <- 'Others'
+  dfDefault$education[which(dfDefault$education==5)] <- 'Others'
+  dfDefault$education[which(dfDefault$education==6)] <- 'Others'
+  dfDefault$education[which(dfDefault$education==0)] <- 'Others'
+  
+  #Convert numbers to actual values for marital status
+  dfDefault$marriage[which(dfDefault$marriage==1)] <- 'Married'
+  dfDefault$marriage[which(dfDefault$marriage==2)] <- 'Single'
+  dfDefault$marriage[which(dfDefault$marriage==3)] <- 'Others'
+  dfDefault$marriage[which(dfDefault$marriage==0)] <- 'Others'
+  
+  return (dfDefault)
+}
+
+
+```
+
+
+### Condense function excludes columns not needed for this project
+### It re-arranges the columns for easy reading and working with this dataset
+
+```{r, warning=FALSE}
+
+condense_dfDefault <- function(dfDefault)
+{
+  
+  excludecolumns <- paste("pay_", 2:6, sep="")
+  excludecolumns <- c('pay_0', excludecolumns)
+  excludevars <- names(dfDefault) %in% excludecolumns
+  dfDefault <- dfDefault[!excludevars]
+  
+  rearrangedcols <- c('id', 'limit_bal', 'sex', 'education', 'marriage', 'age',
+                      'apr_bill_amt', 'may_bill_amt', 'jun_bill_amt', 'jul_bill_amt',
+                      'aug_bill_amt', 'sep_bill_amt', 
+                      'apr_pay_amt',  'may_pay_amt', 'jun_pay_amt', 
+                      'jul_pay_amt', 'aug_pay_amt', 'sep_pay_amt', 
+                      'default.expected')
+  
+  dfDefault <- dfDefault[,rearrangedcols]
+  
+  excludecolumns <- c('sex','education','marriage','age')
+  excludevars <- names(dfDefault) %in% excludecolumns
+  dfDefault <- dfDefault[!excludevars]
+  
+  excludecolumns <- c('apr_pay_amt','sep_bill_amt')
+  excludevars <- names(dfDefault) %in% excludecolumns
+  dfDefault <- dfDefault[!excludevars]
+  
+  #write.csv(dfDefault,'./condensedfile.csv')
+  return (dfDefault)
+  
+}
+
+
+```
+
+
+
+### sample rows of data before and after cleansing
+```{r, warning=FALSE}
+
+dfDefault <- read.csv(file='default of credit card clients.csv', stringsAsFactors = FALSE)
+
+head(dfDefault)
+
+dfDefault <- dataLoadAndCleanup(dfDefault)
+dfDefault <- condense_dfDefault(dfDefault)
+
+head(dfDefault)
+
+```
+
+###Create limit group column 
+### This column groups the credit card limits to discrete groups
+```{r, warning=FALSE}
+
+dfDefault['limitgrp'] <- as.numeric(0)
+dfDefault$limitgrp[dfDefault$limit_bal<=100000] <- 100000
+dfDefault$limitgrp[dfDefault$limit_bal>100000 & dfDefault$limit_bal<=200000] <- 200000
+dfDefault$limitgrp[dfDefault$limit_bal>200000 & dfDefault$limit_bal<=300000] <- 300000
+dfDefault$limitgrp[dfDefault$limit_bal>300000 & dfDefault$limit_bal<=400000] <- 400000
+dfDefault$limitgrp[dfDefault$limit_bal>400000 & dfDefault$limit_bal<=500000] <- 500000
+dfDefault$limitgrp[dfDefault$limit_bal>500000 & dfDefault$limit_bal<=600000] <- 600000
+dfDefault$limitgrp[dfDefault$limit_bal>600000 & dfDefault$limit_bal<=700000] <- 700000
+dfDefault$limitgrp[dfDefault$limit_bal>700000 & dfDefault$limit_bal<=800000] <- 800000
+dfDefault$limitgrp[dfDefault$limit_bal>800000 & dfDefault$limit_bal<=900000] <- 900000
+dfDefault$limitgrp[dfDefault$limit_bal>900000 & dfDefault$limit_bal<=1000000] <- 1000000
+
+
+```
+
+
+### This chart shows how many card holders are there given a credit card limit group and how many of them are defaulters.
+### This will help us identify if the limit should be reduced or increased to reduce the defaulters.
+
+```{r, warning=FALSE}
+
+dfGroupedOnLimitGrp <- dfDefault %>% group_by(limitgrp) %>% summarise(Members = n(), Defaulters = sum(default.expected))
+
+
+ggplot(dfGroupedOnLimitGrp, aes(x=limitgrp)) + geom_bar(aes(y=Members),stat = 'identity') + 
+  geom_line(aes(y=Defaulters)) + geom_point(aes(y=Defaulters)) + xlab('CreditCardLimit') + ylab('Members vs Defaulters') + 
+  ggtitle('Bar represents Members in the group  and Line represents Defaulters') + theme(plot.title=element_text(family="Times", face="bold")) + scale_x_continuous(breaks = seq(100000,1000000,100000)) + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    
+
+
+```
+
+
+### This chart shows how many people paid how much of their due amount in terms of percentage. It breaks down that info by the 5 months 
+### that are being observed.
+
+
+```{r}
+
+dfDefault['apr_pay_percent'] <- as.numeric(0)
+dfDefault['may_pay_percent'] <- as.numeric(0)
+dfDefault['jun_pay_percent'] <- as.numeric(0)
+dfDefault['jul_pay_percent'] <- as.numeric(0)
+dfDefault['aug_pay_percent'] <- as.numeric(0)
+#dfDefault$apr_pay_percent[dfDefault$apr_bill_amt == 0] <- 0
+#dfDefault$apr_pay_percent[dfDefault$apr_bill_amt >= 0] <- dfDefault$apr_bill_amt/dfDefault$may_pay_amt
+for(i in 1:length(dfDefault$id))
+{
+  #i <-1
+        
+  if(dfDefault$apr_bill_amt[i] > 0)
+  {
+    dfDefault$apr_pay_percent[i] <- (dfDefault$may_pay_amt[i]/dfDefault$apr_bill_amt[i])*100
+  }
+  if(dfDefault$may_bill_amt[i] > 0)
+  {
+    dfDefault$may_pay_percent[i] <- (dfDefault$jun_pay_amt[i]/dfDefault$may_bill_amt[i])*100
+  }
+  if(dfDefault$jun_bill_amt[i] > 0)
+  {
+    dfDefault$jun_pay_percent[i] <- (dfDefault$jul_pay_amt[i]/dfDefault$jun_bill_amt[i])*100
+  }
+  if(dfDefault$jul_bill_amt[i] > 0)
+  {
+    dfDefault$jul_pay_percent[i] <- (dfDefault$aug_pay_amt[i]/dfDefault$jul_bill_amt[i])*100
+  }
+  if(dfDefault$aug_bill_amt[i] > 0)
+  {
+    dfDefault$aug_pay_percent[i] <- (dfDefault$sep_pay_amt[i]/dfDefault$aug_bill_amt[i])*100
+  }
+
+    if(dfDefault$apr_pay_percent[i] >=0 & dfDefault$apr_pay_percent[i]<=20)  dfDefault$apr_pay_percent[i] <- 20
+    if(dfDefault$apr_pay_percent[i] >20 & dfDefault$apr_pay_percent[i]<=40)  dfDefault$apr_pay_percent[i] <- 40
+    if(dfDefault$apr_pay_percent[i] >40 & dfDefault$apr_pay_percent[i]<=60)  dfDefault$apr_pay_percent[i] <- 60
+    if(dfDefault$apr_pay_percent[i] >60 & dfDefault$apr_pay_percent[i]<=80)  dfDefault$apr_pay_percent[i] <- 80
+    if(dfDefault$apr_pay_percent[i] >80 )  dfDefault$apr_pay_percent[i] <- 100
+
+    if(dfDefault$may_pay_percent[i] >=0 & dfDefault$may_pay_percent[i]<=20)  dfDefault$may_pay_percent[i] <- 20
+    if(dfDefault$may_pay_percent[i] >20 & dfDefault$may_pay_percent[i]<=40)  dfDefault$may_pay_percent[i] <- 40
+    if(dfDefault$may_pay_percent[i] >40 & dfDefault$may_pay_percent[i]<=60)  dfDefault$may_pay_percent[i] <- 60
+    if(dfDefault$may_pay_percent[i] >60 & dfDefault$may_pay_percent[i]<=80)  dfDefault$may_pay_percent[i] <- 80
+    if(dfDefault$may_pay_percent[i] >80 )  dfDefault$may_pay_percent[i] <- 100
+    
+    if(dfDefault$may_pay_percent[i] >=0 & dfDefault$jun_pay_percent[i]<=20)  dfDefault$jun_pay_percent[i] <- 20
+    if(dfDefault$jun_pay_percent[i] >20 & dfDefault$jun_pay_percent[i]<=40)  dfDefault$jun_pay_percent[i] <- 40
+    if(dfDefault$jun_pay_percent[i] >40 & dfDefault$jun_pay_percent[i]<=60)  dfDefault$jun_pay_percent[i] <- 60
+    if(dfDefault$jun_pay_percent[i] >60 & dfDefault$jun_pay_percent[i]<=80)  dfDefault$jun_pay_percent[i] <- 80
+    if(dfDefault$jun_pay_percent[i] >80 )  dfDefault$jun_pay_percent[i] <- 100
+    
+    if(dfDefault$may_pay_percent[i] >=0 & dfDefault$jul_pay_percent[i]<=20)  dfDefault$jul_pay_percent[i] <- 20
+    if(dfDefault$jul_pay_percent[i] >20 & dfDefault$jul_pay_percent[i]<=40)  dfDefault$jul_pay_percent[i] <- 40
+    if(dfDefault$jul_pay_percent[i] >40 & dfDefault$jul_pay_percent[i]<=60)  dfDefault$jul_pay_percent[i] <- 60
+    if(dfDefault$jul_pay_percent[i] >60 & dfDefault$jul_pay_percent[i]<=80)  dfDefault$jul_pay_percent[i] <- 80
+    if(dfDefault$jul_pay_percent[i] >80 )  dfDefault$jul_pay_percent[i] <- 100
+
+    if(dfDefault$may_pay_percent[i] >=0 & dfDefault$aug_pay_percent[i]<=20)  dfDefault$aug_pay_percent[i] <- 20
+    if(dfDefault$aug_pay_percent[i] >20 & dfDefault$aug_pay_percent[i]<=40)  dfDefault$aug_pay_percent[i] <- 40
+    if(dfDefault$aug_pay_percent[i] >40 & dfDefault$aug_pay_percent[i]<=60)  dfDefault$aug_pay_percent[i] <- 60
+    if(dfDefault$aug_pay_percent[i] >60 & dfDefault$aug_pay_percent[i]<=80)  dfDefault$aug_pay_percent[i] <- 80
+    if(dfDefault$aug_pay_percent[i] >80 )  dfDefault$aug_pay_percent[i] <- 100
+    
+  
+  
+}
+
+myvars <- c('id',paste(c('apr','may','jun','jul','aug'), '_pay_percent', sep=""))
+newdata <- dfDefault[myvars]
+dfMelted1 <- melt(newdata, id('id'))
+#head(dfMelted1)
+dfMelted1$variable <- gsub('_pay_percent','',dfMelted1$variable)
+
+ggplot(dfMelted1,aes(x=factor(value))) + geom_bar() + facet_grid(~variable) + xlab('Percentage of Payment to Bill Amt')
+
+#head(dfMelted1[which(dfMelted1$value <=0),])
+
+```
+
+

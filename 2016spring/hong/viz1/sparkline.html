@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["imagesparkline"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+         ['Corn', 'Wheat', 'Oats', 'Barley', 'Sorghum', 'Rice', 'Millet', 'Rye'],
+         [0.0016, 0.0051, 0.0109, 0.0101, 0.0009, 0.0078, 0.0251, 0.006],
+         [0.0021, 0.0069, 0.0153, 0.0117, 0.0021, 0.018, 0.021, 0.0086],
+         [0.0026, 0.0063, 0.0248, 0.025, 0.0032, 0.018, 0.0521, 0.0169]
+        ]);
+
+        var chart = new google.visualization.ImageSparkLine(document.getElementById('chart_div'));
+
+        chart.draw(data, {width: 600, height: 350, showAxisLines: false,  showValueLabels: false, labelPosition: 'left'});
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Organic Grain Acre Percentage by Year</h1>
+    <h2>~~~~~~~~~~~~~2005, 2008, 2011~~~~~~~~~~~~~</h2>
+    <div id="chart_div" style="width: 120px; height: 40px;"></div>
+  </body>
+</html>
