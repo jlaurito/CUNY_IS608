@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- Param Singh - IS 608 Semester Project -->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Param Singh - IS 608 Semester Project</title>
+		<style>
+		h1{
+			font-family: Arial;
+			font-size: 24px;
+			position: absolute;
+			top:-10px;
+      		left:150px;
+		}
+    	#tooltip{
+      		position: absolute;
+      		z-index: 2;
+      		background: rgba(99,99,99,1);
+      		width:130px;
+      		height:50px;
+      		color:white;
+      		font-size: 12px;
+      		padding:5px;
+      		top:-150px;
+      		left:-150px;
+      		font-family: Helvetica;
+    	}
+    	.content{
+    		padding:10px;
+      		font-family: Arial;
+      		font-size: 12px;
+      		width: 800px;
+    	}
+  </style>
+		<script type="text/javascript" src="d3.js"></script>
+	</head>
+	<body>
+	
+	<div id="tooltip"></div>
+		<script type="text/javascript">
+
+			var w = 960;
+			var h = 800;
+			
+			//Projection - attempted a dynamic bounding box but required a holistic feature for the entire city
+			var projection = d3.geo.mercator()
+							.center([-73.94, 40.70])
+  							.scale(70000)
+  							.translate([(w) / 2, (h)/2]);
+  							
+  			var hover = function(d) {
+    			var div = document.getElementById('tooltip');
+    			div.style.left = event.pageX +'px';
+    			div.style.top = event.pageY + 'px';
+    			div.innerHTML = d.properties.neighborhood + "<br>$" + d.properties.valueone;
+  			};
+  							
+  			//Define path generator
+			var path = d3.geo.path()
+							 .projection(projection);
+							 
+			var color = d3.scale.quantize()
+								.range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+			
+			//Load in data scrubbed from Zillow data
+			d3.csv("data.csv", function(data) {
+
+				//Set input domain for quantize color scale
+				color.domain([
+					d3.min(data, function(d) { return d.valueone; }), 
+					d3.max(data, function(d) { return d.valueone; })
+				]);
+
+				//Load NYC GeoJSON data file from catalog.opendata.city
+				d3.json("nyc2.json", function(json) {
+				
+					//Loop to get neighborhood data
+					for (var i = 0; i < data.length; i++) {
+						
+						//Get the neighborhood and median sales value from the data file
+						var dataNhood = data[i].nhood;			
+						var dataValue = parseFloat(data[i].valueone);
+				
+						for (var j = 0; j < json.features.length; j++) {
+							//Get the neighborhood name from the JSON file
+							var jsonHood = json.features[j].properties.neighborhood;
+							
+							//If there is a match append to the json object
+							if (dataNhood == jsonHood) {
+								json.features[j].properties.valueone = dataValue;
+								break;
+				
+							}
+						}
+					}		
+				
+				//Bind data, create paths
+				svg.selectAll("path")
+					   .data(json.features)
+					   .enter()
+					   .append("path")
+					   .attr("d", path)
+					   .on("mouseover", hover)
+					   .style("fill", function(d) {
+					   		//Get data value
+					   		var value = d.properties.valueone;
+					   		if (value) {
+						   		return color(value);
+					   		} else {
+					   			//If no values exist, shade in grey
+						   		return "#ccc";
+					   		} 		
+					});
+					//create legend
+					var legend = svg.selectAll('g.legendEntry')
+    					.data(color.range())
+    					.enter()
+    					.append('g').attr('class', 'legendEntry');
+
+					legend
+    					.append('rect')
+    					.attr("x", w - 800)
+    					.attr("y", function(d, i) {
+       					return ((i * 20)+150);
+    					})
+   						.attr("width", 20)
+   						.attr("height", 20)
+   						.style("stroke", "black")
+   						.style("stroke-width", 1)
+   						.style("fill", function(d){return d;}); 
+
+					legend
+    					.append('text')
+    					.attr("x", w - 775)
+    					.attr("font-size", 15)
+    					.attr("font-family", 'Helvetica')
+    					.attr("y", function(d, i) {
+       						return ((i * 20)+150);
+    					})
+    					.attr("dy", "0.9em")
+    					.text(function(d,i) {
+        					var extent = color.invertExtent(d);
+        					var format = d3.format("0.0f");
+        					return format(+extent[0]) + " - " + format(+extent[1]);
+	    				});
+			
+				});
+			
+			});		
+		</script>
+		<h1>NYC Neighborhood Residential Real Estate Heatmap - 2015</h1><br>
+        <div class="content">This project was done for <a href="/">CUNY IS608</a>.</p></div><br>
+		<div class="content">
+			<b>Analysis</b><br><br>
+			New York has one of the most competitive real estate markets on the planet. 
+			However, not all areas of the city have experienced the same growth and affluence as others. 
+			This visualization serves to illustrate this by displaying the median residential sales of the various neighborhoods across the city, highlighting the disparity of sales values. 
+			<br><br>
+			This contrast can be observed by examining the median sales values in neighborhoods such as Williamsburg and Park Slope, 
+			and then comparing them to less affluent areas such as East New York and Canarsie. 
+			Brooklyn as a borough, illustrates this contrast the most, with Manhattan showing less of a contrast.<br><br>
+			Another interesting observation made possible by visualizing the data by neighborhood is the decreasing gradient of sale value as distance 
+			increases from Manhattan. With a few exceptions in western Brooklyn and Queens, median sales values plummet steadily as you travel north of 
+			the city from Harlem, Washington Heights, Inwood, and then Riverdale. To the east this is observed by neighborhoods to the east and south 
+			of Prospect Park.
+			<br><br><br>
+			<b>Process</b><br><br>
+			After acceptance of the project proposal the first thing I did was to tackle acquisition of the Zillow Research data. 
+			Having used this before I was familiar with obtaining it and then used Excel to quickly trim the data down to just what was needed 
+			for the 2015 data by New York City neighborhood. I attempted an automated script early on, but with missing and sporadic data values 
+			I kept getting incomplete sets and found it faster parsing out the incomplete 2015 data manually in order to provide a more complete data 
+			set.<br><br>
+			Obtaining a GeoJSON feature file specifically for NYC neighborhoods was next, this proved more difficult than originally anticipated. 
+			I initially tried using Zillow’s neighborhood shapefile with an “ogr2ogr” converter which would transform it into a GeoJSON file compatible
+			 with D3 – this proved unsuccessful. After pounding the pavement some more I found what I needed over at Civic Dashboards.
+
+			<br><br><br>
+			<b>Data Sources</b><br><br>
+			Data is sourced from primarily two locations: the raw median sales data is sourced from Zillow’s Public research set, 
+			and the GeoJSON map is sourced from catalog.opendata.city.
+		</div>
+	</body>
+</html>
