@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DATA608_FINAL</title>
+    <style>
+      #container {
+        width: 940px;
+        margin: 0px auto;
+      }
+      #header {
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+        background-color: #003366;
+      }
+      #sidebar-left {
+        width: 280px;
+        height: 480px;
+        padding: 20px;
+        float: left;
+        border: 1px solid #bcbcbc;
+        background-color: #003366;
+      }
+      #content {
+        padding: 10px;
+        height: 480px;
+
+      }
+
+      #content2 {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #footer {
+        clear: both;
+        padding: 20px;
+        background-color: #003366;
+      }
+
+            body { font: 14px Arial;}
+            
+            path { 
+                stroke: steelblue;
+                stroke-width: 2;
+                fill: none;
+            }
+
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: grey;
+                stroke-width: 1;
+                shape-rendering: crispEdges;
+            }
+
+            .legend {
+                font-size: 12px;
+                font-weight: bold;
+                text-align: left;
+            } 
+
+    </style>
+
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    <link href="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/css/d3.geomap.css" rel="stylesheet">
+    <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
+    <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/js/d3.geomap.min.js"></script>
+         <script type="text/javascript" src="project_lim.js"></script>
+
+</head>
+
+
+    <body onload="javascript:DrawGraph(), DrawMap()"><!--Draw initial graph when the page load-->
+     
+    <div id="container">
+      <div id="header">
+        <font size="10" style="color:white;">Life Expectancy</font>
+        <h3 style="color:white;">by Nathan Lim</h3>
+        <p style="color:white;">This project was done for <a href="/" style="color:white;">CUNY IS608</a>.</p>
+
+        <p style="color:white;">Life expectancy is a measure of the average time that humans are expected to live. This data reflects not only natural causes death, but also infant mortality and civil war. Therefore Life expectancy is used for measuring countries' development. This data is based on the year of their birth. Its resourse is The World Bank.</p>
+      </div>
+      <div id="sidebar-left">
+        <h2 style="color:white;">Select Countries</h2>
+        <p style="color:white;"><i>You can choose more than one country(or group) by using "Ctrl" key.</i></p>
+
+
+                 <select multiple="" title="" class="" id="country" name="country" size="17">
+                 <option value="Afghanistan">Afghanistan</option>
+                 <option value="Albania">Albania</option>
+                 <option value="Algeria">Algeria</option>
+                 <option value="American Samoa">American Samoa</option>
+                 <option value="Andorra">Andorra</option>
+                 <option value="Angola">Angola</option>
+                 <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                 <option value="Arab World">Arab World</option>
+                 <option value="Argentina">Argentina</option>
+                 <option value="Armenia">Armenia</option>
+                 <option value="Aruba">Aruba</option>
+                 <option value="Australia">Australia</option>
+                 <option value="Austria">Austria</option>
+                 <option value="Azerbaijan">Azerbaijan</option>
+                 <option value="Bahamas, The">Bahamas, The</option>
+                 <option value="Bahrain">Bahrain</option>
+                 <option value="Bangladesh">Bangladesh</option>
+                 <option value="Barbados">Barbados</option>
+                 <option value="Belarus">Belarus</option>
+                 <option value="Belgium">Belgium</option>
+                 <option value="Belize">Belize</option>
+                 <option value="Benin">Benin</option>
+                 <option value="Bermuda">Bermuda</option>
+                 <option value="Bhutan">Bhutan</option>
+                 <option value="Bolivia">Bolivia</option>
+                 <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                 <option value="Botswana">Botswana</option>
+                 <option value="Brazil">Brazil</option>
+                 <option value="Brunei Darussalam">Brunei Darussalam</option>
+                 <option value="Bulgaria">Bulgaria</option>
+                 <option value="Burkina Faso">Burkina Faso</option>
+                 <option value="Burundi">Burundi</option>
+                 <option value="Cabo Verde">Cabo Verde</option>
+                 <option value="Cambodia">Cambodia</option>
+                 <option value="Cameroon">Cameroon</option>
+                 <option value="Canada">Canada</option>
+                 <option value="Caribbean small states">Caribbean small states</option>
+                 <option value="Cayman Islands">Cayman Islands</option>
+                 <option value="Central African Republic">Central African Republic</option>
+                 <option value="Central Europe and the Baltics">Central Europe and the Baltics</option>
+                 <option value="Chad">Chad</option>
+                 <option value="Channel Islands">Channel Islands</option>
+                 <option value="Chile">Chile</option>
+                 <option value="China">China</option>
+                 <option value="Colombia">Colombia</option>
+                 <option value="Comoros">Comoros</option>
+                 <option value="Congo, Dem. Rep.">Congo, Dem. Rep.</option>
+                 <option value="Congo, Rep.">Congo, Rep.</option>
+                 <option value="Costa Rica">Costa Rica</option>
+                 <option value="Cote d'Ivoire">Cote d'Ivoire</option>
+                 <option value="Croatia">Croatia</option>
+                 <option value="Cuba">Cuba</option>
+                 <option value="Curacao">Curacao</option>
+                 <option value="Cyprus">Cyprus</option>
+                 <option value="Czech Republic">Czech Republic</option>
+                 <option value="Denmark">Denmark</option>
+                 <option value="Djibouti">Djibouti</option>
+                 <option value="Dominica">Dominica</option>
+                 <option value="Dominican Republic">Dominican Republic</option>
+                 <option value="East Asia & Pacific (all income levels)">East Asia & Pacific (all income levels)</option>
+                 <option value="East Asia & Pacific (developing only)">East Asia & Pacific (developing only)</option>
+                 <option value="Ecuador">Ecuador</option>
+                 <option value="Egypt, Arab Rep.">Egypt, Arab Rep.</option>
+                 <option value="El Salvador">El Salvador</option>
+                 <option value="Equatorial Guinea">Equatorial Guinea</option>
+                 <option value="Eritrea">Eritrea</option>
+                 <option value="Estonia">Estonia</option>
+                 <option value="Ethiopia">Ethiopia</option>
+                 <option value="Euro area">Euro area</option>
+                 <option value="Europe & Central Asia (all income levels)">Europe & Central Asia (all income levels)</option>
+                 <option value="Europe & Central Asia (developing only)">Europe & Central Asia (developing only)</option>
+                 <option value="European Union">European Union</option>
+                 <option value="Faroe Islands">Faroe Islands</option>
+                 <option value="Fiji">Fiji</option>
+                 <option value="Finland">Finland</option>
+                 <option value="Fragile and conflict affected situations">Fragile and conflict affected situations</option>
+                 <option value="France">France</option>
+                 <option value="French Polynesia">French Polynesia</option>
+                 <option value="Gabon">Gabon</option>
+                 <option value="Gambia, The">Gambia, The</option>
+                 <option value="Georgia">Georgia</option>
+                 <option value="Germany">Germany</option>
+                 <option value="Ghana">Ghana</option>
+                 <option value="Greece">Greece</option>
+                 <option value="Greenland">Greenland</option>
+                 <option value="Grenada">Grenada</option>
+                 <option value="Guam">Guam</option>
+                 <option value="Guatemala">Guatemala</option>
+                 <option value="Guinea">Guinea</option>
+                 <option value="Guinea-Bissau">Guinea-Bissau</option>
+                 <option value="Guyana">Guyana</option>
+                 <option value="Haiti">Haiti</option>
+                 <option value="Heavily indebted poor countries (HIPC)">Heavily indebted poor countries (HIPC)</option>
+                 <option value="High income">High income</option>
+                 <option value="High income: nonOECD">High income: nonOECD</option>
+                 <option value="High income: OECD">High income: OECD</option>
+                 <option value="Honduras">Honduras</option>
+                 <option value="Hong Kong SAR, China">Hong Kong SAR, China</option>
+                 <option value="Hungary">Hungary</option>
+                 <option value="Iceland">Iceland</option>
+                 <option value="India">India</option>
+                 <option value="Indonesia">Indonesia</option>
+                 <option value="Iran, Islamic Rep.">Iran, Islamic Rep.</option>
+                 <option value="Iraq">Iraq</option>
+                 <option value="Ireland">Ireland</option>
+                 <option value="Isle of Man">Isle of Man</option>
+                 <option value="Israel">Israel</option>
+                 <option value="Italy">Italy</option>
+                 <option value="Jamaica">Jamaica</option>
+                 <option value="Japan">Japan</option>
+                 <option value="Jordan">Jordan</option>
+                 <option value="Kazakhstan">Kazakhstan</option>
+                 <option value="Kenya">Kenya</option>
+                 <option value="Kiribati">Kiribati</option>
+                 <option value="Korea, Dem. PeopleÕs Rep.">Korea, Dem. PeopleÕs Rep.</option>
+                 <option value="Korea, Rep.">Korea, Rep.</option>
+                 <option value="Kosovo">Kosovo</option>
+                 <option value="Kuwait">Kuwait</option>
+                 <option value="Kyrgyz Republic">Kyrgyz Republic</option>
+                 <option value="Lao PDR">Lao PDR</option>
+                 <option value="Latin America & Caribbean (all income levels)">Latin America & Caribbean (all income levels)</                 option>
+                 <option value="Latin America & Caribbean (developing only)">Latin America & Caribbean (developing only)</                 option>
+                 <option value="Latvia">Latvia</option>
+                 <option value="Least developed countries: UN classification">Least developed countries: UN classification</                 option>
+                 <option value="Lebanon">Lebanon</option>
+                 <option value="Lesotho">Lesotho</option>
+                 <option value="Liberia">Liberia</option>
+                 <option value="Libya">Libya</option>
+                 <option value="Liechtenstein">Liechtenstein</option>
+                 <option value="Lithuania">Lithuania</option>
+                 <option value="Low & middle income">Low & middle income</option>
+                 <option value="Low income">Low income</option>
+                 <option value="Lower middle income">Lower middle income</option>
+                 <option value="Luxembourg">Luxembourg</option>
+                 <option value="Macao SAR, China">Macao SAR, China</option>
+                 <option value="Macedonia, FYR">Macedonia, FYR</option>
+                 <option value="Madagascar">Madagascar</option>
+                 <option value="Malawi">Malawi</option>
+                 <option value="Malaysia">Malaysia</option>
+                 <option value="Maldives">Maldives</option>
+                 <option value="Mali">Mali</option>
+                 <option value="Malta">Malta</option>
+                 <option value="Marshall Islands">Marshall Islands</option>
+                 <option value="Mauritania">Mauritania</option>
+                 <option value="Mauritius">Mauritius</option>
+                 <option value="Mexico">Mexico</option>
+                 <option value="Micronesia, Fed. Sts.">Micronesia, Fed. Sts.</option>
+                 <option value="Middle East & North Africa (all income levels)">Middle East & North Africa (all income levels)<                 /option>
+                 <option value="Middle East & North Africa (developing only)">Middle East & North Africa (developing only)</                 option>
+                 <option value="Middle income">Middle income</option>
+                 <option value="Moldova">Moldova</option>
+                 <option value="Monaco">Monaco</option>
+                 <option value="Mongolia">Mongolia</option>
+                 <option value="Montenegro">Montenegro</option>
+                 <option value="Morocco">Morocco</option>
+                 <option value="Mozambique">Mozambique</option>
+                 <option value="Myanmar">Myanmar</option>
+                 <option value="Namibia">Namibia</option>
+                 <option value="Nepal">Nepal</option>
+                 <option value="Netherlands">Netherlands</option>
+                 <option value="New Caledonia">New Caledonia</option>
+                 <option value="New Zealand">New Zealand</option>
+                 <option value="Nicaragua">Nicaragua</option>
+                 <option value="Niger">Niger</option>
+                 <option value="Nigeria">Nigeria</option>
+                 <option value="North America">North America</option>
+                 <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                 <option value="Norway">Norway</option>
+                 <option value="Not classified">Not classified</option>
+                 <option value="OECD members">OECD members</option>
+                 <option value="Oman">Oman</option>
+                 <option value="Other small states">Other small states</option>
+                 <option value="Pacific island small states">Pacific island small states</option>
+                 <option value="Pakistan">Pakistan</option>
+                 <option value="Palau">Palau</option>
+                 <option value="Panama">Panama</option>
+                 <option value="Papua New Guinea">Papua New Guinea</option>
+                 <option value="Paraguay">Paraguay</option>
+                 <option value="Peru">Peru</option>
+                 <option value="Philippines">Philippines</option>
+                 <option value="Poland">Poland</option>
+                 <option value="Portugal">Portugal</option>
+                 <option value="Puerto Rico">Puerto Rico</option>
+                 <option value="Qatar">Qatar</option>
+                 <option value="Romania">Romania</option>
+                 <option value="Russian Federation">Russian Federation</option>
+                 <option value="Rwanda">Rwanda</option>
+                 <option value="Samoa">Samoa</option>
+                 <option value="San Marino">San Marino</option>
+                 <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                 <option value="Saudi Arabia">Saudi Arabia</option>
+                 <option value="Senegal">Senegal</option>
+                 <option value="Serbia">Serbia</option>
+                 <option value="Seychelles">Seychelles</option>
+                 <option value="Sierra Leone">Sierra Leone</option>
+                 <option value="Singapore">Singapore</option>
+                 <option value="Sint Maarten (Dutch part)">Sint Maarten (Dutch part)</option>
+                 <option value="Slovak Republic">Slovak Republic</option>
+                 <option value="Slovenia">Slovenia</option>
+                 <option value="Small states">Small states</option>
+                 <option value="Solomon Islands">Solomon Islands</option>
+                 <option value="Somalia">Somalia</option>
+                 <option value="South Africa">South Africa</option>
+                 <option value="South Asia">South Asia</option>
+                 <option value="South Sudan">South Sudan</option>
+                 <option value="Spain">Spain</option>
+                 <option value="Sri Lanka">Sri Lanka</option>
+                 <option value="St. Kitts and Nevis">St. Kitts and Nevis</option>
+                 <option value="St. Lucia">St. Lucia</option>
+                 <option value="St. Martin (French part)">St. Martin (French part)</option>
+                 <option value="St. Vincent and the Grenadines">St. Vincent and the Grenadines</option>
+                 <option value="Sub-Saharan Africa (all income levels)">Sub-Saharan Africa (all income levels)</option>
+                 <option value="Sub-Saharan Africa (developing only)">Sub-Saharan Africa (developing only)</option>
+                 <option value="Sudan">Sudan</option>
+                 <option value="Suriname">Suriname</option>
+                 <option value="Swaziland">Swaziland</option>
+                 <option value="Sweden">Sweden</option>
+                 <option value="Switzerland">Switzerland</option>
+                 <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                 <option value="Tajikistan">Tajikistan</option>
+                 <option value="Tanzania">Tanzania</option>
+                 <option value="Thailand">Thailand</option>
+                 <option value="Timor-Leste">Timor-Leste</option>
+                 <option value="Togo">Togo</option>
+                 <option value="Tonga">Tonga</option>
+                 <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                 <option value="Tunisia">Tunisia</option>
+                 <option value="Turkey">Turkey</option>
+                 <option value="Turkmenistan">Turkmenistan</option>
+                 <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                 <option value="Tuvalu">Tuvalu</option>
+                 <option value="Uganda">Uganda</option>
+                 <option value="Ukraine">Ukraine</option>
+                 <option value="United Arab Emirates">United Arab Emirates</option>
+                 <option value="United Kingdom">United Kingdom</option>
+                 <option value="United States">United States</option>
+                 <option value="Upper middle income">Upper middle income</option>
+                 <option value="Uruguay">Uruguay</option>
+                 <option value="Uzbekistan">Uzbekistan</option>
+                 <option value="Vanuatu">Vanuatu</option>
+                 <option value="Venezuela, RB">Venezuela, RB</option>
+                 <option value="Vietnam">Vietnam</option>
+                 <option value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
+                 <option value="West Bank and Gaza">West Bank and Gaza</option>
+                 <option value="World">World</option>
+                 <option value="Yemen, Rep.">Yemen, Rep.</option>
+                 <option value="Zambia">Zambia</option>
+                 <option value="Zimbabwe">Zimbabwe</option>
+                 <input type="submit" value="Create Plot" id="create" onclick="DrawGraph();">
+      <p style="color:white;">When we look at the graph, we can see that generally life expectancy is increasing across the board. However, the countries that have had civil wars or other kind of disasters are showing big decreases in life expectancy as well as its GDP.</p>
+
+
+      </div>
+
+    <div id="content">
+
+        <h2 align="center">Life Expentancy and GDP(1960-2014)</h2>
+        <div id="chart1" ></div>
+
+
+    </div>
+    
+
+    <div id="content2">
+                <h2>Life Expectancy Map</h2>
+                <p><i>For zooming in, click the map. for zooming out click background</i></p>
+                    <select class="1960-2014" id="YEAR" name="YEAR">
+                    <input type="submit" value="YEAR" id="create" onclick="DrawMap();">
+                    </select>
+                    <div id="map"></div>
+
+      </div>
+
+
+        <div id="footer">
+                <h2 style="color:white;">Conclusion</h2>
+                <p style="color:white;">It is hard to say whether life expectancy is related to the GDP  with only this data. However, we can see the tendency that two factors have the same direction. Particularly African countries that had civil wars are showing the relationship clearly. Although we didn't do a formal statistical analysis, the relationship between life expectancy and GDP among those countries seems quite clear. Meanwhile, the life expectancy of developed countries like United States grows gradually without showing effects from GDP. In the 1960's, OECD countries already had life expectancy near 70 years. </p>
+
+      </div>
+    </div>
+  </body>
+</html>
+
