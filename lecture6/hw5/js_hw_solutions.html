@@ -142,7 +142,7 @@ d3.csv('data/presidents.csv', function(data){
                 .data(columns)
                 .enter()
                 .append('th')
-                .text(function(c){return c;});
+                .text(function(c){return 'this is ' + c;});
 
     var rows = table.append('tbody')
                 .selectAll('tr')
@@ -159,7 +159,7 @@ d3.csv('data/presidents.csv', function(data){
                     })
                 .enter()
                 .append('td')
-                .text(function(d){return d.value;});
+                .text(function(d){return '<'+d.value+'>';});
 });
 
 </script>
