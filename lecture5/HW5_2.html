@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table {
+        border-spacing: 20px 5px;
+    }
+    body { font: 10px Arial; }
+</style>
+<head lang="en">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <title>IS608 HW5 Part 2</title>
+</head>
+<body>
+<h1>IS608 HW5 Part 2</h1>
+<script type="text/javascript">
+    var f = "js_examples/data/presidents.csv";
+    var csv_data = [];
+    var cols = ['Name', 'Height', 'Weight'];
+    d3.csv(f, function (d) {
+        d.forEach(function (r) {
+                csv_data.push(
+                    {
+                        Name: r[cols[0]],
+                        Height: r[cols[1]],
+                        Weight: r[cols[2]]
+                    }
+                );
+        })
+        build_table(csv_data);
+    });
+
+    function build_table (d) {
+        var tbl = d3.select("body").append("table");
+        tbl.append("tr");
+        tbl.selectAll("tr")
+                .selectAll("td")
+                .data(cols)
+                .enter()
+                .append("td")
+                .text(function(d) { return d; }).style("font-weight", "bold");
+        var rows = tbl.selectAll("tr")
+                .data(d)
+                .enter()
+                .append("tr");
+        rows.selectAll("td")
+                .data(function(r) {
+                    // must map key, value pairs in r to column, value pairs
+                    return cols.map(function(c) {
+                        return {column: c, value: r[c]}
+                    });
+                }).enter()
+                .append("td")
+                .text(function(d) { return d.value; });
+    }
+
+    function get_result() {
+        var president = document.getElementById('prez').value;
+        var out = document.getElementById('output');
+        var rows = d3.selectAll("tr")[0];
+        var height = -1;
+        var weight = -1;
+
+        for (var i = 1; i < rows.length; i++) {
+            var data = rows[i].childNodes;
+            if (data[0].textContent.toLowerCase() === president.toLowerCase()) {
+                height = data[1].textContent;
+                weight = data[2].textContent;
+            }
+        }
+
+        if (height !== -1 && weight !== -1) {
+            out.innerHTML = 'Height: ' + height + ', Weight: ' + weight;
+        }
+    }
+</script>
+<form onsubmit="get_result(); return false;">
+    <input id="prez" type="text"/>
+</form>
+<br>
+<div id="output"></div>
+<br>
+</body>
+</html>

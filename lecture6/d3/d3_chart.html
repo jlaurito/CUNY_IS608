@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    #map { width: 600px; height: 250px; }
+    svg { position: relative; }
+    path {
+        fill-opacity: .2;
+    }
+</style>
+<head>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+</head>
+<body>
+<div id="map"></div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script type="text/javascript">
+
+    // set up map
+    var map = L.map('map').setView([39.737, -104.981], 13)
+            .addLayer(new L.TileLayer(
+                    "http://{s}.tiles.mapbox.com/v4/circld.b689c053/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2lyY2xkIiwiYSI6IjE5MjJCN2MifQ.Ztr1z4FvXHYHFQCxEubPpw")
+            );
+    var data_fpath = 'data/crime_sample.topojson';
+
+    // leaflet-zoom-hide hides svg during zoom
+    var svg = d3.select(map.getPanes().overlayPane).append("svg"),
+        g = svg.append("g").attr("class", "leaflet-zoom-hide");
+
+    // Use Leaflet to implement D3 geometri transformation
+    function projectPoint(x, y) {
+        var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+        this.stream.point(point.x, point.y);
+
+}    // Denver map center ~= 39.737, -104.981
+    function projection(x, y) {
+        var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+        this.stream.point(point.x, point.y);
+    }
+    var transform = d3.geo.transform({ point: projection }),
+        path = d3.geo.path().projection(transform);
+    // read in data
+    d3.json(data_fpath, function(error, data) {
+        if (error) return console.error(error);
+        console.log(data.objects.crime_sample);
+
+        var feature = g.selectAll("path")
+                .data(topojson.feature(data, data.objects.crime_sample).features)
+                .enter().append("path");
+        // Reposition SVG when zoom changes
+        map.on("viewreset", reset);
+        reset();
+        function reset() {
+            var bounds = path.bounds(topojson.feature(data, data.objects.crime_sample)),
+                    topLeft = bounds[0],
+                    bottomRight = bounds[1];
+            svg.attr("width", bottomRight[0] - topLeft[0])
+                    .attr("height", bottomRight[1] - topLeft[1])
+                    .style("left", topLeft[0] + "px")
+                    .style("top", topLeft[1] + "px");
+            g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+            feature.attr("d", path);
+        }
+    });
+</script>

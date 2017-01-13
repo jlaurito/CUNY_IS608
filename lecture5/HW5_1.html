@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>IS608 HW5 Part 1</title>
+</head>
+<body>
+<h1>IS608 HW5 Part 1</h1>
+<script type="text/javascript">
+    function reverse () {
+        var backword = '';
+        for (var i=this.length - 1; i>=0; i--) {
+            backword += this[i];
+        }
+        return backword;
+    }
+    String.prototype.reverse = reverse;
+
+    document.write('<h2>Reversing arbitrary strings</h2>')
+
+    function get_result (in_id, out_id, func) {
+        var t = document.getElementById(out_id);
+        var val = document.getElementById(in_id).value;
+        if (typeof val === 'string' && !func) {
+            t.innerHTML = val.reverse();
+        } else {
+            t.innerHTML = func(val);
+        }
+    }
+</script>
+<form onsubmit="get_result('text', 'out'); return false;">
+    <input id="text" type="text" size="4"/>
+</form>
+<p id="out"></p>
+<br>
+<script type="text/javascript">
+    document.write('<h2>Printing multiples in a table</h2>')
+    function print_table (num) {
+        var to_write = ''
+        to_write += '<table>';
+        for (var i = 0; i < 4; i++) {
+            to_write += '<col width="25">'
+        }
+        for (var i = 0; i < 20; i++) {
+            if (i % 4 === 0) {
+                to_write += '<tr>';
+            }
+            to_write += '<td>' + (i + 1) * num + '</td>';
+            if (i % 4 === 3) {
+                to_write += '</tr>';
+            }
+        }
+        to_write += '</table>';
+        // alert(to_write);
+        return to_write;
+    }
+
+</script>
+<p>Please enter a number you would like to see the first 20 multiples for:</p>
+<!--return false; required or page will refresh from submit action-->
+<form onsubmit="get_result('num', 'target', print_table); return false;">
+    <input id="num" type="number" size="4" />
+</form>
+<br>
+<p id="target"></p>
+</body>
+</html>
